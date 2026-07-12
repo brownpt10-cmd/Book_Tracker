@@ -205,6 +205,7 @@ th.sortable.sort-desc::after { content: '\2193'; opacity: 1; color: var(--accent
   <input type="text" class="search-input" id="searchInput" placeholder="Search by author, title, or series&hellip;">
   <span class="result-count" id="resultCount"></span>
   <span id="syncStatus" style="font-size:0.7rem;color:var(--muted);margin-left:auto;padding-left:12px;"></span>
+  <span id="profileLabel" style="font-size:0.7rem;color:var(--muted);padding-left:12px;cursor:pointer;text-decoration:underline;" title="Click to switch user" onclick="switchProfile()"></span>
 </div>
 
 <div class="panel active" id="panel-main"></div>
@@ -227,6 +228,40 @@ const APP_ORDER = ['none','audible','apple','libby_hold','libby','hoopla','kindl
 // --- Google Sheets sync (replaces localStorage from the OneDrive version) ---
 // Deployed Apps Script Web App URL — see Google_Sheets_Sync_Setup.md.
 const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbwTAMyfdV17wywErBFvaUKVEMMaYdFAT75BUhgn73bGgV3_D8GP7qtMugqNo0sJc3cq/exec';
+
+// --- Multi-user profile (no login — just a one-time local picker per device) ---
+const PROFILES = ['Pat', 'Charla', 'Nicole'];
+const PROFILE_KEY = 'book-tracker-profile';
+let PROFILE = localStorage.getItem(PROFILE_KEY);
+
+function ensureProfileSelected() {
+  return new Promise((resolve) => {
+    if (PROFILE && PROFILES.indexOf(PROFILE) !== -1) { resolve(); return; }
+    const overlay = document.createElement('div');
+    overlay.id = 'profileOverlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.75);display:flex;align-items:center;justify-content:center;z-index:9999;';
+    overlay.innerHTML = `
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px 32px;max-width:320px;text-align:center;">
+        <div style="font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:4px;">Who&rsquo;s reading?</div>
+        <div style="font-size:0.8rem;color:var(--muted);margin-bottom:18px;">Pick a name so Status/App picks sync to the right person. This is remembered on this device.</div>
+        ${PROFILES.map(p => `<button class="profile-btn" data-profile="${p}" style="display:block;width:100%;margin-bottom:10px;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--text);font-size:0.95rem;font-weight:600;cursor:pointer;">${p}</button>`).join('')}
+      </div>`;
+    document.body.appendChild(overlay);
+    overlay.querySelectorAll('.profile-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        PROFILE = btn.dataset.profile;
+        localStorage.setItem(PROFILE_KEY, PROFILE);
+        overlay.remove();
+        resolve();
+      });
+    });
+  });
+}
+
+function switchProfile() {
+  localStorage.removeItem(PROFILE_KEY);
+  location.reload();
+}
 
 let REMOTE = {};   // bookId -> { status, app }
 
@@ -256,10 +291,10 @@ async function loadRemoteData() {
     return;
   }
   try {
-    const res = await fetch(WEB_APP_URL, { method: 'GET' });
+    const res = await fetch(`${WEB_APP_URL}?user=${encodeURIComponent(PROFILE)}`, { method: 'GET' });
     const rows = await res.json();
     rows.forEach(r => { REMOTE[r.BookID] = { status: r.Status || 'none', app: r.App || 'none' }; });
-    setSyncStatus('Synced with Google Sheet', false);
+    setSyncStatus(`Synced as ${PROFILE}`, false);
   } catch (err) {
     console.warn('Book Tracker: could not load synced statuses from Google Sheet, showing defaults.', err);
     setSyncStatus('Sync unavailable — showing defaults', true);
@@ -274,8 +309,8 @@ function pushRemote(id, field, value, author, title) {
   fetch(WEB_APP_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body: JSON.stringify({ bookId: id, field, value, author, title })
-  }).then(() => setSyncStatus('Synced with Google Sheet', false))
+    body: JSON.stringify({ bookId: id, field, value, author, title, user: PROFILE })
+  }).then(() => setSyncStatus(`Synced as ${PROFILE}`, false))
     .catch(err => {
       console.warn('Book Tracker: change saved on this device but failed to sync to the Sheet.', err);
       setSyncStatus('Saved on this device only — sync failed', true);
@@ -570,6 +605,9 @@ function applyFilter() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
+  await ensureProfileSelected();
+  const profileLabelEl = document.getElementById('profileLabel');
+  if (profileLabelEl) profileLabelEl.textContent = `${PROFILE} (switch)`;
   await loadRemoteData();
   document.getElementById('panel-main').innerHTML = renderAuthorGroup(DATA.main, true);
   document.getElementById('panel-uac').innerHTML = renderAuthorGroup(DATA.uac, false);
