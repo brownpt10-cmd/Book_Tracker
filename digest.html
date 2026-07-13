@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dark Skies Consulting — Digest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --ink: #0A0A0C;
+    --offwhite: #F5F6F7;
+    /* Reading-copy color: deliberately dimmer than the brand wordmark's #F5F6F7.
+       Pure-white-on-near-black causes visible "bloom"/halo and eye strain on
+       screens — this is body-text color only, never the logo. */
+    --text: #DCDEE2;
+    --subtext: #B9BCC2;
+    --accent: oklch(0.55 0.06 250);
+    --accent-dim: oklch(0.32 0.045 250);
+    --panel-bg: #16171C;
+    --panel-border: rgba(245, 246, 247, 0.08);
+    --sans: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--ink); }
+  body {
+    margin: 0; font-family: var(--sans); color: var(--text); line-height: 1.6;
+    position: relative; min-height: 100vh; overflow-x: hidden;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      radial-gradient(1px 1px at 8% 12%, rgba(245,246,247,.55), transparent 60%),
+      radial-gradient(1px 1px at 22% 68%, rgba(245,246,247,.35), transparent 60%),
+      radial-gradient(1.5px 1.5px at 38% 30%, rgba(245,246,247,.5), transparent 60%),
+      radial-gradient(1px 1px at 54% 82%, rgba(245,246,247,.3), transparent 60%),
+      radial-gradient(1px 1px at 67% 18%, rgba(245,246,247,.45), transparent 60%),
+      radial-gradient(1.5px 1.5px at 81% 55%, rgba(245,246,247,.4), transparent 60%),
+      radial-gradient(1px 1px at 93% 88%, rgba(245,246,247,.3), transparent 60%),
+      radial-gradient(1px 1px at 15% 92%, rgba(245,246,247,.35), transparent 60%),
+      radial-gradient(1px 1px at 74% 40%, rgba(245,246,247,.25), transparent 60%);
+    background-repeat: repeat; background-size: 480px 480px;
+  }
+  main, .topbar { position: relative; z-index: 1; }
+
+  .topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 28px; border-bottom: 1px solid var(--panel-border);
+    position: sticky; top: 0; background: rgba(10,10,12,0.88); backdrop-filter: blur(8px);
+    z-index: 20;
+  }
+  .topbar-logo-link { text-decoration: none; display: inline-flex; align-items: center; }
+
+  /* Logo lockup — rings behind stacked initials/divider/fullname, per the brand
+     spec. --topbar sizes the whole composition to ~50% of the old separate
+     hero banner (rings were 380px there) so it fits compactly upper-left. */
+  .dsc-logo { position: relative; display: flex; flex-direction: column; align-items: center; }
+  .dsc-rings { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -54%);
+    width: 380px; max-width: 90vw; height: auto; }
+  .dsc-rings ellipse { fill: none; stroke: var(--accent-dim); }
+  .dsc-rings .ring-outer { stroke-width: 1.5; opacity: 0.9; }
+  .dsc-rings .ring-inner { stroke-width: 1; opacity: 0.55; }
+  .dsc-wordmark { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+  .dsc-initials { font-weight: 600; font-size: 64px; letter-spacing: .08em; color: var(--offwhite); line-height: 1; }
+  .dsc-divider { width: 220px; max-width: 60vw; height: 2px; background: var(--accent); margin: 16px 0; }
+  .dsc-fullname { font-weight: 500; font-size: 14px; letter-spacing: .42em; text-transform: uppercase;
+    color: var(--subtext); text-align: center; }
+
+  .dsc-logo--topbar { width: 190px; padding: 14px 0 10px; }
+  .dsc-logo--topbar .dsc-rings { width: 190px; }
+  .dsc-logo--topbar .dsc-initials { font-size: 32px; }
+  .dsc-logo--topbar .dsc-divider { width: 110px; height: 1px; margin: 8px 0; }
+  .dsc-logo--topbar .dsc-fullname { font-size: 9px; letter-spacing: .3em; }
+
+  nav.tabs { display: flex; gap: 4px; background: var(--panel-bg); border: 1px solid var(--panel-border);
+    border-radius: 999px; padding: 4px; }
+  nav.tabs a {
+    background: none; border: none; color: var(--subtext); font-family: var(--sans);
+    padding: 8px 18px; border-radius: 999px; cursor: pointer; font-size: 12px;
+    letter-spacing: .12em; text-transform: uppercase; font-weight: 600;
+    text-decoration: none; display: inline-block;
+  }
+  nav.tabs a.active { background: var(--accent); color: #05070a; }
+  nav.tabs a:not(.active):hover { color: var(--offwhite); }
+
+  main { max-width: 1400px; margin: 0 auto; padding: 22px 24px 60px; }
+
+  /* Mobile-first: single stacked column in original document order. */
+  .columns-desktop { display: none; }
+  .stack-mobile { display: block; }
+
+  /* Desktop: explicit 3-column layout, panels pre-distributed at build time
+     (greedy height balance) rather than relying on CSS column-count, which
+     forces one column to run long when a single panel is much taller than
+     the rest and leaves the other columns with a big blank gap. */
+  @media (min-width: 1080px) {
+    .stack-mobile { display: none; }
+    .columns-desktop { display: flex; gap: 22px; align-items: flex-start; }
+    .columns-desktop .col { flex: 1 1 0; min-width: 0; }
+  }
+
+  .panel {
+    background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 14px;
+    padding: 26px 28px; margin-bottom: 22px; position: relative; overflow: hidden;
+  }
+  .panel::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent 70%);
+  }
+
+  h1 { font-size: 15px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; margin: 0; color: var(--offwhite); }
+  h2 {
+    font-size: 13px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--offwhite); margin: 0 0 18px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--panel-border); display: flex; align-items: center; gap: 10px;
+  }
+  .panel:not(:first-child) h2 { margin-top: 0; }
+  h3 { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 18px 0 8px; }
+  p { color: var(--text); font-size: 14.5px; font-weight: 400; line-height: 1.65; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--offwhite); font-weight: 600; }
+  em { color: var(--subtext); font-style: italic; }
+  a { color: var(--accent); }
+
+  .table-wrap { overflow-x: auto; margin: 4px 0 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--panel-border); }
+  th { color: var(--subtext); font-weight: 600; text-transform: uppercase; font-size: 10px;
+    letter-spacing: .1em; font-family: var(--mono); }
+  td { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--text); }
+  tr:last-child td { border-bottom: none; }
+  tbody tr:hover { background: rgba(245,246,247,0.03); }
+
+  code { background: rgba(245,246,247,0.08); color: var(--text); padding: 2px 6px; border-radius: 4px;
+    font-family: var(--mono); font-size: 90%; }
+  ul { padding-left: 20px; margin: 8px 0; }
+  li { margin-bottom: 10px; font-size: 14.5px; font-weight: 400; line-height: 1.65; color: var(--text); }
+  li:last-child { margin-bottom: 0; }
+  hr { display: none; }
+
+  .status { display: inline-block; font-family: var(--mono); font-size: 10px; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; margin-right: 6px; }
+  .status--active { color: var(--accent); background: rgba(110, 150, 200, 0.14); border: 1px solid var(--accent-dim); }
+  .status--dormant { color: var(--subtext); background: rgba(185,188,194,0.08); border: 1px solid var(--panel-border); }
+  .status--archived { color: #6a6d74; background: rgba(106,109,116,0.08); border: 1px solid var(--panel-border); }
+
+  /* Registry cards — category panels stack full width; cards flow responsively inside. */
+  .reg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .reg-card { border: 1px solid var(--panel-border); border-radius: 12px; padding: 14px 15px;
+    background: rgba(245,246,247,0.015); display: flex; flex-direction: column; }
+  .reg-card--ref { border-style: dashed; }
+  .reg-card--paused { opacity: 0.68; }
+  .reg-card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 6px; }
+  .reg-card-title { font-weight: 600; font-size: 14px; color: var(--offwhite); line-height: 1.3; }
+  .reg-sys { font-family: var(--mono); font-size: 9.5px; letter-spacing: .07em; text-transform: uppercase;
+    color: var(--subtext); border: 1px solid var(--panel-border); border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
+  .reg-desc { font-size: 13px; color: var(--text); opacity: 0.78; line-height: 1.5; margin-bottom: 12px; flex: 1; }
+  .reg-cad { align-self: flex-start; font-family: var(--mono); font-size: 11px; padding: 3px 10px; border-radius: 999px; }
+  .reg-cad--scheduled { color: var(--accent); background: rgba(110,150,200,0.14); border: 1px solid var(--accent-dim); }
+  .reg-cad--asneeded { color: var(--subtext); background: rgba(245,246,247,0.05); border: 1px solid var(--panel-border); }
+  .reg-cad--paused { color: var(--subtext); background: rgba(245,246,247,0.06); border: 1px solid var(--panel-border); }
+  .reg-cad--planned { color: var(--subtext); background: none; border: 1px dashed var(--accent-dim); }
+
+  .footer-note { color: var(--subtext); font-family: var(--mono); font-size: 11px; letter-spacing: .04em;
+    margin-top: 30px; text-align: center; opacity: .7; }
+
+  /* Phone-specific tightening (Digest is the page most often checked on a phone). */
+  @media (max-width: 600px) {
+    .dsc-logo--topbar { width: 120px; padding: 8px 0; }
+    .dsc-logo--topbar .dsc-rings { width: 120px; }
+    .dsc-logo--topbar .dsc-initials { font-size: 22px; }
+    .dsc-logo--topbar .dsc-divider { display: none; }
+    .dsc-logo--topbar .dsc-fullname { display: none; }
+    .panel { padding: 18px 16px; margin-bottom: 16px; }
+    main { padding: 14px 14px 40px; }
+    h2 { font-size: 12px; letter-spacing: .14em; }
+    table, th, td { font-size: 11.5px; }
+    th, td { padding: 8px 8px; }
+    nav.tabs { gap: 2px; padding: 3px; }
+    nav.tabs a { padding: 7px 10px; font-size: 10px; letter-spacing: .06em; white-space: nowrap; }
+  }
+
+  .landing-links { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; margin-top: 30px; }
+  .landing-links a {
+    display: block; min-width: 200px; text-align: center; text-decoration: none;
+    background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 14px;
+    padding: 22px 30px; color: var(--offwhite); font-family: var(--mono); font-size: 12px;
+    letter-spacing: .14em; text-transform: uppercase; font-weight: 600; position: relative; overflow: hidden;
+  }
+  .landing-links a::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent 70%);
+  }
+  .landing-links a small { display: block; margin-top: 6px; color: var(--subtext); font-size: 10px; letter-spacing: .08em; text-transform: none; font-weight: 400; }
+
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="topbar-logo-link" href="dashboard.html"><div class="dsc-logo dsc-logo--topbar">
+  
+<svg class="dsc-rings" viewBox="0 0 400 200" aria-hidden="true">
+  <ellipse cx="200" cy="100" rx="162" ry="60" transform="rotate(-18 200 100)" class="ring-outer"/>
+  <ellipse cx="200" cy="100" rx="132" ry="45" transform="rotate(-18 200 100)" class="ring-inner"/>
+</svg>
+
+  <div class="dsc-wordmark">
+    <span class="dsc-initials">DSC</span>
+    <span class="dsc-divider"></span>
+    <span class="dsc-fullname">Dark Skies Consulting</span>
+  </div>
+</div></a>
+  <nav class="tabs">
+    <a href="registry.html" class="">Registry</a>
+    <a href="digest.html" class="active">Digest</a>
+    <a href="stock-price.html" class="">Stock-Price</a>
+  </nav>
+</header>
+
+<main>
+  <div class="stack-mobile"><div class="panel"><h1>Daily Dashboard</h1>
+<p><strong>Today:</strong> Saturday, July 11, 2026</p>
+<p><strong>Last generated:</strong> 2026-07-11 11:55 (targeted update — Red Sox block, see Notes)</p></div><div class="panel"><h2>🌅 Sunrise / Sunset — Colorado Springs</h2>
+<ul>
+<li><strong>Sunrise:</strong> 5:40 AM</li>
+<li><strong>Sunset:</strong> 8:28 PM</li>
+<li>Day length: 14h 48m</li>
+</ul></div><div class="panel"><h2>🏎️ F1 Schedule — Next 3 Races</h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Race</th>
+<th>Circuit</th>
+<th>Date</th>
+<th>Race Start (MT / Local)</th>
+</tr></thead><tbody>
+<tr><td>Belgian Grand Prix</td><td>Spa-Francorchamps</td><td>Sun, Jul 19</td><td>7:00 AM MT / 3:00 PM CEST</td></tr>
+<tr><td>Hungarian Grand Prix</td><td>Hungaroring, Budapest</td><td>Sun, Jul 26</td><td>7:00 AM MT / 3:00 PM CEST</td></tr>
+<tr><td>Dutch Grand Prix</td><td>Zandvoort</td><td>Sun, Aug 23</td><td>7:00 AM MT / 3:00 PM CEST</td></tr>
+</tbody></table></div></div><div class="panel"><h2>📅 Google Calendar</h2>
+<p><strong>Upcoming appointments (next 30 days)</strong></p>
+<ul>
+<li>Jul 16, 9:00–9:30 AM — Radiation CT Simulation, UCHealth Radiation Oncology (Memorial Hospital North). Arrive by 8:45 AM.</li>
+<li>Jul 17, 10:45–11:15 AM — Post Operative Visit, Kaitlyn Scherrer PA-C, UCHealth Plastic and Reconstructive Surgery Clinic (Eastview).</li>
+<li>Jul 18, 1:00–2:00 PM — Concert at Park.</li>
+<li>Jul 21, 9:30–10:00 AM — Return Patient, Judith K, UCHealth Physical Therapy and Rehabilitation Clinic (Grandview). Arrive by 9:15 AM.</li>
+<li>Jul 23, 8:45–9:15 AM — Return Patient, Jessica Klein NP, UCHealth Cancer Care and Hematology Clinic (Memorial Hospital North). Arrive by 8:30 AM.</li>
+<li>Jul 28, 3:45–4:15 PM — Post Operative Visit, Michelle Dewing MD, UCHealth Breast Surgical Clinic (Memorial Hospital North, Suite 465). Arrive by 3:30 PM.</li>
+</ul>
+<p><strong>Birthdays / anniversaries (next 30 days)</strong></p>
+<ul>
+<li>Jul 20 — Dani Thomason Reeves&#x27;s birthday</li>
+</ul>
+<p><strong>Travel dates (next 30 days)</strong></p>
+<ul>
+<li>None on the calendar. Note: this doesn&#x27;t mean no trips are planned — F1 Las Vegas GP (Nov) and Oktoberfest (Sep) are both tracked in <code>PROJECT_REGISTRY.md</code> but fall outside this 30-day window and aren&#x27;t calendared yet either way.</li>
+</ul>
+<p><em>(Checked: Main, Health calendars fresh as of 2026-07-11 11:40 (5 UCHealth appointments added to Health this session — see Notes); Family, Cleaning, Mexico not re-checked this pass, see 2026-07-10 run for their last-known state. Health also carries a recurring &quot;AM Fast&quot; reminder — excluded as a habit reminder, not an appointment, per PUSH_RULES.md.)</em></p></div><div class="panel"><h2>📧 Email</h2>
+<p><strong>Action needed</strong></p>
+<ul>
+<li><strong>New:</strong> Walgreens — &quot;Refill due,&quot; 2 prescriptions due for refill (07/10).</li>
+<li><strong>New:</strong> Google sign-in notice — &quot;You shared some Google Account data with Todoist,&quot; triggered by &quot;Sign in with Google&quot; on Todoist at 10:27 PM 07/09. Confirm that was you.</li>
+<li>Carried over: Walgreens Rx still showing ready for pickup (Theresa&#x27;s prescription).</li>
+<li>Carried over: LifeStance video-visit reminder for Theresa&#x27;s appointment with Nicole — no newer reminder since 07/07, pre-visit prep still unconfirmed.</li>
+</ul>
+<p><strong>M1 Finance</strong> — no new activity since 07/08 (password reset + profile update, already reported).</p>
+<p><strong>Taylor Apartments (The Taylor at Greenway)</strong> — no new activity since the work order closed 07/09 evening.</p>
+<p><strong>Colorado Realty and Property (Pensador Drive rental)</strong> — no new activity. Most recent: work orders published 06/28 (already closed), owner statement 06/15.</p>
+<p><strong>Amazon (account-level, not order status)</strong> — no new activity since the Resideo/Alexa skill notice.</p>
+<p><strong>Gmail Forums</strong> — no new activity since the 07/01 USAFA change-of-command notice.</p>
+<p><strong>LifeStance</strong> — no new activity since the 07/08 payment receipt / check-in reminder.</p>
+<p><strong>UC Health</strong> — no new activity since the 07/01 newsletter.</p>
+<p><strong>USAF Academy Hospital</strong> — still no direct correspondence found.</p>
+<p><strong>USAA</strong> — no new activity in the last 2 days. Note: as of the new USAA-specific filter (<code>PUSH_RULES.md</code>, 2026-07-10), &quot;You Have a New USAA Document&quot; notices are now suppressed by default — only $-amount items (payments, bills) or OTP-code arrivals (code itself excluded) will show going forward.</p>
+<p><strong>Fidelity</strong> — no new activity to report. Note: as of the new Fidelity-specific filter (<code>PUSH_RULES.md</code>, 2026-07-10), the &quot;Daily Alert Summary (AM)&quot; is now suppressed entirely — today&#x27;s 07/10 copy is dropped under the new rule. Carried over, still open: 07/02 trade confirmation (SOLD Altria Group Inc.) and $2,378.85 BILT PAYMENT debit — no follow-up needed unless that debit still needs confirming.</p>
+<p><strong>Travel — F1 Las Vegas GP (Nov 19–21, 2026)</strong> — no new activity; <strong>still no hotel booked</strong> as of this pull (last prompted 07/07).</p>
+<p><strong>Travel — Oktoberfest (Sep 2026)</strong> — no new activity; still no booking found.</p>
+<p><strong>Unclear — still needs your read</strong></p>
+<ul>
+<li>The 07/04 TripAdvisor &quot;Village of Oak Creek itinerary&quot; email — still unresolved, see Notes.</li>
+</ul></div><div class="panel"><h2>📦 Amazon Orders</h2>
+<ul>
+<li><strong>⚠️ Possible exception, now 3 days past deadline:</strong> Springs Ranch Locker package (order 112-0395378-8784201) — pickup deadline was 07/07, still no resolution email as of 07/10. Worth checking directly rather than waiting on email.</li>
+<li><strong>⏰ Pickup deadline is today:</strong> Springs Ranch Locker, order 111-1224120-0301859 — due 07/10.</li>
+<li><strong>Ready for pickup:</strong> Springs Ranch Locker, order 114-7826282-7733040 — pickup by 07/12.</li>
+<li><strong>Shipped, still in transit as of last check:</strong> Fincci 700x35c bike tires (07/09), YaFex heavy-duty curtain + 2 more (07/08), Mountain bike helmet + 2 more (07/08), Fijinhom insulated tumbler + 1 more (07/04), Depend Night Defense (07/03).</li>
+</ul></div><div class="panel"><h2>📈 Stock Signals</h2>
+<ul>
+<li><strong>Death Cross, deepening:</strong> ORCL (Fidelity Brokerage DCA) — now 26.4% below 200 SMA (was 24.4% on 7/9), slope still falling. Countervailing note: sector signal (Info Tech) reads STRONG TAILWIND. Taxable/slow-lane, no same-day action; ex-dividend today, 7/10 ($0.50).</li>
+<li><strong>Death Cross, unchanged:</strong> CME (Roth IRA legacy remnant, ~$6.2K) — 14.4% below 200 SMA, still a trim-for-safety candidate for the weekend review.</li>
+<li><strong>New — data-quality flag:</strong> RTX (~$5.0K) is showing a mixed read in the source engine itself — officially &quot;HOLD&quot; but still carrying an already-crossed Death Cross tag, while price sits +5.6% above its 200 SMA. Not urgent, but worth a look since the two signals contradict each other.</li>
+<li><strong>New — SMA tier change:</strong> SPMO moved from &quot;Extended&quot; to <strong>at/just under its starter entry level</strong> ($153.08 vs. $153.80 starter) — closest to actionable of the Roth $145K sleeve names along with PAVE.</li>
+<li><strong>PAVE now &quot;in zone / ready&quot;</strong> ($56.43 vs. $55–56) — upgraded from just &quot;in zone&quot; yesterday; IDMO slightly extended (~2% above zone top); RSP, QUAL, AVUV, VHT still extended.</li>
+<li>Noted for continuity, no action: PNC (+18.2% vs. 200 SMA) and KO (+10.6%) — Golden Cross intact, HOLD.</li>
+<li>Deployable cash: ~$30,440 SPAXX-ROTH, $15K reserve floor → ~$15,440 actually deployable.</li>
+<li>Action items per the 7/10 brief: PAVE and IDMO are the two Roth rotation names closest to actionable — worth a live-quote check before firing a GTC, not urgent. CME&#x27;s Death Cross remains a weekend-review item.</li>
+<li><strong>Reminder:</strong> GRID was dropped from the Cowork daily-portfolio-email&#x27;s advisory scope as of 7/9 — Pat tracks it manually now, no automated mention going forward.</li>
+</ul></div><div class="panel"><h2>⚾ Red Sox</h2>
+<p><strong>AL East Standings</strong></p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Team</th>
+<th>W</th>
+<th>L</th>
+<th>GB</th>
+</tr></thead><tbody>
+<tr><td>Tampa Bay Rays</td><td>55</td><td>37</td><td>—</td></tr>
+<tr><td>New York Yankees</td><td>52</td><td>42</td><td>4</td></tr>
+<tr><td>Toronto Blue Jays</td><td>45</td><td>49</td><td>11</td></tr>
+<tr><td>Boston Red Sox</td><td>44</td><td>48</td><td>11</td></tr>
+<tr><td>Baltimore Orioles</td><td>44</td><td>51</td><td>12.5</td></tr>
+</tbody></table></div>
+<p><strong>Next 3 Games</strong></p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Date</th>
+<th>Time (MDT)</th>
+<th>Opponent</th>
+<th>Home/Away</th>
+</tr></thead><tbody>
+<tr><td>2026-07-11</td><td>2:10 PM MDT</td><td>New York Mets</td><td>Away</td></tr>
+<tr><td>2026-07-12</td><td>11:40 AM MDT</td><td>New York Mets</td><td>Away</td></tr>
+<tr><td>2026-07-17</td><td>11:35 AM MDT</td><td>Tampa Bay Rays</td><td>Home</td></tr>
+</tbody></table></div>
+<p><em>Note: 7/11–12 closes out the Mets series; the All-Star break runs 7/13–16 (All-Star Game 7/14), so the next games after that are 7/17 at home vs. Tampa Bay. 7/17 is a single-admission doubleheader — Game 2 follows same day at 5:10 PM MDT.</em></p>
+<p><strong>News</strong></p>
+<ul>
+<li>LHP Ranger Suárez on the 15-day IL (retroactive to 7/6, groin strain); expected back the first homestand after the All-Star break, vs. Baltimore.</li>
+<li>LHP Connelly Early on the 15-day IL (left elbow inflammation).</li>
+<li>Ace LHP Garrett Crochet has been out since April; rotation is currently Sonny Gray, Payton Tolle, rookie Jake Bennett, and Patrick Sandoval (reinstated from the 60-day IL, started Thursday 7/9); Brayan Bello (Triple-A) is next in line if another arm is needed.</li>
+<li><strong>New:</strong> RHP Tanner Houck has a torn UCL in his throwing elbow — aiming for a late-2026 return.</li>
+<li><strong>New:</strong> C Willson Contreras has a left foot contusion after exiting a game 7/8.</li>
+<li>1B Triston Casas (abdominal strain) not expected back before the All-Star break; also shut down from swinging a bat due to a separate wrist issue.</li>
+<li>OF/DH Roman Anthony (partially torn tendon, right ring finger) not expected back before August.</li>
+<li>Roster move: INF Brett Harris recalled from Triple-A Worcester (Suárez&#x27;s spot); LHP Alec Gamboa optioned to Triple-A (corresponding move for Sandoval&#x27;s activation).</li>
+</ul></div><div class="panel"><h2>Notes</h2>
+<ul>
+<li><strong>2026-07-11 Red Sox fix:</strong> standings and schedule had both gone stale. Root cause: (1) I&#x27;d been treating an updated win-loss record as spoiler-adjacent and holding it back — Pat confirmed that&#x27;s wrong, the record itself isn&#x27;t a spoiler, only an explicit score/result is. (2) The &quot;next 3 games&quot; table was carried over from an earlier run instead of freshly re-derived from today&#x27;s date — it also didn&#x27;t account for the All-Star break (7/13–16), which makes the actual next-3 jump from the Mets series finale straight to the Rays series on 7/17. Both now corrected in <code>PUSH_RULES.md</code> so this shouldn&#x27;t recur. Standings confirmed live: Red Sox 44-48 (won last night, 7/10).</li>
+<li><strong>2026-07-11 targeted update:</strong> Pat asked to add 5 UCHealth appointments (screenshots from the MyChart app) to Google Calendar and reflect them here. Added all 5 to the Health calendar and refreshed the Google Calendar block above. This was <strong>not</strong> a full &quot;run the morning digest&quot; — Email/Amazon/Stock Signals/Red Sox below are still the 2026-07-10 pull, not re-verified against today. Run the full digest separately if you want those refreshed too.</li>
+<li><strong>New blocks added 2026-07-10:</strong> Date/Day, Sunrise/Sunset, F1 Schedule, and Google Calendar. Google Calendar connector moved from optional to in-use in <code>CONNECTORS.md</code> — confirmed working across Main, Family, Health, Cleaning, Mexico, and RedSox2026 calendars.</li>
+<li><strong>New Email rules applied 2026-07-10:</strong> Fidelity&#x27;s &quot;Daily Alert Summary (AM)&quot; and USAA&#x27;s &quot;new document available&quot; notices are now suppressed by default — see <code>PUSH_RULES.md</code>. Both had already been carried in prior days&#x27; digests; going forward only $-value/announcement Fidelity emails and $-value/OTP-arrival USAA emails will surface.</li>
+<li><strong>Stock Signals persistence — still an open question for PUSH_RULES.md:</strong> repeating ORCL/CME&#x27;s death crosses again today since they remain unresolved open items (ORCL&#x27;s actually deepened, so that one&#x27;s a genuine update either way). Still want your call on the general rule: keep repeating an unresolved flagged signal every run until it&#x27;s acted on or reverses, vs. flag once and go quiet regardless of resolution?</li>
+<li><strong>Still open:</strong> &quot;A Place for Mom&quot; suppression-list question (from 07/09) — no new occurrence today, nothing to add.</li>
+<li><strong>Still open:</strong> the Village of Oak Creek TripAdvisor email (07/04) — still unmatched to anything in <code>PROJECT_REGISTRY.md</code>.</li>
+<li><strong>Still on hold:</strong> Google Contacts allow-listing — no Contacts-capable tool available; Pat can supply names/addresses directly if wanted.</li>
+<li><strong>New from today&#x27;s Stock Signals pull:</strong> the source engine itself is flagging a contradiction on RTX (HOLD label + stale Death Cross tag) — not a Pat decision, just worth knowing the source data has an internal inconsistency there.</li>
+<li>This run only re-checked sources against the 2026-07-09 20:22 log rather than re-pulling full history — see <code>logs/</code> for the prior day&#x27;s complete pull if needed.</li>
+</ul></div></div><div class="columns-desktop"><div class="col"><div class="panel"><h1>Daily Dashboard</h1>
+<p><strong>Today:</strong> Saturday, July 11, 2026</p>
+<p><strong>Last generated:</strong> 2026-07-11 11:55 (targeted update — Red Sox block, see Notes)</p></div><div class="panel"><h2>📧 Email</h2>
+<p><strong>Action needed</strong></p>
+<ul>
+<li><strong>New:</strong> Walgreens — &quot;Refill due,&quot; 2 prescriptions due for refill (07/10).</li>
+<li><strong>New:</strong> Google sign-in notice — &quot;You shared some Google Account data with Todoist,&quot; triggered by &quot;Sign in with Google&quot; on Todoist at 10:27 PM 07/09. Confirm that was you.</li>
+<li>Carried over: Walgreens Rx still showing ready for pickup (Theresa&#x27;s prescription).</li>
+<li>Carried over: LifeStance video-visit reminder for Theresa&#x27;s appointment with Nicole — no newer reminder since 07/07, pre-visit prep still unconfirmed.</li>
+</ul>
+<p><strong>M1 Finance</strong> — no new activity since 07/08 (password reset + profile update, already reported).</p>
+<p><strong>Taylor Apartments (The Taylor at Greenway)</strong> — no new activity since the work order closed 07/09 evening.</p>
+<p><strong>Colorado Realty and Property (Pensador Drive rental)</strong> — no new activity. Most recent: work orders published 06/28 (already closed), owner statement 06/15.</p>
+<p><strong>Amazon (account-level, not order status)</strong> — no new activity since the Resideo/Alexa skill notice.</p>
+<p><strong>Gmail Forums</strong> — no new activity since the 07/01 USAFA change-of-command notice.</p>
+<p><strong>LifeStance</strong> — no new activity since the 07/08 payment receipt / check-in reminder.</p>
+<p><strong>UC Health</strong> — no new activity since the 07/01 newsletter.</p>
+<p><strong>USAF Academy Hospital</strong> — still no direct correspondence found.</p>
+<p><strong>USAA</strong> — no new activity in the last 2 days. Note: as of the new USAA-specific filter (<code>PUSH_RULES.md</code>, 2026-07-10), &quot;You Have a New USAA Document&quot; notices are now suppressed by default — only $-amount items (payments, bills) or OTP-code arrivals (code itself excluded) will show going forward.</p>
+<p><strong>Fidelity</strong> — no new activity to report. Note: as of the new Fidelity-specific filter (<code>PUSH_RULES.md</code>, 2026-07-10), the &quot;Daily Alert Summary (AM)&quot; is now suppressed entirely — today&#x27;s 07/10 copy is dropped under the new rule. Carried over, still open: 07/02 trade confirmation (SOLD Altria Group Inc.) and $2,378.85 BILT PAYMENT debit — no follow-up needed unless that debit still needs confirming.</p>
+<p><strong>Travel — F1 Las Vegas GP (Nov 19–21, 2026)</strong> — no new activity; <strong>still no hotel booked</strong> as of this pull (last prompted 07/07).</p>
+<p><strong>Travel — Oktoberfest (Sep 2026)</strong> — no new activity; still no booking found.</p>
+<p><strong>Unclear — still needs your read</strong></p>
+<ul>
+<li>The 07/04 TripAdvisor &quot;Village of Oak Creek itinerary&quot; email — still unresolved, see Notes.</li>
+</ul></div><div class="panel"><h2>Notes</h2>
+<ul>
+<li><strong>2026-07-11 Red Sox fix:</strong> standings and schedule had both gone stale. Root cause: (1) I&#x27;d been treating an updated win-loss record as spoiler-adjacent and holding it back — Pat confirmed that&#x27;s wrong, the record itself isn&#x27;t a spoiler, only an explicit score/result is. (2) The &quot;next 3 games&quot; table was carried over from an earlier run instead of freshly re-derived from today&#x27;s date — it also didn&#x27;t account for the All-Star break (7/13–16), which makes the actual next-3 jump from the Mets series finale straight to the Rays series on 7/17. Both now corrected in <code>PUSH_RULES.md</code> so this shouldn&#x27;t recur. Standings confirmed live: Red Sox 44-48 (won last night, 7/10).</li>
+<li><strong>2026-07-11 targeted update:</strong> Pat asked to add 5 UCHealth appointments (screenshots from the MyChart app) to Google Calendar and reflect them here. Added all 5 to the Health calendar and refreshed the Google Calendar block above. This was <strong>not</strong> a full &quot;run the morning digest&quot; — Email/Amazon/Stock Signals/Red Sox below are still the 2026-07-10 pull, not re-verified against today. Run the full digest separately if you want those refreshed too.</li>
+<li><strong>New blocks added 2026-07-10:</strong> Date/Day, Sunrise/Sunset, F1 Schedule, and Google Calendar. Google Calendar connector moved from optional to in-use in <code>CONNECTORS.md</code> — confirmed working across Main, Family, Health, Cleaning, Mexico, and RedSox2026 calendars.</li>
+<li><strong>New Email rules applied 2026-07-10:</strong> Fidelity&#x27;s &quot;Daily Alert Summary (AM)&quot; and USAA&#x27;s &quot;new document available&quot; notices are now suppressed by default — see <code>PUSH_RULES.md</code>. Both had already been carried in prior days&#x27; digests; going forward only $-value/announcement Fidelity emails and $-value/OTP-arrival USAA emails will surface.</li>
+<li><strong>Stock Signals persistence — still an open question for PUSH_RULES.md:</strong> repeating ORCL/CME&#x27;s death crosses again today since they remain unresolved open items (ORCL&#x27;s actually deepened, so that one&#x27;s a genuine update either way). Still want your call on the general rule: keep repeating an unresolved flagged signal every run until it&#x27;s acted on or reverses, vs. flag once and go quiet regardless of resolution?</li>
+<li><strong>Still open:</strong> &quot;A Place for Mom&quot; suppression-list question (from 07/09) — no new occurrence today, nothing to add.</li>
+<li><strong>Still open:</strong> the Village of Oak Creek TripAdvisor email (07/04) — still unmatched to anything in <code>PROJECT_REGISTRY.md</code>.</li>
+<li><strong>Still on hold:</strong> Google Contacts allow-listing — no Contacts-capable tool available; Pat can supply names/addresses directly if wanted.</li>
+<li><strong>New from today&#x27;s Stock Signals pull:</strong> the source engine itself is flagging a contradiction on RTX (HOLD label + stale Death Cross tag) — not a Pat decision, just worth knowing the source data has an internal inconsistency there.</li>
+<li>This run only re-checked sources against the 2026-07-09 20:22 log rather than re-pulling full history — see <code>logs/</code> for the prior day&#x27;s complete pull if needed.</li>
+</ul></div></div><div class="col"><div class="panel"><h2>🌅 Sunrise / Sunset — Colorado Springs</h2>
+<ul>
+<li><strong>Sunrise:</strong> 5:40 AM</li>
+<li><strong>Sunset:</strong> 8:28 PM</li>
+<li>Day length: 14h 48m</li>
+</ul></div><div class="panel"><h2>📅 Google Calendar</h2>
+<p><strong>Upcoming appointments (next 30 days)</strong></p>
+<ul>
+<li>Jul 16, 9:00–9:30 AM — Radiation CT Simulation, UCHealth Radiation Oncology (Memorial Hospital North). Arrive by 8:45 AM.</li>
+<li>Jul 17, 10:45–11:15 AM — Post Operative Visit, Kaitlyn Scherrer PA-C, UCHealth Plastic and Reconstructive Surgery Clinic (Eastview).</li>
+<li>Jul 18, 1:00–2:00 PM — Concert at Park.</li>
+<li>Jul 21, 9:30–10:00 AM — Return Patient, Judith K, UCHealth Physical Therapy and Rehabilitation Clinic (Grandview). Arrive by 9:15 AM.</li>
+<li>Jul 23, 8:45–9:15 AM — Return Patient, Jessica Klein NP, UCHealth Cancer Care and Hematology Clinic (Memorial Hospital North). Arrive by 8:30 AM.</li>
+<li>Jul 28, 3:45–4:15 PM — Post Operative Visit, Michelle Dewing MD, UCHealth Breast Surgical Clinic (Memorial Hospital North, Suite 465). Arrive by 3:30 PM.</li>
+</ul>
+<p><strong>Birthdays / anniversaries (next 30 days)</strong></p>
+<ul>
+<li>Jul 20 — Dani Thomason Reeves&#x27;s birthday</li>
+</ul>
+<p><strong>Travel dates (next 30 days)</strong></p>
+<ul>
+<li>None on the calendar. Note: this doesn&#x27;t mean no trips are planned — F1 Las Vegas GP (Nov) and Oktoberfest (Sep) are both tracked in <code>PROJECT_REGISTRY.md</code> but fall outside this 30-day window and aren&#x27;t calendared yet either way.</li>
+</ul>
+<p><em>(Checked: Main, Health calendars fresh as of 2026-07-11 11:40 (5 UCHealth appointments added to Health this session — see Notes); Family, Cleaning, Mexico not re-checked this pass, see 2026-07-10 run for their last-known state. Health also carries a recurring &quot;AM Fast&quot; reminder — excluded as a habit reminder, not an appointment, per PUSH_RULES.md.)</em></p></div><div class="panel"><h2>📦 Amazon Orders</h2>
+<ul>
+<li><strong>⚠️ Possible exception, now 3 days past deadline:</strong> Springs Ranch Locker package (order 112-0395378-8784201) — pickup deadline was 07/07, still no resolution email as of 07/10. Worth checking directly rather than waiting on email.</li>
+<li><strong>⏰ Pickup deadline is today:</strong> Springs Ranch Locker, order 111-1224120-0301859 — due 07/10.</li>
+<li><strong>Ready for pickup:</strong> Springs Ranch Locker, order 114-7826282-7733040 — pickup by 07/12.</li>
+<li><strong>Shipped, still in transit as of last check:</strong> Fincci 700x35c bike tires (07/09), YaFex heavy-duty curtain + 2 more (07/08), Mountain bike helmet + 2 more (07/08), Fijinhom insulated tumbler + 1 more (07/04), Depend Night Defense (07/03).</li>
+</ul></div><div class="panel"><h2>📈 Stock Signals</h2>
+<ul>
+<li><strong>Death Cross, deepening:</strong> ORCL (Fidelity Brokerage DCA) — now 26.4% below 200 SMA (was 24.4% on 7/9), slope still falling. Countervailing note: sector signal (Info Tech) reads STRONG TAILWIND. Taxable/slow-lane, no same-day action; ex-dividend today, 7/10 ($0.50).</li>
+<li><strong>Death Cross, unchanged:</strong> CME (Roth IRA legacy remnant, ~$6.2K) — 14.4% below 200 SMA, still a trim-for-safety candidate for the weekend review.</li>
+<li><strong>New — data-quality flag:</strong> RTX (~$5.0K) is showing a mixed read in the source engine itself — officially &quot;HOLD&quot; but still carrying an already-crossed Death Cross tag, while price sits +5.6% above its 200 SMA. Not urgent, but worth a look since the two signals contradict each other.</li>
+<li><strong>New — SMA tier change:</strong> SPMO moved from &quot;Extended&quot; to <strong>at/just under its starter entry level</strong> ($153.08 vs. $153.80 starter) — closest to actionable of the Roth $145K sleeve names along with PAVE.</li>
+<li><strong>PAVE now &quot;in zone / ready&quot;</strong> ($56.43 vs. $55–56) — upgraded from just &quot;in zone&quot; yesterday; IDMO slightly extended (~2% above zone top); RSP, QUAL, AVUV, VHT still extended.</li>
+<li>Noted for continuity, no action: PNC (+18.2% vs. 200 SMA) and KO (+10.6%) — Golden Cross intact, HOLD.</li>
+<li>Deployable cash: ~$30,440 SPAXX-ROTH, $15K reserve floor → ~$15,440 actually deployable.</li>
+<li>Action items per the 7/10 brief: PAVE and IDMO are the two Roth rotation names closest to actionable — worth a live-quote check before firing a GTC, not urgent. CME&#x27;s Death Cross remains a weekend-review item.</li>
+<li><strong>Reminder:</strong> GRID was dropped from the Cowork daily-portfolio-email&#x27;s advisory scope as of 7/9 — Pat tracks it manually now, no automated mention going forward.</li>
+</ul></div></div><div class="col"><div class="panel"><h2>⚾ Red Sox</h2>
+<p><strong>AL East Standings</strong></p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Team</th>
+<th>W</th>
+<th>L</th>
+<th>GB</th>
+</tr></thead><tbody>
+<tr><td>Tampa Bay Rays</td><td>55</td><td>37</td><td>—</td></tr>
+<tr><td>New York Yankees</td><td>52</td><td>42</td><td>4</td></tr>
+<tr><td>Toronto Blue Jays</td><td>45</td><td>49</td><td>11</td></tr>
+<tr><td>Boston Red Sox</td><td>44</td><td>48</td><td>11</td></tr>
+<tr><td>Baltimore Orioles</td><td>44</td><td>51</td><td>12.5</td></tr>
+</tbody></table></div>
+<p><strong>Next 3 Games</strong></p>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Date</th>
+<th>Time (MDT)</th>
+<th>Opponent</th>
+<th>Home/Away</th>
+</tr></thead><tbody>
+<tr><td>2026-07-11</td><td>2:10 PM MDT</td><td>New York Mets</td><td>Away</td></tr>
+<tr><td>2026-07-12</td><td>11:40 AM MDT</td><td>New York Mets</td><td>Away</td></tr>
+<tr><td>2026-07-17</td><td>11:35 AM MDT</td><td>Tampa Bay Rays</td><td>Home</td></tr>
+</tbody></table></div>
+<p><em>Note: 7/11–12 closes out the Mets series; the All-Star break runs 7/13–16 (All-Star Game 7/14), so the next games after that are 7/17 at home vs. Tampa Bay. 7/17 is a single-admission doubleheader — Game 2 follows same day at 5:10 PM MDT.</em></p>
+<p><strong>News</strong></p>
+<ul>
+<li>LHP Ranger Suárez on the 15-day IL (retroactive to 7/6, groin strain); expected back the first homestand after the All-Star break, vs. Baltimore.</li>
+<li>LHP Connelly Early on the 15-day IL (left elbow inflammation).</li>
+<li>Ace LHP Garrett Crochet has been out since April; rotation is currently Sonny Gray, Payton Tolle, rookie Jake Bennett, and Patrick Sandoval (reinstated from the 60-day IL, started Thursday 7/9); Brayan Bello (Triple-A) is next in line if another arm is needed.</li>
+<li><strong>New:</strong> RHP Tanner Houck has a torn UCL in his throwing elbow — aiming for a late-2026 return.</li>
+<li><strong>New:</strong> C Willson Contreras has a left foot contusion after exiting a game 7/8.</li>
+<li>1B Triston Casas (abdominal strain) not expected back before the All-Star break; also shut down from swinging a bat due to a separate wrist issue.</li>
+<li>OF/DH Roman Anthony (partially torn tendon, right ring finger) not expected back before August.</li>
+<li>Roster move: INF Brett Harris recalled from Triple-A Worcester (Suárez&#x27;s spot); LHP Alec Gamboa optioned to Triple-A (corresponding move for Sandoval&#x27;s activation).</li>
+</ul></div><div class="panel"><h2>🏎️ F1 Schedule — Next 3 Races</h2>
+<div class="table-wrap"><table>
+<thead><tr>
+<th>Race</th>
+<th>Circuit</th>
+<th>Date</th>
+<th>Race Start (MT / Local)</th>
+</tr></thead><tbody>
+<tr><td>Belgian Grand Prix</td><td>Spa-Francorchamps</td><td>Sun, Jul 19</td><td>7:00 AM MT / 3:00 PM CEST</td></tr>
+<tr><td>Hungarian Grand Prix</td><td>Hungaroring, Budapest</td><td>Sun, Jul 26</td><td>7:00 AM MT / 3:00 PM CEST</td></tr>
+<tr><td>Dutch Grand Prix</td><td>Zandvoort</td><td>Sun, Aug 23</td><td>7:00 AM MT / 3:00 PM CEST</td></tr>
+</tbody></table></div></div></div></div>
+  <div class="footer-note">Rendered 2026-07-11 16:36 &middot; read-only view &mdash; nothing here triggers a script. Run "update the registry" / "run the morning digest" / "build the HTML dashboard" in Claude Code to refresh.</div>
+</main>
+</body>
+</html>
