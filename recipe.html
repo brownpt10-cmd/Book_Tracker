@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>This Week's Recipes 🍽️</title>
+<style>
+  :root{
+    --pink:#ff5d8f;
+    --orange:#ff9a3d;
+    --yellow:#ffc93c;
+    --green:#4ecb71;
+    --teal:#2ec4b6;
+    --purple:#a56cff;
+    --blue:#4fb0ff;
+    --ink:#2b2140;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Trebuchet MS','Segoe UI',Verdana,sans-serif;
+    background:linear-gradient(135deg,#fff1e0 0%,#ffe0ec 30%,#e5f6ff 65%,#f0e8ff 100%);
+    color:var(--ink);
+    padding-bottom:60px;
+  }
+  header{
+    text-align:center;
+    padding:38px 20px 24px;
+  }
+  header h1{
+    font-size:2.6rem;
+    margin:0 0 6px;
+    background:linear-gradient(90deg,var(--pink),var(--orange),var(--yellow));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    letter-spacing:.5px;
+  }
+  header p{
+    margin:0;
+    font-size:1.05rem;
+    opacity:.75;
+  }
+  .weekof{
+    display:inline-block;
+    margin-top:12px;
+    padding:6px 18px;
+    background:var(--card);
+    border-radius:999px;
+    font-weight:bold;
+    box-shadow:0 4px 14px rgba(0,0,0,.08);
+    color:var(--purple);
+  }
+  main{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  section.group{
+    margin-top:44px;
+  }
+  .group h2{
+    font-size:1.5rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+    color:var(--ink);
+  }
+  .group h2 .tag{
+    font-size:.75rem;
+    font-weight:normal;
+    background:var(--purple);
+    color:#fff;
+    padding:3px 12px;
+    border-radius:999px;
+    opacity:.85;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+    gap:20px;
+  }
+  .card{
+    background:var(--card);
+    border-radius:18px;
+    padding:20px 20px 16px;
+    box-shadow:0 8px 24px rgba(60,30,90,.08);
+    border-top:6px solid var(--teal);
+    transition:transform .15s ease, box-shadow .15s ease;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 14px 30px rgba(60,30,90,.14);
+  }
+  .card.c-american{border-top-color:var(--blue);}
+  .card.c-asian{border-top-color:var(--pink);}
+  .card.c-italian{border-top-color:var(--green);}
+  .card.c-indian{border-top-color:var(--orange);}
+  .card.c-mexican{border-top-color:var(--yellow);}
+  .card.c-mediterranean{border-top-color:var(--purple);}
+  .card.c-salad{border-top-color:var(--green);}
+  .card.c-appetizer{border-top-color:var(--orange);}
+  .card.c-dessert{border-top-color:var(--pink);}
+
+  .cuisine-pill{
+    align-self:flex-start;
+    font-size:.7rem;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    padding:3px 10px;
+    border-radius:999px;
+    background:#f2f2f8;
+    color:var(--purple);
+  }
+  .card h3{
+    margin:0;
+    font-size:1.2rem;
+    line-height:1.3;
+  }
+  .card h3 a{
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .card h3 a:hover{
+    text-decoration:underline;
+    color:var(--pink);
+  }
+  .source{
+    font-size:.8rem;
+    opacity:.55;
+  }
+  .rating-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:6px;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .stars{
+    font-size:1.4rem;
+    cursor:pointer;
+    letter-spacing:2px;
+    user-select:none;
+  }
+  .stars span{
+    color:#ddd;
+    transition:color .1s;
+  }
+  .stars span.filled{
+    color:var(--yellow);
+  }
+  .used-label{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:.85rem;
+    opacity:.8;
+    cursor:pointer;
+  }
+  .used-label input{
+    width:16px;
+    height:16px;
+    accent-color:var(--green);
+    cursor:pointer;
+  }
+  .cta-wrap{
+    text-align:center;
+    margin-top:48px;
+  }
+  #sendRatingsBtn{
+    background:linear-gradient(90deg,var(--pink),var(--purple));
+    color:#fff;
+    border:none;
+    padding:14px 32px;
+    font-size:1.05rem;
+    font-weight:bold;
+    border-radius:999px;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(165,108,255,.35);
+  }
+  #sendRatingsBtn:hover{
+    filter:brightness(1.06);
+  }
+  .cta-note{
+    margin-top:10px;
+    font-size:.85rem;
+    opacity:.65;
+    max-width:520px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  footer{
+    text-align:center;
+    margin-top:60px;
+    font-size:.8rem;
+    opacity:.55;
+  }
+  .rules{
+    max-width:700px;
+    margin:34px auto 0;
+    background:var(--card);
+    border-radius:16px;
+    padding:18px 24px;
+    font-size:.85rem;
+    line-height:1.5;
+    box-shadow:0 6px 18px rgba(60,30,90,.06);
+  }
+  .rules b{color:var(--purple);}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🍽️ This Week's Recipes</h1>
+  <p>Curated from 5 favorite recipe sites, picked just for us</p>
+  <div class="weekof" id="weekOf">Week of —</div>
+</header>
+
+<main>
+
+  <section class="group">
+    <h2>🍳 Dinners <span class="tag">7 this week</span></h2>
+    <div class="grid" id="dinners"></div>
+  </section>
+
+  <section class="group">
+    <h2>🥗 Salad Options</h2>
+    <div class="grid" id="salads"></div>
+  </section>
+
+  <section class="group">
+    <h2>🧀 Appetizer Options</h2>
+    <div class="grid" id="appetizers"></div>
+  </section>
+
+  <section class="group">
+    <h2>🍰 Dessert Options</h2>
+    <div class="grid" id="desserts"></div>
+  </section>
+
+  <div class="cta-wrap">
+    <button id="sendRatingsBtn">✉️ Send My Ratings</button>
+    <p class="cta-note">Check off what you made and click stars to rate it, then hit the button — it opens an email with your picks so next week's list can learn what you loved (and skip what you didn't).</p>
+  </div>
+
+  <div class="rules">
+    <b>How the rotation works:</b> 1–2 ⭐ retires that recipe (and similar ones). 3 ⭐ means it's fine but not a favorite — that exact dish won't be prioritized, but similar ones are still fair game. 4–5 ⭐ means it can come back in the rotation after about 6 weeks, and similar dishes are always welcome.
+  </div>
+
+  <footer>
+    Recipes linked from thereciperebel.com, theslowroasteditalian.com, spendwithpennies.com, thecozycook.com &amp; tastesbetterfromscratch.com
+  </footer>
+
+</main>
+
+<script>
+const weekOfStr = new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+document.getElementById('weekOf').textContent = 'Week of ' + weekOfStr;
+
+const dinners = [
+  {name:"Chicken and Rice (One Pot!)", cuisine:"American", url:"https://thecozycook.com/chicken-and-rice/", source:"thecozycook.com"},
+  {name:"Egg Roll in a Bowl", cuisine:"Asian", url:"https://www.spendwithpennies.com/egg-roll-in-a-bowl/", source:"spendwithpennies.com"},
+  {name:"Tuscan Chicken Pasta", cuisine:"Italian", url:"https://www.theslowroasteditalian.com/tuscan-garlic-chicken-linguine-recipe/", source:"theslowroasteditalian.com"},
+  {name:"Baked Pork Chops", cuisine:"American", url:"https://www.thereciperebel.com/baked-pork-chops/", source:"thereciperebel.com"},
+  {name:"Butter Chicken", cuisine:"Indian (mild)", url:"https://www.spendwithpennies.com/classic-butter-chicken/", source:"spendwithpennies.com"},
+  {name:"Chicken Enchiladas", cuisine:"Mexican", url:"https://thecozycook.com/chicken-enchiladas/", source:"thecozycook.com"},
+  {name:"Mediterranean Meatball Bowl", cuisine:"Mediterranean", url:"https://tastesbetterfromscratch.com/mediterranean-meatball-bowl/", source:"tastesbetterfromscratch.com"}
+];
+
+const salads = [
+  {name:"Cucumber Onion Salad", url:"https://www.spendwithpennies.com/cucumber-onion-salad/", source:"spendwithpennies.com"},
+  {name:"Cucumber Tomato Salad", url:"https://www.spendwithpennies.com/cucumber-tomato-salad/", source:"spendwithpennies.com"}
+];
+
+const appetizers = [
+  {name:"Cheese Ball", url:"https://www.thereciperebel.com/cheese-ball-recipe/", source:"thereciperebel.com"},
+  {name:"Pepperoni Pizza Bites", url:"https://www.theslowroasteditalian.com/bite-size-cheesy-pepperoni-pizza-puffs-recipe/", source:"theslowroasteditalian.com"}
+];
+
+const desserts = [
+  {name:"Old Fashioned Peach Cobbler", url:"https://tastesbetterfromscratch.com/peach-cobbler/", source:"tastesbetterfromscratch.com"},
+  {name:"No-Bake Brownie Batter Cheesecake", url:"https://www.thereciperebel.com/no-bake-brownie-batter-cheesecake/", source:"thereciperebel.com"}
+];
+
+function cuisineClass(cuisine){
+  const c = cuisine.toLowerCase();
+  if(c.includes('american')) return 'c-american';
+  if(c.includes('asian')) return 'c-asian';
+  if(c.includes('italian')) return 'c-italian';
+  if(c.includes('indian')) return 'c-indian';
+  if(c.includes('mexican')) return 'c-mexican';
+  if(c.includes('mediterranean')) return 'c-mediterranean';
+  return '';
+}
+
+function starsHTML(id){
+  let s = '';
+  for(let i=1;i<=5;i++){
+    s += `<span data-val="${i}">★</span>`;
+  }
+  return `<div class="stars" data-id="${id}">${s}</div>`;
+}
+
+function renderDinnerCard(item, idx){
+  const id = 'dinner_' + idx;
+  return `
+  <div class="card ${cuisineClass(item.cuisine)}">
+    <span class="cuisine-pill">${item.cuisine}</span>
+    <h3><a href="${item.url}" target="_blank" rel="noopener">${item.name}</a></h3>
+    <div class="source">${item.source}</div>
+    <div class="rating-row">
+      <label class="used-label"><input type="checkbox" id="used_${id}"> Made this</label>
+      ${starsHTML(id)}
+    </div>
+  </div>`;
+}
+
+function renderSimpleCard(item, idx, prefix, cssClass){
+  const id = prefix + '_' + idx;
+  return `
+  <div class="card ${cssClass}">
+    <h3><a href="${item.url}" target="_blank" rel="noopener">${item.name}</a></h3>
+    <div class="source">${item.source}</div>
+  </div>`;
+}
+
+document.getElementById('dinners').innerHTML = dinners.map(renderDinnerCard).join('');
+document.getElementById('salads').innerHTML = salads.map((it,i)=>renderSimpleCard(it,i,'salad','c-salad')).join('');
+document.getElementById('appetizers').innerHTML = appetizers.map((it,i)=>renderSimpleCard(it,i,'appetizer','c-appetizer')).join('');
+document.getElementById('desserts').innerHTML = desserts.map((it,i)=>renderSimpleCard(it,i,'dessert','c-dessert')).join('');
+
+// star click handling
+document.querySelectorAll('.stars').forEach(starRow=>{
+  const id = starRow.getAttribute('data-id');
+  const saved = localStorage.getItem('rating_' + id);
+  if(saved){
+    highlightStars(starRow, parseInt(saved));
+  }
+  starRow.querySelectorAll('span').forEach(star=>{
+    star.addEventListener('click', ()=>{
+      const val = parseInt(star.getAttribute('data-val'));
+      highlightStars(starRow, val);
+      localStorage.setItem('rating_' + id, val);
+    });
+  });
+});
+
+function highlightStars(row, val){
+  row.querySelectorAll('span').forEach(star=>{
+    star.classList.toggle('filled', parseInt(star.getAttribute('data-val')) <= val);
+  });
+}
+
+// restore checkboxes
+dinners.forEach((item, idx)=>{
+  const id = 'dinner_' + idx;
+  const cb = document.getElementById('used_' + id);
+  const saved = localStorage.getItem('used_' + id);
+  if(saved === '1') cb.checked = true;
+  cb.addEventListener('change', ()=>{
+    localStorage.setItem('used_' + id, cb.checked ? '1' : '0');
+  });
+});
+
+document.getElementById('sendRatingsBtn').addEventListener('click', ()=>{
+  let lines = [];
+  dinners.forEach((item, idx)=>{
+    const id = 'dinner_' + idx;
+    const used = document.getElementById('used_' + id).checked ? 'Yes' : 'No';
+    const rating = localStorage.getItem('rating_' + id) || '(not rated)';
+    lines.push(`${item.name} | Made: ${used} | Rating: ${rating}`);
+  });
+  const subject = encodeURIComponent('Recipe Ratings - Week of ' + weekOfStr);
+  const body = encodeURIComponent(
+    "Here are my ratings for this week's dinners:\n\n" + lines.join('\n') + "\n"
+  );
+  window.location.href = `mailto:brownpt10@gmail.com?subject=${subject}&body=${body}`;
+});
+</script>
+
+</body>
+</html>
