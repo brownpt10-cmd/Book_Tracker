@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Red Sox Game Notes — July 15, 2026</title>
+<style>
+  :root{
+    --red:#BD3039;
+    --navy:#0C2340;
+    --gray:#4a4a4a;
+    --lightgray:#f2f2f2;
+    --line:#c9c9c9;
+    --wbg:#eaf5ea;
+    --lbg:#faeceo;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:Arial, Helvetica, sans-serif;
+    color:#1a1a1a;
+    margin:0;
+    background:#e8e8e8;
+    padding:20px 0;
+  }
+  .page{
+    max-width:1150px;
+    margin:0 auto 24px auto;
+    background:#fff;
+    padding:20px 26px 24px 26px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.15);
+    font-size:12px;
+    line-height:1.4;
+  }
+  .masthead{
+    background:var(--navy);
+    color:#fff;
+    padding:12px 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:5px solid var(--red);
+  }
+  .masthead h1{margin:0; font-size:26px; letter-spacing:2px;}
+  .masthead h1 span{color:var(--red);}
+  .masthead .tagline{font-size:11px; text-align:right; line-height:1.5;}
+  .champ-bar{background:var(--red); color:#fff; font-size:10px; text-align:center; padding:4px; letter-spacing:.4px;}
+  .pressroom-bar{background:#1a1a1a; color:#fff; font-size:10.5px; text-align:center; padding:4px;}
+  .pressroom-bar a{color:#fff; text-decoration:underline;}
+  .matchup-box{background:var(--lightgray); border:1px solid var(--line); padding:10px 14px; margin:12px 0; text-align:center;}
+  .matchup-box h2{font-size:17px; margin:0 0 3px 0; color:var(--navy);}
+  .matchup-box .sub{font-size:11.5px; color:var(--gray); margin:2px 0;}
+  .matchup-box .probables{font-weight:bold; margin:5px 0;}
+  .layout3{display:flex; gap:16px; margin-top:12px; align-items:flex-start;}
+  .col{flex:1; min-width:0;}
+  h3.section{font-weight:bold; font-size:11.5px; background:var(--navy); color:#fff; padding:4px 8px; margin:12px 0 6px 0;}
+  h3.section.red{background:var(--red);}
+  .note-block{margin-bottom:9px;}
+  .note-block .headline{font-weight:bold; text-transform:uppercase; font-size:11px; color:var(--navy);}
+  .note-block ul{margin:3px 0 0 0; padding-left:14px;}
+  .note-block ul li{margin-bottom:3px; font-size:11px;}
+  .stat-box{border:1px solid var(--line); margin-bottom:10px;}
+  .stat-box .box-title{background:var(--navy); color:#fff; font-weight:bold; font-size:10.5px; padding:4px 7px;}
+  .stat-box table{width:100%; border-collapse:collapse; font-size:10.8px;}
+  .stat-box table td, .stat-box table th{padding:2.5px 7px; border-bottom:1px solid #eee;}
+  .stat-box table th{text-align:left; font-size:9.5px; color:var(--gray);}
+  .stat-box table td.num, .stat-box table th.num{text-align:right;}
+  table.data{width:100%; border-collapse:collapse; font-size:11px; margin-bottom:6px;}
+  table.data th{background:var(--navy); color:#fff; font-size:9.8px; text-align:left; padding:4px 6px;}
+  table.data td{padding:3.5px 6px; border-bottom:1px solid #e5e5e5;}
+  table.data tr:nth-child(even) td{background:#f7f7f7;}
+  .player-entry{margin-bottom:9px;}
+  .player-entry .pname{font-weight:bold; font-size:11.5px; color:var(--navy);}
+  .player-entry .pline{font-size:10.3px; color:var(--gray);}
+  .player-entry ul{margin:2px 0 0 0; padding-left:14px;}
+  .player-entry ul li{margin-bottom:2px; font-size:10.8px;}
+  .il-tag{display:inline-block; background:var(--red); color:#fff; font-size:8.8px; padding:1px 5px; border-radius:3px; margin-left:5px; vertical-align:middle;}
+  .as-tag{display:inline-block; background:var(--navy); color:#fff; font-size:8.8px; padding:1px 5px; border-radius:3px; margin-left:5px; vertical-align:middle;}
+  .page-foot{display:flex; justify-content:space-between; font-size:9.5px; color:var(--gray); border-top:1px solid var(--line); margin-top:12px; padding-top:5px;}
+  .source-note{font-size:9px; color:#888; margin-top:12px; line-height:1.5;}
+  .disclaimer{background:#fff8e1; border:1px solid #e0c674; padding:6px 10px; font-size:9.5px; color:#6b5900; margin:10px 0;}
+  .starter-box{border:2px solid var(--navy); margin-bottom:12px;}
+  .starter-box .st-title{background:var(--navy); color:#fff; font-weight:bold; font-size:12px; padding:5px 10px;}
+  .starter-box .st-body{padding:8px 10px;}
+  .starter-box table{width:100%; border-collapse:collapse; font-size:10.8px; margin-bottom:6px;}
+  .starter-box table th{text-align:left; font-size:9.5px; color:var(--gray); border-bottom:1px solid var(--line); padding:3px 5px;}
+  .starter-box table td{padding:3px 5px; border-bottom:1px solid #eee;}
+  .cols2{display:flex; gap:16px;}
+  .cols2 > div{flex:1;}
+  /* news column (middle of page 1) */
+  .col.rail{flex:0.82;}
+  .newscol{display:flex; flex-direction:column; gap:9px; margin-top:6px;}
+  .newscard{border:1px solid var(--line); border-left:3px solid var(--red); padding:9px 12px; background:#fafafa;}
+  .newscard .nh{font-weight:bold; font-size:12.5px; color:var(--navy); line-height:1.3; margin-bottom:4px;}
+  .newscard .ns{font-size:12px; color:#333; line-height:1.45; margin-bottom:5px;}
+  .newscard .nmeta{font-size:10px; color:#888;}
+  .newscard a.nlink{color:var(--red); text-decoration:none; font-weight:bold;}
+  .newscard a.nlink:hover{text-decoration:underline;}
+  /* day-by-day */
+  table.dbd{width:100%; border-collapse:collapse; font-size:10px;}
+  table.dbd th{background:var(--navy); color:#fff; font-size:9px; text-align:left; padding:3px 5px; position:sticky; top:0;}
+  table.dbd td{padding:2.5px 5px; border-bottom:1px solid #ededed;}
+  table.dbd tr.w td{background:var(--wbg);}
+  table.dbd tr.l td{background:#f7ecec;}
+  table.dbd td:nth-child(1){color:#999; text-align:right; width:24px;}
+  .dbd-wrap{column-count:2; column-gap:18px;}
+  .dbd-half table{width:100%;}
+</style>
+</head>
+<body>
+
+<!-- ===================== PAGE 1 ===================== -->
+<div class="page">
+  <div class="masthead">
+    <h1>RED SOX <span>NOTES</span></h1>
+    <div class="tagline">Wednesday, July 15, 2026<br>All-Star Break Edition</div>
+  </div>
+  <div class="champ-bar">9-TIME WORLD SERIES CHAMPIONS: 1903, 1912, 1915, 1916, 1918, 2004, 2007, 2013, 2018</div>
+  <div class="pressroom-bar"><a href="https://www.mlb.com/redsox" target="_blank">MLB.COM/REDSOX</a> &nbsp;&bull;&nbsp; @RedSox</div>
+
+  <div class="matchup-box">
+    <h2>BOSTON RED SOX (46-48, 3rd AL East) — ON ALL-STAR BREAK</h2>
+    <div class="sub">No game today &bull; 2026 All-Star Game played Tuesday, 7/14 at Citizens Bank Park, Philadelphia (AL 4, NL 0)</div>
+    <div class="probables">Next Up: Friday, July 17 vs. Tampa Bay Rays (DH, makeup of 5/9 rainout) &bull; Fenway Park</div>
+    <div class="sub">Game 1: 1:35 p.m. ET, LHP Jake Bennett vs. RHP Griffin Jax &nbsp;|&nbsp; Game 2: 7:10 p.m. ET, probables TBA</div>
+  </div>
+
+  <div class="layout3">
+    <div class="col">
+      <div class="note-block">
+        <div class="headline">State of the Sox</div>
+        <ul>
+          <li>Boston is 46-48 (3rd, AL East, -10.0) but just 0.5 GB of the final AL Wild Card spot entering the break.</li>
+          <li>Riding a 9-game winning streak capped by a 9-0 road trip — sweeps of the Angels, White Sox, and Mets — Boston's first unbeaten trip of that length since 1977.</li>
+          <li>14-2 in the last 16 games; 17-5 in the last 22, among the hottest stretches in MLB.</li>
+          <li>Road warriors: 29-21 away from Fenway vs. just 17-27 at home — a rare reverse split.</li>
+        </ul>
+      </div>
+      <div class="note-block">
+        <div class="headline">All-Star Recap</div>
+        <ul>
+          <li>Four Red Sox represented Boston in Tuesday's AL 4-0 win: LHP Aroldis Chapman, 1B Willson Contreras, OF Ceddanne Rafaela, and LHP Ranger Su&aacute;rez (Contreras &amp; Rafaela were injury replacements for Guerrero Jr. and Judge).</li>
+          <li>Chapman struck out Jordan Walker and retired Matt Olson in the 9th, notching his 17th save and passing Hoyt Wilhelm for the all-time relief-strikeout record (1,364 K).</li>
+          <li>Su&aacute;rez did not pitch — he landed on the 15-day IL (groin) just before the break.</li>
+        </ul>
+      </div>
+      <div class="note-block">
+        <div class="headline">Friday's Opener vs. Tampa Bay</div>
+        <ul>
+          <li>Boston resumes with a doubleheader at Fenway (making up a 5/9 rainout) — starter breakdown, Page 2.</li>
+          <li>Homestand continues vs. Baltimore (7/20-22) and Toronto (7/24-26) before a West Coast trip to the Athletics and Dodgers ahead of the Aug. 3 deadline.</li>
+        </ul>
+      </div>
+
+      <div class="note-block">
+        <div class="headline">The 5-Run Recipe</div>
+        <ul>
+          <li>Cook up five and dinner is served: Boston is 32-9 when scoring 5+ runs, but a grim 14-39 when held to four or fewer. The lineup, not the bullpen, has been the season's on/off switch.</li>
+        </ul>
+      </div>
+
+      <div class="note-block">
+        <div class="headline">Road Sweet Road</div>
+        <ul>
+          <li>The Sox are 29-21 on the road but just 17-27 at Fenway — a 12-game reverse split. For a team that sells out the Fens, home cooking has been the problem, not the cure.</li>
+          <li>Their 9-0 road trip (first since 1977) outscored the Angels, White Sox, and Mets by a combined 48-14. Boston left home 11 games under .500 (37-48 on July 1) and returned a half-game from a playoff spot.</li>
+        </ul>
+      </div>
+
+      <div class="note-block">
+        <div class="headline">Cuban Missile, Still Firing</div>
+        <ul>
+          <li>At 38 years young, Aroldis Chapman became baseball's all-time leader in relief strikeouts (1,364, passing Hoyt Wilhelm) in Tuesday's All-Star Game — and he leads the club with 17 saves. The oldest flamethrower in the sport hasn't lost a tick.</li>
+        </ul>
+      </div>
+
+      <div class="note-block">
+        <div class="headline">Odds &amp; Ends</div>
+        <ul>
+          <li><strong>Birthday boy:</strong> DH Masataka Yoshida turns 33 today (born 7/15/1993) — spending his big day on the All-Star break.</li>
+          <li><strong>Cycle-logical:</strong> Andruw Monasterio hit for the cycle on 4/25 at Baltimore, the centerpiece of a 17-1 rout — Boston's biggest win of the year.</li>
+          <li><strong>Coin-flip October rehearsal:</strong> the Sox are 3-3 in extra innings, with two walk-off wins (both in the 10th) against three walk-off losses.</li>
+          <li>Nine of Boston's wins have been shutouts; they've been blanked just four times.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col">
+      <h3 class="section red" style="margin-top:0;">RED SOX HEADLINES</h3>
+      <div class="newscol">
+        <div class="newscard">
+          <div class="nh">Red Sox cap first 9-0 road trip since 1977</div>
+          <div class="ns">A Lindor error opened the door for a two-run 9th, and an Anthony Seigler sac fly in the 10th finished a 3-2 win over the Mets — Boston's ninth straight and a perfect nine-game trip.</div>
+          <div class="nmeta">ESPN / AP &bull; <a class="nlink" href="https://www.espn.com/mlb/story/_/id/49346273/surging-red-sox-top-mets-cap-first-9-0-road-trip-1977" target="_blank">Read &#8599;</a></div>
+        </div>
+        <div class="newscard">
+          <div class="nh">Chapman sets all-time record for strikeouts by a reliever</div>
+          <div class="ns">"Been waiting for that one": the 38-year-old closer passed Hoyt Wilhelm for the most career strikeouts by a reliever, then added another in the All-Star Game.</div>
+          <div class="nmeta">MLB.com &bull; <a class="nlink" href="https://www.mlb.com/redsox/news/aroldis-chapman-all-time-reliever-strikeout-record" target="_blank">Read &#8599;</a></div>
+        </div>
+        <div class="newscard">
+          <div class="nh">Red Sox acquire OF Jahmai Jones from Tigers</div>
+          <div class="ns">Boston added a left-handed-pitching specialist and outfield depth in a trade with Detroit — a modest first move as the front office weighs a buyer's posture.</div>
+          <div class="nmeta">NBC Sports Boston &bull; <a class="nlink" href="https://www.nbcsportsboston.com/mlb/boston-red-sox/red-sox-acquire-outfielder-jahmai-jones-in-trade-with-tigers/795414/" target="_blank">Read &#8599;</a></div>
+        </div>
+        <div class="newscard">
+          <div class="nh">Contreras tells Red Sox he wants to stay in Boston</div>
+          <div class="ns">The All-Star first baseman said he won't waive his no-trade clause ahead of the Aug. 3 deadline, signaling he intends to remain part of the club's push.</div>
+          <div class="nmeta">NBC Sports Boston &bull; <a class="nlink" href="https://www.nbcsportsboston.com/mlb/boston-red-sox/willson-contreras-wont-waive-no-trade-clause-deadline/795453/" target="_blank">Read &#8599;</a></div>
+        </div>
+        <div class="newscard">
+          <div class="nh">Anthony transfers rehab to Florida, to see hand specialist</div>
+          <div class="ns">The top prospect's finger injury will get a specialist's look as his rehab moves south, leaving his return timeline unresolved heading out of the break.</div>
+          <div class="nmeta">MLB.com &bull; <a class="nlink" href="https://www.mlb.com/redsox/news/roman-anthony-transfers-rehab-to-florida-scheduled-to-see-hand-specialist" target="_blank">Read &#8599;</a></div>
+        </div>
+        <div class="newscard">
+          <div class="nh">Sandoval set for Red Sox debut; Su&aacute;rez's next start TBD</div>
+          <div class="ns">Patrick Sandoval is lined up to join the rotation off his rehab while the club sorts out Ranger Su&aacute;rez's return and Connelly Early seeks a second opinion on his elbow.</div>
+          <div class="nmeta">MLB.com &bull; <a class="nlink" href="https://www.mlb.com/redsox/news/patrick-sandoval-ranger-suarez-red-sox-rotation" target="_blank">Read &#8599;</a></div>
+        </div>
+      </div>
+      <div class="source-note">Headlines curated from free, non-paywalled coverage (MLB.com, ESPN, NBC Sports Boston, NESN) and rewritten without clickbait. Listicles, fluff, doom-and-gloom columns, and trade rumors/speculation are filtered out — deadline chatter is included only when it's real news (a completed move or a player/club decision) or sourced to a top-tier national insider.</div>
+    </div>
+
+    <div class="col rail">
+      <div class="stat-box">
+        <div class="box-title">2026 SEASON SNAPSHOT</div>
+        <table>
+          <tr><td>Overall</td><td class="num">46-48 (.489)</td></tr>
+          <tr><td>Home / Road</td><td class="num">17-27 / 29-21</td></tr>
+          <tr><td>AL East Standing</td><td class="num">3rd (-10.0)</td></tr>
+          <tr><td>Wild Card</td><td class="num">-0.5 GB</td></tr>
+          <tr><td>Current Streak</td><td class="num">W9</td></tr>
+          <tr><td>Last 10 / 16 / 22</td><td class="num">9-1 / 14-2 / 17-5</td></tr>
+          <tr><td>Interim Manager</td><td class="num">Chad Tracy</td></tr>
+          <tr><td>Run Diff.</td><td class="num">see day-by-day, Pg. 5</td></tr>
+        </table>
+      </div>
+      <div class="stat-box">
+        <div class="box-title">AL EAST STANDINGS</div>
+        <table>
+          <tr><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">GB</th></tr>
+          <tr><td>New York Yankees</td><td class="num">54</td><td class="num">42</td><td class="num">&mdash;</td></tr>
+          <tr><td><strong>Boston Red Sox</strong></td><td class="num"><strong>46</strong></td><td class="num"><strong>48</strong></td><td class="num"><strong>10.0</strong></td></tr>
+          <tr><td>Baltimore Orioles</td><td class="num">46</td><td class="num">51</td><td class="num">11.5</td></tr>
+          <tr><td>Toronto Blue Jays</td><td class="num">45</td><td class="num">51</td><td class="num">12.0</td></tr>
+        </table>
+      </div>
+      <div class="stat-box">
+        <div class="box-title">AL WILD CARD STANDINGS</div>
+        <table>
+          <tr><th>Team</th><th class="num">W</th><th class="num">L</th><th class="num">GB</th></tr>
+          <tr><td>Guardians</td><td class="num">51</td><td class="num">46</td><td class="num">&mdash;</td></tr>
+          <tr><td>Rangers</td><td class="num">49</td><td class="num">47</td><td class="num">1.0</td></tr>
+          <tr><td>Mariners <span style="color:var(--gray);">(WC3)</span></td><td class="num">48</td><td class="num">49</td><td class="num">2.5</td></tr>
+          <tr><td>Twins</td><td class="num">48</td><td class="num">49</td><td class="num">2.5</td></tr>
+          <tr><td><strong>Red Sox</strong></td><td class="num"><strong>46</strong></td><td class="num"><strong>48</strong></td><td class="num"><strong>0.5*</strong></td></tr>
+          <tr><td>Astros</td><td class="num">47</td><td class="num">51</td><td class="num">3.5</td></tr>
+        </table>
+        <div class="source-note" style="margin:2px 6px 6px;">*GB vs. the final Wild Card spot; chase-pack order approximate — see Page 5.</div>
+      </div>
+      <div class="stat-box">
+        <div class="box-title">TRADE DEADLINE WATCH</div>
+        <table>
+          <tr><td colspan="2">Deadline: Mon., Aug. 3, 6:00 p.m. ET</td></tr>
+          <tr><td colspan="2">Win streak has cooled seller chatter on Chapman/Contreras; front office reportedly weighing buying.</td></tr>
+        </table>
+      </div>
+      <div class="stat-box">
+        <div class="box-title">2026 ALL-STARS</div>
+        <table>
+          <tr><td>LHP Aroldis Chapman</td><td class="num">17 SV</td></tr>
+          <tr><td>1B Willson Contreras</td><td class="num">.285/.379/.542</td></tr>
+          <tr><td>OF Ceddanne Rafaela</td><td class="num">.280/.330/.437</td></tr>
+          <tr><td>LHP Ranger Su&aacute;rez*</td><td class="num">2.94 ERA</td></tr>
+        </table>
+        <div class="source-note" style="margin:2px 6px 6px;">*On 15-day IL (groin); did not pitch. RHP Sonny Gray (10-1, 2.61) was a notable snub.</div>
+      </div>
+      <div class="stat-box">
+        <div class="box-title">INJURED LIST (KEY NAMES)</div>
+        <table>
+          <tr><td>Garrett Crochet, LHP</td><td class="num">60-Day</td></tr>
+          <tr><td>Roman Anthony, OF</td><td class="num">60-Day</td></tr>
+          <tr><td>Trevor Story, SS</td><td class="num">60-Day</td></tr>
+          <tr><td>Triston Casas, 1B</td><td class="num">60-Day</td></tr>
+          <tr><td>Ranger Su&aacute;rez, LHP</td><td class="num">15-Day</td></tr>
+        </table>
+        <div class="source-note" style="margin:2px 6px 6px;">Full list, Page 4.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-foot">
+    <div>Red Sox Game Notes — All-Star Break Edition</div>
+    <div>Page 1</div>
+  </div>
+</div>
+
+<!-- ===================== PAGE 2: PITCHERS ===================== -->
+<div class="page">
+  <div class="masthead" style="padding:9px 18px;">
+    <h1 style="font-size:18px;">RED SOX <span>NOTES</span></h1>
+    <div class="tagline">RED SOX PITCHERS &bull; Page 2</div>
+  </div>
+
+  <div class="starter-box">
+    <div class="st-title">FRIDAY, JULY 17 — GAME 1 STARTER LOOK: LHP Jake Bennett vs. RHP Griffin Jax (TB)</div>
+    <div class="st-body">
+      <div class="cols2">
+        <div>
+          <table>
+            <tr><th>Jake Bennett, LHP (BOS) — #64</th><th class="num">2026</th></tr>
+            <tr><td>Last 8 starts</td><td class="num">2.61 ERA</td></tr>
+            <tr><td>Last 3 starts</td><td class="num">16.1 IP, 6 ER, 14 H, 18 SO, 1 BB</td></tr>
+            <tr><td>Pre-callup (AAA Worcester)</td><td class="num">2-1, 0.86 ERA, 16 SO/21 IP</td></tr>
+          </table>
+          <ul style="margin:4px 0 0 14px; padding:0; font-size:10.5px;">
+            <li>Rookie lefty debuted May 1, beating Houston at Fenway (5.0 IP, 1 ER, the win).</li>
+            <li>Owns wins in his last 2 starts of the road trip (7/3 at LAA, 7/8 at CHW — 5.0 scoreless).</li>
+          </ul>
+        </div>
+        <div>
+          <table>
+            <tr><th>Griffin Jax, RHP (TB)</th><th class="num">2026</th></tr>
+            <tr><td>Full season (mixed role)</td><td class="num">4-6, 3.60 ERA, 68 SO</td></tr>
+            <tr><td>As a starter</td><td class="num">3.45 ERA, 1.27 WHIP, 58 SO/20 BB, 60.0 IP</td></tr>
+            <tr><td>Last 5 starts</td><td class="num">1.73 ERA, 3-start win streak</td></tr>
+          </table>
+          <ul style="margin:4px 0 0 14px; padding:0; font-size:10.5px;">
+            <li>Converted from a relief role to the Tampa Bay rotation mid-season.</li>
+            <li>Minimal Red Sox head-to-head history given Bennett's rookie status.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section">ROTATION &amp; BULLPEN NOTES</h3>
+  <div class="cols2">
+    <div>
+      <div class="player-entry">
+        <div class="pname">RHP Sonny Gray — #54</div>
+        <div class="pline">10-1, 2.61 ERA, 1.10 WHIP, 82 SO/89.2 IP — AL wins leader</div>
+        <ul><li>This year's biggest All-Star snub; 4 wins during the road trip stretch (5/30, 6/5, 7/4, 7/10).</li></ul>
+      </div>
+      <div class="player-entry">
+        <div class="pname">LHP Aroldis Chapman — #44 <span class="as-tag">ALL-STAR</span></div>
+        <div class="pline">17 SV, ~2.1 ERA, 36 SO</div>
+        <ul><li>Passed Hoyt Wilhelm for the all-time relief strikeout record (1,364) in Tuesday's ASG.</li></ul>
+      </div>
+      <div class="player-entry">
+        <div class="pname">LHP Ranger Su&aacute;rez — #55 <span class="as-tag">ALL-STAR</span><span class="il-tag">15-DAY IL — GROIN</span></div>
+        <div class="pline">2.94 ERA, 25.5% K rate over 88.2 IP (16 starts)</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">LHP Payton Tolle — #70</div>
+        <div class="pline">Rookie; multiple road-trip wins (7/7 at CHW). Rotation fixture at ~99 IP.</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">RHP Garrett Whitlock — #22</div>
+        <div class="pline">2.31 ERA, 15 SO/11.2 IP (snapshot); earned the save 7/12 at NYM.</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">RHP Greg Weissert — #57</div>
+        <div class="pline">3.67 ERA; win 7/5 at LAA. Team-high appearances.</div>
+      </div>
+    </div>
+    <div>
+      <div class="player-entry">
+        <div class="pname">LHP Connelly Early — #71</div>
+        <div class="pline">7-5, 3.44 ERA, 9.1 K/9 — breakout rookie season; multiple wins during the surge.</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">LHP Garrett Crochet — #35 <span class="il-tag">60-DAY IL — SHOULDER</span></div>
+        <div class="pline">3-3, 6.30 ERA, 11.1 K/9 before the IL.</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">RHP Brayan Bello — #66</div>
+        <div class="pline">Recalled 7/12 (AAA Worcester); 4.1 relief IP, 5 SO, 0 BB in his return at NYM.</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">RHP Justin Slaten — #63</div>
+        <div class="pline">Walk-off win 6/28 vs. NYY; high-leverage right-hander.</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">LHP Jovani Mor&aacute;n — #47 <span class="il-tag">15-DAY IL</span></div>
+        <div class="pline">2.95 ERA, ~1.01 WHIP, 45 SO; won 7/11 at NYM before the IL move.</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">RHP Tyron Guerrero — #41</div>
+        <div class="pline">Won the 7/9 finale at CHW (2-1).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-foot">
+    <div>Red Sox Game Notes — RED SOX PITCHERS</div>
+    <div>Page 2</div>
+  </div>
+</div>
+
+<!-- ===================== PAGE 3: HITTERS ===================== -->
+<div class="page">
+  <div class="masthead" style="padding:9px 18px;">
+    <h1 style="font-size:18px;">RED SOX <span>NOTES</span></h1>
+    <div class="tagline">RED SOX HITTERS &bull; Page 3</div>
+  </div>
+
+  <h3 class="section red">FIRST-HALF LINEUP NOTES</h3>
+  <div style="font-size:10.5px; margin:-2px 0 8px 0;">Full 2026 team batting stats: <a href="https://www.baseball-reference.com/teams/BOS/2026.shtml#all_players_standard_batting" target="_blank" style="color:var(--red);">Baseball-Reference — Red Sox Standard Batting &#8599;</a></div>
+  <div class="cols2">
+    <div>
+      <div class="player-entry">
+        <div class="pname">OF Wilyer Abreu — #52</div>
+        <div class="pline">.293/.374/.467, .841 OPS, 6 HR, 18 RBI, 19 R, 3 SB (40 G)</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">1B Willson Contreras — #40 <span class="as-tag">ALL-STAR</span></div>
+        <div class="pline">.285/.379/.542, 20 HR — team HR leader, team-best 159 OPS+</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">OF Ceddanne Rafaela — #3 <span class="as-tag">ALL-STAR</span></div>
+        <div class="pline">.280/.330/.437, 7 HR, 33 RBI, 9 SB, 31 R — team WAR leader (~3.0)</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">OF Jarren Duran — #16</div>
+        <div class="pline">.194 AVG, 13 HR, 45 RBI; red-hot 6/29–7/9 (.351, 1.211 OPS over 10 G)</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">C Connor Wong — #12</div>
+        <div class="pline">.264/.338/.375, 121 OPS+ (2nd on team), 10 RBI</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">OF Masataka Yoshida — #7</div>
+        <div class="pline">.296/.415/.370, 10 BB — limited playing time (DH)</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">C Carlos Narv&aacute;ez — #75</div>
+        <div class="pline">.188 AVG, .524 OPS (53 G) — strong defense, quiet bat</div>
+      </div>
+    </div>
+    <div>
+      <div class="player-entry">
+        <div class="pname">INF Caleb Durbin — #5</div>
+        <div class="pline">Turnaround: .163 to bottoming 5/24, then .297/.907 OPS with 8 HR over next 39 G</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">INF Andruw Monasterio — #32</div>
+        <div class="pline">Hit for the cycle 4/25 at BAL; utility infielder</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">INF Marcelo Mayer — #11 <span class="il-tag">10-DAY IL — FOREARM</span></div>
+        <div class="pline">Rough first full season; a lineup disappointment before the injury.</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">INF Isiah Kiner-Falefa — #2 <span class="il-tag">10-DAY IL — FOREARM</span></div>
+        <div class="pline">.277/.344/.361, 97 wRC+, 2 HR, 13 RBI</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">SS Trevor Story — #10 <span class="il-tag">60-DAY IL — ABDOMEN</span></div>
+        <div class="pline">.206/.244/.303, 3 HR (41 G before sports-hernia surgery)</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">OF Roman Anthony — #19 <span class="il-tag">60-DAY IL — WRIST</span></div>
+        <div class="pline">Top prospect sidelined since early May with a finger/hand injury; no firm timeline.</div>
+      </div>
+      <div class="player-entry">
+        <div class="pname">1B Triston Casas — #36 <span class="il-tag">60-DAY IL — KNEE</span></div>
+        <div class="pline">Out since spring (patellar tendon repair) with later setbacks.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    Note: Individual counting stats are aggregated from in-season reporting and may not perfectly match official Baseball-Reference/MLB splits as of publication. Slash lines flagged approximate where sources varied (notably Rafaela, Mayer, Contreras).
+  </div>
+
+  <div class="page-foot">
+    <div>Red Sox Game Notes — RED SOX HITTERS</div>
+    <div>Page 3</div>
+  </div>
+</div>
+
+<!-- ===================== PAGE 4: ROSTERS ===================== -->
+<div class="page">
+  <div class="masthead" style="padding:9px 18px;">
+    <h1 style="font-size:18px;">RED SOX <span>NOTES</span></h1>
+    <div class="tagline">40-MAN &amp; 26-MAN ROSTERS &bull; Page 4</div>
+  </div>
+
+  <h3 class="section">26-MAN ACTIVE ROSTER</h3>
+  <div class="cols2">
+    <div>
+      <table class="data">
+        <tr><th>#</th><th>Pitcher (13)</th><th>B/T</th></tr>
+        <tr><td>54</td><td>Sonny Gray, RHP</td><td>R/R</td></tr>
+        <tr><td>71</td><td>Connelly Early, LHP</td><td>L/L</td></tr>
+        <tr><td>70</td><td>Payton Tolle, LHP</td><td>L/L</td></tr>
+        <tr><td>64</td><td>Jake Bennett, LHP</td><td>L/L</td></tr>
+        <tr><td>63</td><td>Justin Slaten, RHP</td><td>R/R</td></tr>
+        <tr><td>22</td><td>Garrett Whitlock, RHP</td><td>R/R</td></tr>
+        <tr><td>56</td><td>Ryan Watson, RHP</td><td>R/R</td></tr>
+        <tr><td>57</td><td>Greg Weissert, RHP</td><td>R/R</td></tr>
+        <tr><td>67</td><td>Danny Coulombe, LHP</td><td>L/L</td></tr>
+        <tr><td>44</td><td>Aroldis Chapman, LHP</td><td>L/L</td></tr>
+        <tr><td>46</td><td>Tommy Kahnle, RHP</td><td>R/R</td></tr>
+        <tr><td>41</td><td>Tyron Guerrero, RHP</td><td>R/R</td></tr>
+        <tr><td>66</td><td>Brayan Bello, RHP <span style="color:#888;">(recalled 7/12)</span></td><td>R/R</td></tr>
+      </table>
+    </div>
+    <div>
+      <table class="data">
+        <tr><th>#</th><th>Position Player (13)</th><th>B/T</th></tr>
+        <tr><td>40</td><td>Willson Contreras, C/1B</td><td>R/R</td></tr>
+        <tr><td>75</td><td>Carlos Narv&aacute;ez, C</td><td>R/R</td></tr>
+        <tr><td>12</td><td>Connor Wong, C</td><td>R/R</td></tr>
+        <tr><td>5</td><td>Caleb Durbin, INF</td><td>R/R</td></tr>
+        <tr><td>39</td><td>Tsung-Che Cheng, INF</td><td>L/R</td></tr>
+        <tr><td>32</td><td>Andruw Monasterio, INF</td><td>R/R</td></tr>
+        <tr><td>23</td><td>Romy Gonzalez, INF</td><td>R/R</td></tr>
+        <tr><td>30</td><td>Mickey Gasper, INF/C</td><td>S/R</td></tr>
+        <tr><td>52</td><td>Wilyer Abreu, OF</td><td>L/L</td></tr>
+        <tr><td>16</td><td>Jarren Duran, OF</td><td>L/R</td></tr>
+        <tr><td>3</td><td>Ceddanne Rafaela, OF</td><td>R/R</td></tr>
+        <tr><td>7</td><td>Masataka Yoshida, DH/OF</td><td>L/R</td></tr>
+        <tr><td>18</td><td>Nate Eaton, OF/INF</td><td>R/R</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="source-note">Active roster derived from Baseball-Reference's 40-man page (last updated 6/29/26), adjusted for known moves since: Ranger Su&aacute;rez to the 15-day IL (7/9) and Brayan Bello recalled (7/12). Exact 26th-man/depth swaps around the All-Star break should be reconfirmed against the official roster on game day.</div>
+
+  <h3 class="section red">40-MAN ROSTER (complete)</h3>
+  <table class="data">
+    <tr><th>#</th><th>Player</th><th>Pos</th><th>Age</th><th>B/T</th><th>Status</th></tr>
+    <tr><td>54</td><td>Sonny Gray</td><td>RHP</td><td>36</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>71</td><td>Connelly Early</td><td>LHP</td><td>24</td><td>L/L</td><td>Active</td></tr>
+    <tr><td>70</td><td>Payton Tolle</td><td>LHP</td><td>23</td><td>L/L</td><td>Active</td></tr>
+    <tr><td>64</td><td>Jake Bennett</td><td>LHP</td><td>25</td><td>L/L</td><td>Active</td></tr>
+    <tr><td>63</td><td>Justin Slaten</td><td>RHP</td><td>28</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>22</td><td>Garrett Whitlock</td><td>RHP</td><td>30</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>56</td><td>Ryan Watson</td><td>RHP</td><td>28</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>57</td><td>Greg Weissert</td><td>RHP</td><td>31</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>67</td><td>Danny Coulombe</td><td>LHP</td><td>36</td><td>L/L</td><td>Active</td></tr>
+    <tr><td>44</td><td>Aroldis Chapman</td><td>LHP</td><td>38</td><td>L/L</td><td>Active</td></tr>
+    <tr><td>46</td><td>Tommy Kahnle</td><td>RHP</td><td>36</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>55</td><td>Ranger Su&aacute;rez</td><td>LHP</td><td>30</td><td>L/L</td><td>15-Day IL (groin)</td></tr>
+    <tr><td>41</td><td>Tyron Guerrero</td><td>RHP</td><td>35</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>66</td><td>Brayan Bello</td><td>RHP</td><td>27</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>47</td><td>Jovani Mor&aacute;n</td><td>LHP</td><td>29</td><td>L/L</td><td>15-Day IL</td></tr>
+    <tr><td>60</td><td>Joe La Sorsa</td><td>LHP</td><td>28</td><td>L/L</td><td>Optionable</td></tr>
+    <tr><td>68</td><td>Alec Gamboa</td><td>LHP</td><td>29</td><td>S/L</td><td>Optionable</td></tr>
+    <tr><td>79</td><td>Tyler Uberstine</td><td>RHP</td><td>27</td><td>R/R</td><td>Optionable</td></tr>
+    <tr><td>99</td><td>Eduardo Rivera</td><td>LHP</td><td>23</td><td>L/L</td><td>Optionable</td></tr>
+    <tr><td>78</td><td>Tyler Samaniego</td><td>LHP</td><td>27</td><td>R/L</td><td>Optionable</td></tr>
+    <tr><td>77</td><td>Jack Anderson</td><td>RHP</td><td>26</td><td>R/R</td><td>Optionable</td></tr>
+    <tr><td>76</td><td>Zack Kelly</td><td>RHP</td><td>31</td><td>R/R</td><td>Optionable</td></tr>
+    <tr><td>29</td><td>Johan Oviedo</td><td>RHP</td><td>28</td><td>R/R</td><td>60-Day IL</td></tr>
+    <tr><td>89</td><td>Tanner Houck</td><td>RHP</td><td>30</td><td>R/R</td><td>60-Day IL</td></tr>
+    <tr><td>50</td><td>Kutter Crawford</td><td>RHP</td><td>30</td><td>R/R</td><td>60-Day IL</td></tr>
+    <tr><td>43</td><td>Patrick Sandoval</td><td>LHP</td><td>29</td><td>L/L</td><td>60-Day IL</td></tr>
+    <tr><td>35</td><td>Garrett Crochet</td><td>LHP</td><td>27</td><td>L/L</td><td>60-Day IL (shoulder)</td></tr>
+    <tr><td>40</td><td>Willson Contreras</td><td>C/1B</td><td>34</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>75</td><td>Carlos Narv&aacute;ez</td><td>C</td><td>27</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>12</td><td>Connor Wong</td><td>C</td><td>30</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>48</td><td>Anthony Seigler</td><td>C/INF</td><td>27</td><td>S/R</td><td>Active</td></tr>
+    <tr><td>30</td><td>Mickey Gasper</td><td>INF/C</td><td>30</td><td>S/R</td><td>Active</td></tr>
+    <tr><td>5</td><td>Caleb Durbin</td><td>INF</td><td>26</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>39</td><td>Tsung-Che Cheng</td><td>INF</td><td>24</td><td>L/R</td><td>Active</td></tr>
+    <tr><td>32</td><td>Andruw Monasterio</td><td>INF</td><td>29</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>23</td><td>Romy Gonzalez</td><td>INF</td><td>29</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>2</td><td>Isiah Kiner-Falefa</td><td>INF</td><td>31</td><td>R/R</td><td>10-Day IL (forearm)</td></tr>
+    <tr><td>11</td><td>Marcelo Mayer</td><td>INF</td><td>23</td><td>L/R</td><td>10-Day IL (forearm)</td></tr>
+    <tr><td>20</td><td>Nick Sogard</td><td>INF</td><td>28</td><td>S/R</td><td>10-Day IL</td></tr>
+    <tr><td>28</td><td>Kristian Campbell</td><td>INF</td><td>24</td><td>R/R</td><td>Optioned (AAA)</td></tr>
+    <tr><td>10</td><td>Trevor Story</td><td>SS</td><td>33</td><td>R/R</td><td>60-Day IL (abdomen)</td></tr>
+    <tr><td>36</td><td>Triston Casas</td><td>1B</td><td>26</td><td>L/R</td><td>60-Day IL (knee)</td></tr>
+    <tr><td>52</td><td>Wilyer Abreu</td><td>OF</td><td>27</td><td>L/L</td><td>Active</td></tr>
+    <tr><td>16</td><td>Jarren Duran</td><td>OF</td><td>29</td><td>L/R</td><td>Active</td></tr>
+    <tr><td>3</td><td>Ceddanne Rafaela</td><td>OF</td><td>25</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>7</td><td>Masataka Yoshida</td><td>DH/OF</td><td>32</td><td>L/R</td><td>Active</td></tr>
+    <tr><td>18</td><td>Nate Eaton</td><td>OF/INF</td><td>29</td><td>R/R</td><td>Active</td></tr>
+    <tr><td>19</td><td>Roman Anthony</td><td>OF</td><td>22</td><td>L/R</td><td>60-Day IL (wrist)</td></tr>
+  </table>
+  <div class="source-note">Complete 40-man roster (40 players plus 8 on the 60-day IL, who do not count against the 40) per Baseball-Reference, last updated 6/29/26. Ages as of that date. Su&aacute;rez (15-day IL), Bello (recalled), and IKF/Mayer/Sogard (10-day IL) statuses reflect known moves since. Interim manager: Chad Tracy; pitching coach: Andrew Bailey; bench coach: Ram&oacute;n V&aacute;zquez. Reconfirm active designations on game day.</div>
+
+  <div class="page-foot">
+    <div>Red Sox Game Notes — ROSTERS</div>
+    <div>Page 4</div>
+  </div>
+</div>
+
+<!-- ===================== PAGE 5: DAY-BY-DAY ===================== -->
+<div class="page">
+  <div class="masthead" style="padding:9px 18px;">
+    <h1 style="font-size:18px;">RED SOX <span>NOTES</span></h1>
+    <div class="tagline">DAY-BY-DAY RESULTS &amp; SCHEDULE &bull; Page 5</div>
+  </div>
+
+  <h3 class="section">2026 DAY-BY-DAY RESULTS (through 7/12 — 46-48)</h3>
+  <div class="dbd-wrap">
+    <table class="dbd">
+      <thead><tr><th>#</th><th>Date</th><th>Opp</th><th>W/L</th><th>Score</th><th>Rec</th><th>Rk</th><th>GB</th><th>Decisions (W / L / SV)</th></tr></thead>
+      <tbody>
+    <tr class="w"><td>1</td><td>Mar 26</td><td>@ CIN</td><td>W</td><td>3-0</td><td>1-0</td><td>1</td><td>Tied</td><td>W: Crochet, L: Johnson, S: Chapman</td></tr>
+    <tr class="l"><td>2</td><td>Mar 28</td><td>@ CIN</td><td>L-wo</td><td>5-6 (11)</td><td>1-1</td><td>3</td><td>1.5</td><td>W: Phillips, L: Slaten</td></tr>
+    <tr class="l"><td>3</td><td>Mar 29</td><td>@ CIN</td><td>L</td><td>2-3</td><td>1-2</td><td>4</td><td>2.0</td><td>W: Burke, L: Weissert, S: Pagán</td></tr>
+    <tr class="l"><td>4</td><td>Mar 30</td><td>@ HOU</td><td>L</td><td>1-8</td><td>1-3</td><td>5</td><td>2.0</td><td>W: McCullers, L: Suarez</td></tr>
+    <tr class="l"><td>5</td><td>Mar 31</td><td>@ HOU</td><td>L</td><td>2-9</td><td>1-4</td><td>5</td><td>3.0</td><td>W: Brown, L: Bello, S: Bolton</td></tr>
+    <tr class="l"><td>6</td><td>Apr 1</td><td>@ HOU</td><td>L</td><td>4-6</td><td>1-5</td><td>5</td><td>4.0</td><td>W: Burrows, L: Crochet, S: Abreu</td></tr>
+    <tr class="w"><td>7</td><td>Apr 3</td><td>vs SD</td><td>W</td><td>5-2</td><td>2-5</td><td>4</td><td>4.0</td><td>W: Gray, L: King, S: Chapman</td></tr>
+    <tr class="l"><td>8</td><td>Apr 4</td><td>vs SD</td><td>L</td><td>2-3</td><td>2-6</td><td>5</td><td>5.0</td><td>W: Morejón, L: Chapman, S: Miller</td></tr>
+    <tr class="l"><td>9</td><td>Apr 5</td><td>vs SD</td><td>L</td><td>6-8</td><td>2-7</td><td>5</td><td>5.0</td><td>W: Estrada, L: Uberstine, S: Miller</td></tr>
+    <tr class="l"><td>10</td><td>Apr 6</td><td>vs MIL</td><td>L</td><td>6-8</td><td>2-8</td><td>5</td><td>5.5</td><td>W: Ashby, L: Whitlock, S: Zerpa</td></tr>
+    <tr class="w"><td>11</td><td>Apr 7</td><td>vs MIL</td><td>W</td><td>3-2</td><td>3-8</td><td>5</td><td>5.5</td><td>W: Crochet, L: Misiorowski, S: Chapman</td></tr>
+    <tr class="w"><td>12</td><td>Apr 8</td><td>vs MIL</td><td>W</td><td>5-0</td><td>4-8</td><td>5</td><td>4.5</td><td>W: Gray, L: Drohan</td></tr>
+    <tr class="l"><td>13</td><td>Apr 10</td><td>@ STL</td><td>L</td><td>2-3</td><td>4-9</td><td>5</td><td>4.0</td><td>W: May, L: Kelly, S: O'Brien</td></tr>
+    <tr class="w"><td>14</td><td>Apr 11</td><td>@ STL</td><td>W</td><td>7-1</td><td>5-9</td><td>5</td><td>3.0</td><td>W: Suarez, L: Leahy</td></tr>
+    <tr class="w"><td>15</td><td>Apr 12</td><td>@ STL</td><td>W</td><td>9-3</td><td>6-9</td><td>4</td><td>2.0</td><td>W: Bello, L: Pallante</td></tr>
+    <tr class="l"><td>16</td><td>Apr 13</td><td>@ MIN</td><td>L</td><td>6-13</td><td>6-10</td><td>5</td><td>3.0</td><td>W: Ober, L: Crochet</td></tr>
+    <tr class="l"><td>17</td><td>Apr 14</td><td>@ MIN</td><td>L</td><td>0-6</td><td>6-11</td><td>5</td><td>3.5</td><td>W: Abel, L: Gray</td></tr>
+    <tr class="w"><td>18</td><td>Apr 15</td><td>@ MIN</td><td>W</td><td>9-5</td><td>7-11</td><td>5</td><td>3.5</td><td>W: Early, L: Woods Richardson</td></tr>
+    <tr class="w"><td>19</td><td>Apr 17</td><td>vs DET</td><td>W-wo</td><td>1-0 (10)</td><td>8-11</td><td>4</td><td>3.0</td><td>W: Whitlock, L: Vest</td></tr>
+    <tr class="l"><td>20</td><td>Apr 18</td><td>vs DET</td><td>L</td><td>1-4</td><td>8-12</td><td>4</td><td>4.0</td><td>W: Skubal, L: Bello, S: Jansen</td></tr>
+    <tr class="l"><td>21</td><td>Apr 19</td><td>vs DET</td><td>L</td><td>2-6</td><td>8-13</td><td>4</td><td>4.5</td><td>W: Valdez, L: Crochet</td></tr>
+    <tr class="w"><td>22</td><td>Apr 20</td><td>vs DET</td><td>W</td><td>8-6</td><td>9-13</td><td>4</td><td>4.0</td><td>W: Whitlock, L: Holton, S: Chapman</td></tr>
+    <tr class="l"><td>23</td><td>Apr 21</td><td>vs NYY</td><td>L</td><td>0-4</td><td>9-14</td><td>5</td><td>5.0</td><td>W: Gil, L: Early</td></tr>
+    <tr class="l"><td>24</td><td>Apr 22</td><td>vs NYY</td><td>L</td><td>1-4</td><td>9-15</td><td>5</td><td>6.0</td><td>W: Fried, L: Suarez</td></tr>
+    <tr class="l"><td>25</td><td>Apr 23</td><td>vs NYY</td><td>L</td><td>2-4</td><td>9-16</td><td>5</td><td>7.0</td><td>W: Schlittler, L: Coulombe, S: Bednar</td></tr>
+    <tr class="l"><td>26</td><td>Apr 24</td><td>@ BAL</td><td>L</td><td>3-10</td><td>9-17</td><td>5</td><td>8.0</td><td>W: Young, L: Bello</td></tr>
+    <tr class="w"><td>27</td><td>Apr 25</td><td>@ BAL</td><td>W</td><td>17-1</td><td>10-17</td><td>5</td><td>8.0</td><td>W: Crochet, L: Rogers</td></tr>
+    <tr class="w"><td>28</td><td>Apr 26</td><td>@ BAL</td><td>W</td><td>5-3</td><td>11-17</td><td>5</td><td>7.0</td><td>W: Early, L: Bradish, S: Chapman</td></tr>
+    <tr class="w"><td>29</td><td>Apr 27</td><td>@ TOR</td><td>W</td><td>5-0</td><td>12-17</td><td>5</td><td>7.0</td><td>W: Suarez, L: Cease</td></tr>
+    <tr class="l"><td>30</td><td>Apr 28</td><td>@ TOR</td><td>L</td><td>0-3</td><td>12-18</td><td>5</td><td>8.0</td><td>W: Yesavage, L: Tolle, S: Varland</td></tr>
+    <tr class="l"><td>31</td><td>Apr 29</td><td>@ TOR</td><td>L</td><td>1-8</td><td>12-19</td><td>5</td><td>8.0</td><td>W: Fisher, L: Bello</td></tr>
+    <tr class="w"><td>32</td><td>May 1</td><td>vs HOU</td><td>W</td><td>3-1</td><td>13-19</td><td>5</td><td>8.0</td><td>W: Bennett, L: Burrows, S: Chapman</td></tr>
+    <tr class="l"><td>33</td><td>May 2</td><td>vs HOU</td><td>L</td><td>3-6</td><td>13-20</td><td>5</td><td>9.0</td><td>W: Arrighetti, L: Early, S: King</td></tr>
+    <tr class="l"><td>34</td><td>May 3</td><td>vs HOU</td><td>L</td><td>1-3 (10)</td><td>13-21</td><td>5</td><td>10.0</td><td>W: Abreu, L: Kelly</td></tr>
+    <tr class="w"><td>35</td><td>May 4</td><td>@ DET</td><td>W</td><td>5-4</td><td>14-21</td><td>5</td><td>10.0</td><td>W: Tolle, L: Vanasco, S: Chapman</td></tr>
+    <tr class="w"><td>36</td><td>May 5</td><td>@ DET</td><td>W</td><td>10-3</td><td>15-21</td><td>5</td><td>10.0</td><td>W: Bello, L: Valdez</td></tr>
+    <tr class="w"><td>37</td><td>May 6</td><td>@ DET</td><td>W</td><td>4-0</td><td>16-21</td><td>4</td><td>9.0</td><td>W: Gray, L: Flaherty</td></tr>
+    <tr class="l"><td>38</td><td>May 7</td><td>vs TB</td><td>L</td><td>4-8</td><td>16-22</td><td>5</td><td>10.0</td><td>W: Bigge, L: Bennett</td></tr>
+    <tr class="w"><td>39</td><td>May 8</td><td>vs TB</td><td>W</td><td>2-0</td><td>17-22</td><td>4</td><td>9.0</td><td>W: Early, L: Scholtens, S: Chapman</td></tr>
+    <tr class="l"><td>40</td><td>May 10</td><td>vs TB</td><td>L</td><td>1-4</td><td>17-23</td><td>5</td><td>9.5</td><td>W: Martinez, L: Tolle, S: Baker</td></tr>
+    <tr class="l"><td>41</td><td>May 12</td><td>vs PHI</td><td>L</td><td>1-2</td><td>17-24</td><td>5</td><td>11.0</td><td>W: Wheeler, L: Morán, S: Duran</td></tr>
+    <tr class="w"><td>42</td><td>May 13</td><td>vs PHI</td><td>W</td><td>3-1</td><td>18-24</td><td>5</td><td>10.0</td><td>W: Gray, L: Banks, S: Chapman</td></tr>
+    <tr class="l"><td>43</td><td>May 14</td><td>vs PHI</td><td>L</td><td>1-3</td><td>18-25</td><td>5</td><td>10.5</td><td>W: Keller, L: Samaniego, S: Duran</td></tr>
+    <tr class="l"><td>44</td><td>May 15</td><td>@ ATL</td><td>L-wo</td><td>2-3 (10)</td><td>18-26</td><td>5</td><td>11.5</td><td>W: Fuentes, L: Samaniego</td></tr>
+    <tr class="w"><td>45</td><td>May 16</td><td>@ ATL</td><td>W</td><td>3-2</td><td>19-26</td><td>5</td><td>10.5</td><td>W: Tolle, L: Elder, S: Chapman</td></tr>
+    <tr class="l"><td>46</td><td>May 17</td><td>@ ATL</td><td>L</td><td>1-8</td><td>19-27</td><td>5</td><td>11.5</td><td>W: Holmes, L: Bello</td></tr>
+    <tr class="w"><td>47</td><td>May 18</td><td>@ KC</td><td>W</td><td>3-1</td><td>20-27</td><td>5</td><td>11.5</td><td>W: Gray, L: Lugo, S: Chapman</td></tr>
+    <tr class="w"><td>48</td><td>May 19</td><td>@ KC</td><td>W</td><td>7-1</td><td>21-27</td><td>3</td><td>11.5</td><td>W: Whitlock, L: Falter</td></tr>
+    <tr class="w"><td>49</td><td>May 20</td><td>@ KC</td><td>W</td><td>4-3</td><td>22-27</td><td>3</td><td>11.5</td><td>W: Early, L: Cruz, S: Chapman</td></tr>
+    <tr class="l"><td>50</td><td>May 22</td><td>vs MIN</td><td>L</td><td>6-8</td><td>22-28</td><td>4</td><td>12.5</td><td>W: Adams, L: Slaten, S: Banda</td></tr>
+    <tr class="l"><td>51</td><td>May 23</td><td>vs MIN</td><td>L</td><td>2-4</td><td>22-29</td><td>4</td><td>13.0</td><td>W: Bradley, L: Morán, S: Rogers</td></tr>
+    <tr class="l"><td>52</td><td>May 24</td><td>vs MIN</td><td>L</td><td>5-6</td><td>22-30</td><td>5</td><td>13.0</td><td>W: Ober, L: Guerrero, S: Adams</td></tr>
+    <tr class="l"><td>53</td><td>May 26</td><td>vs ATL</td><td>L</td><td>6-7</td><td>22-31</td><td>5</td><td>12.5</td><td>W: Strider, L: Suarez, S: Iglesias</td></tr>
+    <tr class="w"><td>54</td><td>May 27</td><td>vs ATL</td><td>W</td><td>8-0</td><td>23-31</td><td>5</td><td>11.5</td><td>W: Early, L: Elder</td></tr>
+    <tr class="l"><td>55</td><td>May 28</td><td>vs ATL</td><td>L</td><td>2-10</td><td>23-32</td><td>5</td><td>12.0</td><td>W: Sale, L: Coulombe</td></tr>
+    <tr class="l"><td>56</td><td>May 29</td><td>@ CLE</td><td>L</td><td>3-4</td><td>23-33</td><td>5</td><td>13.0</td><td>W: Holderman, L: Samaniego, S: Smith</td></tr>
+    <tr class="w"><td>57</td><td>May 30</td><td>@ CLE</td><td>W</td><td>9-1</td><td>24-33</td><td>5</td><td>12.0</td><td>W: Gray, L: Festa</td></tr>
+    <tr class="w"><td>58</td><td>May 31</td><td>@ CLE</td><td>W</td><td>9-4</td><td>25-33</td><td>5</td><td>12.0</td><td>W: Morán, L: Holderman</td></tr>
+    <tr class="l"><td>59</td><td>Jun 2</td><td>vs BAL</td><td>L</td><td>2-4</td><td>25-34</td><td>5</td><td>11.5</td><td>W: Baz, L: Early, S: Garcia</td></tr>
+    <tr class="w"><td>60</td><td>Jun 3</td><td>vs BAL</td><td>W</td><td>8-1</td><td>26-34</td><td>5</td><td>10.5</td><td>W: Tolle, L: Bassitt, S: Watson</td></tr>
+    <tr class="l"><td>61</td><td>Jun 4</td><td>vs BAL</td><td>L</td><td>2-8</td><td>26-35</td><td>5</td><td>11.0</td><td>W: Rogers, L: Bello</td></tr>
+    <tr class="w"><td>62</td><td>Jun 5</td><td>@ NYY</td><td>W</td><td>5-3</td><td>27-35</td><td>5</td><td>11.0</td><td>W: Gray, L: Weathers, S: Chapman</td></tr>
+    <tr class="l"><td>63</td><td>Jun 7</td><td>@ NYY</td><td>L</td><td>1-6</td><td>27-36</td><td>5</td><td>10.5</td><td>W: Hill, L: Slaten</td></tr>
+    <tr class="l"><td>64</td><td>Jun 8</td><td>@ TB</td><td>L</td><td>1-3</td><td>27-37</td><td>5</td><td>11.5</td><td>W: Legumina, L: Early, S: Baker</td></tr>
+    <tr class="l"><td>65</td><td>Jun 9</td><td>@ TB</td><td>L</td><td>3-4</td><td>27-38</td><td>5</td><td>12.5</td><td>W: Martinez, L: Tolle, S: Baker</td></tr>
+    <tr class="l"><td>66</td><td>Jun 10</td><td>@ TB</td><td>L</td><td>5-7</td><td>27-39</td><td>5</td><td>13.5</td><td>W: Rasmussen, L: Bennett, S: Cleavinger</td></tr>
+    <tr class="w"><td>67</td><td>Jun 12</td><td>vs TEX</td><td>W</td><td>10-1</td><td>28-39</td><td>5</td><td>12.5</td><td>W: Gray, L: Leiter</td></tr>
+    <tr class="w"><td>68</td><td>Jun 13</td><td>vs TEX</td><td>W</td><td>6-3</td><td>29-39</td><td>5</td><td>12.5</td><td>W: Whitlock, L: Winn, S: Chapman</td></tr>
+    <tr class="l"><td>69</td><td>Jun 14</td><td>vs TEX</td><td>L</td><td>4-6</td><td>29-40</td><td>5</td><td>13.5</td><td>W: Eovaldi, L: Early, S: Latz</td></tr>
+    <tr class="l"><td>70</td><td>Jun 16</td><td>vs TOR</td><td>L</td><td>1-6</td><td>29-41</td><td>5</td><td>14.5</td><td>W: Cease, L: Tolle, S: Varland</td></tr>
+    <tr class="l"><td>71</td><td>Jun 17</td><td>vs TOR</td><td>L</td><td>0-3</td><td>29-42</td><td>5</td><td>15.5</td><td>W: Woods Richardson, L: Bennett, S: Varland</td></tr>
+    <tr class="l"><td>72</td><td>Jun 18</td><td>vs TOR</td><td>L</td><td>3-4</td><td>29-43</td><td>5</td><td>15.5</td><td>W: Nance, L: Chapman, S: Fluharty</td></tr>
+    <tr class="w"><td>73</td><td>Jun 19</td><td>@ SEA</td><td>W</td><td>6-2</td><td>30-43</td><td>5</td><td>15.5</td><td>W: Suarez, L: Miller</td></tr>
+    <tr class="w"><td>74</td><td>Jun 20</td><td>@ SEA</td><td>W</td><td>5-1</td><td>31-43</td><td>5</td><td>14.5</td><td>W: Early, L: Hancock</td></tr>
+    <tr class="l"><td>75</td><td>Jun 21</td><td>@ SEA</td><td>L</td><td>1-3</td><td>31-44</td><td>5</td><td>14.5</td><td>W: Gilbert, L: Tolle, S: Muñoz</td></tr>
+    <tr class="l"><td>76</td><td>Jun 22</td><td>@ COL</td><td>L-wo</td><td>2-3</td><td>31-45</td><td>5</td><td>14.5</td><td>W: Vodnik, L: Chapman</td></tr>
+    <tr class="w"><td>77</td><td>Jun 23</td><td>@ COL</td><td>W</td><td>5-2</td><td>32-45</td><td>5</td><td>14.5</td><td>W: Gray, L: Sullivan</td></tr>
+    <tr class="l"><td>78</td><td>Jun 24</td><td>@ COL</td><td>L</td><td>6-8</td><td>32-46</td><td>5</td><td>15.5</td><td>W: Senzatela, L: Slaten, S: Herget</td></tr>
+    <tr class="w"><td>79</td><td>Jun 25</td><td>vs NYY</td><td>W</td><td>6-3</td><td>33-46</td><td>5</td><td>14.5</td><td>W: Early, L: Schlittler, S: Chapman</td></tr>
+    <tr class="w"><td>80</td><td>Jun 26</td><td>vs NYY</td><td>W</td><td>6-1</td><td>34-46</td><td>5</td><td>13.5</td><td>W: Tolle, L: Warren</td></tr>
+    <tr class="w"><td>81</td><td>Jun 27</td><td>vs NYY</td><td>W</td><td>4-1</td><td>35-46</td><td>5</td><td>12.5</td><td>W: Bennett, L: Cole, S: Chapman</td></tr>
+    <tr class="w"><td>82</td><td>Jun 28</td><td>vs NYY</td><td>W-wo</td><td>5-4 (10)</td><td>36-46</td><td>5</td><td>12.5</td><td>W: Slaten, L: Cruz</td></tr>
+    <tr class="w"><td>83</td><td>Jun 29</td><td>vs WSN</td><td>W</td><td>6-3</td><td>37-46</td><td>5</td><td>12.0</td><td>W: Suarez, L: Mikolas, S: Whitlock</td></tr>
+    <tr class="l"><td>84</td><td>Jun 30</td><td>vs WSN</td><td>L</td><td>1-8</td><td>37-47</td><td>5</td><td>13.0</td><td>W: Cavalli, L: Weissert</td></tr>
+    <tr class="l"><td>85</td><td>Jul 1</td><td>vs WSN</td><td>L</td><td>2-10</td><td>37-48</td><td>5</td><td>14.0</td><td>W: Alvarez, L: Tolle</td></tr>
+    <tr class="w"><td>86</td><td>Jul 3</td><td>@ LAA</td><td>W</td><td>5-2</td><td>38-48</td><td>5</td><td>14.5</td><td>W: Bennett, L: Detmers, S: Chapman</td></tr>
+    <tr class="w"><td>87</td><td>Jul 4</td><td>@ LAA</td><td>W</td><td>8-1</td><td>39-48</td><td>5</td><td>13.5</td><td>W: Gray, L: Aldegheri</td></tr>
+    <tr class="w"><td>88</td><td>Jul 5</td><td>@ LAA</td><td>W</td><td>7-5</td><td>40-48</td><td>5</td><td>12.5</td><td>W: Weissert, L: Johnson, S: Chapman</td></tr>
+    <tr class="w"><td>89</td><td>Jul 7</td><td>@ CHW</td><td>W</td><td>8-1</td><td>41-48</td><td>4</td><td>12.0</td><td>W: Tolle, L: Schultz</td></tr>
+    <tr class="w"><td>90</td><td>Jul 8</td><td>@ CHW</td><td>W</td><td>5-0</td><td>42-48</td><td>4</td><td>12.0</td><td>W: Bennett, L: Martin</td></tr>
+    <tr class="w"><td>91</td><td>Jul 9</td><td>@ CHW</td><td>W</td><td>2-1</td><td>43-48</td><td>3</td><td>11.0</td><td>W: Guerrero, L: Kay, S: Chapman</td></tr>
+    <tr class="w"><td>92</td><td>Jul 10</td><td>@ NYM</td><td>W</td><td>6-2</td><td>44-48</td><td>3</td><td>11.0</td><td>W: Gray, L: McLean</td></tr>
+    <tr class="w"><td>93</td><td>Jul 11</td><td>@ NYM</td><td>W</td><td>4-0</td><td>45-48</td><td>3</td><td>11.0</td><td>W: Morán, L: Peralta</td></tr>
+    <tr class="w"><td>94</td><td>Jul 12</td><td>@ NYM</td><td>W</td><td>3-2 (10)</td><td>46-48</td><td>3</td><td>10.0</td><td>W: Chapman, L: Raley, S: Whitlock</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="source-note">Source: Baseball-Reference 2026 Boston Red Sox Schedule &amp; Results (baseball-reference.com/teams/BOS/2026-schedule-scores.shtml). "wo" = walk-off; number in parentheses = extra innings. Rk = AL East rank; GB = games behind division leader.</div>
+
+  <h3 class="section red">UPCOMING SCHEDULE (next 10 games)</h3>
+  <table class="data">
+    <tr><th>#</th><th>Date</th><th>Opp.</th><th>Site</th><th>Time (ET)</th><th>Notes</th></tr>
+    <tr><td>95-96</td><td>Fri, Jul 17</td><td>vs TB</td><td>Fenway</td><td>1:35 / 7:10</td><td>Doubleheader — G1: Bennett vs. Jax; G2 TBA</td></tr>
+    <tr><td>97</td><td>Sat, Jul 18</td><td>vs TB</td><td>Fenway</td><td>4:10</td><td></td></tr>
+    <tr><td>98</td><td>Sun, Jul 19</td><td>vs TB</td><td>Fenway</td><td>1:35</td><td></td></tr>
+    <tr><td>99</td><td>Mon, Jul 20</td><td>vs BAL</td><td>Fenway</td><td>7:10</td><td></td></tr>
+    <tr><td>100</td><td>Tue, Jul 21</td><td>vs BAL</td><td>Fenway</td><td>7:10</td><td></td></tr>
+    <tr><td>101</td><td>Wed, Jul 22</td><td>vs BAL</td><td>Fenway</td><td>7:10</td><td></td></tr>
+    <tr><td>102</td><td>Fri, Jul 24</td><td>vs TOR</td><td>Fenway</td><td>7:15</td><td></td></tr>
+    <tr><td>103</td><td>Sat, Jul 25</td><td>vs TOR</td><td>Fenway</td><td>4:10</td><td></td></tr>
+    <tr><td>104</td><td>Sun, Jul 26</td><td>vs TOR</td><td>Fenway</td><td>1:35</td><td></td></tr>
+    <tr><td>105</td><td>Mon, Jul 27</td><td>@ ATH</td><td>Sutter Health Park</td><td>9:40</td><td>West Coast trip; Aug. 3 deadline looms</td></tr>
+  </table>
+
+  <div class="source-note">
+    <strong>Sources &amp; methodology:</strong> Day-by-day results and rosters from Baseball-Reference (2026 BOS schedule/scores and 40-man roster pages). Standings, All-Star, injury, and stat notes from Boston Globe, Boston.com, NESN, ESPN, MLB.com news, Press Herald, and CBS Sports (July 11–15). AL East / Wild Card standings and several player counting stats were reconstructed from dated news copy where live tables were unavailable and are flagged approximate. This is an independent recreation in the style of the Red Sox' official pregame notes and is not an official MLB or Red Sox publication. <strong>Daily updates:</strong> going forward, append each completed game as a new row from the Baseball-Reference schedule page and refresh the snapshot/standings blocks on Page 1.
+  </div>
+
+  <div class="page-foot">
+    <div>Red Sox Game Notes — DAY-BY-DAY RESULTS &amp; SCHEDULE</div>
+    <div>Page 5</div>
+  </div>
+</div>
+
+</body>
+</html>
