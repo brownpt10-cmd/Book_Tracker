@@ -265,28 +265,28 @@ const weekOfStr = new Date().toLocaleDateString('en-US',{month:'long',day:'numer
 document.getElementById('weekOf').textContent = 'Week of ' + weekOfStr;
 
 const dinners = [
-  {name:"Chicken and Rice (One Pot!)", cuisine:"American", url:"https://thecozycook.com/chicken-and-rice/", source:"thecozycook.com"},
-  {name:"Egg Roll in a Bowl", cuisine:"Asian", url:"https://www.spendwithpennies.com/egg-roll-in-a-bowl/", source:"spendwithpennies.com"},
-  {name:"Tuscan Chicken Pasta", cuisine:"Italian", url:"https://www.theslowroasteditalian.com/tuscan-garlic-chicken-linguine-recipe/", source:"theslowroasteditalian.com"},
-  {name:"Baked Pork Chops", cuisine:"American", url:"https://www.thereciperebel.com/baked-pork-chops/", source:"thereciperebel.com"},
-  {name:"Butter Chicken", cuisine:"Indian (mild)", url:"https://www.spendwithpennies.com/classic-butter-chicken/", source:"spendwithpennies.com"},
-  {name:"Chicken Enchiladas", cuisine:"Mexican", url:"https://thecozycook.com/chicken-enchiladas/", source:"thecozycook.com"},
-  {name:"Mediterranean Meatball Bowl", cuisine:"Mediterranean", url:"https://tastesbetterfromscratch.com/mediterranean-meatball-bowl/", source:"tastesbetterfromscratch.com"}
+  {name:"Thai Basil Chicken", cuisine:"Asian", url:"https://tastesbetterfromscratch.com/thai-basil-chicken/", source:"tastesbetterfromscratch.com"},
+  {name:"Air Fryer Pork Tenderloin", cuisine:"American", url:"https://www.thereciperebel.com/air-fryer-pork-tenderloin/", source:"thereciperebel.com"},
+  {name:"Pasta With Sausage and Peppers", cuisine:"Italian", url:"https://www.theslowroasteditalian.com/sausage-and-peppers-pasta/", source:"theslowroasteditalian.com"},
+  {name:"Turkey Burrito Rice Bowls", cuisine:"Mexican", url:"https://www.spendwithpennies.com/burrito-rice-bowls/", source:"spendwithpennies.com"},
+  {name:"Greek Chicken Bowls", cuisine:"Mediterranean", url:"https://thecozycook.com/greek-chicken-bowls/", source:"thecozycook.com"},
+  {name:"Steak Kabobs", cuisine:"American", url:"https://www.thereciperebel.com/steak-kabobs/", source:"thereciperebel.com"},
+  {name:"Chicken Tikka Masala", cuisine:"Indian (mild)", url:"https://tastesbetterfromscratch.com/chicken-tikka-masala-recipe/", source:"tastesbetterfromscratch.com"}
 ];
 
 const salads = [
-  {name:"Cucumber Onion Salad", url:"https://www.spendwithpennies.com/cucumber-onion-salad/", source:"spendwithpennies.com"},
-  {name:"Cucumber Tomato Salad", url:"https://www.spendwithpennies.com/cucumber-tomato-salad/", source:"spendwithpennies.com"}
+  {name:"Creamy Cucumber Pasta Salad", url:"https://www.spendwithpennies.com/creamy-cucumber-pasta-salad/", source:"spendwithpennies.com"},
+  {name:"Greek Pasta Salad", url:"https://www.thereciperebel.com/greek-pasta-salad/", source:"thereciperebel.com"}
 ];
 
 const appetizers = [
-  {name:"Cheese Ball", url:"https://www.thereciperebel.com/cheese-ball-recipe/", source:"thereciperebel.com"},
-  {name:"Pepperoni Pizza Bites", url:"https://www.theslowroasteditalian.com/bite-size-cheesy-pepperoni-pizza-puffs-recipe/", source:"theslowroasteditalian.com"}
+  {name:"White Cheddar Stuffed Mushrooms", url:"https://thecozycook.com/stuffed-mushrooms/", source:"thecozycook.com"},
+  {name:"7-Layer Bean Dip", url:"https://tastesbetterfromscratch.com/7-layer-bean-dip/", source:"tastesbetterfromscratch.com"}
 ];
 
 const desserts = [
-  {name:"Old Fashioned Peach Cobbler", url:"https://tastesbetterfromscratch.com/peach-cobbler/", source:"tastesbetterfromscratch.com"},
-  {name:"No-Bake Brownie Batter Cheesecake", url:"https://www.thereciperebel.com/no-bake-brownie-batter-cheesecake/", source:"thereciperebel.com"}
+  {name:"Chocolate Chip Cookie Cake", url:"https://www.theslowroasteditalian.com/chocolate-chip-cookie-cake/", source:"theslowroasteditalian.com"},
+  {name:"Easy Lemon Bars", url:"https://www.spendwithpennies.com/lemon-bars/", source:"spendwithpennies.com"}
 ];
 
 function cuisineClass(cuisine){
