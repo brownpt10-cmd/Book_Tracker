@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AL &amp; World Series Champions · Fenway Park</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    color: #f2efe4;
+    background: linear-gradient(180deg,#22563b 0%,#184330 55%,#123321 100%);
+    min-height: 100vh;
+  }
+  a { color: #f5c518; }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 30px 24px 70px; }
+  .backlink {
+    display: inline-flex; align-items: center; gap: 8px; text-decoration: none;
+    color: #f2efe4; font: 700 13px 'Space Mono'; letter-spacing: 0.12em;
+    background: linear-gradient(180deg,#0f3927,#0b2a1c); border: 2px solid #ece7d9;
+    padding: 8px 16px; box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+  }
+  .backlink:hover { color: #f5c518; }
+  h1 {
+    font: 700 40px 'Oswald'; letter-spacing: 0.08em; text-align: center;
+    color: #f2efe4; text-shadow: 0 3px 0 rgba(0,0,0,0.5); margin: 30px 0 6px;
+  }
+  .subtitle {
+    text-align: center; font: 400 12px 'Space Mono'; letter-spacing: 0.28em;
+    color: #f5c518; margin-bottom: 34px;
+  }
+  .intro {
+    background: linear-gradient(180deg,#0e3123,#081f15); border: 2px solid rgba(233,228,214,0.5);
+    padding: 20px 24px; margin-bottom: 34px; line-height: 1.65; font-size: 15px;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.4);
+  }
+  .card {
+    display: grid; grid-template-columns: 110px 1fr; gap: 22px; align-items: start;
+    background: linear-gradient(180deg,#0e3123,#081f15); border: 2px solid rgba(233,228,214,0.45);
+    padding: 22px 24px; margin-bottom: 20px; scroll-margin-top: 20px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.42);
+  }
+  .pennant {
+    padding: 10px 10px 20px; text-align: center;
+    font: 700 24px 'Oswald'; color: #f2efe4; letter-spacing: 0.02em;
+    clip-path: polygon(0 0,100% 0,100% 74%,50% 100%,0 74%);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.45);
+  }
+  .pennant.ws { background: linear-gradient(180deg,#d3383f,#a3272f); }
+  .pennant.al { background: linear-gradient(180deg,#2f5cae,#204389); }
+  .result-tag {
+    display: inline-block; font: 700 10px 'Space Mono'; letter-spacing: 0.14em;
+    padding: 3px 9px; border-radius: 3px; margin-bottom: 10px;
+  }
+  .result-tag.ws { color: #123321; background: #f5c518; }
+  .result-tag.al { color: #f2efe4; background: rgba(47,92,174,0.55); border: 1px solid rgba(233,228,214,0.4); }
+  .record { font: 700 13px 'Space Mono'; color: rgba(242,239,228,0.7); margin-bottom: 12px; }
+  .bio p { margin: 0 0 12px; line-height: 1.65; font-size: 14.5px; color: rgba(242,239,228,0.92); }
+  .bio p:last-child { margin-bottom: 0; }
+  .note {
+    background: linear-gradient(180deg,#0e3123,#081f15); border: 2px dashed rgba(245,197,24,0.5);
+    padding: 18px 22px; margin: 30px 0; font-size: 14px; line-height: 1.6; color: rgba(242,239,228,0.9);
+  }
+  .sources {
+    margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(233,228,214,0.3);
+    font: 400 12px 'Space Mono'; line-height: 1.8; color: rgba(242,239,228,0.65);
+  }
+  @media (max-width: 560px) {
+    .card { grid-template-columns: 1fr; }
+    .pennant { width: 100px; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="backlink" href="Green%20Monster%20%28standalone%29.html">&larr; BACK TO FENWAY</a>
+
+  <h1>AL &amp; WORLD SERIES CHAMPIONS</h1>
+  <div class="subtitle">FENWAY PARK · FOOTER BOARD</div>
+
+  <div class="intro">
+    Fourteen pennants hang on Fenway's footer board: 1903, 1904, 1912, 1915, 1916, 1918, 1946, 1967, 1975, 1986,
+    2004, 2007, 2013, and 2018. Red pennants (WS) mark World Series championships; blue pennants (AL) mark American
+    League pennants that did not end in a title. Tap any year on the homepage to jump straight to it below.
+  </div>
+
+  <div class="card" id="y1903">
+    <div class="pennant ws">1903</div>
+    <div>
+      <div class="result-tag ws">WORLD SERIES CHAMPIONS</div>
+      <div class="record">91-47-3 · beat Pittsburgh Pirates, 5 games to 3</div>
+      <div class="bio">
+        <p>Boston's 1903 club finished 91-47-3 and won the American League pennant, then beat the Pittsburgh Pirates 5-3 in the first modern World Series, a best-of-nine series.</p>
+        <p>Key moments included Game 1, when Pittsburgh's Jimmy Sebring hit the first home run in World Series history, and Game 8, when Bill Dinneen shut out Pittsburgh to clinch the title. Cy Young, Bill Dinneen, Long Tom Hughes, and manager Jimmy Collins were central figures for Boston.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="y1904">
+    <div class="pennant al">1904</div>
+    <div>
+      <div class="result-tag al">AMERICAN LEAGUE PENNANT</div>
+      <div class="record">No World Series played</div>
+      <div class="bio">
+        <p>The 1904 Red Sox finished first in the American League, but there was no World Series that year because the New York Giants refused to participate. So unlike most banner years, this one ended with a pennant but no championship series.</p>
+        <p>That makes 1904 unusual in Red Sox lore: it is a banner year on the wall, but not a World Series title season. It is still remembered as part of Boston's early dominance in the American League.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="y1912">
+    <div class="pennant ws">1912</div>
+    <div>
+      <div class="result-tag ws">WORLD SERIES CHAMPIONS</div>
+      <div class="record">105-47 · beat New York Giants, 4 games to 3 (1 tie)</div>
+      <div class="bio">
+        <p>Boston's 1912 team went 105-47 and won the American League pennant. They defeated the New York Giants in a World Series that ended in an eighth-game extra-inning classic after a tie.</p>
+        <p>The defining moment was Larry Doyle's error in the final inning of Game 8, which helped Boston win the championship. Smoky Joe Wood, Tris Speaker, Harry Hooper, and manager Jake Stahl were major contributors.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="y1915">
+    <div class="pennant ws">1915</div>
+    <div>
+      <div class="result-tag ws">WORLD SERIES CHAMPIONS</div>
+      <div class="record">101-50 · beat Philadelphia Phillies, 4 games to 1</div>
+      <div class="bio">
+        <p>The 1915 Red Sox finished 101-50 and won the American League pennant. They beat the Philadelphia Phillies in five games to take the World Series.</p>
+        <p>Boston's pitching, especially Babe Ruth's early-career mound work and the strength of the overall staff, helped carry the club. Tris Speaker, Harry Hooper, and Dutch Leonard were among the team's key names.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="y1916">
+    <div class="pennant ws">1916</div>
+    <div>
+      <div class="result-tag ws">WORLD SERIES CHAMPIONS</div>
+      <div class="record">91-63 · beat Brooklyn Robins, 4 games to 1</div>
+      <div class="bio">
+        <p>Boston went 91-63 and again won the American League pennant. They defeated the Brooklyn Robins in the World Series, four games to one.</p>
+        <p>Ruth's famous shutout streak in the postseason became a major storyline, and the Red Sox continued to lean on strong pitching and defense. Babe Ruth, Harry Hooper, Tris Speaker, and manager Bill Carrigan were central to the title team.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="y1918">
+    <div class="pennant ws">1918</div>
+    <div>
+      <div class="result-tag ws">WORLD SERIES CHAMPIONS</div>
+      <div class="record">75-51 (shortened season) · beat Chicago Cubs, 4 games to 2</div>
+      <div class="bio">
+        <p>The 1918 Red Sox finished 75-51 in a shortened season and still captured the pennant. They beat the Chicago Cubs in the World Series, four games to two.</p>
+        <p>This team is memorable because it was the last Red Sox championship before the long drought that became known as the Curse era. Babe Ruth, Harry Hooper, and Carl Mays were among the notable players, with Ruth also serving as a key pitcher before his legendary shift to offense.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="y1946">
+    <div class="pennant al">1946</div>
+    <div>
+      <div class="result-tag al">AMERICAN LEAGUE PENNANT</div>
+      <div class="record">104-50 · lost World Series to St. Louis Cardinals in 7</div>
+      <div class="bio">
+        <p>Boston went 104-50 in 1946 and won the American League pennant. They lost the World Series to the St. Louis Cardinals in seven games.</p>
+        <p>The series is remembered for Enos Slaughter's "mad dash" from first to home in Game 7, a decisive moment that helped St. Louis win the title. Ted Williams, Bobby Doerr, Dom DiMaggio, and pitcher Dave Ferriss were major figures for Boston.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="y1967">
+    <div class="pennant al">1967</div>
+    <div>
+      <div class="result-tag al">AMERICAN LEAGUE PENNANT</div>
+      <div class="record">92-70 · "Impossible Dream" · lost World Series to St. Louis Cardinals in 7</div>
+      <div class="bio">
+        <p>The 1967 Red Sox finished 92-70 and won the American League pennant in the famous "Impossible Dream" season. They lost the World Series to the St. Louis Cardinals in seven games.</p>
+        <p>Carl Yastrzemski's Triple Crown season defined the team, and the club surged from last place the year before to pennant winner. Yaz, Jim Lonborg, Tony Conigliaro, and Rico Petrocelli were key names.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="y1975">
+    <div class="pennant al">1975</div>
+    <div>
+      <div class="result-tag al">AMERICAN LEAGUE PENNANT</div>
+      <div class="record">95-65 · lost World Series to Cincinnati Reds in 7</div>
+      <div class="bio">
+        <p>Boston went 95-65 and won the American League East and pennant. They lost a classic seven-game World Series to the Cincinnati Reds.</p>
+        <p>Game 6 remains one of baseball's most famous games because Carlton Fisk's walk-off home run helped force Game 7. Fisk, Fred Lynn, Jim Rice, and Luis Tiant were central to the Red Sox's unforgettable run.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="y1986">
+    <div class="pennant al">1986</div>
+    <div>
+      <div class="result-tag al">AMERICAN LEAGUE PENNANT</div>
+      <div class="record">95-66 · lost World Series to New York Mets in 7</div>
+      <div class="bio">
+        <p>The 1986 Red Sox finished 95-66 and won the American League pennant. They lost the World Series to the New York Mets in seven games.</p>
+        <p>The defining memory is still Game 6, when the Red Sox were one strike away from the title before the game slipped away on Mookie Wilson's ground ball through Bill Buckner. Roger Clemens, Wade Boggs, Jim Rice, and Don Baylor were key contributors.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="y2004">
+    <div class="pennant ws">2004</div>
+    <div>
+      <div class="result-tag ws">WORLD SERIES CHAMPIONS</div>
+      <div class="record">98-64 · swept St. Louis Cardinals, 4 games to 0</div>
+      <div class="bio">
+        <p>Boston finished 98-64 and won the American League pennant. They swept the St. Louis Cardinals to win their first World Series title since 1918.</p>
+        <p>This team is famous for the ALCS comeback against the Yankees, when Boston became the first MLB team to win a best-of-seven series after trailing 0-3. David Ortiz, Manny Ramirez, Curt Schilling, Pedro Martínez, and Johnny Damon were major figures.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="y2007">
+    <div class="pennant ws">2007</div>
+    <div>
+      <div class="result-tag ws">WORLD SERIES CHAMPIONS</div>
+      <div class="record">96-66 · swept Colorado Rockies, 4 games to 0</div>
+      <div class="bio">
+        <p>The 2007 Red Sox went 96-66 and won the American League pennant. They swept the Colorado Rockies in the World Series.</p>
+        <p>Boston built on the 2004 core with a balanced roster and strong pitching, then dominated Colorado in four games. Dustin Pedroia, Manny Ramirez, Jonathan Papelbon, Josh Beckett, and David Ortiz were key names.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="y2013">
+    <div class="pennant ws">2013</div>
+    <div>
+      <div class="result-tag ws">WORLD SERIES CHAMPIONS</div>
+      <div class="record">97-65 · beat St. Louis Cardinals, 4 games to 2</div>
+      <div class="bio">
+        <p>The 2013 Red Sox finished 97-65 and won the American League East. They beat the St. Louis Cardinals in six games to win the World Series.</p>
+        <p>This team became a symbol of resilience after the Boston Marathon bombing, and the season was marked by strong clubhouse chemistry. David Ortiz, who won World Series MVP, was the emotional and on-field centerpiece, alongside Jon Lester, Koji Uehara, and Dustin Pedroia.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="y2018">
+    <div class="pennant ws">2018</div>
+    <div>
+      <div class="result-tag ws">WORLD SERIES CHAMPIONS</div>
+      <div class="record">108-54 (franchise best) · beat Los Angeles Dodgers, 4 games to 1</div>
+      <div class="bio">
+        <p>Boston's 2018 team went 108-54, the best record in franchise history, and won the World Series. They defeated the Los Angeles Dodgers in five games.</p>
+        <p>The club was powered by elite overall depth, with Mookie Betts, J.D. Martinez, Chris Sale, and Xander Bogaerts among the standouts. Alex Cora's team was strong in every phase, from offense to rotation to bullpen, and it became one of the most complete Red Sox champions.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>A note on 1904:</strong> it's the only banner on the wall that marks a pennant season rather than a World Series
+    championship, which is why it stands out from the rest. The others on the wall represent either World Series titles or,
+    in 1904's case, the pennant era of early Red Sox history.
+  </div>
+
+  <div class="sources">
+    SOURCES &amp; METHODOLOGY — Compiled from BannerHistory.docx (Pat's research notes), cross-referencing Wikipedia,
+    Baseball Almanac, SABR, and the National Baseball Hall of Fame for each season's record and World Series result.
+  </div>
+</div>
+</body>
+</html>
