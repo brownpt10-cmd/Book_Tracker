@@ -77,6 +77,17 @@
     border-radius:999px;
     opacity:.85;
   }
+  .subgroup-label{
+    font-size:1rem;
+    font-weight:bold;
+    color:var(--purple);
+    margin:22px 0 12px;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+  .subgroup-label:first-of-type{
+    margin-top:6px;
+  }
   .grid{
     display:grid;
     grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
@@ -231,6 +242,16 @@
   </section>
 
   <section class="group">
+    <h2>💪 High Protein Meals <span class="tag">7 this week</span></h2>
+    <div class="subgroup-label">Dinners</div>
+    <div class="grid" id="hpDinners"></div>
+    <div class="subgroup-label">Lunches</div>
+    <div class="grid" id="hpLunches"></div>
+    <div class="subgroup-label">Breakfasts</div>
+    <div class="grid" id="hpBreakfasts"></div>
+  </section>
+
+  <section class="group">
     <h2>🥗 Salad Options</h2>
     <div class="grid" id="salads"></div>
   </section>
@@ -274,6 +295,22 @@ const dinners = [
   {name:"Chicken Tikka Masala", cuisine:"Indian (mild)", url:"https://tastesbetterfromscratch.com/chicken-tikka-masala-recipe/", source:"tastesbetterfromscratch.com"}
 ];
 
+const hpDinners = [
+  {name:"Sesame Chicken", cuisine:"Asian", url:"https://www.skinnytaste.com/sesame-chicken/", source:"skinnytaste.com"},
+  {name:"Buffalo Chicken Quesadillas", cuisine:"American", url:"https://eatthegains.com/buffalo-chicken-quesadillas/", source:"eatthegains.com"},
+  {name:"Taco Pasta", cuisine:"American", url:"https://theproteinchef.co/taco-pasta-recipe/", source:"theproteinchef.co"}
+];
+
+const hpLunches = [
+  {name:"Bang Bang Chicken Bowls", cuisine:"Asian", url:"https://www.jaroflemons.com/bang-bang-chicken-bowls/", source:"jaroflemons.com"},
+  {name:"Crockpot Chicken Fajita Burrito Bowls", cuisine:"Mexican", url:"https://www.nourishmovelove.com/crockpot-chicken-fajitas-burrito-bowl/", source:"nourishmovelove.com"}
+];
+
+const hpBreakfasts = [
+  {name:"Cottage Cheese Pancakes", cuisine:"American", url:"https://www.jaroflemons.com/cottage-cheese-pancakes/", source:"jaroflemons.com"},
+  {name:"Cottage Cheese Eggs", cuisine:"American", url:"https://eatthegains.com/cottage-cheese-eggs/", source:"eatthegains.com"}
+];
+
 const salads = [
   {name:"Creamy Cucumber Pasta Salad", url:"https://www.spendwithpennies.com/creamy-cucumber-pasta-salad/", source:"spendwithpennies.com"},
   {name:"Greek Pasta Salad", url:"https://www.thereciperebel.com/greek-pasta-salad/", source:"thereciperebel.com"}
@@ -288,6 +325,16 @@ const desserts = [
   {name:"Chocolate Chip Cookie Cake", url:"https://www.theslowroasteditalian.com/chocolate-chip-cookie-cake/", source:"theslowroasteditalian.com"},
   {name:"Easy Lemon Bars", url:"https://www.spendwithpennies.com/lemon-bars/", source:"spendwithpennies.com"}
 ];
+
+// Clear saved star ratings / "Made this" checkmarks whenever this week's meal
+// lineup changes, so they don't carry over stale from a previous week.
+const currentPlanId = dinners.concat(hpDinners, hpLunches, hpBreakfasts).map(d => d.name).join('|');
+if (localStorage.getItem('mealPlanId') !== currentPlanId) {
+  Object.keys(localStorage).forEach(k => {
+    if (k.indexOf('rating_') === 0 || k.indexOf('used_') === 0) localStorage.removeItem(k);
+  });
+  localStorage.setItem('mealPlanId', currentPlanId);
+}
 
 function cuisineClass(cuisine){
   const c = cuisine.toLowerCase();
@@ -308,8 +355,8 @@ function starsHTML(id){
   return `<div class="stars" data-id="${id}">${s}</div>`;
 }
 
-function renderDinnerCard(item, idx){
-  const id = 'dinner_' + idx;
+function renderRatedCard(item, idx, prefix){
+  const id = prefix + '_' + idx;
   return `
   <div class="card ${cuisineClass(item.cuisine)}">
     <span class="cuisine-pill">${item.cuisine}</span>
@@ -331,7 +378,10 @@ function renderSimpleCard(item, idx, prefix, cssClass){
   </div>`;
 }
 
-document.getElementById('dinners').innerHTML = dinners.map(renderDinnerCard).join('');
+document.getElementById('dinners').innerHTML = dinners.map((it,i)=>renderRatedCard(it,i,'dinner')).join('');
+document.getElementById('hpDinners').innerHTML = hpDinners.map((it,i)=>renderRatedCard(it,i,'hpdinner')).join('');
+document.getElementById('hpLunches').innerHTML = hpLunches.map((it,i)=>renderRatedCard(it,i,'hplunch')).join('');
+document.getElementById('hpBreakfasts').innerHTML = hpBreakfasts.map((it,i)=>renderRatedCard(it,i,'hpbreakfast')).join('');
 document.getElementById('salads').innerHTML = salads.map((it,i)=>renderSimpleCard(it,i,'salad','c-salad')).join('');
 document.getElementById('appetizers').innerHTML = appetizers.map((it,i)=>renderSimpleCard(it,i,'appetizer','c-appetizer')).join('');
 document.getElementById('desserts').innerHTML = desserts.map((it,i)=>renderSimpleCard(it,i,'dessert','c-dessert')).join('');
@@ -358,28 +408,38 @@ function highlightStars(row, val){
   });
 }
 
-// restore checkboxes
-dinners.forEach((item, idx)=>{
-  const id = 'dinner_' + idx;
+// restore + save "Made this" checkboxes
+function setupMadeCheckbox(item, idx, prefix){
+  const id = prefix + '_' + idx;
   const cb = document.getElementById('used_' + id);
   const saved = localStorage.getItem('used_' + id);
   if(saved === '1') cb.checked = true;
   cb.addEventListener('change', ()=>{
     localStorage.setItem('used_' + id, cb.checked ? '1' : '0');
   });
-});
+}
+dinners.forEach((item, idx)=> setupMadeCheckbox(item, idx, 'dinner'));
+hpDinners.forEach((item, idx)=> setupMadeCheckbox(item, idx, 'hpdinner'));
+hpLunches.forEach((item, idx)=> setupMadeCheckbox(item, idx, 'hplunch'));
+hpBreakfasts.forEach((item, idx)=> setupMadeCheckbox(item, idx, 'hpbreakfast'));
 
 document.getElementById('sendRatingsBtn').addEventListener('click', ()=>{
   let lines = [];
-  dinners.forEach((item, idx)=>{
-    const id = 'dinner_' + idx;
-    const used = document.getElementById('used_' + id).checked ? 'Yes' : 'No';
-    const rating = localStorage.getItem('rating_' + id) || '(not rated)';
-    lines.push(`${item.name} | Made: ${used} | Rating: ${rating}`);
-  });
+  function collect(items, prefix, label){
+    items.forEach((item, idx)=>{
+      const id = prefix + '_' + idx;
+      const used = document.getElementById('used_' + id).checked ? 'Yes' : 'No';
+      const rating = localStorage.getItem('rating_' + id) || '(not rated)';
+      lines.push(`${label ? label + ': ' : ''}${item.name} | Made: ${used} | Rating: ${rating}`);
+    });
+  }
+  collect(dinners, 'dinner', '');
+  collect(hpDinners, 'hpdinner', 'High Protein Dinner');
+  collect(hpLunches, 'hplunch', 'High Protein Lunch');
+  collect(hpBreakfasts, 'hpbreakfast', 'High Protein Breakfast');
   const subject = encodeURIComponent('Recipe Ratings - Week of ' + weekOfStr);
   const body = encodeURIComponent(
-    "Here are my ratings for this week's dinners:\n\n" + lines.join('\n') + "\n"
+    "Here are my ratings for this week's meals:\n\n" + lines.join('\n') + "\n"
   );
   window.location.href = `mailto:brownpt10@gmail.com?subject=${subject}&body=${body}`;
 });
