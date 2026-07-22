@@ -49,6 +49,19 @@
   .matchup-box h2{font-size:17px; margin:0 0 3px 0; color:var(--navy);}
   .matchup-box .sub{font-size:11.5px; color:var(--gray); margin:2px 0;}
   .matchup-box .probables{font-weight:bold; margin:5px 0;}
+  .wx-square{padding-bottom:6px;}
+  .wx-square .box-title{display:flex; justify-content:space-between; align-items:center;}
+  .wx-square .wx-icon{font-size:13px;}
+  .wx-grid{display:grid; grid-template-columns:1fr 1fr; gap:0;}
+  .wx-item{padding:4px 7px; border-bottom:1px solid #eee; border-right:1px solid #eee;}
+  .wx-item:nth-child(2n){border-right:none;}
+  .wx-k{display:block; font-size:8.8px; color:var(--gray); text-transform:uppercase; letter-spacing:.3px;}
+  .wx-v{display:block; font-size:11px; font-weight:bold; color:var(--navy); margin-top:1px;}
+  .wx-park-row{padding:5px 7px; border-bottom:1px solid #eee; font-size:10.3px;}
+  .wx-park-row .wx-k{margin-bottom:1px;}
+  .wx-park-row .wx-v{font-size:10.5px;}
+  .wx-forecast{padding:5px 7px; font-size:10px; color:#333; line-height:1.4;}
+  .wx-src{padding:0 7px 5px; font-size:8.3px; color:#999; font-style:italic;}
   .layout3{display:flex; gap:16px; margin-top:12px; align-items:flex-start;}
   .col{flex:1; min-width:0;}
   h3.section{font-weight:bold; font-size:11.5px; background:var(--navy); color:#fff; padding:4px 8px; margin:12px 0 6px 0;}
@@ -271,6 +284,100 @@
     </div>
 
     <div class="col rail">
+      <div class="stat-box wx-square" id="fenway-weather">
+        <div class="box-title">FENWAY WEATHER <span class="wx-icon" id="wx-icon">&#9925;</span></div>
+        <div class="wx-grid">
+          <div class="wx-item"><span class="wx-k">Temp</span><span class="wx-v" id="wx-temp">&hellip;</span></div>
+          <div class="wx-item"><span class="wx-k">Wind</span><span class="wx-v" id="wx-wind">&hellip;</span></div>
+          <div class="wx-item"><span class="wx-k">Gusts</span><span class="wx-v" id="wx-gust">&hellip;</span></div>
+          <div class="wx-item"><span class="wx-k">Feels Like</span><span class="wx-v" id="wx-feels">&hellip;</span></div>
+        </div>
+        <div class="wx-park-row"><span class="wx-k">Park Wind</span><span class="wx-v" id="wx-park">Loading&hellip;</span></div>
+        <div class="wx-forecast" id="wx-forecast">Loading forecast&hellip;</div>
+        <div class="wx-src">Live via Open-Meteo &bull; updates when this page is opened</div>
+      </div>
+      <script>
+      (function(){
+        var ids = ['wx-temp','wx-wind','wx-gust','wx-feels','wx-park','wx-forecast','wx-icon'];
+        var el = {};
+        for(var i=0;i<ids.length;i++){ el[ids[i]] = document.getElementById(ids[i]); }
+        if(!el['wx-temp']) return;
+
+        var lat = 42.3467, lon = -71.0972; // Fenway Park
+        var url = 'https://api.open-meteo.com/v1/forecast?latitude=' + lat + '&longitude=' + lon +
+          '&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m' +
+          '&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max' +
+          '&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FNew_York&forecast_days=1';
+
+        var WMO = {
+          0:['Clear','☀'],1:['Mostly Clear','☀'],2:['Partly Cloudy','⛅'],3:['Overcast','☁'],
+          45:['Fog','☁'],48:['Freezing Fog','☁'],
+          51:['Light Drizzle','🌧'],53:['Drizzle','🌧'],55:['Heavy Drizzle','🌧'],
+          56:['Freezing Drizzle','🌧'],57:['Freezing Drizzle','🌧'],
+          61:['Light Rain','🌧'],63:['Rain','🌧'],65:['Heavy Rain','🌧'],
+          66:['Freezing Rain','🌧'],67:['Freezing Rain','🌧'],
+          71:['Light Snow','❄'],73:['Snow','❄'],75:['Heavy Snow','❄'],77:['Snow Grains','❄'],
+          80:['Rain Showers','🌧'],81:['Rain Showers','🌧'],82:['Violent Showers','🌧'],
+          85:['Snow Showers','❄'],86:['Snow Showers','❄'],
+          95:['Thunderstorm','⚡'],96:['Thunderstorm w/ Hail','⚡'],99:['Thunderstorm w/ Hail','⚡']
+        };
+        function compass(deg){
+          var dirs = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'];
+          return dirs[Math.round(deg / 22.5) % 16];
+        }
+        function compass8(deg){
+          var dirs = ['N','NE','E','SE','S','SW','W','NW'];
+          return dirs[Math.round(deg / 45) % 8];
+        }
+        // Fenway Park approx orientation from home plate: center field bearing ~25°
+        // (roughly NNE), with fair territory spanning about 60° either side of that
+        // (left-field line ~-35°/325°, right-field line ~85°). Calibrated so a
+        // south-to-north wind (typical at the park) reads as blowing out to left-center.
+        var CF_BEARING = 25, ARC_HALF = 60;
+        function sector(bearing){
+          var diff = ((bearing - CF_BEARING + 540) % 360) - 180; // normalize to -180..180
+          if(diff < -ARC_HALF || diff > ARC_HALF) return null;
+          if(diff < -36) return 'Left';
+          if(diff < -12) return 'Left-Center';
+          if(diff <= 12) return 'Center';
+          if(diff <= 36) return 'Right-Center';
+          return 'Right';
+        }
+        function parkWind(speed, gust, dirFrom){
+          if(speed < 2) return 'Calm / Still';
+          var dirTo = (dirFrom + 180) % 360;
+          var gusty = (gust - speed) >= 15;
+          var label;
+          var out = sector(dirTo);
+          var inn = sector(dirFrom);
+          if(out){ label = 'Blowing Out, ' + out; }
+          else if(inn){ label = 'Blowing In, ' + inn; }
+          else{ label = 'Crosswind, ' + compass8(dirFrom) + '-' + compass8(dirTo); }
+          if(speed < 7) label = 'Light Breeze &mdash; ' + label;
+          if(gusty) label += ' (Gusty/Swirling)';
+          return label;
+        }
+
+        fetch(url).then(function(r){ return r.json(); }).then(function(d){
+          var c = d.current, day = d.daily;
+          var wmo = WMO[c.weather_code] || ['&mdash;','⛅'];
+          var dayWmo = WMO[day.weather_code[0]] || ['&mdash;','⛅'];
+
+          if(el['wx-icon']) el['wx-icon'].textContent = wmo[1];
+          el['wx-temp'].innerHTML = Math.round(c.temperature_2m) + '&deg;F';
+          el['wx-feels'].innerHTML = Math.round(c.apparent_temperature) + '&deg;F';
+          el['wx-wind'].innerHTML = compass(c.wind_direction_10m) + ' ' + Math.round(c.wind_speed_10m) + ' mph';
+          el['wx-gust'].innerHTML = Math.round(c.wind_gusts_10m) + ' mph';
+          el['wx-park'].innerHTML = parkWind(c.wind_speed_10m, c.wind_gusts_10m, c.wind_direction_10m);
+          el['wx-forecast'].innerHTML = 'Today: ' + dayWmo[0] + ', high ' + Math.round(day.temperature_2m_max[0]) +
+            '&deg;F / low ' + Math.round(day.temperature_2m_min[0]) + '&deg;F, ' +
+            Math.round(day.precipitation_probability_max[0]) + '% chance of rain.';
+        }).catch(function(){
+          el['wx-park'].textContent = 'Unavailable';
+          el['wx-forecast'].textContent = 'Live weather unavailable (no connection or request blocked) — check weather.gov for Boston/Fenway conditions.';
+        });
+      })();
+      </script>
       <div class="stat-box">
         <div class="box-title">2026 SEASON SNAPSHOT</div>
         <table>
