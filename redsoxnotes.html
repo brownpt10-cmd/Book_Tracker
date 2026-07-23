@@ -135,6 +135,32 @@
   .chron-pull{font-size:14px; font-weight:bold; color:var(--red); font-style:italic; text-align:center; margin:10px 0; line-height:1.4; break-inside:avoid;}
   .chron-section{break-inside:avoid-column;}
   .chron-appendix-note{font-size:11px; color:var(--gray); font-style:italic; margin:6px 0 10px 0;}
+
+  /* Trade Deadline Matrix page (Page 6) */
+  .matrix-wrap{max-width:1150px; margin:0 auto;}
+  .matrix-intro{background:var(--lightgray); border:1px solid var(--line); padding:12px 16px; margin:10px 0 14px; font-size:12.5px; line-height:1.55;}
+  .matrix-intro h2{font-size:16px; margin:0 0 6px 0; color:var(--navy);}
+  .matrix-intro p{margin:5px 0;}
+  .matrix-legend{display:flex; gap:14px; flex-wrap:wrap; margin:8px 0 0; font-size:10.8px; align-items:center;}
+  .matrix-legend .lg-item{display:flex; align-items:center; gap:5px;}
+  .matrix-legend .swatch{display:inline-block; width:12px; height:12px; border-radius:3px;}
+  table.matrix{width:100%; border-collapse:collapse; margin-top:8px; table-layout:fixed;}
+  table.matrix col.c-need{width:14%;}
+  table.matrix col.c-player{width:16%;}
+  table.matrix col.c-giveup{width:32%;}
+  table.matrix col.c-notes{width:38%;}
+  table.matrix th{background:var(--navy); color:#fff; font-size:11.5px; text-align:left; padding:6px 9px;}
+  table.matrix td{padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; font-size:11.5px; line-height:1.45;}
+  table.matrix tr:last-child td{border-bottom:2px solid var(--navy);}
+  td.need-cell{background:var(--navy); color:#fff; font-weight:bold; font-size:13px; text-align:center; vertical-align:middle; border-right:4px solid var(--red); padding:10px 6px;}
+  td.need-cell .sub{display:block; font-weight:normal; font-size:9.5px; color:#cfd9e8; margin-top:4px;}
+  .pname{font-weight:bold; color:var(--navy); font-size:12.5px;}
+  .pteam{font-weight:normal; color:var(--gray); font-size:10.5px;}
+  .cost-tag{display:inline-block; color:#fff; font-size:9px; font-weight:bold; padding:1px 6px; border-radius:4px; margin:4px 0 3px 0;}
+  .giveup-main{font-size:11.5px; color:#1a1a1a;}
+  .source-tag{font-size:10px; color:#888; font-style:italic; margin-top:3px; display:block;}
+  .matrix-alt td:not(.need-cell){background:#fafafa;}
+  .matrix-source-note{font-size:10px; color:#888; margin-top:14px; line-height:1.55; border-top:1px solid var(--line); padding-top:8px;}
 </style>
 </head>
 <body>
@@ -961,6 +987,134 @@
   <div class="page-foot">
     <div>Red Sox Notes &mdash; Day-by-Day</div>
     <div>Page 5</div>
+  </div>
+</div>
+
+<!-- ===================== PAGE 6: TRADE DEADLINE MATRIX ===================== -->
+<div class="page">
+  <div class="masthead" style="padding:9px 18px;">
+    <h1 style="font-size:18px;">RED SOX <span>DEADLINE MATRIX</span></h1>
+    <div class="tagline">Needs &bull; Options &bull; What It Costs &mdash; as of Thursday, July 23, 2026</div>
+  </div>
+
+  <div class="matrix-wrap">
+    <div class="matrix-intro">
+      <h2>2026 Trade Deadline &mdash; Needs at a Glance</h2>
+      <p>Boston is 52-49, 3rd in the AL East (7.0 GB), holding the AL's final Wild Card spot after a 20-3 stretch that included a 15-game winning streak (snapped 7/22). ESPN's Jeff Passan says Boston intends "to be aggressive"; Buster Olney reports ownership has gotten involved in calls for a right-handed bat. Beyond shortstop / right-handed power / pitching, reporting also points to <strong>second base</strong> (a "black hole" since Dustin Pedroia, per SI) and <strong>catcher</strong> (Carlos Narv&aacute;ez has regressed at the plate) as separate, real needs &mdash; both broken out below.</p>
+      <p>Every "what Red Sox give up" package is a <strong>reported or mocked proposal</strong>, not a confirmed asking price &mdash; no deal below has actually happened. Refreshed each Saturday through the Aug. 3 deadline; carried forward unchanged on other days.</p>
+      <div class="matrix-legend">
+        <strong style="font-size:10.8px;">Cost key:</strong>
+        <div class="lg-item"><span class="swatch" style="background:#BD3039;"></span>Very High</div>
+        <div class="lg-item"><span class="swatch" style="background:#c9622a;"></span>High</div>
+        <div class="lg-item"><span class="swatch" style="background:#c9a227;"></span>Medium (rental)</div>
+        <div class="lg-item"><span class="swatch" style="background:#4a7d3c;"></span>Low-Medium (depth)</div>
+        <div class="lg-item"><span class="swatch" style="background:#666;"></span>Internal / no cost</div>
+      </div>
+    </div>
+
+    <table class="matrix">
+      <colgroup><col class="c-need"><col class="c-player"><col class="c-giveup"><col class="c-notes"></colgroup>
+      <tr><th>Need</th><th>Player / Option</th><th>What Red Sox Would Give Up</th><th>Notes &amp; Source</th></tr>
+
+      <tr>
+        <td class="need-cell" rowspan="3">SHORTSTOP<span class="sub">Cheng/Seigler holding down the fort</span></td>
+        <td><span class="pname">Zach Neto</span><br><span class="pteam">LAA &middot; SS</span></td>
+        <td><span class="cost-tag" style="background:#BD3039;">VERY HIGH</span><div class="giveup-main">Mocked Pkg A: RHP Anthony Eyanson (top-60 prospect) + Alex Godbout (BOS top-10) + Yeferson Bleis.<br>Pkg B: SS Marcelo Mayer + Eyanson + one more top-30 prospect.</div><span class="source-tag">FanSided/SI onsi &mdash; unconfirmed mocks</span></td>
+        <td>Controllable thru 2029 &mdash; "priciest and least realistic" target per NBC Sports Boston.</td>
+      </tr>
+      <tr>
+        <td><span class="pname">CJ Abrams</span><br><span class="pteam">WSN &middot; SS</span></td>
+        <td><span class="cost-tag" style="background:#BD3039;">VERY HIGH</span><div class="giveup-main">Mocked: RHP Brayan Bello + RHP Marcus Phillips (No. 9 prospect) + INF Mikey Romero (No. 11) + UTIL Anthony Seigler.</div><span class="source-tag">Yahoo Sports mock &mdash; unconfirmed</span></td>
+        <td>24 HR/76 RBI, 2x All-Star, controllable thru 2028. Nationals seen as reluctant to deal a building block.</td>
+      </tr>
+      <tr>
+        <td><span class="pname">Jeremy Pe&ntilde;a</span><br><span class="pteam">HOU &middot; SS</span></td>
+        <td><span class="cost-tag" style="background:#c9622a;">HIGH</span><div class="giveup-main">No specific package reported yet; expect Abrams-tier young talent, offset by just 1 year of control left.</div><span class="source-tag">Sportsnaut</span></td>
+        <td>More plausible than Abrams if Houston pivots to selling &mdash; still speculative.</td>
+      </tr>
+
+      <tr class="matrix-alt">
+        <td class="need-cell" rowspan="2">SECOND BASE<span class="sub">"Black hole" since Pedroia &mdash; SI</span></td>
+        <td><span class="pname">Gleyber Torres</span><br><span class="pteam">DET &middot; 2B</span></td>
+        <td><span class="cost-tag" style="background:#c9a227;">MEDIUM</span><div class="giveup-main">No package reported; expect a mid-tier prospect &mdash; rental price, pending free agent.</div><span class="source-tag">NBC Sports Boston</span></td>
+        <td>3x All-Star, 24+ HR four times. Returning from oblique strain on rehab assignment.</td>
+      </tr>
+      <tr class="matrix-alt">
+        <td><span class="pname">Luis Arraez</span><br><span class="pteam">SFG &middot; 2B</span></td>
+        <td><span class="cost-tag" style="background:#c9a227;">MEDIUM</span><div class="giveup-main">Mocked: INF Mikey Romero (No. 11 prospect) + RHP Gage Ziehl (No. 20 prospect).</div><span class="source-tag">Yahoo Sports mock &mdash; unconfirmed</span></td>
+        <td>4x All-Star, 3x batting champ. Pending free agent &mdash; a rental, not a long-term fix.</td>
+      </tr>
+
+      <tr>
+        <td class="need-cell" rowspan="4">CATCHER<span class="sub">Narv&aacute;ez has regressed at the plate</span></td>
+        <td><span class="pname">Hunter Goodman</span><br><span class="pteam">COL &middot; C</span></td>
+        <td><span class="cost-tag" style="background:#BD3039;">VERY HIGH</span><div class="giveup-main">Reported ask "starts with Franklin Arias" (BOS No. 1 prospect) "and would not come close to stopping there." Some mocks add Mayer, Early, and/or Narv&aacute;ez.</div><span class="source-tag">Boston.com (Chad Finn)</span></td>
+        <td>31 HR already, signed thru 2029 &mdash; the steepest catcher price by far.</td>
+      </tr>
+      <tr>
+        <td><span class="pname">Francisco &Aacute;lvarez</span><br><span class="pteam">NYM &middot; C</span></td>
+        <td><span class="cost-tag" style="background:#c9622a;">HIGH</span><div class="giveup-main">No confirmed package; the Athletic reports Mets want a "blockbuster-like haul" before moving him at all.</div><span class="source-tag">SI onsi / MLB.com</span></td>
+        <td>Former Mets No. 1 prospect, 20+ HR upside, still controllable. Mets only beginning to field offers.</td>
+      </tr>
+      <tr>
+        <td><span class="pname">Tyler Stephenson</span><br><span class="pteam">CIN &middot; C</span></td>
+        <td><span class="cost-tag" style="background:#c9a227;">MEDIUM</span><div class="giveup-main">No specific package reported; expect a moderate, mid-level prospect ask.</div><span class="source-tag">Sportsnaut / Ken Rosenthal</span></td>
+        <td>Reliable bat/glove. Rosenthal: realistically available, unlike Goodman/Langeliers/Rutschman.</td>
+      </tr>
+      <tr>
+        <td><span class="pname">Ryan Jeffers</span><br><span class="pteam">MIN &middot; C</span></td>
+        <td><span class="cost-tag" style="background:#c9a227;">MEDIUM</span><div class="giveup-main">No specific package reported; likely a modest rental price, pending free agent.</div><span class="source-tag">NBC Sports Boston</span></td>
+        <td>.292/.404/.538 when healthy, limited to 39 G by broken hamate. Twins in WC mix, may not sell.</td>
+      </tr>
+
+      <tr class="matrix-alt">
+        <td class="need-cell" rowspan="2">RIGHT-HANDED<br>POWER BAT<span class="sub">DH / OF / bench pop</span></td>
+        <td><span class="pname">Eugenio Su&aacute;rez</span><br><span class="pteam">CIN &middot; 3B/DH</span></td>
+        <td><span class="cost-tag" style="background:#c9a227;">MEDIUM</span><div class="giveup-main">No specific package reported; pending free agent suggests a mid-level rental price.</div><span class="source-tag">Heavy.com</span></td>
+        <td>Streaky but real RH power; DH/3B rental fit, lower cost than the catcher options.</td>
+      </tr>
+      <tr class="matrix-alt">
+        <td><span class="pname">Luis Robert Jr.</span><br><span class="pteam">NYM &middot; OF</span></td>
+        <td><span class="cost-tag" style="background:#4a7d3c;">LOW-MEDIUM</span><div class="giveup-main">No specific package reported; expiring deal and down year suggest a buy-low price.</div><span class="source-tag">Sportsnaut</span></td>
+        <td>Oft-injured reclamation bet; elite glove when healthy. Bench/platoon buy-low, not a difference-maker.</td>
+      </tr>
+
+      <tr>
+        <td class="need-cell" rowspan="3">PITCHING<span class="sub">Bullpen &mdash; rotation seen as set internally</span></td>
+        <td><span class="pname">Luke Weaver</span><br><span class="pteam">NYM &middot; RP</span></td>
+        <td><span class="cost-tag" style="background:#4a7d3c;">LOW-MEDIUM</span><div class="giveup-main">No specific package reported; expiring Mets deal typically commands a lower-level pitching prospect.</div><span class="source-tag">Sportsnaut</span></td>
+        <td>1.98 ERA setup man; clean 8th-inning fit ahead of Chapman.</td>
+      </tr>
+      <tr>
+        <td><span class="pname">A.J. Minter</span><br><span class="pteam">NYM &middot; RP</span></td>
+        <td><span class="cost-tag" style="background:#4a7d3c;">LOW-MEDIUM</span><div class="giveup-main">No specific package reported; similar rental-reliever price tag to Weaver.</div><span class="source-tag">NBC Sports Boston</span></td>
+        <td>1.42 ERA lefty; fills the spot left by Danny Coulombe's DFA.</td>
+      </tr>
+      <tr>
+        <td><span class="pname">Mason Miller</span><br><span class="pteam">SD &middot; CL</span></td>
+        <td><span class="cost-tag" style="background:#BD3039;">VERY HIGH</span><div class="giveup-main">Would require a package headlined by among Boston's best young talent (Arias-caliber or better).</div><span class="source-tag">MLB Trade Rumors / Boston.com</span></td>
+        <td>Elite, controllable closer &mdash; the single biggest name in trade chatter leaguewide.</td>
+      </tr>
+
+      <tr class="matrix-alt">
+        <td class="need-cell">ROTATION DEPTH<span class="sub">No external target reported</span></td>
+        <td><span class="pname">Internal only</span><br><span class="pteam">Crochet, Su&aacute;rez, Early, Tolle, Bennett, Crawford</span></td>
+        <td><span class="cost-tag" style="background:#666;">N/A</span><div class="giveup-main">No trade cost &mdash; all under club control thru at least 2027.</div><span class="source-tag">MLB Trade Rumors</span></td>
+        <td>Framed as already addressed in-house rather than a real trade lane. Health, not a trade, is the variable.</td>
+      </tr>
+    </table>
+
+    <div class="matrix-source-note">
+      Needs framing and trade-target reporting drawn from: ESPN's Jeff Passan and Buster Olney (via SI/Red Sox On SI and Yahoo Sports/NESN aggregation); MLB Trade Rumors' "Trade Deadline Outlook: Boston Red
+      Sox" (7/23); Boston.com's Chad Finn column (7/23); NBC Sports Boston (7/15); Sportsnaut (7/22); SI/Red Sox On SI's second-base and catcher need breakdown; and mocked packages reported by FanSided and
+      Yahoo Sports for Neto, Abrams, and Arraez specifically. Ken Rosenthal's catcher-availability reporting is cited via Sportsnaut. Where no source had a concrete package, that's stated plainly rather than
+      invented. Snapshot as of 7/23; refreshed each Saturday through the Aug. 3 deadline per standing instructions.
+    </div>
+  </div>
+
+  <div class="page-foot">
+    <div>Red Sox Notes &mdash; Deadline Matrix</div>
+    <div>Page 6</div>
   </div>
 </div>
 
