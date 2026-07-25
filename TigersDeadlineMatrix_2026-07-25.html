@@ -92,6 +92,23 @@
   table.swing th{background:var(--navy); color:#fff; font-size:13px; text-align:left; padding:8px 12px;}
   table.swing td{padding:11px 12px; border-bottom:1px solid var(--line); vertical-align:top; font-size:13.5px; line-height:1.5;}
   .sell-list{font-size:13.5px; margin-top:10px; line-height:1.6;}
+
+  /* Numbers Behind the Race addendum */
+  .race-box{margin-top:26px; border:2px solid var(--darkblue); border-radius:4px; overflow:hidden;}
+  .race-head{background:var(--darkblue); color:#fff; padding:12px 18px; font-size:17px; font-weight:bold; letter-spacing:.3px;}
+  .race-body{padding:16px 20px; background:#f7f9fc;}
+  .race-body h3{font-size:15px; color:var(--darkblue); margin:16px 0 6px 0;}
+  .race-body h3:first-child{margin-top:0;}
+  .race-body p{font-size:14.5px; line-height:1.6; margin:6px 0;}
+  .stat-grid{display:flex; gap:14px; flex-wrap:wrap; margin:10px 0 14px;}
+  .stat-card{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 16px; min-width:150px; flex:1;}
+  .stat-card .num{font-size:24px; font-weight:bold; color:var(--darkblue); line-height:1.1;}
+  .stat-card .lbl{font-size:11.5px; color:var(--gray); margin-top:3px;}
+  table.sched{width:100%; border-collapse:collapse; margin-top:8px; table-layout:fixed;}
+  table.sched th{background:var(--navy); color:#fff; font-size:12px; text-align:left; padding:6px 10px;}
+  table.sched td{padding:7px 10px; border-bottom:1px solid var(--line); font-size:12.5px;}
+  table.sched td.num, table.sched th.num{text-align:right;}
+  .diff-tag{display:inline-block; color:#fff; font-size:9.5px; font-weight:bold; padding:1px 6px; border-radius:4px;}
 </style>
 </head>
 <body>
@@ -104,7 +121,7 @@
 
   <div class="intro-box">
     <h2>2026 Trade Deadline &mdash; Detroit's Fork in the Road</h2>
-    <p>Detroit sits 4th in the AL Central, roughly 5-6 games back (reporting on the exact record has varied slightly across sources for this season, landing anywhere from 48-54 to 49-54 &mdash; treat as approximate), but the Tigers have gone 25-15 since the start of June and won 10 of their first 14 games in July. That hot stretch has shifted the mood: rival executives increasingly believe Detroit will <strong>hold</strong> ace Tarik Skubal past Aug. 3 and keep pushing for a Wild Card or AL Central run rather than pivot to selling. That makes this deadline a genuine buy-or-hold decision rather than a clean "buyer" case like Boston's.</p>
+    <p>Detroit is 50-54, 4th in the AL Central, 5.0 games behind first-place Chicago (per live Baseball-Reference standings through 7/24), but the Tigers have gone 25-15 since the start of June and won 10 of their first 14 games in July. That hot stretch has shifted the mood: rival executives increasingly believe Detroit will <strong>hold</strong> ace Tarik Skubal past Aug. 3 and keep pushing for a Wild Card or AL Central run rather than pivot to selling. That makes this deadline a genuine buy-or-hold decision rather than a clean "buyer" case like Boston's. See the new "Numbers Behind the Race" section below for one-run record, run differential, playoff-odds, and remaining-schedule detail.</p>
     <p>If the Tigers do lean in as buyers, MLB.com and beat reporters frame the needs as: a right-handed bat/outfielder (the lineup's .714 OPS vs. lefties is a steep drop from last year's league-runner-up .774 mark), a leverage bullpen arm, and thinner, less-reported lanes at the infield corners and young starting-pitching depth. Every "what Tigers give up" package below is a <strong>reported or analyst-mocked proposal</strong>, not a confirmed price &mdash; treat exact names as illustrative, not gospel. Player team affiliations for a couple of rental bats have been reported inconsistently across outlets this season; flagged where that happens.</p>
     <div class="legend">
       <strong style="font-size:13px;">Cost key:</strong>
@@ -226,13 +243,69 @@
     </div>
   </div>
 
+  <div class="race-box">
+    <div class="race-head">NUMBERS BEHIND THE RACE: ONE-RUN GAMES, RUN DIFFERENTIAL, THE PATH WITHOUT SKUBAL &amp; REMAINING SCHEDULE</div>
+    <div class="race-body">
+
+      <h3>One-Run Games</h3>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num">17</div><div class="lbl">One-run LOSSES (of 104 games played)</div></div>
+        <div class="stat-card"><div class="num">12-17</div><div class="lbl">Full one-run record (.414)</div></div>
+        <div class="stat-card"><div class="num">-5</div><div class="lbl">Wins below Pythagorean expectation ("Luck")</div></div>
+      </div>
+      <p>Detroit is 12-17 in one-run games, well below their .481 overall winning percentage. That gap is the single biggest reason the Tigers are 50-54 instead of contending outright: their run differential implies a far better team than their record shows.</p>
+
+      <h3>Run Differential</h3>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num">+30</div><div class="lbl">Season run differential (439 R / 409 RA)</div></div>
+        <div class="stat-card"><div class="num">55-49</div><div class="lbl">Pythagorean expected record</div></div>
+        <div class="stat-card"><div class="num">50-54</div><div class="lbl">Actual record &mdash; 5 wins worse than expected</div></div>
+      </div>
+      <p>At +30 (+0.3 runs/game), Detroit's underlying performance looks like a roughly 55-win-pace team through 104 games, not a 50-win one. Combine that positive differential with a lousy one-run record and the read is straightforward: this roster is better than its place in the standings, and the shortfall traces largely to close-game execution (bullpen/late-inning offense) rather than overall talent.</p>
+
+      <h3>Can They Still Win the Division or Wild Card Without Skubal?</h3>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num">25.1%</div><div class="lbl">Current postseason odds (with Skubal)</div></div>
+        <div class="stat-card"><div class="num">17.0% / 8.1%</div><div class="lbl">Wild Card odds / Division odds</div></div>
+        <div class="stat-card"><div class="num">5.0 / ~3.5</div><div class="lbl">Games back: division / final Wild Card spot</div></div>
+      </div>
+      <p>Per Baseball-Reference's own simulation model (25,000 runs, standings through 7/24), Detroit currently sits at 25.1% to make the postseason with Skubal in the rotation &mdash; 17.0% via Wild Card, 8.1% via the AL Central &mdash; and those odds have climbed sharply as the hot stretch has unfolded (+7.2% over the last 7 days, +16.9% over the last 30). The model projects Detroit to play roughly .517 ball (30-28) the rest of the way, consistent with the positive run differential above. Mathematically, yes: with 58 games left and only 5.0 games separating them from the division lead (3.5 from the final Wild Card slot), and 20 of those 58 games played directly against the three teams currently ahead of them in the Central (7 vs./at Cleveland, 7 vs./at Chicago, 6 vs./at Minnesota), Detroit controls a meaningful chunk of its own path.</p>
+      <p>Losing Skubal would still hurt: he's the rotation's clear best arm (2.70 ERA, 159 ERA+, 11.0 SO/9, 2.9 WAR in just 90 innings), a level none of Casey Mize (2.79 ERA, 2.6 WAR), Keider Montero (3.14 ERA, 3.0 WAR) or Framber Valdez (4.57 ERA) is quite matching, though Mize and Montero give real, not token, replacement-caliber depth behind him. Detroit's own reported asking price &mdash; a controllable, MLB-ready starter (e.g., the Emmet Sheehan-headlined mock) plus a top-100 prospect &mdash; is specifically designed to soften that blow if a deal happens, but it wouldn't fully replace Skubal's peak performance in a stretch run or potential playoff rotation. The most defensible read: Detroit can still credibly chase a Wild Card or the division without him, given the underlying run differential and schedule, but the margin for error shrinks and the postseason-odds number above would likely soften into the high-teens rather than mid-20s if he's dealt &mdash; which lines up with why rival executives believe Detroit will simply hold onto him.</p>
+
+      <h3>Remaining Schedule Difficulty</h3>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num">58</div><div class="lbl">Games remaining (29 home / 29 road)</div></div>
+        <div class="stat-card"><div class="num">.491</div><div class="lbl">Average remaining-opponent win% (SOS &asymp; neutral, B-Ref rSOS -0.1)</div></div>
+        <div class="stat-card"><div class="num">20</div><div class="lbl">Games directly vs. CLE/CHW/MIN (the 3 teams ahead of them)</div></div>
+      </div>
+      <p>Overall the remaining slate grades out almost exactly average &mdash; a weighted opponent win percentage of .491 across all 58 games &mdash; but that average masks real lumpiness. A tough Aug. 24-30 homestand pairs the Rays (.583, best in the AL East) and the Dodgers (.635, best record in MLB) back-to-back, and Detroit closes with a brutal 4-game road set at Chicago (Sep. 17-20). Balancing that: a soft opening stretch (Kansas City twice, at Oakland/Athletics, at San Francisco) and a home series with NL-worst Colorado (Sep. 11-13). The head-to-head-heavy back half of the schedule (20 of 58 games against Cleveland, Chicago, and Minnesota) means Detroit's fate is largely in its own hands rather than dependent on other results.</p>
+      <table class="sched">
+        <tr><th>Opponent</th><th class="num">Games</th><th>Record (as of 7/24)</th><th>Dates</th></tr>
+        <tr><td>Cleveland Guardians</td><td class="num">7</td><td>54-51 (.514)</td><td>Aug 11-13 (home), Sep 4-6 (road, incl. DH)</td></tr>
+        <tr><td>Chicago White Sox</td><td class="num">7</td><td>54-48 (.529)</td><td>Aug 14-16 (home), Sep 17-20 (road)</td></tr>
+        <tr><td>Minnesota Twins</td><td class="num">6</td><td>51-54 (.486)</td><td>Aug 31-Sep 2 (road), Sep 7-9 (home)</td></tr>
+        <tr><td>Pittsburgh Pirates</td><td class="num">6</td><td>53-51 (.510)</td><td>Aug 17-19 (road), Sep 25-27 (home)</td></tr>
+        <tr><td>Kansas City Royals</td><td class="num">5</td><td>43-62 (.410)</td><td>Jul 25-26 (home), Aug 21-23 (road)</td></tr>
+        <tr><td>Baltimore Orioles</td><td class="num">3</td><td>50-54 (.481)</td><td>Jul 27-29 (home)</td></tr>
+        <tr><td>Athletics</td><td class="num">3</td><td>44-59 (.427)</td><td>Jul 31-Aug 2 (road)</td></tr>
+        <tr><td>Seattle Mariners</td><td class="num">3</td><td>51-53 (.490)</td><td>Aug 4-6 (road)</td></tr>
+        <tr><td>San Francisco Giants</td><td class="num">3</td><td>43-60 (.417)</td><td>Aug 7-9 (road)</td></tr>
+        <tr><td>Tampa Bay Rays</td><td class="num">3</td><td>60-43 (.583)</td><td>Aug 24-26 (home)</td></tr>
+        <tr><td>Los Angeles Dodgers</td><td class="num">3</td><td>66-38 (.635)</td><td>Aug 28-30 (home)</td></tr>
+        <tr><td>Colorado Rockies</td><td class="num">3</td><td>42-63 (.400)</td><td>Sep 11-13 (home)</td></tr>
+        <tr><td>Toronto Blue Jays</td><td class="num">3</td><td>47-57 (.452)</td><td>Sep 14-16 (road)</td></tr>
+        <tr><td>Washington Nationals</td><td class="num">3</td><td>52-52 (.500)</td><td>Sep 21-23 (home)</td></tr>
+      </table>
+    </div>
+  </div>
+
   <div class="source-note">
-    Standings figures via multiple outlets, which have not been fully consistent for this simulated season (48-54 to 49-54 range) &mdash; treated as approximate per standing methodology. Needs and target
-    reporting drawn from: MLB.com, "Biggest need for each team at 2026 MLB Trade Deadline"; Just Baseball's 2026 deadline guide; Yahoo Sports' Tigers trade-candidate roundups; Bless You Boys, "Three paths for
-    the Detroit Tigers at the trade deadline"; MLB Trade Rumors' Orioles/Mountcastle and Tigers team pages; Amazin' Avenue's Mets trade-deadline primer (Minter/Raley); ESPN's Olney/Passan early deadline
-    intel and Skubal-Dodgers reporting; FanSided and Dodger Blue's Skubal package reporting citing The Athletic's Ken Rosenthal on Detroit's asking price. Where no source had a specific package, that's stated
-    plainly rather than invented, and conflicting team affiliations (Ward, Robert Jr.) are flagged rather than resolved by guesswork. Snapshot as of the morning of 7/25/2026; trade speculation moves fast
-    through Aug. 3.
+    Standings, game log, run differential, one-run record, Pythagorean record, and playoff-odds figures pulled live from Baseball-Reference (team page, MLB standings page, and playoff-odds page, all
+    reflecting games through 7/24/2026) via a rendered browser fetch to avoid stale cached snapshots. Needs and target reporting drawn from: MLB.com, "Biggest need for each team at 2026 MLB Trade Deadline";
+    Just Baseball's 2026 deadline guide; Yahoo Sports' Tigers trade-candidate roundups; Bless You Boys, "Three paths for the Detroit Tigers at the trade deadline"; MLB Trade Rumors' Orioles/Mountcastle and
+    Tigers team pages; Amazin' Avenue's Mets trade-deadline primer (Minter/Raley); ESPN's Olney/Passan early deadline intel and Skubal-Dodgers reporting; FanSided and Dodger Blue's Skubal package reporting
+    citing The Athletic's Ken Rosenthal on Detroit's asking price. Where no source had a specific package, that's stated plainly rather than invented, and conflicting team affiliations (Ward, Robert Jr.) are
+    flagged rather than resolved by guesswork. Snapshot as of the morning of 7/25/2026; trade speculation moves fast through Aug. 3.
   </div>
 
   <div class="page-foot">
