@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colorado Springs Weekly Calendar — Outings Guide</title>
+<style>
+  :root {
+    --navy: #1d3557;
+    --blue: #457b9d;
+    --lightblue: #a8dadc;
+    --cream: #f1faee;
+    --coral: #e76f51;
+    --text: #22303f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--cream);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--text);
+    -webkit-text-size-adjust: 100%;
+  }
+  header {
+    background: var(--navy);
+    color: white;
+    padding: 24px 18px 20px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0 0 6px;
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
+  header p {
+    margin: 4px 0;
+    font-size: 0.95rem;
+    color: var(--lightblue);
+  }
+  .wrap {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 16px 14px 60px;
+  }
+  .callout {
+    background: #fff3e0;
+    border: 1px solid #f4a261;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin: 16px 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .callout strong { color: var(--coral); }
+  .day-card {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(29,53,87,0.10);
+    margin: 18px 0;
+    overflow: hidden;
+  }
+  .day-header {
+    background: var(--blue);
+    color: white;
+    padding: 12px 16px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .day-header .sub {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--lightblue);
+    margin-top: 2px;
+  }
+  .event {
+    padding: 14px 16px;
+    border-bottom: 1px solid #eef2f4;
+  }
+  .event:last-child { border-bottom: none; }
+  .event-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin-bottom: 3px;
+  }
+  .event-title .tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: var(--lightblue);
+    color: var(--navy);
+    border-radius: 6px;
+    padding: 2px 7px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .event-title .tag.music {
+    background: #6d597a;
+    color: white;
+  }
+  .event-title .tag.market {
+    background: #2a9d8f;
+    color: white;
+  }
+  .event-title .tag.paid {
+    background: #e9c46a;
+    color: var(--navy);
+  }
+  .event-title .tag.ended {
+    background: #adb5bd;
+    color: white;
+  }
+  .event-title .tag.highlight {
+    background: var(--coral);
+    color: white;
+  }
+  .meta {
+    font-size: 0.92rem;
+    color: #445;
+    margin: 2px 0;
+  }
+  .meta b { color: var(--text); }
+  .note {
+    font-size: 0.85rem;
+    color: #6a7683;
+    margin-top: 4px;
+    font-style: italic;
+  }
+  h2.section {
+    font-size: 1.15rem;
+    color: var(--navy);
+    border-bottom: 2px solid var(--blue);
+    padding-bottom: 6px;
+    margin: 30px 0 4px;
+  }
+  h2.section.small {
+    font-size: 1rem;
+    border-bottom: 1px solid #ccd6dd;
+    color: #556;
+  }
+  table.support {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(29,53,87,0.08);
+    font-size: 0.85rem;
+  }
+  table.support th {
+    background: #6b7d8f;
+    color: white;
+    padding: 7px 8px;
+    text-align: left;
+    font-size: 0.76rem;
+  }
+  table.support td {
+    padding: 8px 8px;
+    border-bottom: 1px solid #eef2f4;
+    vertical-align: top;
+  }
+  table.support tr:last-child td { border-bottom: none; }
+  footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #7a8894;
+    padding: 20px 16px 40px;
+    line-height: 1.6;
+  }
+  a { color: var(--blue); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Colorado Springs Weekly Calendar</h1>
+  <p>Outdoor markets, live music &amp; things to do — Tue, Thu, Fri &amp; Sat</p>
+  <p style="font-size:0.82rem;">Updated July 22, 2026</p>
+</header>
+
+<div class="wrap">
+
+  <div class="callout">
+    <strong>Note:</strong> Concert series and markets run seasonally (mostly through Sept/Oct) and can shift with weather — worth a quick check of the linked source before heading out. Dates below reflect the regular weekly/biweekly/monthly pattern for each series.
+  </div>
+
+  <h2 class="section">This Week's Highlights <span style="font-weight:400; font-size:0.7rem; color:#7a8894;">(pulled from Gazette &amp; ColoradoSprings.com — one-off, week of July 22)</span></h2>
+  <div class="day-card">
+    <div class="event">
+      <div class="event-title">Trollheim Scandinavian Fair <span class="tag highlight">Fri 7/24</span></div>
+      <div class="meta"><b>10:00am</b> — Sons of Norway hall, Colorado Springs.</div>
+      <div class="note">Nordic culture fair — food, crafts, folk music.</div>
+    </div>
+    <div class="event">
+      <div class="event-title">Annual Iris Rhizome Sale <span class="tag highlight">Fri 7/24</span></div>
+      <div class="meta"><b>9:00am</b> — Spencer's Garden Center, Colorado Springs.</div>
+    </div>
+    <div class="event">
+      <div class="event-title">You-Pick Fridays at Venetucci Farm <span class="tag highlight">Fri 7/24</span></div>
+      <div class="meta"><b>8:00am</b> — Venetucci Farm, Colorado Springs.</div>
+    </div>
+    <div class="event">
+      <div class="event-title">Dog Days at the Zoo <span class="tag highlight">Fri 7/24 &amp; 7/31</span></div>
+      <div class="meta"><b>9:00am</b> — Cheyenne Mountain Zoo (paid zoo admission).</div>
+    </div>
+    <div class="event">
+      <div class="event-title">Palmer Lake Arts Fest <span class="tag highlight">Sat 7/25</span></div>
+      <div class="meta"><b>9:00am</b> — Centennial Park, Palmer Lake (about 18 miles north).</div>
+    </div>
+    <div class="event">
+      <div class="event-title">Zinnia Days <span class="tag highlight">Sat 7/25</span></div>
+      <div class="meta"><b>8:00am</b> — Venetucci Farm, Colorado Springs.</div>
+    </div>
+    <div class="event">
+      <div class="event-title">Bronc Day Festival <span class="tag highlight">Sat 7/25</span></div>
+      <div class="meta"><b>9:00am</b> — Gazebo Lake Park, Green Mountain Falls.</div>
+    </div>
+    <div class="note" style="padding:0 16px 14px;">Full listings for any day: <a href="https://gazette.com/events-calendar/">gazette.com/events-calendar</a> and <a href="https://www.coloradosprings.com/calendar">coloradosprings.com/calendar</a>.</div>
+  </div>
+
+  <h2 class="section">Recurring — Every Week</h2>
+
+  <!-- TUESDAY -->
+  <div class="day-card">
+    <div class="day-header">TUESDAY</div>
+
+    <div class="event">
+      <div class="event-title">Old Colorado City Summer Concert Series <span class="tag music">🎵 free</span></div>
+      <div class="meta"><b>Tuesdays, 5:30pm</b> (June 2 – Sept 29, 2026)</div>
+      <div class="meta">Bancroft Park, 2408 W. Colorado Ave. — free popcorn on site.</div>
+      <div class="note">Presented by Dizzy Charlie's &amp; Pikes Peak Blues Community.</div>
+    </div>
+
+    <div class="event">
+      <div class="event-title">Food Truck Tuesdays <span class="tag market">🚚 free entry</span></div>
+      <div class="meta"><b>Tuesdays, 11:00am</b></div>
+      <div class="meta">Colorado Springs Pioneers Museum, 215 S. Tejon St. — free museum, food trucks on the plaza.</div>
+    </div>
+
+    <div class="event">
+      <div class="event-title">Music &amp; Blooms at Gather Mountain Blooms <span class="tag paid">$10</span></div>
+      <div class="meta"><b>Tuesdays, 5:30–8:00pm</b> (June–July)</div>
+      <div class="meta">Gather Mountain Blooms, 5210 S. US Hwy 85. $10 admission includes you-pick flowers.</div>
+    </div>
+  </div>
+
+  <!-- THURSDAY -->
+  <div class="day-card">
+    <div class="day-header">THURSDAY</div>
+
+    <div class="event">
+      <div class="event-title">Downtown Summer Music Series <span class="tag music">🎵 free</span></div>
+      <div class="meta"><b>Thursdays, 6:00–8:00pm</b> (June 4 – Sept 24, 2026)</div>
+      <div class="meta">Acacia Park bandshell, downtown Colorado Springs.</div>
+      <div class="note">Free popcorn + ice cream truck on site.</div>
+    </div>
+
+    <div class="event">
+      <div class="event-title">Banning Lewis Ranch Market &amp; Concerts <span class="tag market">🛍 market</span></div>
+      <div class="meta"><b>Thursdays, 4:00–7:00pm</b> (May 28 – Aug 27) — market</div>
+      <div class="meta">Vista Park, 8833 Vista Del Pico Blvd. Biweekly live concert 6–8pm layered on top on select Thursdays (food trucks, no pets).</div>
+    </div>
+
+    <div class="event">
+      <div class="event-title">Creekwalk Live Music in the Amphitheater <span class="tag music">🎵 free</span></div>
+      <div class="meta"><b>Biweekly Thursdays, 6:00–8:00pm</b> (through Aug 20, 2026)</div>
+      <div class="meta">Creekwalk, 100 E. Cheyenne Road.</div>
+    </div>
+
+    <div class="event">
+      <div class="event-title">Garden of the Gods — free daily programs <span class="tag market">🌵 free</span></div>
+      <div class="meta"><b>Mornings, most days incl. Thu &amp; Fri</b> — Yoga in the Garden (8:30am), guided history hikes (9:30am), Little Ranger World, animal tracking talks.</div>
+      <div class="meta">Garden of the Gods Visitor &amp; Nature Center, 1805 N. 30th St.</div>
+      <div class="note">Schedule rotates — check <a href="https://www.gardenofgods.com/things-to-do/events-calendar">gardenofgods.com</a> for the week's specific lineup.</div>
+    </div>
+  </div>
+
+  <!-- FRIDAY -->
+  <div class="day-card">
+    <div class="day-header">FRIDAY</div>
+
+    <div class="event">
+      <div class="event-title">Bristol Brewing Music in the Yard <span class="tag music">🎵 free</span></div>
+      <div class="meta"><b>Fridays, 6:00–8:00pm</b> (through July 31, 2026)</div>
+      <div class="meta">Bristol Brewing Co. in the Schoolyard at Ivywild, 1604 S. Cascade Ave. Dogs welcome.</div>
+    </div>
+
+    <div class="event">
+      <div class="event-title">University Village Free Summer Concert Series <span class="tag music">🎵 free</span></div>
+      <div class="meta"><b>Fridays, 7:00–8:30pm</b> (through Aug 14, 2026)</div>
+      <div class="meta">University Village Shopping Center, north plaza, 5246 N. Nevada Ave.</div>
+    </div>
+
+    <div class="event">
+      <div class="event-title">Music Under the Mountains <span class="tag music">🎵 free</span></div>
+      <div class="meta"><b>Fridays, 5:00–7:00pm</b> (through July 31, 2026)</div>
+      <div class="meta">The Promenade Shops at Briargate, Pikes Peak Patio, 1685 Briargate Pkwy.</div>
+    </div>
+
+    <div class="event">
+      <div class="event-title">First &amp; Main Summer Concert Series <span class="tag ended">season ended</span></div>
+      <div class="meta">Ran Fridays 5–7pm, June 5 – July 17, 2026 at First &amp; Main Town Center. Wrapped for the season — expect it back next June.</div>
+    </div>
+
+    <div class="event">
+      <div class="event-title">You-Pick Fridays at Venetucci Farm <span class="tag market">🌻 low-cost</span></div>
+      <div class="meta"><b>Fridays, 8:00am</b> — Venetucci Farm, Colorado Springs (near Fort Carson).</div>
+      <div class="note">Pumpkins, flowers and produce depending on the season; small per-item cost.</div>
+    </div>
+  </div>
+
+  <!-- SATURDAY -->
+  <div class="day-card">
+    <div class="day-header">SATURDAY</div>
+
+    <div class="event">
+      <div class="event-title">Old Colorado City Farmers Market <span class="tag market">🛍 market</span></div>
+      <div class="meta"><b>Saturdays, 7:00am–1:00pm</b> (June 6 – Oct 17, 2026)</div>
+      <div class="meta">Bancroft Park, 2408 W. Colorado Ave.</div>
+    </div>
+
+    <div class="event">
+      <div class="event-title">Colorado Farm &amp; Art Market <span class="tag market">🛍 market</span></div>
+      <div class="meta"><b>Saturdays, 10:00am–2:00pm</b> (June 20 – Oct 17, 2026)</div>
+      <div class="meta">Margarita at Pine Creek, 7350 Pine Creek Rd.</div>
+    </div>
+
+    <div class="event">
+      <div class="event-title">Backyard Market in Black Forest <span class="tag market">🛍 market — outdoor</span></div>
+      <div class="meta"><b>Saturdays, 9:00am–1:00pm</b> (March 14 – Dec 12, 2026)</div>
+      <div class="meta">6845 Shoup Rd., Black Forest. 70+ vendors — produce, art, specialty goods.</div>
+    </div>
+
+    <div class="event">
+      <div class="event-title">Greenways Park Free Summer Concert <span class="tag music">🎵 free — monthly</span></div>
+      <div class="meta"><b>One Saturday a month, 6:00–8:00pm</b> — next up: <b>Aug 15</b> &amp; <b>Sept 19</b>, 2026</div>
+      <div class="meta">Greenways Park at Sand Creek, 3641 Greenways Main Blvd. Live band + food trucks.</div>
+    </div>
+
+    <div class="event">
+      <div class="event-title">Gold Hill Mesa Music on the Mesa <span class="tag music">🎵 free — monthly</span></div>
+      <div class="meta"><b>Select Saturdays, 4:00–7:00pm</b> — next up: <b>Aug 15, 2026</b></div>
+      <div class="meta">Gold Hill Mesa Community Center Lawn, 142 S. Raven Mine Dr.</div>
+    </div>
+  </div>
+
+  <!-- SEASONAL / SPECIAL -->
+  <h2 class="section">Coming Up — Indoor Art Market</h2>
+  <div class="day-card">
+    <div class="event">
+      <div class="event-title">Black Forest Arts &amp; Crafts Guild Fall Show &amp; Sale <span class="tag market">🖼 indoor</span></div>
+      <div class="meta">Indoor juried arts &amp; crafts show — historically runs the first week of November (2025's was Nov 5–9). 2026 dates not posted yet.</div>
+      <div class="meta">Black Forest Community Center, 12530 Black Forest Rd.</div>
+      <div class="note">Check <a href="https://www.bfacg.org">bfacg.org</a> closer to fall for confirmed dates. This is the "Black Forest" indoor market — their Spring Show already ran (late April).</div>
+    </div>
+  </div>
+
+  <!-- CAREGIVER SUPPORT (secondary, modest) -->
+  <h2 class="section small">Also on the calendar: caregiver support groups</h2>
+  <table class="support">
+    <tr><th>When</th><th>Time</th><th>Where</th></tr>
+    <tr><td>2nd Tuesday</td><td>1:15–2:45pm</td><td>Luther Hall, 1524 N. Tejon St.</td></tr>
+    <tr><td>4th Tuesday</td><td>6:30–8:00pm</td><td>Calvary United Methodist Church, 4210 Austin Bluffs Pkwy.</td></tr>
+    <tr><td>3rd Thursday</td><td>1:30–3:00pm</td><td>First Presbyterian Church, 219 E. Bijou St.</td></tr>
+    <tr><td>2nd Friday (virtual)</td><td>10:00–11:30am</td><td>Online — Colorado Springs group</td></tr>
+    <tr><td>1st Saturday</td><td>10:00–11:30am</td><td>Broadmoor Community Church, 315 Lake Ave.</td></tr>
+    <tr><td>2nd Saturday</td><td>9:45–11:15am</td><td>Monument — First National Bank of CO, 581 CO-105</td></tr>
+  </table>
+  <p class="note" style="margin-top:8px;">Free, Alzheimer's Association groups. Register at <a href="https://alz.org/crf">alz.org/crf</a> or 800-272-3900.</p>
+
+  <h2 class="section small">Sources checked</h2>
+  <p class="note" style="font-style:normal;">
+    Springsmag.com free summer concerts guide · PeakRadar.com · VisitCOS.com (events &amp; farmers markets guide) · <a href="https://gazette.com/events-calendar/">Gazette.com events calendar</a> · <a href="https://www.coloradosprings.com/calendar">ColoradoSprings.com calendar</a> · Dizzy Charlie's concert series pages · alz.org/co (caregiver support groups) · Pat's Gmail (checked for local event invites — nothing new beyond routine promo emails). The Facebook group link provided couldn't be checked — it requires a login to view.
+  </p>
+
+</div>
+
+<footer>
+  Broad Colorado Springs outings calendar — markets, live music, and community events. Alzheimer's caregiver support groups are listed as a small reference section, not the focus. Built as a scheduled weekly digest.
+</footer>
+
+</body>
+</html>
