@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prost, München! — Oktoberfest 2026 Trip Guide</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #f5efe1; color: #1b2536; font-family: 'Manrope', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #b23a2e; text-decoration: none; }
+  a:hover { color: #8f2c22; }
+  @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  @keyframes shimmer { to { background-position: 200% 0; } }
+</style>
+</head><body>
+
+
+
+<div style="max-width:1180px;margin:0 auto;">
+
+  <!-- Bavarian lozenge band -->
+  <div style="height:14px;background-color:#2158a5;background-image:linear-gradient(45deg,#fff 25%,transparent 25%),linear-gradient(-45deg,#fff 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#fff 75%),linear-gradient(-45deg,transparent 75%,#fff 75%);background-size:28px 28px;background-position:0 0,0 14px,14px -14px,-14px 0;"></div>
+
+  <!-- Masthead -->
+  <header style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 32px;flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:38px;height:38px;border-radius:50%;background:#b23a2e;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:22px;">P</div>
+      <div>
+        <div style="font-family:'DM Serif Display',serif;font-size:20px;line-height:1;">Prost, München!</div>
+        <div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#8a7f68;margin-top:4px;">Der Wiesn-Kurier · Ausgabe 2026</div>
+      </div>
+    </div>
+    <div style="font-family:'Manrope';font-size:13px;font-weight:700;letter-spacing:0.04em;color:#2158a5;background:#eef3fb;border:1px solid #d5e2f4;padding:8px 14px;border-radius:999px;">17 – 24 September 2026</div>
+  </header>
+
+  <!-- HERO -->
+  <section style="position:relative;margin:0 20px 8px;border-radius:24px;overflow:hidden;border:1px solid rgba(27,37,54,0.1);box-shadow:0 30px 60px -30px rgba(27,37,54,0.35);">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Wandering%20Around%20Oktoberfest%202007.jpg?width=1400" alt="Crowds enjoying the Oktoberfest grounds in Munich" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" loading="lazy">
+    <div style="position:absolute;inset:0;background:linear-gradient(150deg,rgba(33,88,165,0.22),rgba(27,37,54,0.04));"></div>
+    <div style="position:relative;padding:72px 40px 40px;background:linear-gradient(to bottom,transparent 30%,rgba(27,37,54,0.72) 100%);min-height:440px;display:flex;flex-direction:column;justify-content:flex-end;">
+      <div style="color:#f5d98b;font-size:13px;letter-spacing:0.28em;text-transform:uppercase;font-weight:700;">The 191st Oktoberfest</div>
+      <h1 style="font-family:'DM Serif Display',serif;color:#fffdf7;font-size:clamp(44px,7vw,88px);line-height:0.98;margin:14px 0 10px;text-wrap:balance;">Servus — we're going to the Wiesn.</h1>
+      <p style="color:#f2ede0;font-size:clamp(16px,2vw,20px);max-width:640px;line-height:1.5;margin:0 0 28px;">Maßkrüge, brass bands, roast chicken and the greatest folk festival on earth — Gary &amp; Anna from opening weekend, Pat from Monday. Here's everything our crew needs, in one place.</p>
+
+      <!-- Countdown -->
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:96px;background:rgba(255,253,247,0.95);border-radius:14px;padding:16px;text-align:center;">
+          <div id="cd-days" style="font-family:'DM Serif Display',serif;font-size:44px;line-height:1;color:#b23a2e;">55</div>
+          <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8a7f68;margin-top:6px;">Days</div>
+        </div>
+        <div style="flex:1;min-width:96px;background:rgba(255,253,247,0.95);border-radius:14px;padding:16px;text-align:center;">
+          <div id="cd-hours" style="font-family:'DM Serif Display',serif;font-size:44px;line-height:1;color:#2158a5;">00</div>
+          <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8a7f68;margin-top:6px;">Hours</div>
+        </div>
+        <div style="flex:1;min-width:96px;background:rgba(255,253,247,0.95);border-radius:14px;padding:16px;text-align:center;">
+          <div id="cd-mins" style="font-family:'DM Serif Display',serif;font-size:44px;line-height:1;color:#2158a5;">00</div>
+          <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8a7f68;margin-top:6px;">Minutes</div>
+        </div>
+        <div style="flex:1;min-width:96px;background:rgba(255,253,247,0.95);border-radius:14px;padding:16px;text-align:center;">
+          <div id="cd-secs" style="font-family:'DM Serif Display',serif;font-size:44px;line-height:1;color:#d99a2b;">00</div>
+          <div style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:#8a7f68;margin-top:6px;">Seconds</div>
+        </div>
+        <div style="flex:2;min-width:170px;background:rgba(27,37,54,0.35);border:1px solid rgba(255,253,247,0.35);border-radius:14px;padding:16px;color:#fffdf7;">
+          <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#f5d98b;">Your leg</div>
+          <div style="font-size:15px;font-weight:700;margin-top:6px;line-height:1.35;">Pat arrives Mon 21 · Gary &amp; Anna already there since Thu 17<br>All depart Thu 24</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY NAV -->
+  <nav style="position:sticky;top:0;z-index:20;background:rgba(245,239,225,0.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(27,37,54,0.12);margin:0 20px;border-radius:0 0 14px 14px;">
+    <div style="display:flex;gap:4px;overflow-x:auto;padding:10px 12px;">
+      <a data-nav="overview" href="#overview" style="white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:0.03em;color:#1b2536;padding:8px 12px;border-bottom:2px solid transparent;">Overview</a>
+      <a data-nav="itinerary" href="#itinerary" style="white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:0.03em;color:#1b2536;padding:8px 12px;border-bottom:2px solid transparent;">Itinerary</a>
+      <a data-nav="tents" href="#tents" style="white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:0.03em;color:#1b2536;padding:8px 12px;border-bottom:2px solid transparent;">Tents</a>
+      <a data-nav="travel" href="#travel" style="white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:0.03em;color:#1b2536;padding:8px 12px;border-bottom:2px solid transparent;">Travel</a>
+      <a data-nav="lodging" href="#lodging" style="white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:0.03em;color:#1b2536;padding:8px 12px;border-bottom:2px solid transparent;">Lodging</a>
+      <a data-nav="munich" href="#munich" style="white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:0.03em;color:#1b2536;padding:8px 12px;border-bottom:2px solid transparent;">Munich</a>
+      <a data-nav="food" href="#food" style="white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:0.03em;color:#1b2536;padding:8px 12px;border-bottom:2px solid transparent;">Food &amp; Beer</a>
+      <a data-nav="tracht" href="#tracht" style="white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:0.03em;color:#1b2536;padding:8px 12px;border-bottom:2px solid transparent;">Tracht</a>
+      <a data-nav="phrases" href="#phrases" style="white-space:nowrap;font-size:13px;font-weight:700;letter-spacing:0.03em;color:#1b2536;padding:8px 12px;border-bottom:2px solid transparent;">Phrases</a>
+    </div>
+  </nav>
+
+  <main style="padding:0 24px 24px;">
+
+    <!-- OVERVIEW -->
+    <section id="overview" data-section="overview" style="scroll-margin-top:70px;padding:52px 0 20px;">
+      <div style="display:grid;grid-template-columns:1.15fr 0.85fr;gap:36px;align-items:start;">
+        <div>
+          <div style="color:#d99a2b;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:800;">Grüß Gott</div>
+          <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,4.5vw,52px);line-height:1.02;margin:10px 0 18px;">The big picture</h2>
+          <p style="font-size:17px;line-height:1.65;color:#413a2c;margin:0 0 16px;">Oktoberfest 2026 runs <strong>Saturday 19 September to Sunday 4 October</strong> on the Theresienwiese, the 42-hectare meadow locals simply call the <em>Wiesn</em>. It opens at noon on the first Saturday when the Mayor of Munich taps the first keg and shouts <em>"O'zapft is!"</em> — it's tapped! — and pours the ceremonial first Maß.</p>
+          <p style="font-size:17px;line-height:1.65;color:#413a2c;margin:0 0 16px;">Some six million visitors come each year to 14 large beer tents and around 20 smaller ones, drinking roughly seven million litres of beer. Entry to the grounds and the tents is <strong>free</strong> — you pay only for what you eat, drink and ride.</p>
+          <p style="font-size:17px;line-height:1.65;color:#413a2c;margin:0;">Our window lands squarely in the first, liveliest week. Read on for the plan, the tents, and how to blend in like a proper Münchner.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <figure style="margin:0;border-radius:16px;overflow:hidden;position:relative;aspect-ratio:4/3;"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Oktoberfest2006.jpg?width=1400" alt="Oktoberfest tent and festival scene" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"><figcaption style="position:absolute;left:8px;bottom:8px;background:rgba(27,37,54,0.72);color:#fff;font-size:11px;padding:4px 8px;border-radius:6px;">The Wiesn in full swing</figcaption></figure>
+          <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:20px;">
+            <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#8a7f68;">Quick facts</div>
+            <div style="margin-top:14px;display:grid;gap:12px;font-size:15px;">
+              <div style="display:flex;justify-content:space-between;gap:12px;"><span style="color:#6b6250;">Location</span><strong>Theresienwiese</strong></div>
+              <div style="display:flex;justify-content:space-between;gap:12px;"><span style="color:#6b6250;">Nearest U-Bahn</span><strong>Theresienwiese (U4/U5)</strong></div>
+              <div style="display:flex;justify-content:space-between;gap:12px;"><span style="color:#6b6250;">A Maß of beer</span><strong>≈ €15.80</strong></div>
+              <div style="display:flex;justify-content:space-between;gap:12px;"><span style="color:#6b6250;">ABV (Festbier)</span><strong>~5.8–6.4%</strong></div>
+              <div style="display:flex;justify-content:space-between;gap:12px;"><span style="color:#6b6250;">Tent hours</span><strong>10:00–23:30</strong></div>
+              <div style="display:flex;justify-content:space-between;gap:12px;"><span style="color:#6b6250;">Currency</span><strong>Euro (cash is king)</strong></div>
+            </div>
+          </div>
+          <div style="background:#1b2536;color:#fffdf7;border-radius:16px;padding:20px;">
+            <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#f5d98b;">Golden rule</div>
+            <p style="margin:10px 0 0;font-size:15px;line-height:1.5;">Tables can only be booked in <strong>full boxes</strong>. Without a reservation, arrive before 11:00 on weekends to grab seats — and you can only be served beer while seated.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <div style="height:22px;margin:6px 0 30px;border-radius:6px;background-color:#2158a5;background-image:linear-gradient(45deg,#fff 25%,transparent 25%),linear-gradient(-45deg,#fff 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#fff 75%),linear-gradient(-45deg,transparent 75%,#fff 75%);background-size:22px 22px;background-position:0 0,0 11px,11px -11px,-11px 0;"></div>
+    <!-- ITINERARY -->
+    <section id="itinerary" data-section="itinerary" style="scroll-margin-top:70px;padding:52px 0 20px;">
+      <div style="color:#d99a2b;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:800;">Day by day</div>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,4.5vw,52px);line-height:1.02;margin:10px 0 10px;">Four days on the meadow</h2>
+      <p style="font-size:15px;color:#6b6250;margin:0 0 20px;">This day-by-day plan is Pat's — Gary &amp; Anna are traveling separately and arrive earlier. Here's how the whole trip lines up:</p>
+
+      <!-- Who's where, when -->
+      <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:22px 24px;margin-bottom:26px;">
+        <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#8a7f68;margin-bottom:16px;">Who's where, when</div>
+        <div style="display:grid;grid-template-columns:90px 1fr;gap:0;">
+
+          <div style="font-size:12px;font-weight:800;color:#8a7f68;padding:8px 0;">THU 9/17</div>
+          <div style="border-left:3px solid #b23a2e;padding:6px 0 14px 16px;"><span style="background:#fbeae7;color:#b23a2e;font-weight:700;font-size:12px;padding:3px 10px;border-radius:999px;">Gary &amp; Anna land in Munich</span></div>
+
+          <div style="font-size:12px;font-weight:800;color:#8a7f68;padding:8px 0;">FRI 9/18</div>
+          <div style="border-left:3px solid #b23a2e;padding:6px 0 14px 16px;"><span style="font-size:13.5px;color:#5b5240;">Gary &amp; Anna settle in, explore the city ahead of opening day</span></div>
+
+          <div style="font-size:12px;font-weight:800;color:#8a7f68;padding:8px 0;">SAT 9/19</div>
+          <div style="border-left:3px solid #b23a2e;padding:6px 0 14px 16px;"><span style="background:#fbeae7;color:#b23a2e;font-weight:700;font-size:12px;padding:3px 10px;border-radius:999px;">Gary &amp; Anna · Opening Day tent visit</span></div>
+
+          <div style="font-size:12px;font-weight:800;color:#8a7f68;padding:8px 0;">SUN 9/20</div>
+          <div style="border-left:3px solid #b23a2e;padding:6px 0 14px 16px;"><span style="background:#fbeae7;color:#b23a2e;font-weight:700;font-size:12px;padding:3px 10px;border-radius:999px;">Gary &amp; Anna · Parade Day tent visit</span><br><span style="font-size:12px;color:#8a7f68;">Pat departs Colorado Springs, 5:13 PM</span></div>
+
+          <div style="font-size:12px;font-weight:800;color:#2158a5;padding:8px 0;">MON 9/21</div>
+          <div style="border-left:3px solid #2158a5;padding:6px 0 14px 16px;"><span style="background:#eef3fb;color:#2158a5;font-weight:700;font-size:12px;padding:3px 10px;border-radius:999px;">Pat lands · crew reunited</span><br><span style="font-size:12px;color:#8a7f68;">Hofbr&auml;uhaus dinner together, ~5 PM</span></div>
+
+          <div style="font-size:12px;font-weight:800;color:#2158a5;padding:8px 0;">TUE&ndash;WED</div>
+          <div style="border-left:3px solid #2158a5;padding:6px 0 14px 16px;"><span style="background:#eef3fb;color:#2158a5;font-weight:700;font-size:12px;padding:3px 10px;border-radius:999px;">All three · tents + Garmisch day trip</span></div>
+
+          <div style="font-size:12px;font-weight:800;color:#1b2536;padding:8px 0;">THU 9/24</div>
+          <div style="padding:6px 0 0 16px;"><span style="font-size:13.5px;color:#5b5240;">Everyone departs Munich</span></div>
+
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px;">
+        <figure style="margin:0;border-radius:14px;overflow:hidden;position:relative;aspect-ratio:4/3;"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hofbr%C3%A4uhaus%20M%C3%BCnchen.jpg?width=1400" alt="Hofbräuhaus beer hall" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"><figcaption style="position:absolute;left:8px;bottom:8px;background:rgba(27,37,54,0.72);color:#fff;font-size:11px;padding:4px 8px;border-radius:6px;">Mon · Hofbräuhaus</figcaption></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;position:relative;aspect-ratio:4/3;"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Oktoberfest%20bierzelt.JPG?width=1400" alt="Inside an Oktoberfest tent" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"><figcaption style="position:absolute;left:8px;bottom:8px;background:rgba(27,37,54,0.72);color:#fff;font-size:11px;padding:4px 8px;border-radius:6px;">Tue · into the tents</figcaption></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;position:relative;aspect-ratio:4/3;"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Zugspitze%20Garmisch.jpg?width=1400" alt="Zugspitze above Garmisch" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"><figcaption style="position:absolute;left:8px;bottom:8px;background:rgba(27,37,54,0.72);color:#fff;font-size:11px;padding:4px 8px;border-radius:6px;">Wed · Garmisch day trip</figcaption></figure>
+      </div>
+      <div style="display:grid;gap:16px;">
+
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:0;background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;overflow:hidden;">
+          <div style="background:#2158a5;color:#fff;padding:22px 18px;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-family:'DM Serif Display',serif;font-size:34px;line-height:1;">Mon</div>
+            <div style="font-size:14px;opacity:0.85;margin-top:4px;">Sept 21</div>
+            <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;margin-top:10px;opacity:0.75;">Arrival</div>
+          </div>
+          <div style="padding:20px 22px;">
+            <h3 style="margin:0 0 8px;font-size:19px;">Land at MUC, train in, Hofbräuhaus dinner</h3>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:#413a2c;">Touch down at <strong>2:10 PM</strong> on United from Denver. Take the <strong>S8 to Rosenheimer Platz</strong> — a 4-minute walk to Hotel JAMS, about 35–45 min door to door. Drop the bags, then a 15-minute tram to <strong>Marienplatz</strong> and dinner at the legendary <strong>Hofbräuhaus</strong> around 5 PM.</p>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:0;background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;overflow:hidden;">
+          <div style="background:#b23a2e;color:#fff;padding:22px 18px;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-family:'DM Serif Display',serif;font-size:34px;line-height:1;">Tue</div>
+            <div style="font-size:14px;opacity:0.85;margin-top:4px;">Sept 22</div>
+            <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;margin-top:10px;opacity:0.75;">Sights + tent</div>
+          </div>
+          <div style="padding:20px 22px;">
+            <h3 style="margin:0 0 8px;font-size:19px;">Munich sights, then into a tent</h3>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:#413a2c;">Catch the <strong>Glockenspiel</strong> at Marienplatz (11 AM or noon), graze through the <strong>Viktualienmarkt</strong>, and climb <strong>St. Peter's</strong> tower for the best view in the city. Come afternoon, head to the Wiesn — tables are usually free before 3 PM — and settle in for the evening.</p>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:0;background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;overflow:hidden;">
+          <div style="background:#d99a2b;color:#1b2536;padding:22px 18px;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-family:'DM Serif Display',serif;font-size:34px;line-height:1;">Wed</div>
+            <div style="font-size:14px;opacity:0.8;margin-top:4px;">Sept 23</div>
+            <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;margin-top:10px;opacity:0.7;">Day trip</div>
+          </div>
+          <div style="padding:20px 22px;">
+            <h3 style="margin:0 0 8px;font-size:19px;">Bavaria day trip to Garmisch</h3>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:#413a2c;">Grab a <strong>roundtrip train to Garmisch-Partenkirchen</strong> (~€23) for alpine air and mountain views beneath the <strong>Zugspitze</strong>, Germany's highest peak. Back in Munich for the evening — one more turn around the Oktoberfest.</p>
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:120px 1fr;gap:0;background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;overflow:hidden;">
+          <div style="background:#1b2536;color:#fff;padding:22px 18px;display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-family:'DM Serif Display',serif;font-size:34px;line-height:1;">Thu</div>
+            <div style="font-size:14px;opacity:0.85;margin-top:4px;">Sept 24</div>
+            <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;margin-top:10px;opacity:0.75;">Departure</div>
+          </div>
+          <div style="padding:20px 22px;">
+            <h3 style="margin:0 0 8px;font-size:19px;">English Garden, then wheels up</h3>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:#413a2c;">A last Munich morning: the <strong>English Garden</strong> and the Eisbach surfers, or the royal <strong>Residenz</strong>. Check out and <strong>leave JAMS by 1 PM</strong> — United departs MUC at <strong>4:10 PM</strong>, connecting through Denver home to Colorado Springs.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;background:linear-gradient(135deg,#eef3fb,#f5efe1);border:1px solid #9db6da;border-radius:16px;padding:20px 22px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+        <div style="width:44px;height:44px;border-radius:12px;background:#2158a5;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;">✓</div>
+        <div style="flex:1;min-width:220px;">
+          <div style="font-weight:800;font-size:15px;">Flights and hotel are booked and confirmed</div>
+          <div style="font-size:14px;color:#5b5240;margin-top:2px;">United J5WWP4 and Hotel JAMS (Expedia #73371018269267) are locked in for Pat's own leg. Still open: Gary's and Anna's own flight/hotel bookings for their earlier Thu 17 arrival, and reconciling room capacity at JAMS once everyone's plans are confirmed.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TENTS -->
+    <section id="tents" data-section="tents" style="scroll-margin-top:70px;padding:52px 0 20px;">
+      <div style="color:#d99a2b;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:800;">Where to drink</div>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,4.5vw,52px);line-height:1.02;margin:10px 0 10px;">The tent guide</h2>
+      <p style="font-size:17px;line-height:1.65;color:#413a2c;max-width:720px;margin:0 0 20px;">Fourteen big tents, each with its own crowd and beer. A few to aim for:</p>
+
+      <!-- Opening weekend callout for Gary & Anna -->
+      <div style="background:#b23a2e;color:#fffdf7;border-radius:16px;padding:22px 24px;margin-bottom:22px;">
+        <div style="font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#f5d98b;font-weight:800;">For Gary &amp; Anna — arriving Thu 9/17</div>
+        <h3 style="font-family:'DM Serif Display',serif;font-size:22px;margin:8px 0 10px;color:#fffdf7;">Opening weekend is a different animal</h3>
+        <p style="margin:0 0 14px;font-size:15px;line-height:1.6;color:#f5efe1;">Saturday 9/19 and Sunday 9/20 are the two hardest walk-in days of the entire 16-day festival — this is opening weekend, not a normal weekend.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div style="background:rgba(255,253,247,0.1);border:1px solid rgba(255,253,247,0.25);border-radius:12px;padding:14px 16px;">
+            <div style="font-weight:800;font-size:14px;margin-bottom:4px;">Sat 9/19 · Opening Day</div>
+            <div style="font-size:13.5px;line-height:1.55;color:#f5efe1;">Tents open 9 AM, but by law <strong>no beer pours anywhere until the Lord Mayor taps the keg at noon</strong> at Schottenhamel. Be at your tent's door by 8:30 AM, seated by 9, and stay put through the tap — once it's noon the crowd surges hard. Skip Schottenhamel itself; it's hosting the ceremony.</div>
+          </div>
+          <div style="background:rgba(255,253,247,0.1);border:1px solid rgba(255,253,247,0.25);border-radius:12px;padding:14px 16px;">
+            <div style="font-weight:800;font-size:14px;margin-bottom:4px;">Sun 9/20 · Parade Day</div>
+            <div style="font-size:13.5px;line-height:1.55;color:#f5efe1;">The costume &amp; riflemen's parade runs 10 AM through the city center — worth seeing, but it feeds the crowd straight to the grounds after. Beer pours normally all day, but arrive by 8:30&ndash;9 AM regardless; popular tents fill by late morning.</div>
+          </div>
+        </div>
+        <p style="margin:14px 0 0;font-size:13.5px;line-height:1.55;color:#f5efe1;"><strong style="color:#fff;">Both days:</strong> pick one tent and commit rather than tent-hopping — giving up seats on opening weekend usually means not getting seats again. Beer gardens are the reliable fallback both days: walk-in only, never gated by reservations.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;">
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;overflow:hidden;">
+          <div style="aspect-ratio:16/10;overflow:hidden;"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Oktoberfest%20bierzelt.JPG?width=1400" alt="Inside a packed Oktoberfest beer tent" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"></div>
+          <div style="padding:16px 18px;">
+            <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#b23a2e;font-weight:800;">Beer: Hofbräu</div>
+            <h3 style="margin:6px 0 6px;font-size:18px;">Hofbräu-Festzelt</h3>
+            <p style="margin:0;font-size:14px;line-height:1.55;color:#5b5240;">The party tent and international crowd. The only one with a standing area (the "Hofbräu Hell") right by the band — rowdy and fun.</p>
+          </div>
+        </div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;overflow:hidden;">
+          <div style="aspect-ratio:16/10;background:repeating-linear-gradient(45deg,rgba(217,154,43,0.12) 0 14px,rgba(217,154,43,0.03) 14px 28px),#ece2cc;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,monospace;font-size:11px;color:#6b6250;background:rgba(255,253,247,0.8);padding:5px 10px;border-radius:999px;">PHOTO · Hacker "Heaven of Bavaria" ceiling</span></div>
+          <div style="padding:16px 18px;">
+            <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#b23a2e;font-weight:800;">Beer: Hacker-Pschorr</div>
+            <h3 style="margin:6px 0 6px;font-size:18px;">Hacker-Festzelt</h3>
+            <p style="margin:0;font-size:14px;line-height:1.55;color:#5b5240;">"Himmel der Bayern" — the Heaven of Bavaria, with its painted blue-sky ceiling and a retractable roof. Great atmosphere, rock band in the evenings.</p>
+          </div>
+        </div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;overflow:hidden;">
+          <div style="aspect-ratio:16/10;background:repeating-linear-gradient(45deg,rgba(178,58,46,0.1) 0 14px,rgba(178,58,46,0.02) 14px 28px),#ece0d6;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,monospace;font-size:11px;color:#6b6250;background:rgba(255,253,247,0.8);padding:5px 10px;border-radius:999px;">PHOTO · Augustiner wooden barrels</span></div>
+          <div style="padding:16px 18px;">
+            <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#b23a2e;font-weight:800;">Beer: Augustiner</div>
+            <h3 style="margin:6px 0 6px;font-size:18px;">Augustiner-Festhalle</h3>
+            <p style="margin:0;font-size:14px;line-height:1.55;color:#5b5240;">The locals' favourite — the only tent still serving from traditional wooden barrels (Hirschen). More family-friendly and mellow by day.</p>
+          </div>
+        </div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;overflow:hidden;">
+          <div style="aspect-ratio:16/10;background:repeating-linear-gradient(45deg,rgba(33,88,165,0.08) 0 14px,rgba(33,88,165,0.02) 14px 28px),#e5e1cf;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,monospace;font-size:11px;color:#6b6250;background:rgba(255,253,247,0.8);padding:5px 10px;border-radius:999px;">PHOTO · Schottenhamel first-keg tapping</span></div>
+          <div style="padding:16px 18px;">
+            <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#b23a2e;font-weight:800;">Beer: Spaten</div>
+            <h3 style="margin:6px 0 6px;font-size:18px;">Schottenhamel</h3>
+            <p style="margin:0;font-size:14px;line-height:1.55;color:#5b5240;">The historic one where the Mayor taps the first keg. Big and young-skewing — the beating heart of opening day.</p>
+          </div>
+        </div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;overflow:hidden;">
+          <div style="aspect-ratio:16/10;background:repeating-linear-gradient(45deg,rgba(217,154,43,0.12) 0 14px,rgba(217,154,43,0.03) 14px 28px),#ece2cc;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,monospace;font-size:11px;color:#6b6250;background:rgba(255,253,247,0.8);padding:5px 10px;border-radius:999px;">PHOTO · Käfer terrace at night</span></div>
+          <div style="padding:16px 18px;">
+            <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#b23a2e;font-weight:800;">Beer: Paulaner</div>
+            <h3 style="margin:6px 0 6px;font-size:18px;">Käfer Wiesn-Schänke</h3>
+            <p style="margin:0;font-size:14px;line-height:1.55;color:#5b5240;">Small, chic and celeb-spotted, with the best food on the Wiesn. Open latest (until 00:30) — the after-party tent.</p>
+          </div>
+        </div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;overflow:hidden;">
+          <div style="aspect-ratio:16/10;background:repeating-linear-gradient(45deg,rgba(178,58,46,0.1) 0 14px,rgba(178,58,46,0.02) 14px 28px),#ece0d6;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,monospace;font-size:11px;color:#6b6250;background:rgba(255,253,247,0.8);padding:5px 10px;border-radius:999px;">PHOTO · Löwenbräu lion tower</span></div>
+          <div style="padding:16px 18px;">
+            <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#b23a2e;font-weight:800;">Beer: Löwenbräu</div>
+            <h3 style="margin:6px 0 6px;font-size:18px;">Löwenbräu-Festzelt</h3>
+            <p style="margin:0;font-size:14px;line-height:1.55;color:#5b5240;">Spot it by the roaring mechanical lion on the tower out front. Lively, spacious and a reliable good time.</p>
+          </div>
+        </div>
+        <div style="background:#fffdf7;border:2px solid #2158a5;border-radius:16px;overflow:hidden;">
+          <div style="aspect-ratio:16/10;background:repeating-linear-gradient(45deg,rgba(33,88,165,0.1) 0 14px,rgba(33,88,165,0.02) 14px 28px),#e5e1cf;display:flex;align-items:center;justify-content:center;"><span style="font-family:ui-monospace,monospace;font-size:11px;color:#6b6250;background:rgba(255,253,247,0.8);padding:5px 10px;border-radius:999px;">PHOTO · Sch&uuml;tzen-Festzelt marksmen's tent</span></div>
+          <div style="padding:16px 18px;">
+            <div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#2158a5;font-weight:800;">Best walk-in odds</div>
+            <h3 style="margin:6px 0 6px;font-size:18px;">Sch&uuml;tzen-Festzelt</h3>
+            <p style="margin:0;font-size:14px;line-height:1.55;color:#5b5240;">Tucked in a remote corner of the grounds, home to Munich's marksmen's guilds. Walk-in pressure stays noticeably lower than tents near the main entrance — a top pick when you don't have a reservation.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day plan table -->
+      <div style="margin-top:22px;background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:22px 24px;">
+        <div style="font-family:'DM Serif Display',serif;font-size:20px;margin-bottom:4px;">The weekday walk-in plan</div>
+        <p style="margin:0 0 14px;font-size:14px;color:#6b6250;">For Tue 9/22 &amp; Wed 9/23, once all three of you are together.</p>
+        <div style="display:grid;gap:2px;">
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:12px;padding:9px 4px;background:#f9f5ea;border-radius:6px;"><span style="font-size:13px;font-weight:700;color:#2158a5;">7:00&ndash;8:00 AM</span><span style="font-size:13.5px;color:#413a2c;">Breakfast/coffee near the hotel</span></div>
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:12px;padding:9px 4px;"><span style="font-size:13px;font-weight:700;color:#2158a5;">8:30 AM</span><span style="font-size:13.5px;color:#413a2c;">Head to Theresienwiese; walk the grounds while tents finish opening prep</span></div>
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:12px;padding:9px 4px;background:#f9f5ea;border-radius:6px;"><span style="font-size:13px;font-weight:700;color:#2158a5;">9:45 AM</span><span style="font-size:13.5px;color:#413a2c;">Post up at the door of tent choice #1</span></div>
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:12px;padding:9px 4px;"><span style="font-size:13px;font-weight:700;color:#2158a5;">10:00 AM</span><span style="font-size:13.5px;color:#413a2c;">Doors open — grab a bench, order the first Ma&szlig; and food</span></div>
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:12px;padding:9px 4px;background:#f9f5ea;border-radius:6px;"><span style="font-size:13px;font-weight:700;color:#2158a5;">10 AM&ndash;1 PM</span><span style="font-size:13.5px;color:#413a2c;">Session 1: beer + lunch in tent #1</span></div>
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:12px;padding:9px 4px;"><span style="font-size:13px;font-weight:700;color:#2158a5;">1&ndash;2:30 PM</span><span style="font-size:13.5px;color:#413a2c;">Move to tent #2 or a beer garden if #1 fills; Oide Wiesn is a good midday change of pace</span></div>
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:12px;padding:9px 4px;background:#f9f5ea;border-radius:6px;"><span style="font-size:13px;font-weight:700;color:#2158a5;">2:30&ndash;5 PM</span><span style="font-size:13.5px;color:#413a2c;">Session 2/3 as energy and seats allow</span></div>
+          <div style="display:grid;grid-template-columns:130px 1fr;gap:12px;padding:9px 4px;"><span style="font-size:13px;font-weight:700;color:#2158a5;">5 PM onward</span><span style="font-size:13.5px;color:#413a2c;">Walk-in gets harder — fall back to a small tent or attached beer garden</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;background:#1b2536;color:#fffdf7;border-radius:16px;padding:22px 24px;display:grid;grid-template-columns:1fr 1fr;gap:22px;">
+        <div>
+          <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#f5d98b;">Reservations 101</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.55;">Free to book but sold in whole tables (8–10 people) with a <strong>minimum food-and-drink voucher spend</strong> — typically two Maß + half a chicken per person. Popular slots for opening week sell out months ahead.</p>
+        </div>
+        <div>
+          <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#f5d98b;">No reservation?</div>
+          <p style="margin:10px 0 0;font-size:15px;line-height:1.55;">Totally doable. Arrive early (before 11:00 weekdays), and note tents close their doors when full. Beer garden areas outside the tents don't need bookings and are lovely on a sunny afternoon.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;display:grid;grid-template-columns:1.3fr 1fr;gap:16px;">
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:20px 22px;">
+          <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#8a7f68;margin-bottom:10px;">Costs &amp; etiquette</div>
+          <div style="display:grid;gap:9px;font-size:14px;line-height:1.55;color:#413a2c;">
+            <div>No cover charge for walk-in seating — pay only for food and drink once seated. Minimum consumption (2 beers + a half chicken per person) only applies to <strong>reserved</strong> tables, not walk-ins.</div>
+            <div>Bench seating is communal — a group of 2&ndash;3 can often slot into open space at a table that isn't fully "free." Ask <strong>"Ist hier noch frei?"</strong> ("Is this still free?") before sitting.</div>
+            <div>Stay together at the door — entry gets paced when busy, and going in as a tight group makes it easier to land seats together.</div>
+          </div>
+        </div>
+        <div style="background:#f2ede0;border-radius:16px;padding:20px 22px;">
+          <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#8a7f68;margin-bottom:10px;">Skip these — near-full reservation tents</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <span style="background:#fffdf7;border:1px solid rgba(27,37,54,0.12);border-radius:999px;padding:6px 13px;font-size:13px;color:#8a7f68;text-decoration:line-through;">Marstall-Festzelt</span>
+            <span style="background:#fffdf7;border:1px solid rgba(27,37,54,0.12);border-radius:999px;padding:6px 13px;font-size:13px;color:#8a7f68;text-decoration:line-through;">Kufflers Weinzelt</span>
+            <span style="background:#fffdf7;border:1px solid rgba(27,37,54,0.12);border-radius:999px;padding:6px 13px;font-size:13px;color:#8a7f68;text-decoration:line-through;">K&auml;fer Wiesn-Sch&auml;nke</span>
+          </div>
+          <p style="margin:14px 0 0;font-size:13px;line-height:1.5;color:#6b6250;">Little walk-in room in these three — steer the group elsewhere when picking a target.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;background:#1b2536;color:#fffdf7;border-radius:16px;padding:18px 22px;font-size:14px;line-height:1.6;">
+        <strong style="color:#f5d98b;">Bottom line:</strong> no table reservation exists or is realistic for this group this close to the date — tents only book in whole tables of 8&ndash;10. Walk-in is the plan, both for Gary &amp; Anna's opening weekend and for all three of you Tue 9/22 &amp; Wed 9/23. Full detail in <em>Oktoberfest_Tent_Guide.md</em> and the mailed <em>Oktoberfest_Tent_Guide.pdf</em>.
+      </div>
+    </section>
+
+    <!-- TRAVEL -->
+    <section id="travel" data-section="travel" style="scroll-margin-top:70px;padding:52px 0 20px;">
+      <div style="color:#d99a2b;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:800;">Getting there</div>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,4.5vw,52px);line-height:1.02;margin:10px 0 26px;">Travel &amp; flights</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;">
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:20px 22px;">
+          <h3 style="margin:0 0 8px;font-size:18px;">✈︎ Into Munich (MUC)</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#413a2c;">Munich Airport sits northeast of the city. The <strong>S1</strong> and <strong>S8</strong> S-Bahn lines both reach the Hauptbahnhof / Marienplatz in about 40–45 minutes and run every 10–20 minutes. The <strong>Lufthansa Express Bus</strong> is a comfy alternative to the centre.</p>
+        </div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:20px 22px;">
+          <h3 style="margin:0 0 8px;font-size:18px;">🎫 Getting around</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#413a2c;">Buy an MVV <strong>day pass</strong> (Tageskarte) or a group day ticket — cheaper together. For the fest, take <strong>U4/U5 to Theresienwiese</strong> or the S-Bahn to Hackerbrücke and walk in. Trains get packed at closing time; expect a crush.</p>
+        </div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:20px 22px;">
+          <h3 style="margin:0 0 8px;font-size:18px;">🕑 Timing your arrival</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#413a2c;">Pat lands <strong>Monday the 21st</strong> — a weekday, so the city is calmer than the opening weekend Gary &amp; Anna just came from. Aim to be checked in by early afternoon so there's time to regroup before the Hofbr&auml;uhaus dinner.</p>
+        </div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:20px 22px;">
+          <h3 style="margin:0 0 8px;font-size:18px;">💶 Money &amp; SIM</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#413a2c;">Tents and food stalls are largely <strong>cash-only</strong> — bring euros and small notes for tips (round up ~10%). An eSIM or EU-roaming plan keeps the group chat alive across the crowds.</p>
+        </div>
+        <div style="background:#1b2536;color:#fffdf7;border-radius:16px;padding:20px 22px;">
+          <h3 style="margin:0 0 8px;font-size:18px;color:#fffdf7;">🆘 If someone gets separated</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#d9d2be;">EU emergency number is <strong style="color:#f5d98b;">112</strong> (free, any phone). Oktoberfest runs a <strong style="color:#f5d98b;">"Safe Space"</strong> on the grounds for reuniting separated people. Pick a real-world fallback meeting point too — cell service gets spotty in a packed tent. The grounds' official lost &amp; found (Fundb&uuml;ro) is off-site this year at the Deutsches Museum Verkehrszentrum, Am Bavariapark 5 — items usually surface there a day after being turned in.</p>
+        </div>
+      </div>
+
+      <!-- AIRPORT TO HOTEL -->
+      <div style="margin-top:16px;background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:22px 24px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;">
+          <div style="font-family:'DM Serif Display',serif;font-size:22px;">Airport &rarr; Hotel, step by step</div>
+          <div style="font-size:12px;letter-spacing:0.08em;color:#2158a5;font-weight:700;">MUC &rarr; Hotel JAMS · by train</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px;">
+          <div style="position:relative;">
+            <div style="width:30px;height:30px;border-radius:50%;background:#2158a5;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;margin-bottom:10px;">1</div>
+            <div style="font-weight:800;font-size:14px;margin-bottom:4px;">Follow the S-Bahn signs</div>
+            <div style="font-size:13px;line-height:1.5;color:#5b5240;">From baggage claim, follow blue "S" signs down to the airport's own S-Bahn station, one level below the terminal.</div>
+          </div>
+          <div style="position:relative;">
+            <div style="width:30px;height:30px;border-radius:50%;background:#2158a5;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;margin-bottom:10px;">2</div>
+            <div style="font-weight:800;font-size:14px;margin-bottom:4px;">Buy a ticket first</div>
+            <div style="font-size:13px;line-height:1.5;color:#5b5240;">Airport is fare zone M-5. A single ticket runs <strong>&euro;15.10</strong>; the Airport-City-Day-Ticket is <strong>&euro;17.50</strong> and covers unlimited rides that day — worth it if you're also heading to the Wiesn. Buy from the platform machine or the MVV app before boarding.</div>
+          </div>
+          <div style="position:relative;">
+            <div style="width:30px;height:30px;border-radius:50%;background:#2158a5;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;margin-bottom:10px;">3</div>
+            <div style="font-weight:800;font-size:14px;margin-bottom:4px;">Board the S8</div>
+            <div style="font-size:13px;line-height:1.5;color:#5b5240;">S1 and S8 both run into the city every ~10 minutes, alternating. Take the <strong>S8</strong> and ride it through the Munich city-center tunnel to <strong>Rosenheimer Platz</strong> (~40 minutes).</div>
+          </div>
+          <div style="position:relative;">
+            <div style="width:30px;height:30px;border-radius:50%;background:#b23a2e;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;margin-bottom:10px;">4</div>
+            <div style="font-weight:800;font-size:14px;margin-bottom:4px;">Walk the last 4 minutes</div>
+            <div style="font-size:13px;line-height:1.5;color:#5b5240;">Exit at Rosenheimer Platz and walk ~4 minutes to <strong>Hotel JAMS</strong>, Stubenvoll Str. 2 — about 35&ndash;45 minutes door to door.</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:22px 24px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;">
+          <div style="font-family:'DM Serif Display',serif;font-size:22px;">Booked flights</div>
+          <div style="font-size:12px;letter-spacing:0.08em;color:#2158a5;font-weight:700;">United · Confirmation J5WWP4</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+          <div style="border:1px solid rgba(27,37,54,0.08);border-radius:12px;padding:16px;background:#f9f5ea;">
+            <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8a7f68;">Outbound · Sun Sep 20 → Mon Sep 21</div>
+            <div style="margin-top:10px;font-size:14px;line-height:1.7;color:#413a2c;"><strong>COS → DEN</strong> · UA4719 · 5:13 PM–6:24 PM<br><strong>DEN → MUC</strong> · UA760 · 8:25 PM → <strong>2:10 PM</strong> (Mon)</div>
+          </div>
+          <div style="border:1px solid rgba(27,37,54,0.08);border-radius:12px;padding:16px;background:#f9f5ea;">
+            <div style="font-size:11px;letter-spacing:0.16em;text-transform:uppercase;color:#8a7f68;">Return · Thu Sep 24</div>
+            <div style="margin-top:10px;font-size:14px;line-height:1.7;color:#413a2c;"><strong>MUC → DEN</strong> · UA761 · 4:10 PM–6:45 PM<br><strong>DEN → COS</strong> · UA4650 · 9:05 PM–9:58 PM</div>
+          </div>
+        </div>
+        <div style="margin-top:14px;font-size:12px;color:#8a7f68;display:flex;align-items:center;gap:8px;"><span style="display:inline-flex;width:22px;height:22px;border-radius:6px;background:#2158a5;color:#fff;align-items:center;justify-content:center;font-weight:800;">↻</span>Synced from Cowork · United economy · ~$881 per traveler</div>
+      </div>
+    </section>
+
+    <!-- LODGING -->
+    <section id="lodging" data-section="lodging" style="scroll-margin-top:70px;padding:52px 0 20px;">
+      <div style="color:#d99a2b;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:800;">Where we sleep</div>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,4.5vw,52px);line-height:1.02;margin:10px 0 26px;">Lodging</h2>
+      <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:22px 24px;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;">
+          <div style="font-family:'DM Serif Display',serif;font-size:22px;">Design-Hotel JAMS</div>
+          <div style="font-size:12px;letter-spacing:0.08em;color:#2158a5;font-weight:700;">Expedia #73371018269267</div>
+        </div>
+        <div style="font-size:14px;color:#5b5240;margin-top:4px;">Stubenvoll Str. 2, 81667 Munich · near Rosenheimer Platz</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:16px;">
+          <div style="border:1px solid rgba(27,37,54,0.08);border-radius:12px;padding:14px;background:#f9f5ea;"><div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#8a7f68;">Check-in</div><strong style="font-size:15px;">Mon Sep 21 · 3 PM</strong></div>
+          <div style="border:1px solid rgba(27,37,54,0.08);border-radius:12px;padding:14px;background:#f9f5ea;"><div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#8a7f68;">Check-out</div><strong style="font-size:15px;">Thu Sep 24 · noon</strong></div>
+          <div style="border:1px solid rgba(27,37,54,0.08);border-radius:12px;padding:14px;background:#f9f5ea;"><div style="font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#8a7f68;">Room</div><strong style="font-size:15px;">Comfort Twin · breakfast</strong></div>
+        </div>
+        <div style="margin-top:14px;font-size:12px;color:#8a7f68;display:flex;align-items:center;gap:8px;"><span style="display:inline-flex;width:22px;height:22px;border-radius:6px;background:#2158a5;color:#fff;align-items:center;justify-content:center;font-weight:800;">↻</span>Synced from Cowork · take the S8 to Rosenheimer Platz, then a 4-minute walk</div>
+      </div>
+    </section>
+
+    <!-- MUNICH -->
+    <section id="munich" data-section="munich" style="scroll-margin-top:70px;padding:52px 0 20px;">
+      <div style="color:#d99a2b;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:800;">Beyond the beer</div>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,4.5vw,52px);line-height:1.02;margin:10px 0 26px;">Munich, off the meadow</h2>
+      <div style="display:grid;grid-template-columns:1.2fr 0.8fr;gap:16px;">
+        <figure style="margin:0;border-radius:16px;overflow:hidden;position:relative;min-height:280px;"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Marienplatz%20-%20Munich.jpg?width=1400" alt="Marienplatz and the New Town Hall in Munich" style="width:100%;height:100%;min-height:280px;object-fit:cover;display:block;" loading="lazy"><figcaption style="position:absolute;left:8px;bottom:8px;background:rgba(27,37,54,0.72);color:#fff;font-size:11px;padding:4px 8px;border-radius:6px;">Marienplatz &amp; the Neues Rathaus</figcaption></figure>
+        <div style="display:grid;gap:12px;">
+          <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><strong style="font-size:15px;">Marienplatz &amp; Glockenspiel</strong><p style="margin:4px 0 0;font-size:14px;line-height:1.5;color:#5b5240;">The central square; the carillon "dances" at 11:00 (and 12:00 &amp; 17:00 in season).</p></div>
+          <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><strong style="font-size:15px;">Viktualienmarkt</strong><p style="margin:4px 0 0;font-size:14px;line-height:1.5;color:#5b5240;">Munich's grand food market with its own leafy beer garden.</p></div>
+          <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><strong style="font-size:15px;">English Garden</strong><p style="margin:4px 0 0;font-size:14px;line-height:1.5;color:#5b5240;">Bigger than Central Park — with year-round river surfers at the Eisbach wave.</p></div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:14px;">
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px;"><strong style="font-size:15px;">Nymphenburg Palace</strong><p style="margin:4px 0 0;font-size:13px;line-height:1.5;color:#5b5240;">Baroque summer palace &amp; sprawling gardens.</p></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px;"><strong style="font-size:15px;">Residenz</strong><p style="margin:4px 0 0;font-size:13px;line-height:1.5;color:#5b5240;">The Wittelsbach royal palace &amp; treasury.</p></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px;"><strong style="font-size:15px;">Frauenkirche</strong><p style="margin:4px 0 0;font-size:13px;line-height:1.5;color:#5b5240;">The twin onion-dome towers on the skyline.</p></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px;"><strong style="font-size:15px;">Day trip: Garmisch</strong><p style="margin:4px 0 0;font-size:13px;line-height:1.5;color:#5b5240;">Alpine town under the Zugspitze — an easy train south (our Wednesday plan).</p></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;">
+        <figure style="margin:0;border-radius:14px;overflow:hidden;position:relative;aspect-ratio: 16/11;"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Rathaus%20Glockenspiel%20Munich.jpg?width=1400" alt="Glockenspiel figures on the Neues Rathaus" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"><figcaption style="position:absolute;left:8px;bottom:8px;background:rgba(27,37,54,0.72);color:#fff;font-size:11px;padding:4px 8px;border-radius:6px;">Glockenspiel show</figcaption></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;position:relative;aspect-ratio: 16/11;"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Viktualienmarkt%20M%C3%BCnchen.jpg?width=1400" alt="Viktualienmarkt food market" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"><figcaption style="position:absolute;left:8px;bottom:8px;background:rgba(27,37,54,0.72);color:#fff;font-size:11px;padding:4px 8px;border-radius:6px;">Viktualienmarkt</figcaption></figure>
+        <figure style="margin:0;border-radius:14px;overflow:hidden;position:relative;aspect-ratio: 16/11;"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Frauenkirche%20M%C3%BCnchen.jpg?width=1400" alt="Frauenkirche twin towers" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy"><figcaption style="position:absolute;left:8px;bottom:8px;background:rgba(27,37,54,0.72);color:#fff;font-size:11px;padding:4px 8px;border-radius:6px;">Frauenkirche</figcaption></figure>
+      </div>
+    </section>
+
+      <div style="height:22px;margin:6px 0 30px;border-radius:6px;background-color:#2158a5;background-image:linear-gradient(45deg,#fff 25%,transparent 25%),linear-gradient(-45deg,#fff 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#fff 75%),linear-gradient(-45deg,transparent 75%,#fff 75%);background-size:22px 22px;background-position:0 0,0 11px,11px -11px,-11px 0;"></div>
+    <!-- FOOD & BEER -->
+    <section id="food" data-section="food" style="scroll-margin-top:70px;padding:52px 0 20px;">
+      <div style="color:#d99a2b;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:800;">Eat &amp; drink</div>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,4.5vw,52px);line-height:1.02;margin:10px 0 20px;">Food &amp; beer primer</h2>
+
+      <div style="background:#1b2536;color:#fffdf7;border-radius:18px;padding:24px 26px;margin-bottom:18px;">
+        <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#f5d98b;">The only six beers you'll find</div>
+        <p style="margin:10px 0 14px;font-size:15px;line-height:1.6;">By law, only beer brewed within Munich's city limits to the <em>Reinheitsgebot</em> purity law can be poured at Oktoberfest. That means six breweries — served as a strong, golden <strong>Festbier</strong> by the litre (a <em>Maß</em>).</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span style="background:rgba(255,253,247,0.12);border:1px solid rgba(255,253,247,0.25);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;">Augustiner</span>
+          <span style="background:rgba(255,253,247,0.12);border:1px solid rgba(255,253,247,0.25);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;">Hacker-Pschorr</span>
+          <span style="background:rgba(255,253,247,0.12);border:1px solid rgba(255,253,247,0.25);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;">Hofbräu</span>
+          <span style="background:rgba(255,253,247,0.12);border:1px solid rgba(255,253,247,0.25);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;">Löwenbräu</span>
+          <span style="background:rgba(255,253,247,0.12);border:1px solid rgba(255,253,247,0.25);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;">Paulaner</span>
+          <span style="background:rgba(255,253,247,0.12);border:1px solid rgba(255,253,247,0.25);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;">Spaten</span>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;">
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><strong style="font-size:16px;">Hendl</strong><p style="margin:5px 0 0;font-size:14px;line-height:1.5;color:#5b5240;">The half roast chicken — the signature Wiesn dish. Order one, thank us later.</p></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><strong style="font-size:16px;">Schweinshaxe</strong><p style="margin:5px 0 0;font-size:14px;line-height:1.5;color:#5b5240;">Roasted pork knuckle with crackling — a two-hand affair.</p></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><strong style="font-size:16px;">Weißwurst</strong><p style="margin:5px 0 0;font-size:14px;line-height:1.5;color:#5b5240;">Veal sausage with sweet mustard &amp; a pretzel — eaten <em>before noon</em>, and you don't eat the skin.</p></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><strong style="font-size:16px;">Brezn</strong><p style="margin:5px 0 0;font-size:14px;line-height:1.5;color:#5b5240;">The giant soft pretzel — the size of your head, and the perfect beer companion.</p></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><strong style="font-size:16px;">Obatzda</strong><p style="margin:5px 0 0;font-size:14px;line-height:1.5;color:#5b5240;">A spiced Camembert-and-butter spread for that pretzel.</p></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><strong style="font-size:16px;">Steckerlfisch</strong><p style="margin:5px 0 0;font-size:14px;line-height:1.5;color:#5b5240;">Whole fish grilled on a stick over coals — a fairground classic.</p></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><strong style="font-size:16px;">Kaiserschmarrn</strong><p style="margin:5px 0 0;font-size:14px;line-height:1.5;color:#5b5240;">Shredded, caramelised pancake with fruit compote — dessert, sorted.</p></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><strong style="font-size:16px;">Lebkuchenherz</strong><p style="margin:5px 0 0;font-size:14px;line-height:1.5;color:#5b5240;">The iced gingerbread heart on a ribbon — the souvenir, not really a snack.</p></div>
+      </div>
+    </section>
+
+    <!-- TRACHT -->
+    <section id="tracht" data-section="tracht" style="scroll-margin-top:70px;padding:52px 0 20px;">
+      <div style="color:#d99a2b;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:800;">What to wear</div>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,4.5vw,52px);line-height:1.02;margin:10px 0 18px;">Tracht &amp; packing</h2>
+      <figure style="margin:0 0 16px;border-radius:16px;overflow:hidden;position:relative;height:240px;"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Dirndl.jpg?width=1400" alt="Traditional Bavarian Dirndl" style="width:100%;height:240px;object-fit:cover;display:block;" loading="lazy"><figcaption style="position:absolute;left:8px;bottom:8px;background:rgba(27,37,54,0.72);color:#fff;font-size:11px;padding:4px 8px;border-radius:6px;">Dirndl &amp; Lederhosen — the Wiesn dress code</figcaption></figure>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;">
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:20px 22px;">
+          <h3 style="margin:0 0 8px;font-size:18px;">👖 Lederhosen</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#413a2c;">Leather shorts or knee-breeches with a checked shirt and sturdy shoes. They're meant to look worn-in — no need to buy new. Locals really do wear them, so you won't feel out of place.</p>
+        </div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:20px 22px;">
+          <h3 style="margin:0 0 8px;font-size:18px;">👗 Dirndl</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#413a2c;">A fitted bodice, blouse and apron. <strong>Which side you tie the apron bow matters:</strong> left = single, right = taken, front-centre = virgin or undecided, back = widowed (or a waitress). Tie wisely.</p>
+        </div>
+        <div style="background:#eef3fb;border:1px solid #d5e2f4;border-radius:16px;padding:20px 22px;">
+          <h3 style="margin:0 0 8px;font-size:18px;">🌦️ Weather, mid-to-late Sept</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#413a2c;">Highs around <strong>63&ndash;66&deg;F (17&ndash;19&deg;C)</strong>, lows around <strong>46&ndash;50&deg;F (8&ndash;10&deg;C)</strong> — warm-ish days, genuinely cold nights. Rain is common (~12 days a month), so pack for scattered showers, not just sun. Tracht works fine under a jacket for the walk in.</p>
+        </div>
+      </div>
+      <div style="margin-top:16px;background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:16px;padding:22px 24px;">
+        <div style="font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#8a7f68;margin-bottom:12px;">The packing shortlist</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span style="background:#f2ede0;border-radius:999px;padding:7px 14px;font-size:13px;">Comfortable, broken-in shoes</span>
+          <span style="background:#f2ede0;border-radius:999px;padding:7px 14px;font-size:13px;">Layers — 60s by day, 40s–50s at night</span>
+          <span style="background:#f2ede0;border-radius:999px;padding:7px 14px;font-size:13px;">A packable rain jacket or umbrella</span>
+          <span style="background:#f2ede0;border-radius:999px;padding:7px 14px;font-size:13px;">Cash (euros)</span>
+          <span style="background:#f2ede0;border-radius:999px;padding:7px 14px;font-size:13px;">A small crossbody bag (tent rules limit bag size)</span>
+          <span style="background:#f2ede0;border-radius:999px;padding:7px 14px;font-size:13px;">Portable charger</span>
+          <span style="background:#f2ede0;border-radius:999px;padding:7px 14px;font-size:13px;">Ibuprofen + electrolytes</span>
+          <span style="background:#f2ede0;border-radius:999px;padding:7px 14px;font-size:13px;">Your Tracht (or buy it there)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHRASES -->
+    <section id="phrases" data-section="phrases" style="scroll-margin-top:70px;padding:52px 0 20px;">
+      <div style="color:#d99a2b;font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:800;">Sound like a local</div>
+      <h2 style="font-family:'DM Serif Display',serif;font-size:clamp(32px,4.5vw,52px);line-height:1.02;margin:10px 0 26px;">Phrases &amp; etiquette</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;">
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><div style="font-family:'DM Serif Display',serif;font-size:22px;color:#2158a5;">Servus / Grüß Gott</div><div style="font-size:14px;color:#5b5240;margin-top:4px;">Hello (the Bavarian way)</div></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><div style="font-family:'DM Serif Display',serif;font-size:22px;color:#2158a5;">Prost!</div><div style="font-size:14px;color:#5b5240;margin-top:4px;">Cheers! — look them in the eye</div></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><div style="font-family:'DM Serif Display',serif;font-size:22px;color:#2158a5;">O'zapft is!</div><div style="font-size:14px;color:#5b5240;margin-top:4px;">"It's tapped!" — the fest is open</div></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><div style="font-family:'DM Serif Display',serif;font-size:22px;color:#2158a5;">Ein Maß, bitte</div><div style="font-size:14px;color:#5b5240;margin-top:4px;">One litre of beer, please</div></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><div style="font-family:'DM Serif Display',serif;font-size:22px;color:#2158a5;">Zahlen, bitte</div><div style="font-size:14px;color:#5b5240;margin-top:4px;">The bill, please</div></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><div style="font-family:'DM Serif Display',serif;font-size:22px;color:#2158a5;">Oans, zwoa, gsuffa!</div><div style="font-size:14px;color:#5b5240;margin-top:4px;">"One, two, drink!" — the toast chant</div></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><div style="font-family:'DM Serif Display',serif;font-size:22px;color:#2158a5;">Danke / Bitte</div><div style="font-size:14px;color:#5b5240;margin-top:4px;">Thank you / You're welcome</div></div>
+        <div style="background:#fffdf7;border:1px solid rgba(27,37,54,0.1);border-radius:14px;padding:16px 18px;"><div style="font-family:'DM Serif Display',serif;font-size:22px;color:#2158a5;">Wo ist die Toilette?</div><div style="font-size:14px;color:#5b5240;margin-top:4px;">Where's the loo? (you'll need it)</div></div>
+      </div>
+      <div style="margin-top:16px;background:#fbf3df;border:1px solid #e6d4a3;border-radius:16px;padding:18px 22px;font-size:15px;line-height:1.6;color:#6b5a2e;"><strong>Toasting etiquette:</strong> clink at the base of the mug (not the rim — they chip), make eye contact with everyone, and never set your Maß down before finishing the toast. Tip your server, pace yourself, and hydrate between rounds.</div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer style="margin:20px;border-radius:20px;background:#1b2536;color:#f2ede0;padding:40px 32px;text-align:center;">
+    <div style="height:8px;width:120px;margin:0 auto 22px;background-color:#2158a5;background-image:linear-gradient(45deg,#fff 25%,transparent 25%),linear-gradient(-45deg,#fff 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#fff 75%),linear-gradient(-45deg,transparent 75%,#fff 75%);background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0;border-radius:999px;"></div>
+    <div style="font-family:'DM Serif Display',serif;font-size:30px;">Bis bald in München!</div>
+    <p style="margin:12px auto 0;max-width:480px;font-size:15px;line-height:1.6;color:#c9c3b4;">See you on the meadow, 21&ndash;24 September. Full itinerary, tent guide and trip brief live alongside this page in the Munich folder.</p>
+    <div style="margin-top:20px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#7f8aa0;">Der Wiesn-Kurier · Prost, München! · 2026</div>
+  </footer>
+
+</div>
+<script>
+(function () {
+  var target = new Date('2026-09-17T00:00:00+02:00').getTime();
+  function set(id, v) { var el = document.getElementById(id); if (el) el.textContent = v; }
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function tick() {
+    var diff = Math.max(0, target - Date.now());
+    var d = Math.floor(diff / 86400000); diff -= d * 86400000;
+    var h = Math.floor(diff / 3600000); diff -= h * 3600000;
+    var m = Math.floor(diff / 60000); diff -= m * 60000;
+    var s = Math.floor(diff / 1000);
+    set('cd-days', d); set('cd-hours', pad(h)); set('cd-mins', pad(m)); set('cd-secs', pad(s));
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  var links = Array.from(document.querySelectorAll('[data-nav]'));
+  if (links.length) {
+    var activate = function (id) {
+      links.forEach(function (l) {
+        var on = l.getAttribute('data-nav') === id;
+        l.style.color = on ? '#b23a2e' : '#1b2536';
+        l.style.borderBottomColor = on ? '#b23a2e' : 'transparent';
+      });
+    };
+    var secs = Array.from(document.querySelectorAll('[data-section]'));
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) activate(e.target.getAttribute('data-section')); });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    secs.forEach(function (s) { obs.observe(s); });
+  }
+})();
+</script>
+
+
+</body></html>
