@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Pat's Weekly Schedule</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;padding:1rem;max-width:430px;margin:0 auto}
+.header{background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border-radius:14px;padding:1rem 1.1rem;margin-bottom:.9rem}
+.header h1{font-size:1.1rem;font-weight:800}
+.header-sub{font-size:.75rem;opacity:.8;margin-top:.2rem}
+.macros{background:#1e40af;color:#fff;border-radius:12px;padding:.85rem 1rem;margin-bottom:.9rem}
+.macros h2{font-size:.82rem;font-weight:700;margin-bottom:.5rem;opacity:.9}
+.m-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.35rem}
+.m-box{text-align:center;background:rgba(255,255,255,.15);border-radius:8px;padding:.4rem .2rem}
+.m-val{font-size:1rem;font-weight:800}
+.m-lbl{font-size:.55rem;text-transform:uppercase;opacity:.8}
+.day{background:#fff;border-radius:12px;padding:.82rem 1rem;margin-bottom:.6rem;border-left:4px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.day.gym{border-left-color:#2563eb}
+.day.core{border-left-color:#c026d3}
+.day.rest{border-left-color:#94a3b8}
+.day-name{font-weight:800;font-size:.95rem;color:#1e293b}
+.day-type{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.3px;margin-top:.08rem}
+.day.gym .day-type{color:#2563eb}
+.day.core .day-type{color:#a21caf}
+.day.rest .day-type{color:#94a3b8}
+.day-detail{font-size:.8rem;color:#475569;margin-top:.4rem;line-height:1.5}
+.day-ankle{font-size:.7rem;color:#92400e;background:#fffbeb;padding:.3rem .5rem;border-radius:6px;margin-top:.35rem;line-height:1.35}
+.today-badge{float:right;background:#2563eb;color:#fff;font-size:.62rem;font-weight:700;padding:.18rem .5rem;border-radius:999px;letter-spacing:.2px}
+.section{margin-top:.75rem}
+.section-title{font-size:.7rem;font-weight:700;text-transform:uppercase;color:#94a3b8;letter-spacing:.3px;margin-bottom:.4rem;border-bottom:1px solid #e2e8f0;padding-bottom:.25rem}
+.quick-tip{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:.7rem .9rem;margin-bottom:.6rem;font-size:.8rem;color:#166534;line-height:1.45}
+.footer{font-size:.7rem;color:#94a3b8;text-align:center;margin-top:1rem;padding:.5rem;line-height:1.5}
+.tabata-note{background:#fff1f2;border:1px solid #fecdd3;border-radius:8px;padding:.6rem .8rem;font-size:.78rem;color:#9f1239;margin-bottom:.6rem;line-height:1.45}
+.format-table{width:100%;border-collapse:collapse;margin-top:.4rem;font-size:.68rem}
+.format-table th{text-align:left;padding:.2rem .3rem;color:#9f1239;border-bottom:1px solid #fecdd3}
+.format-table td{padding:.2rem .3rem;border-bottom:1px solid #ffe4e6}
+.stretch-line{color:#0f766e}
+.abs-line{color:#7c2d12}
+.suggested{font-style:italic;color:#94a3b8;font-size:.7rem}
+.day-toggle{display:flex;gap:.4rem;margin-top:.55rem;margin-bottom:.3rem}
+.toggle-btn{flex:1;padding:.4rem .3rem;font-size:.68rem;font-weight:700;border-radius:7px;border:1px solid #cbd5e1;background:#f8fafc;color:#475569;letter-spacing:.2px}
+.toggle-btn.active{background:#2563eb;color:#fff;border-color:#2563eb}
+.alt-block{display:none}
+.ref-table{width:100%;border-collapse:collapse;margin-top:.3rem;font-size:.73rem}
+.ref-table th{text-align:left;padding:.3rem;background:#f8fafc;color:#64748b;font-size:.62rem;text-transform:uppercase}
+.ref-table td{padding:.35rem .3rem;border-bottom:1px solid #f1f5f9;vertical-align:top}
+.ref-table tr:last-child td{border-bottom:none}
+.ref-fill{background:#fffbeb}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>💪 PAT'S HEALTH MISSION</h1>
+  <div class="header-sub">Weekly Snapshot · 4-Month Plan (June–October 2026)</div>
+  <div class="header-sub" id="today-date" style="margin-top:.3rem;font-weight:700;"></div>
+</div>
+
+<div class="macros">
+  <h2>📊 Daily Nutrition Targets</h2>
+  <div class="m-grid">
+    <div class="m-box"><div class="m-val">1,600</div><div class="m-lbl">Calories</div></div>
+    <div class="m-box"><div class="m-val">160g</div><div class="m-lbl">Protein</div></div>
+    <div class="m-box"><div class="m-val">130g</div><div class="m-lbl">Carbs</div></div>
+    <div class="m-box"><div class="m-val">50g</div><div class="m-lbl">Fat</div></div>
+  </div>
+</div>
+
+<div class="tabata-note">
+  🔥 <strong>TABATA FORMAT:</strong> alternate Exercise A / Exercise B in pairs. Pick a format below — Standard is the default baseline.
+  <table class="format-table">
+    <tr><th>Format</th><th>Work/Rest</th><th>Best For</th></tr>
+    <tr><td><strong>Standard</strong></td><td>20s/10s</td><td>Baseline · 16–32 rounds</td></tr>
+    <tr><td><strong>Endurance</strong></td><td>25s/10s</td><td>Weight loss · more calorie burn/song</td></tr>
+    <tr><td><strong>Intensity</strong></td><td>20s/5s</td><td>Efficiency · shorter workout, same effort</td></tr>
+    <tr><td><strong>Stability</strong></td><td>40s/20s</td><td>Recovery · form &amp; tendon health (Achilles/shoulders)</td></tr>
+  </table>
+</div>
+
+<!-- MONDAY -->
+<div class="day gym" id="day-1">
+  <div class="day-name">Monday <span class="today-badge" id="badge-1" style="display:none">TODAY</span></div>
+  <div class="day-type">🏋️ PUSH / CORE / ANKLE · 8:30 AM</div>
+  <div class="day-detail">
+    <div class="day-toggle">
+      <button class="toggle-btn active" id="mon-btn-sets" onclick="showMon('sets')">Straight Sets</button>
+      <button class="toggle-btn" id="mon-btn-tabata" onclick="showMon('tabata')">🔥 Tabata</button>
+    </div>
+    <div id="mon-sets">
+      Seated Dumbbell Shoulder Press — 3×12 (start 8–12 lbs)<br>
+      Seated Chest Press (dumbbells) — 3×12 (10–15 lbs)<br>
+      Seated Lateral Raises — 3×12 (5–8 lbs)<br>
+      Seated Front Raises — 3×10 (5–8 lbs)<br>
+      Seated Tricep Overhead Extension — 3×12 (8–12 lbs)<br>
+      Seated Tricep Kickbacks — 3×12 each arm (5–8 lbs)<br>
+      Seated Chest Flyes — 2×12 (5–10 lbs)
+    </div>
+    <div id="mon-tabata" class="alt-block">
+      <strong>Song 1 MANDATORY:</strong> Pec Bench Machine ↔ Seated DB Shoulder Press — <em>75% effort; keep back flat.</em><br>
+      <strong>Song 2 MANDATORY:</strong> Tricep Pushdowns ↔ Lateral/Front Raises — <em>aim for 50 lbs on pushdowns; light DBs for raises.</em><br>
+      <strong>Song 3 OPTIONAL (24-round mark):</strong> DB Chest Flys ↔ Seated Arnold Press — <em>focus on chest stretch and shoulder rotation.</em><br>
+      <strong>Song 4 BONUS (32-round mark):</strong> Russian Twists ↔ Quad Flex (3–5s hold) — <em>core and PT-leg stability.</em>
+    </div>
+    <br><span class="abs-line">🎯 <strong>Core:</strong> Dead Bugs 3×10/side · Bicycle Crunches 2×15 · Plank Hold 3×20–30s</span> <span class="suggested">(suggested — not in your notes)</span>
+    <br><strong>🦺 Ankle/Core protocol (full):</strong> Band work (Push/Pull/Eversion/Inversion) 20 reps each · Towel Crunches 2 min · Doming 10 reps (5s hold) · Standing Calf Stretch 2×1 min hold · Side-Lying Hip Abduction 3×10–30 · Donkey Kicks 3×10–30
+  </div>
+  <div class="day-ankle">🦺 Upper-body day = zero ankle load from lifting; today carries the full Ankle/Core protocol.</div>
+</div>
+
+<!-- TUESDAY -->
+<div class="day gym" id="day-2">
+  <div class="day-name">Tuesday <span class="today-badge" id="badge-2" style="display:none">TODAY</span></div>
+  <div class="day-type">🔄 PULL · 8:30 AM</div>
+  <div class="day-detail">
+    <div class="day-toggle">
+      <button class="toggle-btn active" id="tue-btn-sets" onclick="showTue('sets')">Straight Sets</button>
+      <button class="toggle-btn" id="tue-btn-tabata" onclick="showTue('tabata')">🔥 Tabata</button>
+    </div>
+    <div id="tue-sets">
+      Seated Dumbbell Rows — 3×12 each arm (10–15 lbs)<br>
+      Seated Wide Rows — 3×12 (10–12 lbs)<br>
+      Seated Bicep Curls — 3×12 (10–15 lbs)<br>
+      Seated Hammer Curls — 3×12 (10–15 lbs)<br>
+      Seated Concentration Curls — 2×10 each arm (8–12 lbs)<br>
+      Seated Reverse Flyes — 3×12 (5–8 lbs)<br>
+      Seated Face Pulls (band) — 3×15<br>
+      Seated Shrugs — 3×15 (15–20 lbs)
+    </div>
+    <div id="tue-tabata" class="alt-block">
+      <strong>Song 1 MANDATORY:</strong> Lat Pull Downs ↔ Seated Machine Rows — <em>focus on pulling with elbows, not hands.</em><br>
+      <strong>Song 2 MANDATORY:</strong> Seated DB Curls (20 lbs) ↔ Face Pulls (cable) — <em>focus on rear delts and posture.</em><br>
+      <strong>Song 3 OPTIONAL (24-round mark):</strong> Hammer Curls ↔ DB Rear Delt Flys — <em>neutral grip curls; focus on back of shoulders.</em><br>
+      <strong>Song 4 BONUS (32-round mark):</strong> Dead Bugs ↔ Long Arc Quad Extension — <em>core control and knee/quad strength.</em>
+    </div>
+    <br><span class="abs-line">🎯 <strong>Abs Finisher:</strong> Dead Bugs 2×10 · Plank Hold 2×20s</span> <span class="suggested">(suggested — not in your notes)</span>
+  </div>
+  <div class="day-ankle">🦺 All pulling — zero ankle load. Ankle circles morning/evening only, no dedicated PT block today.</div>
+</div>
+
+<!-- WEDNESDAY -->
+<div class="day gym" id="day-3">
+  <div class="day-name">Wednesday <span class="today-badge" id="badge-3" style="display:none">TODAY</span></div>
+  <div class="day-type">🦵 LEGS / CORE / ANKLE · 8:30 AM</div>
+  <div class="day-detail">
+    Half Squats (dumbbells) — <span class="suggested">3×10–12, light weight, controlled tempo (sets/reps not specified in your notes)</span><br>
+    Leg Press — <span class="suggested">3×12, weight to comfort</span><br>
+    Leg Extension — <span class="suggested">3×12, light</span><br>
+    Calf Raise (kettlebell) — <span class="suggested">3×15</span>
+    <br><span class="abs-line">🎯 <strong>Core:</strong> Bird Dogs 3×10/side · Bicycle Crunches 2×15 · Side Plank 2×15–20s/side</span> <span class="suggested">(suggested)</span>
+    <br><strong>🦺 Ankle/Core protocol (full):</strong> Band work (Push/Pull/Eversion/Inversion) 20 reps each · Towel Crunches 2 min · Doming 10 reps (5s hold) · Standing Calf Stretch 2×1 min hold · Side-Lying Hip Abduction 3×10–30 · Donkey Kicks 3×10–30
+  </div>
+  <div class="day-ankle">⚠️ Highest ankle-risk day — no reps/weights given for Legs in your notes, so keep it light and stop on sharp pain. Ice 15 min after if swollen.</div>
+</div>
+
+<!-- THURSDAY -->
+<div class="day rest" id="day-4">
+  <div class="day-name">Thursday <span class="today-badge" id="badge-4" style="display:none">TODAY</span></div>
+  <div class="day-type">😴 REST / STRETCH</div>
+  <div class="day-detail">
+    <span class="stretch-line">🧘 <strong>Recovery routine:</strong> Gentle full-body stretching · Light resistance band work, all muscle groups, 2×15 · Deep breathing and relaxation · Focus on mobility and blood flow</span>
+    <br>No lifting today. Ankle elevation throughout the day · Ice ankle if swollen (15 min) · Good day to meal prep
+  </div>
+  <div class="day-ankle">💤 Full recovery day. Sleep goal: 10:30 PM. 4-7-8 breathing in bed.</div>
+</div>
+
+<!-- FRIDAY -->
+<div class="day gym" id="day-5">
+  <div class="day-name">Friday <span class="today-badge" id="badge-5" style="display:none">TODAY</span></div>
+  <div class="day-type">🔥 PUSH-PULL / TABATA · 8:30 AM</div>
+  <div class="day-detail">
+    <div class="day-toggle">
+      <button class="toggle-btn active" id="fri-btn-tabata" onclick="showFriday('tabata')">🔥 Tabata</button>
+      <button class="toggle-btn" id="fri-btn-sets" onclick="showFriday('sets')">Straight Sets</button>
+    </div>
+
+    <div id="fri-tabata">
+      <strong>Push — Song 1 MANDATORY:</strong> Pec Bench Machine ↔ Seated DB Shoulder Press — <em>75% effort; keep back flat.</em><br>
+      <strong>Push — Song 2 MANDATORY:</strong> Tricep Pushdowns ↔ Lateral/Front Raises<br>
+      <strong>Pull — Song 1 MANDATORY:</strong> Lat Pull Downs ↔ Seated Machine Rows — <em>elbows, not hands.</em><br>
+      <strong>Pull — Song 2 MANDATORY:</strong> Seated DB Curls (20 lbs) ↔ Face Pulls (cable)<br>
+      <span class="suggested">If energy allows: add Push Song 3/4 or Pull Song 3/4 as bonus rounds.</span>
+    </div>
+
+    <div id="fri-sets" class="alt-block">
+      <em>Straight sets, no timer — use when you're not feeling Tabata.</em><br>
+      Seated DB Shoulder Press — 3×12 (8–12 lbs)<br>
+      Seated Chest Press — 3×12 (10–15 lbs)<br>
+      Seated Lateral Raises — 3×12 (5–8 lbs)<br>
+      Seated Tricep Overhead Extension — 3×12 (8–12 lbs)<br>
+      Seated Dumbbell Rows — 3×12 each arm (10–15 lbs)<br>
+      Seated Wide Rows — 3×12 (10–12 lbs)<br>
+      Seated Bicep Curls — 3×12 (10–15 lbs)<br>
+      Seated Face Pulls (band) — 3×15
+    </div>
+  </div>
+  <div class="day-ankle">🦺 All upper body — zero ankle load. Ankle circles only, no dedicated PT block today.</div>
+</div>
+
+<!-- SATURDAY -->
+<div class="day core" id="day-6">
+  <div class="day-name">Saturday <span class="today-badge" id="badge-6" style="display:none">TODAY</span></div>
+  <div class="day-type">🌿 CORE / STRETCH / RECOVERY</div>
+  <div class="day-detail">
+    <span class="abs-line">🎯 <strong>Ab Work (main work today):</strong> Dead Bugs 3×10/side · Bicycle Crunches 3×15 · Plank Hold 3×30s · Bird Dogs 2×10/side · Side Plank 2×20s/side</span> <span class="suggested">(your notes' Ab Work row was blank — this is a suggested fill-in)</span>
+    <br><span class="stretch-line">🧘 <strong>Recovery routine:</strong> Gentle full-body stretching · Light resistance band work, all muscle groups, 2×15 · Deep breathing and relaxation · Focus on mobility and blood flow</span>
+    <br>Full Ankle/Core protocol: Band work 20 reps each direction · Towel Crunches 2 min · Doming 10×5s hold · Standing Calf Stretch 2×1 min · Side-Lying Hip Abduction 3×10–30 · Donkey Kicks 3×10–30
+    <br>🌅 Afternoon: Activity with spouse + gentle walk.
+  </div>
+  <div class="day-ankle">💚 Recovery-focused. Core work is low-impact and ankle-safe.</div>
+</div>
+
+<!-- SUNDAY -->
+<div class="day rest" id="day-0">
+  <div class="day-name">Sunday <span class="today-badge" id="badge-0" style="display:none">TODAY</span></div>
+  <div class="day-type">😴 REST</div>
+  <div class="day-detail">
+    <span class="stretch-line">🧘 <strong>Light stretch:</strong> gentle full-body stretching, deep breathing and relaxation</span>
+    <br>Full rest — no formal workout. Ankle elevation throughout day · Meal prep for the week · Ice ankle if swollen (15 min)
+  </div>
+  <div class="day-ankle">💤 Sleep goal: 10:30 PM. 4-7-8 breathing in bed.</div>
+</div>
+
+<div class="section">
+  <div class="section-title">🦺 Core / Ankle Protocol (Reference)</div>
+  <table class="ref-table">
+    <tr><th>Category</th><th>Exercise</th><th>Freq / Sets</th><th>Focus</th></tr>
+    <tr><td>Ankle Mobility</td><td>Push/Pull/Eversion/Inversion Bands</td><td>20 reps each</td><td>Resistance work for ankle stability</td></tr>
+    <tr><td>Ankle Dexterity</td><td>Towel Crunches</td><td>2 minutes</td><td>Foot muscle activation</td></tr>
+    <tr><td>Ankle Stability</td><td>Doming (Arch Raises)</td><td>10 reps (5s hold)</td><td>Arch strength and foot control</td></tr>
+    <tr><td>Achilles Care</td><td>Standing Calf Stretch</td><td>2 sets (1 min hold)</td><td>Addressing Achilles discomfort and tightness</td></tr>
+    <tr><td>Hip/Leg PT</td><td>Side Lying Hip Abduction</td><td>3 sets (10–30 reps)</td><td>Glute and hip stabilization</td></tr>
+    <tr><td>Hip/Leg PT</td><td>Donkey Kicks</td><td>3 sets (10–30 reps)</td><td>Posterior chain activation</td></tr>
+    <tr class="ref-fill"><td>Ab Work</td><td>Dead Bugs · Bicycle Crunches · Plank Hold</td><td>3×10–15 / 3×20–30s</td><td><span class="suggested">Blank in your notes — suggested fill-in</span></td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">🦺 Ankle Rules (Every Day)</div>
+  <div class="quick-tip">
+    ✅ Elevate when resting · Ice 15 min post-gym if swollen · Compression sock on ALL walks · Ankle circles morning + evening · No jumping or sudden impact · Sharp pain = stop immediately
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">🍷 Alcohol Budget</div>
+  <div class="quick-tip" style="background:#faf5ff;border-color:#e9d5ff;color:#6b21a8;">
+    Max 3 drinks per week · ~150 cal each · On drink days, reduce dinner carbs to compensate · Keep it enjoyable AND on track
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">📊 Weekly Check-In (Monday Mornings)</div>
+  <div class="quick-tip">
+    Weight (same time, same conditions) · Ankle swelling (better/same/worse) · Energy level 1–10 · Sleep quality 1–10 · Days completed out of 6 active days
+  </div>
+</div>
+
+<div class="footer">
+  Starting weight: 204 lbs · Goal: 179 lbs (-25 lbs) · Timeline: 16 weeks<br>
+  Rate: ~1.5 lbs/week at 1,500–1,750 cal/day · Completely achievable.<br><br>
+  💪 <strong>This is your job. Clock in at 8:30. Do the work. Clock out. Repeat.</strong>
+</div>
+
+<script>
+(function(){
+  const d = new Date();
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('today-date').textContent = 'Today: ' + days[d.getDay()] + ', ' + months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+  const badge = document.getElementById('badge-' + d.getDay());
+  if (badge) { badge.style.display = 'inline'; }
+  const dayEl = document.getElementById('day-' + d.getDay());
+  if (dayEl) { dayEl.style.boxShadow = '0 0 0 2.5px #2563eb, 0 2px 8px rgba(37,99,235,.2)'; }
+})();
+
+function toggle(prefix, mode, defaultMode){
+  document.getElementById(prefix+'-'+defaultMode).style.display = (mode===defaultMode)?'block':'none';
+  document.getElementById(prefix+'-btn-'+defaultMode).classList.toggle('active', mode===defaultMode);
+}
+function showMon(mode){
+  document.getElementById('mon-sets').style.display = mode==='sets' ? 'block':'none';
+  document.getElementById('mon-tabata').style.display = mode==='tabata' ? 'block':'none';
+  document.getElementById('mon-btn-sets').classList.toggle('active', mode==='sets');
+  document.getElementById('mon-btn-tabata').classList.toggle('active', mode==='tabata');
+}
+function showTue(mode){
+  document.getElementById('tue-sets').style.display = mode==='sets' ? 'block':'none';
+  document.getElementById('tue-tabata').style.display = mode==='tabata' ? 'block':'none';
+  document.getElementById('tue-btn-sets').classList.toggle('active', mode==='sets');
+  document.getElementById('tue-btn-tabata').classList.toggle('active', mode==='tabata');
+}
+function showFriday(mode){
+  document.getElementById('fri-tabata').style.display = mode==='tabata' ? 'block':'none';
+  document.getElementById('fri-sets').style.display = mode==='sets' ? 'block':'none';
+  document.getElementById('fri-btn-tabata').classList.toggle('active', mode==='tabata');
+  document.getElementById('fri-btn-sets').classList.toggle('active', mode==='sets');
+}
+</script>
+</body>
+</html>
