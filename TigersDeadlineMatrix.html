@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Detroit Tigers 2026 Trade Deadline — Needs &amp; Cost Matrix</title>
+<style>
+  :root{
+    --orange:#FA4616;
+    --navy:#0C2340;
+    --darkblue:#001742;
+    --gray:#4a4a4a;
+    --lightgray:#f2f2f2;
+    --line:#d7d7d7;
+  }
+  *{box-sizing:border-box;}
+  body{
+    font-family:Arial, Helvetica, sans-serif;
+    color:#1a1a1a;
+    margin:0;
+    background:#e8e8e8;
+    padding:24px 0 50px;
+  }
+  .page{
+    max-width:1820px;
+    margin:0 auto 24px auto;
+    background:#fff;
+    padding:26px 34px 30px 34px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.15);
+    font-size:15px;
+    line-height:1.5;
+  }
+  .masthead{
+    background:var(--darkblue);
+    color:#fff;
+    padding:16px 22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:6px solid var(--orange);
+  }
+  .masthead h1{margin:0; font-size:30px; letter-spacing:1px;}
+  .masthead h1 span{color:var(--orange);}
+  .masthead .tagline{font-size:14px; text-align:right; line-height:1.55;}
+  .pressroom-bar{background:#1a1a1a; color:#fff; font-size:11.5px; text-align:center; padding:5px;}
+  .alert-bar{background:var(--orange); color:#fff; font-size:13px; font-weight:bold; text-align:center; padding:7px; letter-spacing:.3px;}
+  .intro-box{background:var(--lightgray); border:1px solid var(--line); padding:16px 20px; margin:16px 0; font-size:14.5px; line-height:1.6;}
+  .intro-box h2{font-size:19px; margin:0 0 8px 0; color:var(--darkblue);}
+  .intro-box p{margin:6px 0;}
+  .legend{display:flex; gap:20px; flex-wrap:wrap; margin:12px 0 2px; font-size:13px; align-items:center;}
+  .legend .lg-item{display:flex; align-items:center; gap:6px;}
+  .legend .swatch{display:inline-block; width:16px; height:16px; border-radius:3px;}
+
+  table.matrix{width:100%; border-collapse:collapse; margin-top:16px; table-layout:fixed;}
+  table.matrix col.c-need{width:13%;}
+  table.matrix col.c-player{width:17%;}
+  table.matrix col.c-giveup{width:32%;}
+  table.matrix col.c-notes{width:38%;}
+  table.matrix th{
+    background:var(--darkblue); color:#fff; font-size:14.5px; text-align:left;
+    padding:10px 14px; letter-spacing:.3px;
+  }
+  table.matrix td{
+    padding:14px 16px; border-bottom:1px solid var(--line); vertical-align:top; font-size:14.5px; line-height:1.5;
+  }
+  table.matrix tr:last-child td{border-bottom:2px solid var(--darkblue);}
+  td.need-cell{
+    background:var(--darkblue); color:#fff; font-weight:bold; font-size:17px;
+    text-align:center; vertical-align:middle; border-right:5px solid var(--orange);
+    letter-spacing:.3px; padding:16px 10px;
+  }
+  td.need-cell .sub{display:block; font-weight:normal; font-size:11.5px; color:#c9d6ea; margin-top:6px; letter-spacing:normal;}
+  .pname{font-weight:bold; color:var(--darkblue); font-size:16px;}
+  .pteam{font-weight:normal; color:var(--gray); font-size:13.5px;}
+  .cost-tag{
+    display:inline-block; color:#fff; font-size:11px; font-weight:bold;
+    padding:2px 8px; border-radius:4px; margin:6px 0 4px 0;
+  }
+  .giveup-main{font-size:14.5px; color:#1a1a1a;}
+  .source-tag{font-size:12px; color:#888; font-style:italic; margin-top:5px; display:block;}
+  .group-alt td:not(.need-cell){background:#fafafa;}
+  .source-note{font-size:11px; color:#888; margin-top:20px; line-height:1.65; border-top:1px solid var(--line); padding-top:10px;}
+  .page-foot{display:flex; justify-content:space-between; font-size:11px; color:var(--gray); border-top:1px solid var(--line); margin-top:14px; padding-top:8px;}
+
+  /* Skubal swing-factor section (sell-side, reversed direction) */
+  .swing-box{margin-top:26px; border:2px solid var(--orange); border-radius:4px; overflow:hidden;}
+  .swing-head{background:var(--orange); color:#fff; padding:12px 18px; font-size:17px; font-weight:bold; letter-spacing:.3px;}
+  .swing-body{padding:16px 20px; background:#fff8f5;}
+  .swing-body p{font-size:14.5px; line-height:1.6; margin:6px 0;}
+  table.swing{width:100%; border-collapse:collapse; margin-top:12px; table-layout:fixed;}
+  table.swing col.s-suitor{width:16%;}
+  table.swing col.s-give{width:44%;}
+  table.swing col.s-notes{width:40%;}
+  table.swing th{background:var(--navy); color:#fff; font-size:13px; text-align:left; padding:8px 12px;}
+  table.swing td{padding:11px 12px; border-bottom:1px solid var(--line); vertical-align:top; font-size:13.5px; line-height:1.5;}
+  .sell-list{font-size:13.5px; margin-top:10px; line-height:1.6;}
+
+  /* Numbers Behind the Race addendum */
+  .race-box{margin-top:26px; border:2px solid var(--darkblue); border-radius:4px; overflow:hidden;}
+  .race-head{background:var(--darkblue); color:#fff; padding:12px 18px; font-size:17px; font-weight:bold; letter-spacing:.3px;}
+  .race-body{padding:16px 20px; background:#f7f9fc;}
+  .race-body h3{font-size:15px; color:var(--darkblue); margin:16px 0 6px 0;}
+  .race-body h3:first-child{margin-top:0;}
+  .race-body p{font-size:14.5px; line-height:1.6; margin:6px 0;}
+  .stat-grid{display:flex; gap:14px; flex-wrap:wrap; margin:10px 0 14px;}
+  .stat-card{background:#fff; border:1px solid var(--line); border-radius:4px; padding:10px 16px; min-width:150px; flex:1;}
+  .stat-card .num{font-size:24px; font-weight:bold; color:var(--darkblue); line-height:1.1;}
+  .stat-card .lbl{font-size:11.5px; color:var(--gray); margin-top:3px;}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="masthead">
+    <h1>TIGERS <span>DEADLINE MATRIX</span></h1>
+    <div class="tagline">Needs &bull; Options &bull; What It Costs<br>As of Saturday, August 1, 2026</div>
+  </div>
+  <div class="pressroom-bar">Not affiliated with, endorsed by, or sponsored by MLB or the Detroit Tigers &mdash; an independent fan-made summary for personal use</div>
+  <div class="alert-bar">DEADLINE: MONDAY, AUG. 3 &middot; 6:00 PM ET &mdash; ROUGHLY 48 HOURS AWAY</div>
+
+  <div class="intro-box">
+    <h2>2026 Trade Deadline &mdash; The Tigers Have Tipped Toward Selling</h2>
+    <p>The picture has flipped hard since our last refresh on 7/25. Detroit is now 52-58, 4th in the AL Central and roughly 5.5 games back of first place &mdash; still just 3.5 games from the final AL Wild Card spot, but with four teams ahead of them in that chase. The Tigers lost 4 of 5 in a brutal stretch capped by blowing a 7-0 lead to the Orioles on 7/29, then bounced back with a 13-1 rout of the A's on 7/31. In between, Detroit scratched trade candidate Casey Mize from his Friday start &mdash; a move MLB.com and beat reporters widely read as a signal the club plans to sell rather than protect an active roster piece. The first domino already fell: catcher Jake Rogers was designated for assignment and dealt to Baltimore for catching prospect Zane Barnhart earlier this week.</p>
+    <p>The headline story is Tarik Skubal. ESPN's Jeff Passan reported the Tigers have decided to trade their ace and that a deal "could come soon," but USA Today's Bob Nightengale reported rival executives said Detroit hadn't seriously engaged in talks as of Saturday morning, and MLB Network's Jon Paul Morosi described the current state as preliminary prospect-name conversations to see which club can meet Detroit's price. In other words: directionally selling, but nothing imminent as of this snapshot. Given that lean, the buy-side needs matrix below (a right-handed bat, bullpen help, corner-infield/SS and young-pitching depth) now looks like a much lower-probability path for Detroit &mdash; it's kept here for reference, but the far more live storylines are the Skubal sell-side section and the list of other Tigers pieces that could move, both further down the page.</p>
+    <div class="legend">
+      <strong style="font-size:13px;">Cost key:</strong>
+      <div class="lg-item"><span class="swatch" style="background:#BD3039;"></span>High</div>
+      <div class="lg-item"><span class="swatch" style="background:#c9a227;"></span>Medium (rental)</div>
+      <div class="lg-item"><span class="swatch" style="background:#4a7d3c;"></span>Low-Medium (depth/rental)</div>
+      <div class="lg-item"><span class="swatch" style="background:#666;"></span>Unclear / no confirmed target</div>
+    </div>
+  </div>
+
+  <table class="matrix">
+    <colgroup>
+      <col class="c-need"><col class="c-player"><col class="c-giveup"><col class="c-notes">
+    </colgroup>
+    <tr>
+      <th>Need (if Detroit still buys)</th><th>Player / Option</th><th>What Tigers Would Give Up</th><th>Notes &amp; Source</th>
+    </tr>
+
+    <!-- RH BAT / OUTFIELD -->
+    <tr>
+      <td class="need-cell" rowspan="4">RIGHT-HANDED BAT<span class="sub">Outfield / DH platoon pop</span></td>
+      <td><span class="pname">Ryan Mountcastle</span><br><span class="pteam">BAL &middot; 1B/DH</span></td>
+      <td>
+        <span class="cost-tag" style="background:#4a7d3c;">LOW-MEDIUM</span>
+        <div class="giveup-main">No specific package reported; still unmoved as of 8/1. Baltimore has been open to offers for months and Mountcastle is coming off his worst season, so a modest, lower-level-prospect return remains the expectation.</div>
+        <span class="source-tag">MLB Trade Rumors</span>
+      </td>
+      <td>Final year of club control before free agency &mdash; a rental. Still sitting available with the deadline two days out.</td>
+    </tr>
+    <tr>
+      <td><span class="pname">Taylor Ward</span><br><span class="pteam">BAL &middot; OF</span></td>
+      <td>
+        <span class="cost-tag" style="background:#c9a227;">MEDIUM</span>
+        <div class="giveup-main">No specific package reported; per The Athletic (via MLB.com's 8/1 rumor roundup) Ward now has a "robust market" that includes the Yankees, Guardians, Rangers and Phillies &mdash; expect a mid-tier prospect price given the demand.</div>
+        <span class="source-tag">MLB.com (via The Athletic)</span>
+      </td>
+      <td>Good walk rate, capable corner outfielder, pending free agent. With four other known suitors now engaged, the price is firming up fast and Detroit would need to move quickly.</td>
+    </tr>
+    <tr>
+      <td><span class="pname">Randy Arozarena</span><br><span class="pteam">SEA &middot; OF</span></td>
+      <td>
+        <span class="cost-tag" style="background:#4a7d3c;">LOW-MEDIUM</span>
+        <div class="giveup-main">No specific package reported; still contingent on Seattle's own results, and the Mariners (47-46 as of the last check) have stayed in the mix rather than clearly fading.</div>
+        <span class="source-tag">Just Baseball</span>
+      </td>
+      <td>Speed/power combo bat, postseason pedigree, pending free agent. Availability remains unconfirmed.</td>
+    </tr>
+    <tr>
+      <td><span class="pname">Luis Robert Jr.</span><br><span class="pteam">Team disputed across sources</span></td>
+      <td>
+        <span class="cost-tag" style="background:#4a7d3c;">LOW-MEDIUM</span>
+        <div class="giveup-main">No specific package reported; buy-low reclamation price given an inconsistent platform year. Also linked to Boston this same window.</div>
+        <span class="source-tag">Sportsnaut</span>
+      </td>
+      <td>Given Detroit's sell-lean, a bat addition here now reads as unlikely rather than a live target.</td>
+    </tr>
+
+    <!-- BULLPEN -->
+    <tr class="group-alt">
+      <td class="need-cell">BULLPEN<span class="sub">Leverage/setup arm &mdash; need likely shelved</span></td>
+      <td><span class="pname">No live external target</span><br><span class="pteam">&mdash;</span></td>
+      <td>
+        <span class="cost-tag" style="background:#666;">UNCLEAR</span>
+        <div class="giveup-main">Both names on our 7/25 board are off this board: <strong>A.J. Minter</strong> was already dealt by the Mets &mdash; to Minnesota, not Detroit &mdash; and <strong>Brooks Raley</strong> is not being moved (the Mets' 2026 club option on him was already exercised, and a reported Pirates trade talk for him fell through). No new external bullpen target has been reported for Detroit specifically.</div>
+        <span class="source-tag">MLB.com / CBS Sports rumor roundups</span>
+      </td>
+      <td>More relevant now: Detroit's <strong>own</strong> relievers Kenley Jansen and Kyle Finnegan are listed among relievers still available at the deadline &mdash; i.e., Tigers as bullpen sellers, not buyers. See the sell-chip list below.</td>
+    </tr>
+
+    <!-- CORNER INFIELD -->
+    <tr>
+      <td class="need-cell">CORNER INFIELD / SS DEPTH<span class="sub">Thinly reported lane</span></td>
+      <td><span class="pname">No confirmed target</span><br><span class="pteam">&mdash;</span></td>
+      <td>
+        <span class="cost-tag" style="background:#666;">UNCLEAR</span>
+        <div class="giveup-main">Eugenio Su&aacute;rez remains with Cincinnati (re-signed for 2026 with a mutual option for 2027); no trade has occurred. Whether the Reds will actively shop him before Monday's deadline is unresolved, and no confirmed Tigers interest has surfaced.</div>
+        <span class="source-tag">MLB Trade Rumors / CBS Sports</span>
+      </td>
+      <td>Listed as a "need" in general season-preview pieces, but reporting still hasn't produced a specific, credible target for Detroit.</td>
+    </tr>
+
+    <!-- YOUNG SP DEPTH -->
+    <tr class="group-alt">
+      <td class="need-cell">YOUNG STARTING PITCHING<span class="sub">Depth behind the current five</span></td>
+      <td><span class="pname">No confirmed external target</span><br><span class="pteam">&mdash;</span></td>
+      <td>
+        <span class="cost-tag" style="background:#666;">UNCLEAR</span>
+        <div class="giveup-main">No specific acquisition target reported; framed as an organizational gap Detroit would address via the farm system or offseason, not a deadline trade &mdash; and even less likely now given the sell-lean.</div>
+        <span class="source-tag">Bless You Boys</span>
+      </td>
+      <td>Note the irony: if Skubal and/or Mize are dealt, this "need" only grows, but any fix is now more likely to come back <em>in</em> those trade returns than via a separate acquisition.</td>
+    </tr>
+  </table>
+
+  <div class="swing-box">
+    <div class="swing-head">THE MAIN EVENT: WHERE DOES TARIK SKUBAL LAND?</div>
+    <div class="swing-body">
+      <p>This remains the single biggest storyline of the Tigers' deadline, and it runs in the <strong>opposite direction</strong> from the matrix above &mdash; other clubs would be giving Detroit young, controllable talent, not the reverse. An insider price check (via Heavy) describes Detroit's asking price as "enormous," and specific mocked/reported packages have sharpened considerably since our last refresh:</p>
+      <table class="swing">
+        <colgroup><col class="s-suitor"><col class="s-give"><col class="s-notes"></colgroup>
+        <tr><th>Suitor</th><th>What They'd Send Detroit</th><th>Notes &amp; Source</th></tr>
+        <tr>
+          <td><span class="pname" style="font-size:14px;">Dodgers</span><br><span class="pteam">LAD</span></td>
+          <td>Reported/mocked centerpiece: OF Josue De Paula &mdash; L.A.'s No. 1 prospect and MLB's No. 13 overall prospect.</td>
+          <td>Widely viewed as the favorite; most rival officials still predict Skubal ends up in Los Angeles. Baseball America / SI Dodgers</td>
+        </tr>
+        <tr>
+          <td><span class="pname" style="font-size:14px;">Brewers</span><br><span class="pteam">MIL</span></td>
+          <td>Mocked package: RHP/IF prospect Luis Pe&ntilde;a and OF Luis Lara (Lara just earned his MLB call-up at age 21), while Milwaukee holds back SS Jes&uacute;s Made and RHP Logan Henderson.</td>
+          <td>MLB.com ranks Milwaukee the club that "needs" Skubal most &mdash; eight playoff berths in nine years, no title since 1982. FanSided / Baseball America</td>
+        </tr>
+        <tr>
+          <td><span class="pname" style="font-size:14px;">Braves</span><br><span class="pteam">ATL</span></td>
+          <td>Mocked package built around RHP J.R. Ritchie and OF Didier Fuentes.</td>
+          <td>Atlanta's rotation behind Chris Sale has real questions; adding Skubal would pair two Cy Young-caliber arms. FanSided</td>
+        </tr>
+        <tr>
+          <td><span class="pname" style="font-size:14px;">Cubs</span><br><span class="pteam">CHC</span></td>
+          <td>Mocked package: C/1B Moises Ballesteros (org's No. 2 prospect), RHP Jaxon Wiggins (No. 3), OF Kevin Alc&aacute;ntara (No. 5), plus MLB-ready RHP Javier Assad as a lower-cost add.</td>
+          <td>Chicago's rotation behind Boyd/Imanaga is the thinnest of the group; a case exists the Cubs need Skubal most of any suitor. FanSided</td>
+        </tr>
+        <tr>
+          <td><span class="pname" style="font-size:14px;">Rays</span><br><span class="pteam">TB</span></td>
+          <td>No specific package reported yet.</td>
+          <td>MLB.com ranks Tampa Bay the #2 club by need &mdash; AL is thin at the top and the Rays still lack a title. Watch Shane McClanahan's back injury as a factor pushing urgency. MLB.com</td>
+        </tr>
+      </table>
+      <p style="margin-top:14px;"><strong>Bottom line:</strong> sources disagree on urgency, not direction. Passan (ESPN) reports Detroit has decided to sell and a deal could come "soon"; Nightengale (USA Today) reports rival execs still hadn't been seriously engaged as of Saturday morning; Morosi (MLB Network) describes early-stage, prospect-name-only conversations. Read together: Detroit is testing the market hard with under 48 hours on the clock, but no deal is confirmed as of this snapshot.</p>
+      <div class="sell-list"><strong>Other reported Tigers trade chips if Detroit leans into selling:</strong> Casey Mize (RHP, scratched from his 7/31 start as a trade-value precaution; reported interest from the Cubs, Diamondbacks, Rays and Braves &mdash; if unmoved, lined up to start Tuesday at Seattle), Jack Flaherty (RHP, impending free agent, currently injured), Gleyber Torres (2B, free agent at season's end, hitting .270/5 HR/23 RBI when healthy &mdash; the Red Sox have been named as one potential landing spot), Kenley Jansen (RP, 38, scoreless in 9 straight July appearances with 3 saves &mdash; a classic sell-high candidate), Kyle Finnegan (RP, listed among relievers still on the board leaguewide per ESPN's trade-candidate rankings). <strong>Already moved:</strong> catcher Jake Rogers was DFA'd and sent to Baltimore for catching prospect Zane Barnhart earlier this week &mdash; the first concrete sell-side domino. <span class="source-tag" style="display:inline;">MLB.com / ESPN / SI Onsi / MLB Trade Rumors</span></div>
+    </div>
+  </div>
+
+  <div class="race-box">
+    <div class="race-head">NUMBERS BEHIND THE RACE</div>
+    <div class="race-body">
+      <h3>Where Detroit Stands</h3>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num">52-58</div><div class="lbl">Record through 8/1 &middot; 4th in AL Central</div></div>
+        <div class="stat-card"><div class="num">&asymp;5.5</div><div class="lbl">Games back of first place (division)</div></div>
+        <div class="stat-card"><div class="num">3.5</div><div class="lbl">Games back of the final AL Wild Card spot (4 teams ahead)</div></div>
+      </div>
+      <p>Detroit's last two weeks capture the whole dilemma in miniature: a demoralizing blown 7-0 lead in a loss to Baltimore on 7/29 (their fourth loss in five games) followed immediately by a 13-1 rout of the Athletics on 7/31. That kind of streakiness is a big part of why the front office looks split between "still alive" (3.5 back of a Wild Card spot) and "time to sell" (5-plus back in the division, and the underlying trade-value logic around Mize and Rogers already in motion).</p>
+      <h3>Postseason Odds &mdash; Flagged as Approximate</h3>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="num">~25-32%</div><div class="lbl">Overall playoff odds (range across models/outlets)</div></div>
+        <div class="stat-card"><div class="num">~12-17%</div><div class="lbl">AL Wild Card path specifically (range across models/outlets)</div></div>
+      </div>
+      <p>Playoff-odds figures conflicted meaningfully across sources checked this refresh (a sportsbook-implied figure near 28.6%, versus separately reported model figures of roughly 31.6% overall / 12.6% via Wild Card). Rather than pick one, both are shown as a range and flagged here as approximate &mdash; treat the win-loss record and games-back figures above, which were consistent across sources, as the more reliable read on where Detroit stands.</p>
+      <p style="font-size:12.5px; color:#777; font-style:italic;">Note: the detailed one-run-record, run-differential and remaining-schedule tables carried in the 7/25 version of this matrix could not be refreshed with verified live data this cycle (Baseball-Reference's live pages weren't retrievable via this refresh's tools) and have been omitted rather than left stale. They'll return once a live source is available.</p>
+    </div>
+  </div>
+
+  <div class="source-note">
+    Record, standings, and games-back figures cross-checked across MLB.com's 8/1 trade-rumor roundup, ESPN, and StatMuse; where sources conflicted (playoff-odds percentages), a range is shown and flagged as approximate rather than a single fabricated figure. Needs and target reporting drawn from: MLB.com's "Biggest need for each team at 2026 MLB Trade Deadline" and 8/1 rumor roundup ("Trade rumors: Kirby, Skubal, Miller, Angels, O's, more"); MLB.com's "Who needs Skubal the most? Let's rank the trade suitors"; ESPN's Jeff Passan reporting and trade-candidate tracker; USA Today's Bob Nightengale; MLB Network's Jon Paul Morosi and Jon Heyman; FanSided's Skubal package roundup; Baseball America's Skubal trade-proposal piece; Heavy's Skubal asking-price report; MLB Trade Rumors' Casey Mize scratch report and Detroit Tigers team page; SI/Onsi's Tigers trade-deadline tracker and "Tigers Just Signaled Their Trade Deadline Intentions." Where no source had a specific package, that is stated plainly rather than invented, and the Robert Jr./team-affiliation and playoff-odds discrepancies are flagged rather than resolved by guesswork. Snapshot as of the morning/midday of 8/1/2026; trade speculation moves fast with the deadline roughly 48 hours out.
+  </div>
+
+  <div class="page-foot">
+    <div>Tigers Deadline Matrix</div>
+    <div>Generated 8/1/2026 (refresh of 7/25/2026 version)</div>
+  </div>
+</div>
+</body>
+</html>
