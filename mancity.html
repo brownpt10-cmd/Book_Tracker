@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MAN CITY NOTES — Thursday, 20 August 2026</title>
+<style>
+:root{
+  --red:#6CABDD;       /* primary accent — sky blue */
+  --navy:#1C2C5B;      /* secondary — navy bars */
+  --gray:#666;
+  --lightgray:#e7e7e7;
+  --line:#c9c9c9;
+  --wbg:#e8f4e8;       /* win tint */
+  --lbg:#fbeaea;       /* loss tint */
+  --dbg:#f4f1e4;       /* draw tint */
+}
+*{box-sizing:border-box;}
+body{margin:0;padding:18px;background:#f0f0f0;font-family:Arial,Helvetica,sans-serif;
+     font-size:12px;line-height:1.4;color:#111;}
+.page{max-width:1180px;margin:0 auto 22px auto;background:#fff;padding:0 0 18px 0;
+      box-shadow:0 1px 6px rgba(0,0,0,.18);}
+.masthead{background:var(--navy);color:#fff;border-bottom:5px solid var(--red);
+          padding:12px 16px;display:flex;justify-content:space-between;align-items:flex-end;gap:12px;}
+.masthead h1{margin:0;font-size:30px;letter-spacing:2px;font-weight:bold;}
+.masthead h1 span{color:var(--red);}
+.masthead .tagline{text-align:right;font-size:11.5px;line-height:1.45;}
+.champ-bar{background:var(--red);color:#0b1730;font-size:10px;font-weight:bold;
+           letter-spacing:.6px;padding:5px 16px;text-transform:uppercase;}
+.pressroom-bar{background:#f3f3f3;color:#444;font-size:10px;padding:5px 16px;
+               border-bottom:1px solid var(--line);font-style:italic;}
+.inner{padding:12px 16px 0 16px;}
+.matchup-box{border:2px solid var(--navy);padding:11px 13px;margin:12px 0;text-align:center;background:#fafcff;}
+.matchup-box h2{margin:0 0 5px 0;font-size:18px;color:var(--navy);letter-spacing:.5px;}
+.matchup-box .sub{font-size:12.5px;color:#333;margin-bottom:4px;}
+.matchup-box .probables{font-size:12.5px;margin-top:6px;line-height:1.6;}
+.starter-box{border:1px solid var(--line);border-left:4px solid var(--red);
+             padding:9px 11px;margin:10px 0;background:#fbfbfb;text-align:left;}
+.starter-box .st-title{font-weight:bold;font-size:11.5px;letter-spacing:.7px;
+                       color:var(--navy);text-transform:uppercase;margin-bottom:6px;}
+.starter-box .st-body{font-size:12px;line-height:1.55;margin-top:7px;}
+.layout3{display:flex;gap:16px;margin-top:12px;}
+.cols2{display:flex;gap:16px;}
+.col{flex:1 1 0;min-width:0;}
+.col.rail{flex:0 0 268px;}
+h3.section{background:var(--navy);color:#fff;font-size:11.5px;font-weight:bold;
+           padding:4px 8px;margin:12px 0 6px 0;letter-spacing:.6px;text-transform:uppercase;}
+h3.section.red{background:var(--red);color:#0b1730;}
+.note-block{margin-bottom:12px;border-bottom:1px dotted var(--line);padding-bottom:9px;}
+.note-block .headline{font-weight:bold;font-size:11.5px;letter-spacing:.5px;
+                      text-transform:uppercase;color:var(--navy);margin-bottom:4px;}
+.note-block ul{margin:0;padding-left:16px;}
+.note-block ul li{margin-bottom:4px;}
+.newscol .newscard{border:1px solid var(--line);border-top:3px solid var(--red);
+                   padding:8px 10px;margin-bottom:10px;background:#fcfcfc;}
+.newscard .nh{font-weight:bold;font-size:12.5px;color:var(--navy);margin-bottom:3px;}
+.newscard .ns{font-size:12px;margin-bottom:4px;}
+.newscard .nmeta{font-size:10.5px;color:var(--gray);}
+.newscard a.nlink{color:#1a5fa8;text-decoration:none;}
+.stat-box{border:1px solid var(--line);margin-bottom:12px;}
+.stat-box .box-title{background:var(--navy);color:#fff;font-size:10.5px;font-weight:bold;
+                     padding:4px 8px;letter-spacing:.5px;text-transform:uppercase;}
+.stat-box table{width:100%;border-collapse:collapse;}
+.stat-box table td,.stat-box table th{padding:3px 8px;border-bottom:1px solid #eee;font-size:11.5px;}
+.player-entry{margin-bottom:10px;padding-bottom:8px;border-bottom:1px dotted var(--line);}
+.player-entry .pname{font-weight:bold;font-size:12.5px;color:var(--navy);}
+.player-entry .pline{font-size:11.5px;color:#333;font-family:"Courier New",monospace;margin:2px 0 3px 0;}
+.player-entry ul{margin:3px 0 0 0;padding-left:16px;}
+table.data{width:100%;border-collapse:collapse;margin-bottom:8px;}
+table.data th{background:var(--navy);color:#fff;text-align:left;padding:4px 7px;font-size:11px;}
+table.data td{padding:3px 7px;border-bottom:1px solid #eee;font-size:11.5px;}
+table.data tr.hi td{background:#eaf4fc;font-weight:bold;}
+table.dbd{width:100%;border-collapse:collapse;}
+table.dbd th{background:var(--navy);color:#fff;text-align:left;padding:4px 6px;font-size:10.5px;}
+table.dbd td{padding:3px 6px;border-bottom:1px solid #eee;font-size:11px;}
+tr.w td{background:var(--wbg);} tr.l td{background:var(--lbg);} tr.d td{background:var(--dbg);}
+.dbd-wrap{column-count:2;column-gap:16px;}
+.source-note{font-size:10px;color:var(--gray);font-style:italic;line-height:1.5;
+             margin:3px 0 10px 0;}
+.disclaimer{background:#fff8e1;border:1px solid #e8d9a0;color:#5a4a10;font-size:11px;
+            padding:5px 16px;}
+.page-foot{border-top:2px solid var(--navy);margin-top:14px;padding:6px 16px 0 16px;
+           font-size:10.5px;color:var(--gray);display:flex;justify-content:space-between;}
+.il-tag{background:#c0392b;color:#fff;font-size:9px;padding:1px 4px;border-radius:2px;margin-left:4px;}
+.as-tag{background:#8e44ad;color:#fff;font-size:9px;padding:1px 4px;border-radius:2px;margin-left:4px;}
+.opt-tag{background:#7f8c8d;color:#fff;font-size:9px;padding:1px 4px;border-radius:2px;margin-left:4px;}
+.tag-new{background:#1e8449;color:#fff;font-size:9px;padding:1px 4px;border-radius:2px;margin-left:4px;}
+
+/* ===================== MOBILE / RESPONSIVE ===================== */
+@media (max-width: 820px){
+  html{-webkit-text-size-adjust:100%;}
+  body{padding:0; background:#fff;}
+  .page{max-width:100%; margin:0 0 10px 0; padding:10px 11px 14px 11px; box-shadow:none;
+        border-bottom:6px solid var(--lightgray); font-size:13px; line-height:1.45;}
+  .masthead{flex-direction:column; align-items:flex-start; gap:3px; padding:10px 12px;}
+  .masthead h1{font-size:20px !important; letter-spacing:1px;}
+  .masthead .tagline{text-align:left; font-size:11.5px;}
+  .champ-bar, .pressroom-bar{font-size:9.5px; line-height:1.35; padding:5px 8px;}
+
+  .layout3, .cols2{flex-direction:column; gap:0;}
+  .col, .col.rail, .cols2 > div{flex:1 1 auto; width:100%; min-width:0;}
+  .dbd-wrap{column-count:1;}
+
+  .matchup-box{padding:9px 10px; text-align:left;}
+  .matchup-box h2{font-size:15px; line-height:1.3;}
+  .matchup-box .sub, .matchup-box .probables{font-size:12.5px;}
+
+  .note-block ul li{font-size:13px; line-height:1.5; margin-bottom:6px;}
+  .note-block .headline{font-size:12.5px;}
+  .newscard{padding:10px 12px;}
+  .newscard .nh{font-size:13.5px;}
+  .newscard .ns{font-size:13px;}
+  .newscard a.nlink{display:inline-block; padding:4px 0;}
+  .player-entry{margin-bottom:11px;}
+  .player-entry .pname{font-size:13px;}
+  .player-entry .pline{font-size:12px;}
+  .player-entry ul li{font-size:12.5px; line-height:1.45;}
+  .source-note{font-size:10.5px; line-height:1.55;}
+  .disclaimer{font-size:11px;}
+  .page-foot{font-size:10.5px;}
+
+  .tscroll{overflow-x:auto; -webkit-overflow-scrolling:touch; margin-bottom:8px;}
+  .tscroll table{min-width:520px;}
+  .tscroll table.dbd{min-width:600px;}
+  table.data td, table.data th{padding:6px 7px; font-size:12px;}
+  table.dbd td, table.dbd th{padding:5px 6px; font-size:11.5px;}
+  .stat-box table td, .stat-box table th{padding:5px 8px; font-size:12.5px;}
+  .starter-box table td, .starter-box table th{padding:5px 6px; font-size:12px;}
+  .starter-box .st-body{font-size:12.5px; line-height:1.5;}
+  a{word-break:break-word;}
+
+  details.m-sec{margin:10px 0 0 0; border:1px solid var(--line); border-radius:4px; overflow:hidden;}
+  details.m-sec > summary{list-style:none; cursor:pointer; background:var(--navy); color:#fff;
+    font-weight:bold; font-size:12.5px; padding:11px 12px;
+    display:flex; justify-content:space-between; align-items:center; gap:8px;}
+  details.m-sec > summary::-webkit-details-marker{display:none;}
+  details.m-sec.red > summary{background:var(--red);}
+  details.m-sec > summary::after{content:"\25BE"; font-size:12px; opacity:.85;
+    transform:rotate(-90deg); transition:transform .15s;}
+  details.m-sec[open] > summary::after{transform:rotate(0deg);}
+  details.m-sec > .m-body{padding:8px 10px 10px 10px;}
+  details.m-sec > .m-body > *:first-child{margin-top:0;}
+
+  .stat-box .box-title.m-dup{display:none;}
+  details.m-sec > .m-body > .stat-box{border:none; margin-bottom:0;}
+}
+@media (min-width: 821px){
+  details.m-sec{display:block; border:none; border-radius:0; margin:0; overflow:visible;}
+  details.m-sec > summary{list-style:none; cursor:default; font-weight:bold; font-size:11.5px;
+    background:var(--navy); color:#fff; padding:4px 8px; margin:12px 0 6px 0; display:block;}
+  details.m-sec.red > summary{background:var(--red);}
+  details.m-sec > summary::-webkit-details-marker{display:none;}
+  details.m-sec > summary::after{content:none;}
+  .col.rail details.m-sec > summary{display:none;}
+  details.m-sec > .m-body{display:block; padding:0;}
+  .tscroll{display:contents;}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1 — MATCHUP & NOTES ==================== -->
+<div class="page">
+  <div class="masthead">
+    <h1>MAN CITY <span>NOTES</span></h1>
+    <div class="tagline">
+      <strong>Thursday, 20 August 2026</strong><br>
+      Matchweek 1 preview &bull; v AFC Bournemouth &bull; Sun 23 Aug, 14:00 UK / 07:00 MDT &bull; Etihad Stadium
+    </div>
+  </div>
+  <div class="champ-bar">
+    10-time English champions: 1937, 1968, 2012, 2014, 2018, 2019, 2021, 2022, 2023, 2024 &bull;
+    Champions League 2023 &bull; FA Cup &amp; Carabao Cup double, 2025&ndash;26
+  </div>
+  <div class="pressroom-bar">
+    Press-room style match notes. Independent, fan-made, and not affiliated with, endorsed by, or
+    speaking for Manchester City F.C., the Premier League, or any club.
+  </div>
+  <div class="disclaimer">
+    <strong>Season-opening edition.</strong> No 2026&ndash;27 competitive league matches have been played.
+    Everything on this page that touches the new season is either a confirmed fixture, a confirmed
+    transaction, or is explicitly flagged as projected. League tables read 0-0-0 across the board.
+  </div>
+
+  <div class="inner">
+
+    <div class="matchup-box">
+      <h2>MANCHESTER CITY v AFC BOURNEMOUTH</h2>
+      <div class="sub">Premier League &bull; Matchweek 1 &bull; Sunday 23 August 2026 &bull; 14:00 UK (07:00 MDT) &bull; Etihad Stadium, Manchester</div>
+      <div class="sub">
+        <strong>Man City</strong> 0-0-0, 0 pts, 0 GD &bull; 2nd in 2025&ndash;26 (78 pts) &nbsp;&nbsp;|&nbsp;&nbsp;
+        <strong>Bournemouth</strong> 0-0-0, 0 pts, 0 GD &bull; 6th in 2025&ndash;26 (57 pts)
+      </div>
+      <div class="probables">
+        <strong>Managers:</strong> Enzo Maresca (City, 1st competitive PL match in charge) v Marco Rose (Bournemouth, 1st competitive match in charge)<br>
+        <strong>Referee:</strong> TBD &mdash; PGMOL matchweek 1 appointments not published at build time<br>
+        <strong>Broadcast:</strong> Sky Sports (UK)
+      </div>
+
+      <div class="starter-box">
+        <div class="st-title">Keeper &amp; Key Men</div>
+        <table class="data">
+          <tr><th>Player</th><th>Pos</th><th>Line to know</th></tr>
+          <tr class="hi"><td>Gianluigi Donnarumma</td><td>GK</td><td>Started the Community Shield; beaten three times, faced a first-minute one-v-one</td></tr>
+          <tr class="hi"><td>Erling Haaland</td><td>ST</td><td>27 PL goals in 35 games in 2025&ndash;26 &mdash; third Golden Boot; 112 goals in 132 PL apps</td></tr>
+          <tr><td>Elliot Anderson</td><td>CM</td><td>Club-record £116m signing from Nottingham Forest, completed 23 July 2026</td></tr>
+          <tr><td>Antoine Semenyo</td><td>RW/ST</td><td>Faces his former club; joined from Bournemouth in Jan 2026 for a reported £64m</td></tr>
+          <tr><td>Rúben Dias</td><td>CB</td><td>Wore the armband at Cardiff with Rodri and Bernardo Silva both gone</td></tr>
+        </table>
+        <div class="st-body">
+          This is the first competitive Premier League match Manchester City have played without
+          Pep Guardiola on the touchline since May 2016, and the first without Rodri, John Stones
+          and Bernardo Silva in the squad at all. Maresca inherits an elite attacking core &mdash; Haaland,
+          Foden, Cherki, Semenyo &mdash; but the spine that won four straight titles has been dismantled
+          inside three months. The Community Shield offered a preview of the problem: City created
+          four or five clear chances and lost 3-0, undone twice by goals conceded inside the opening
+          minute of a half. Bournemouth arrive under a new manager of their own in Marco Rose, coming
+          off a club-record sixth-place finish and their first European qualification, and they are
+          not the soft opener the fixture list might suggest.
+        </div>
+        <div class="source-note">
+          Sources: mancity.com Community Shield match report (16 Aug 2026); mancity.com "Rodri joins
+          Barcelona" (18 Aug 2026); premierleague.com 2025&ndash;26 Golden Boot release; ESPN transfer
+          reporting on Semenyo (Jan 2026). Referee left TBD rather than guessed.
+        </div>
+      </div>
+    </div>
+
+    <div class="layout3">
+
+      <!-- ============ NOTES COLUMN ============ -->
+      <div class="col">
+        <h3 class="section">MATCH NOTES</h3>
+
+        <div class="note-block">
+          <div class="headline">State of the Club</div>
+          <ul>
+            <li>City open 2026&ndash;27 as the 11/4 second-favourite for the title behind Arsenal at 6/4, with Liverpool 11/2 the third name on the board.</li>
+            <li>Last season ended 2nd on 78 points, seven behind champions Arsenal, on a record of 23 wins, 9 draws and 6 defeats with a +42 goal difference.</li>
+            <li>It was not a barren year: City won both the Carabao Cup and the FA Cup in 2025&ndash;26, Guardiola's last two trophies at the club.</li>
+            <li>This is the club's 132nd season, its 25th consecutive campaign in the top flight, and its 16th straight Champions League entry.</li>
+          </ul>
+          <div class="source-note">Sources: NBC Sports / Yahoo Sports 2025&ndash;26 final Premier League table; covers.com and Racing Post 2026&ndash;27 outright markets (17&ndash;19 Aug 2026); Wikipedia 2026&ndash;27 Manchester City F.C. season. Odds are a snapshot and move.</div>
+        </div>
+
+        <div class="note-block">
+          <div class="headline">The Guardiola Succession — Storyline of the Week</div>
+          <ul>
+            <li>Guardiola announced on 22 May 2026 that he would step down after ten years in charge.</li>
+            <li>Enzo Maresca was appointed on 29 June 2026 on a three-year contract running to 2029, with British media reporting roughly £17m in compensation paid to Chelsea.</li>
+            <li>Maresca is not a stranger to the building: he coached City's youth side and was an assistant on the senior staff during the 2018&ndash;19 campaign, before spells at Leicester and Chelsea.</li>
+            <li>He left Stamford Bridge on 1 January 2026 with Chelsea fifth; at Chelsea he won the Conference League and the inaugural expanded Club World Cup.</li>
+          </ul>
+          <div class="source-note">Sources: mancity.com "City appoint Enzo Maresca as manager" (29 June 2026); Al Jazeera (29 June 2026); premierleague.com Maresca profile. Compensation figure is media-reported, not club-confirmed.</div>
+        </div>
+
+        <div class="note-block">
+          <div class="headline">Rodri Departs for Barcelona</div>
+          <ul>
+            <li>Announced 18 August 2026, subject to international clearance &mdash; five days before the opener.</li>
+            <li>298 appearances, 28 goals, 14 major trophies across seven years: four Premier League titles, three League Cups, two FA Cups, two Community Shields, the Champions League, the UEFA Super Cup and the Club World Cup.</li>
+            <li>Scored the winner in the 2023 Champions League final against Internazionale to complete the treble, and won the 2024 Ballon d'Or &mdash; the first City player to do so.</li>
+            <li>He captained Spain to the 2026 World Cup and took the Golden Ball at the tournament, then left within two months.</li>
+            <li>City have not replaced him with a like-for-like No. 6. Mateo Kovačić started at the base in Cardiff.</li>
+          </ul>
+          <div class="source-note">Source: mancity.com "Rodri joins Barcelona", Neil Leigh, 18 Aug 2026, 17:40 BST. Fee not disclosed by the club and not stated here.</div>
+        </div>
+
+        <div class="note-block">
+          <div class="headline">Community Shield Recap — Arsenal 3-0 City</div>
+          <ul>
+            <li>16 August 2026, Principality Stadium, Cardiff. Calafiori scored after 23 seconds, Havertz headed a second before the half hour, Ødegaard added a third three minutes into the second half.</li>
+            <li>City were not outplayed in open patches: Haaland was denied twice by David Raya, Doku had an effort deflected wide by Ben White, and Semenyo was stopped late after a Cherki run.</li>
+            <li>Gvardiol cleared off his line before half time to keep it at 2-0.</li>
+            <li>Maresca afterwards: "A big part of the game was in the first goal we conceded... I think the reaction was good, before they scored the second goal we had three or four chances."</li>
+            <li>Rúben Dias, captain: "It's the beginning of the season and it's not good enough, many things are changing obviously with a new manager as well."</li>
+          </ul>
+          <div class="source-note">Source: mancity.com match report, Paul Brown, 16 Aug 2026, 16:55 BST. Quotes reproduced as published.</div>
+        </div>
+
+        <div class="note-block">
+          <div class="headline">Availability Watch</div>
+          <ul>
+            <li><strong>Jérémy Doku</strong> &mdash; calf, sustained in the Community Shield. Ruled out of Sunday; reports indicate several weeks.</li>
+            <li><strong>Matheus Nunes</strong> &mdash; injured during the Community Shield warm-up and did not feature in the matchday squad. Status for Sunday unresolved at build time.</li>
+            <li><strong>Omar Marmoush</strong> &mdash; knock picked up after coming on at Cardiff; listed as a doubt.</li>
+            <li><strong>Ryan McAidoo</strong> &mdash; minor shoulder problem from pre-season; a doubt but possible from the bench.</li>
+            <li><strong>Suspensions:</strong> none. City carry no suspended players into matchweek 1.</li>
+            <li>With Doku out, Khusanov &mdash; who started at right-back in Cardiff &mdash; and Rico Lewis become the likelier fits on that side.</li>
+          </ul>
+          <div class="source-note">Sources: Sports Mole City injury and suspension list for the Bournemouth fixture; Yahoo Sports UK/AU injury reporting (18&ndash;19 Aug 2026), cross-checked against the Community Shield teamsheet on mancity.com. Return dates are media estimates, not club-confirmed.</div>
+        </div>
+
+        <div class="note-block">
+          <div class="headline">The Semenyo Fixture</div>
+          <ul>
+            <li>Antoine Semenyo joined City from Bournemouth in January 2026 in a deal reported at around £64m, on terms to 2031.</li>
+            <li>He started the Community Shield on the right and was the man Cherki found for City's best late chance.</li>
+            <li>Sunday is his first competitive meeting with the club he left, at the Etihad, in the opening fixture of the season.</li>
+            <li>He finished among the leading scorers in the 2025&ndash;26 Golden Boot race across his split season.</li>
+          </ul>
+          <div class="source-note">Sources: ESPN and Al Jazeera reporting on the January 2026 transfer; NBC Sports 2025&ndash;26 top-scorer coverage; mancity.com Community Shield teamsheet.</div>
+        </div>
+
+        <div class="note-block">
+          <div class="headline">A Signature Split, Reset to Zero</div>
+          <ul>
+            <li>Every split this page will normally carry &mdash; home/away, leading-at-half, scoring-first &mdash; is 0-0-0 today. There is no 2026&ndash;27 league sample.</li>
+            <li>The one carry-over worth holding: City drew nine league matches in 2025&ndash;26. That is the number that separated them from Arsenal, not the losses.</li>
+            <li>78 points and +42 was, by City's standards of the previous four seasons, a second-tier campaign that still finished clear of everyone but the champions.</li>
+            <li>This block returns as a live split after matchweek 3.</li>
+          </ul>
+          <div class="source-note">Computed from the 2025&ndash;26 final table (23-9-6, +42, 78 pts) rather than scraped as a derived figure, per build rules.</div>
+        </div>
+
+        <div class="note-block">
+          <div class="headline">Odds &amp; Ends</div>
+          <ul>
+            <li>Kit: Puma; Etihad Airways on the front, OKX on the sleeves.</li>
+            <li>Pre-season took City to Asia &mdash; Inter Milan in Hong Kong, then the K League All Stars and Atlético Madrid in South Korea (1, 5 and 9 August).</li>
+            <li>Hugo Viana is the director of football steering the rebuild alongside Maresca.</li>
+            <li>City's EDS beat Mansfield Town in the Vertu Trophy this week, with Oliver Reiss among the notable names.</li>
+            <li>The FA Cup holders enter at the third round, 7&ndash;11 January 2027; the EFL Cup run starts in the third round, 22&ndash;24 September 2026.</li>
+          </ul>
+          <div class="source-note">Sources: Wikipedia 2026&ndash;27 Manchester City F.C. season (kit, tour, competition entry rounds); mancity.com news index, 19&ndash;20 Aug 2026.</div>
+        </div>
+      </div>
+
+      <!-- ============ HEADLINES COLUMN ============ -->
+      <div class="col newscol">
+        <h3 class="section red">HEADLINES</h3>
+
+        <div class="newscard">
+          <div class="nh">Rodri joins Barcelona</div>
+          <div class="ns">City confirm the departure of the 2024 Ballon d'Or winner after seven years, 298 appearances and 14 major trophies, subject to international clearance.</div>
+          <div class="nmeta">mancity.com &bull; Neil Leigh &bull; 18 Aug 2026 &bull;
+            <a class="nlink" href="https://www.mancity.com/news/mens/rodri-leaves-manchester-city-to-join-barcelona-63922660">Read</a></div>
+        </div>
+
+        <div class="newscard">
+          <div class="nh">City defeated in 2026 Community Shield</div>
+          <div class="ns">Arsenal 3-0 City at the Principality Stadium. Calafiori inside 23 seconds, Havertz on 28, Ødegaard on 48 in Maresca's first match in charge.</div>
+          <div class="nmeta">mancity.com &bull; Paul Brown &bull; 16 Aug 2026 &bull;
+            <a class="nlink" href="https://www.mancity.com/news/mens/arsenal-manchester-city-community-shield-match-report-63922483">Read</a></div>
+        </div>
+
+        <div class="newscard">
+          <div class="nh">Tijjani Reijnders joins Al Qadsiah</div>
+          <div class="ns">The Netherlands midfielder leaves for the Saudi Pro League, thinning City's midfield further in the week Rodri departed.</div>
+          <div class="nmeta">mancity.com &bull; 19 Aug 2026 &bull;
+            <a class="nlink" href="https://www.mancity.com/news/mens/tijjani-reijnders-departs-man-city-for-al-qadsiah-63922748">Read</a></div>
+        </div>
+
+        <div class="newscard">
+          <div class="nh">City appoint Enzo Maresca as manager</div>
+          <div class="ns">A three-year contract for the former City youth and assistant coach, succeeding Guardiola after his decade at the Etihad.</div>
+          <div class="nmeta">mancity.com &bull; 29 Jun 2026 &bull;
+            <a class="nlink" href="https://www.mancity.com/news/mens/enzo-maresca-manchester-city-manager-63918331">Read</a></div>
+        </div>
+
+        <div class="newscard">
+          <div class="nh">Doku ruled out of Premier League opener</div>
+          <div class="ns">A calf problem sustained in the Community Shield defeat leaves the Belgian unavailable on Sunday, with reports suggesting a multi-week absence.</div>
+          <div class="nmeta">Yahoo Sports / Sports Mole &bull; 18&ndash;19 Aug 2026 &bull;
+            <a class="nlink" href="https://www.sportsmole.co.uk/football/man-city/injury-news/injuries-and-suspensions/doku-nunes-marmoush-savinho-latest-man-city-injury-list-for-bournemouth-clash_603325.html">Read</a></div>
+        </div>
+
+        <div class="newscard">
+          <div class="nh">Guardiola to step down after a decade as City manager</div>
+          <div class="ns">The announcement on 22 May 2026 that ended the most successful managerial tenure in the club's history and triggered the summer's rebuild.</div>
+          <div class="nmeta">mancity.com &bull; 22 May 2026 &bull;
+            <a class="nlink" href="https://www.mancity.com/news/mens/pep-guardiola-official-announcement-63915039">Read</a></div>
+        </div>
+
+        <div class="newscard">
+          <div class="nh">Bernardo Silva joins Real Madrid</div>
+          <div class="ns">A free transfer to Spain after 460 appearances and 20 major trophies across nine seasons in Manchester.</div>
+          <div class="nmeta">mancity.com &bull; 17 Jun 2026 &bull;
+            <a class="nlink" href="https://www.mancity.com/news/mens/bernardo-silva-joins-real-madrid-63917285">Read</a></div>
+        </div>
+
+        <div class="newscard">
+          <div class="nh">Haaland wins third Premier League Golden Boot</div>
+          <div class="ns">27 goals in 35 league matches in 2025&ndash;26, five clear of Brentford's Igor Thiago, and a third Golden Boot in four years.</div>
+          <div class="nmeta">premierleague.com &bull; May 2026 &bull;
+            <a class="nlink" href="https://www.premierleague.com/en/news/4591856/haaland-wins-202526-premier-league-golden-boot-award">Read</a></div>
+        </div>
+      </div>
+
+      <!-- ============ RAIL ============ -->
+      <div class="col rail">
+        <h3 class="section">SNAPSHOT</h3>
+
+        <div class="stat-box">
+          <div class="box-title">2026&ndash;27 Season Snapshot</div>
+          <table>
+            <tr><td>League record</td><td>0-0-0</td></tr>
+            <tr><td>Points</td><td>0</td></tr>
+            <tr><td>Goal difference</td><td>0</td></tr>
+            <tr><td>League position</td><td>&mdash;</td></tr>
+            <tr><td>Community Shield</td><td>L 0-3 v Arsenal</td></tr>
+            <tr><td>Manager</td><td>Enzo Maresca</td></tr>
+            <tr><td>Captain (Shield)</td><td>Rúben Dias</td></tr>
+            <tr><td>Competitions</td><td>PL, UCL, FA Cup, EFL Cup</td></tr>
+          </table>
+          <div class="source-note">No competitive league match played. Shield result per mancity.com, 16 Aug 2026.</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="box-title">Premier League Table — Pre-Matchweek 1</div>
+          <table>
+            <tr><th>Pos</th><th>Team</th><th>Pld</th><th>Pts</th></tr>
+            <tr><td colspan="4" style="font-style:italic;color:#666;">All 20 clubs 0-0-0, 0 points, 0 GD. First matches 21 August 2026; City play 23 August. Ordering not yet meaningful.</td></tr>
+          </table>
+          <div class="source-note">Source: premierleague.com 2026&ndash;27 all-matchweeks table via Wikipedia season page, last updated "Preseason". Publishing an ordered table here would be interpolation, so it is omitted.</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="box-title">2025&ndash;26 Final Table — Top of the League</div>
+          <table>
+            <tr><th>Pos</th><th>Team</th><th>Pts</th></tr>
+            <tr><td>1</td><td>Arsenal</td><td>85</td></tr>
+            <tr class="hi"><td>2</td><td>Manchester City</td><td>78</td></tr>
+            <tr><td>6</td><td>AFC Bournemouth</td><td>57</td></tr>
+          </table>
+          <div class="source-note">Sources: NBC Sports and Yahoo Sports 2025&ndash;26 final table; FourFourTwo Bournemouth season preview. Positions 3&ndash;5 and 7&ndash;20 not independently verified this run and are therefore omitted rather than guessed.</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="box-title">Title Market — 2026&ndash;27</div>
+          <table>
+            <tr><th>Club</th><th>Price</th></tr>
+            <tr><td>Arsenal</td><td>6/4</td></tr>
+            <tr class="hi"><td>Manchester City</td><td>11/4</td></tr>
+            <tr><td>Liverpool</td><td>11/2</td></tr>
+          </table>
+          <div class="source-note">Source: Racing Post / covers.com outright markets, 17&ndash;19 Aug 2026. Prices are a snapshot from named books and move constantly; this is not a betting recommendation.</div>
+        </div>
+
+        <div class="stat-box">
+          <div class="box-title">Opponent — AFC Bournemouth</div>
+          <table>
+            <tr><td>2025&ndash;26</td><td>6th, 57 pts</td></tr>
+            <tr><td>Europe</td><td>Europa League (first ever)</td></tr>
+            <tr><td>Manager</td><td>Marco Rose (new)</td></tr>
+            <tr><td>Previous</td><td>Iraola → Liverpool</td></tr>
+            <tr><td>Notable in</td><td>Á. Rodríguez (Elche, ~£25m)</td></tr>
+            <tr><td>Notable in</td><td>António Silva (Benfica)</td></tr>
+          </table>
+          <div class="source-note">Sources: FourFourTwo and VAVEL Bournemouth 2026&ndash;27 previews (17 Aug 2026); mancity.com match report noting the Rose/Iraola swap.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-foot"><span>MAN CITY NOTES &bull; Page 1 of 5</span><span>Built 20 Aug 2026</span></div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2 — GOALKEEPING & DEFENCE ==================== -->
+<div class="page">
+  <div class="masthead">
+    <h1>MAN CITY <span>NOTES</span></h1>
+    <div class="tagline"><strong>Page 2</strong><br>Goalkeeping &amp; Defence</div>
+  </div>
+  <div class="inner">
+    <h3 class="section">SECTION NOTES</h3>
+    <div class="note-block">
+      <ul>
+        <li>City's back four in the Community Shield read, left to right: O'Reilly, Gvardiol, Dias, Khusanov &mdash; with Khusanov at right-back rather than in his natural central role.</li>
+        <li>Marc Guéhi replaced O'Reilly on 54 minutes and is expected to be a starter rather than a rotation piece this season.</li>
+        <li>John Stones is gone on a free to Inter, ending an unbroken run in the squad since 2016.</li>
+        <li>James Trafford's move to Leeds for an initial £40m plus £5m in add-ons, with a 20% sell-on retained, left Donnarumma as unambiguous No. 1 and prompted the re-signing of Rulli as cover.</li>
+        <li>Rico Lewis and Rayan Aït-Nouri give Maresca inverted-fullback options that suit the system he ran at Chelsea and Leicester.</li>
+        <li>No clean sheet to report: the only competitive match of the new campaign ended 3-0 against.</li>
+      </ul>
+      <div class="source-note">Sources: mancity.com Community Shield teamsheet (16 Aug 2026); TeamTalk and Sports Mole summer 2026 City transfer trackers; Wikipedia 2026&ndash;27 season page.</div>
+    </div>
+
+    <h3 class="section red">GOALKEEPERS</h3>
+
+    <div class="player-entry">
+      <div class="pname">Gianluigi Donnarumma</div>
+      <div class="pline">GK &bull; Italy &bull; Started Community Shield &bull; 90 min, 3 GA</div>
+      <ul>
+        <li>Beaten from close range by Calafiori inside 23 seconds after Lewis-Skelly's through ball.</li>
+        <li>Raced out to claw the ball away from Bukayo Saka in the second half to prevent a fourth.</li>
+        <li>Season stats reset to zero; no 2026&ndash;27 league minutes yet.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Gerónimo Rulli <span class="tag-new">NEW</span></div>
+      <div class="pline">GK &bull; Argentina &bull; Unused substitute, Community Shield</div>
+      <ul>
+        <li>Re-signed this summer as backup goalkeeper following Trafford's departure to Leeds.</li>
+        <li>Named on the bench at Cardiff and did not feature.</li>
+      </ul>
+    </div>
+
+    <h3 class="section">DEFENDERS</h3>
+
+    <div class="player-entry">
+      <div class="pname">Rúben Dias</div>
+      <div class="pline">CB &bull; Portugal &bull; Captain, Community Shield &bull; 90 min</div>
+      <ul>
+        <li>Took the armband with Rodri and Bernardo Silva both out of the picture.</li>
+        <li>Post-match: "It's the beginning of the season and it's not good enough, many things are changing obviously with a new manager as well."</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Joško Gvardiol</div>
+      <div class="pline">CB/LB &bull; Croatia &bull; 90 min, Community Shield</div>
+      <ul>
+        <li>Cleared an Arsenal effort off his own line before half time with the score at 2-0.</li>
+        <li>One of the senior players who signed a long-term contract extension this summer.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Abdukodir Khusanov</div>
+      <div class="pline">CB/RB &bull; Uzbekistan &bull; 90 min at right-back, Community Shield</div>
+      <ul>
+        <li>Deployed at right-back in Cardiff and, with Nunes's fitness uncertain, expected to line up there again on Sunday.</li>
+        <li>Also among the players to have extended his contract this summer.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Marc Guéhi <span class="tag-new">NEW</span></div>
+      <div class="pline">CB &bull; England &bull; Substitute (54'), Community Shield</div>
+      <ul>
+        <li>Signed from Crystal Palace in January 2026 for a reported £20m on a five-and-a-half-year deal.</li>
+        <li>Replaced O'Reilly just before the hour with City chasing the game.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Nico O'Reilly</div>
+      <div class="pline">LB &bull; England &bull; Started, off 54', Community Shield</div>
+      <ul>
+        <li>Started at left-back and was the first outfield change made by Maresca.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Rico Lewis</div>
+      <div class="pline">RB/CM &bull; England &bull; Substitute (60'), Community Shield</div>
+      <ul>
+        <li>Introduced on the hour as part of a triple change; a natural fit for Maresca's inverted-fullback pattern.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Rayan Aït-Nouri</div>
+      <div class="pline">LB &bull; Algeria &bull; Unused substitute, Community Shield</div>
+      <ul>
+        <li>Named on the bench and did not feature; the primary alternative to O'Reilly on the left.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Matheus Nunes<span class="il-tag">INJ</span></div>
+      <div class="pline">RB/CM &bull; Portugal &bull; Injured in Community Shield warm-up</div>
+      <ul>
+        <li>Picked up a problem in the pre-match warm-up at Cardiff and was not in the matchday squad.</li>
+        <li>Availability for Sunday unresolved at build time; the club has not published a return date.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">John Stones<span class="opt-tag">DEPARTED</span></div>
+      <div class="pline">CB &bull; England &bull; Left as a free agent → Inter (2-year deal)</div>
+      <ul>
+        <li>First season since 2015&ndash;16 without Stones in a City squad.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">James Trafford<span class="opt-tag">DEPARTED</span></div>
+      <div class="pline">GK &bull; England &bull; → Leeds United, initial £40m + £5m add-ons, 20% sell-on</div>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Jahmai Simpson-Pusey<span class="opt-tag">DEPARTED</span></div>
+      <div class="pline">CB &bull; England &bull; → 1. FC Köln, permanent (announced 12 June 2026)</div>
+    </div>
+
+    <div class="source-note">
+      Section sources: mancity.com Community Shield match report and teamsheet (16 Aug 2026);
+      mancity.com transfer announcements; TeamTalk "Every Man City done deal in the summer 2026
+      window"; Sports Mole City summer transfer ledger; 1. FC Köln club statement via Wikipedia
+      season page. Fees are as reported by those outlets; City do not disclose transfer fees.
+      Per-90 and rate stats are omitted because no 2026&ndash;27 league minutes exist.
+    </div>
+
+    <div class="page-foot"><span>MAN CITY NOTES &bull; Page 2 of 5</span><span>Built 20 Aug 2026</span></div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 3 — ATTACK & MIDFIELD ==================== -->
+<div class="page">
+  <div class="masthead">
+    <h1>MAN CITY <span>NOTES</span></h1>
+    <div class="tagline"><strong>Page 3</strong><br>Attack &amp; Midfield</div>
+  </div>
+  <div class="inner">
+    <h3 class="section">EXPECTED XI</h3>
+    <div class="note-block">
+      <div class="headline">Projected — not confirmed</div>
+      <ul>
+        <li>City have not published a matchday squad for Sunday. The following is a projection built
+            from the Community Shield teamsheet minus the confirmed absentees, and should be read as such.</li>
+        <li><strong>Projected (4-2-3-1):</strong> Donnarumma; Khusanov, Dias (C), Gvardiol, O'Reilly;
+            Kovačić, Anderson; Semenyo, Foden, Cherki; Haaland.</li>
+        <li>The one forced change from Cardiff is Doku, out with a calf injury. Cherki, who replaced
+            Foden on 60 minutes at the Shield, is the natural like-for-like on the left.</li>
+        <li>Guéhi is a live alternative to any of the back four; Lewis and Aït-Nouri are the fullback
+            alternatives; Nico González and Grealish are midfield and wide options off the bench.</li>
+        <li>Media predicted XIs circulating this week still list Rodri and Bernardo Silva. Both have
+            left the club. Treat those lineups as stale.</li>
+      </ul>
+      <div class="source-note">Built from the mancity.com Community Shield teamsheet (16 Aug 2026) and the confirmed Doku absence. Explicitly a projection; the club had published no team news at build time. Third-party predicted XIs were checked and rejected as stale — several still name departed players.</div>
+    </div>
+
+    <h3 class="section red">FORWARDS</h3>
+
+    <div class="player-entry">
+      <div class="pname">Erling Haaland</div>
+      <div class="pline">ST &bull; Norway &bull; 2025&ndash;26 PL: 27 G in 35 &bull; Career PL: 112 G in 132</div>
+      <ul>
+        <li>Won a third Premier League Golden Boot in 2025&ndash;26, five clear of Brentford's Igor Thiago on 22.</li>
+        <li>Became the fastest player to 100 Premier League goals in December 2025, reaching it in 111 appearances &mdash; 13 games quicker than Alan Shearer.</li>
+        <li>One Golden Boot short of the shared record held by Thierry Henry and Mohamed Salah on four apiece.</li>
+        <li>Started the Community Shield, missed a good chance from a Doku pass and had a close-range effort saved by Raya before being replaced on 53 minutes.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Antoine Semenyo <span class="tag-new">NEW</span></div>
+      <div class="pline">RW/ST &bull; Ghana &bull; Started Community Shield &bull; joined Jan 2026, reported £64m</div>
+      <ul>
+        <li>Faces his former club Bournemouth on Sunday, seven months after the move.</li>
+        <li>Denied by Raya late at Cardiff after Cherki slid him in.</li>
+        <li>Contracted to 2031 on the terms reported at the time of the transfer.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Jérémy Doku<span class="il-tag">INJ</span></div>
+      <div class="pline">LW &bull; Belgium &bull; Calf &mdash; out of the opener</div>
+      <ul>
+        <li>Injured in the Community Shield; ruled out of Sunday, with reporting suggesting several weeks.</li>
+        <li>Signed a new contract this summer running to 2031 before the injury.</li>
+        <li>Charged into the box at Cardiff and saw his effort deflected wide by Ben White; also set up Haaland's first-half chance.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Rayan Cherki</div>
+      <div class="pline">AM/LW &bull; France &bull; Substitute (60'), Community Shield</div>
+      <ul>
+        <li>Weaved through late and found Semenyo for City's best chance of the second half.</li>
+        <li>With Doku out, the obvious candidate to start wide left on Sunday.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Omar Marmoush<span class="il-tag">DOUBT</span></div>
+      <div class="pline">ST/AM &bull; Egypt &bull; Substitute (53'), Community Shield &bull; knock</div>
+      <ul>
+        <li>Replaced Haaland just before the hour and picked up a knock; listed as a doubt for Sunday.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Jack Grealish</div>
+      <div class="pline">LW &bull; England &bull; Substitute (46'), Community Shield</div>
+      <ul>
+        <li>Came on at half time for Doku &mdash; his first appearance under Maresca.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Jeremy Monga <span class="tag-new">NEW</span></div>
+      <div class="pline">W &bull; England &bull; Signed from Leicester City, reported £12m &bull; age 17</div>
+      <ul>
+        <li>Summer arrival for the long term; not in the Community Shield squad.</li>
+      </ul>
+    </div>
+
+    <h3 class="section">MIDFIELD</h3>
+
+    <div class="player-entry">
+      <div class="pname">Elliot Anderson <span class="tag-new">NEW</span></div>
+      <div class="pline">CM &bull; England &bull; Club record: £116m from Nottingham Forest, completed 23 July 2026</div>
+      <ul>
+        <li>Started the Community Shield and was withdrawn on 60 minutes; whipped in the cross Haaland could not quite reach early on.</li>
+        <li>Arrived having started every England match at the 2026 World Cup.</li>
+        <li>Signed to partner Rodri &mdash; a plan that lasted less than a month before Rodri left for Barcelona.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Mateo Kovačić</div>
+      <div class="pline">CM &bull; Croatia &bull; Started Community Shield, off 79'</div>
+      <ul>
+        <li>Played at the base of midfield in Cardiff and fired a 25-yarder that Raya pushed away.</li>
+        <li>Post-match: "In the boxes they were better but overall I think we didn't play as bad as it sounds."</li>
+        <li>The incumbent in the role Rodri vacated, absent a new signing before the window shuts.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Phil Foden</div>
+      <div class="pline">AM &bull; England &bull; Started Community Shield, off 60'</div>
+      <ul>
+        <li>Saw a curling long-range effort smothered by Raya in the first half.</li>
+        <li>Among the senior players who committed to long-term contracts this summer.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Nico González</div>
+      <div class="pline">CM &bull; Spain &bull; Substitute (79'), Community Shield</div>
+      <ul>
+        <li>Late introduction at Cardiff; a candidate to deputise in the deep-lying role.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Divine Mukasa</div>
+      <div class="pline">AM &bull; England &bull; Contract extended, 9 June 2026</div>
+      <ul>
+        <li>Committed his future to the club before the summer's senior turnover began.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Rodri<span class="opt-tag">DEPARTED</span></div>
+      <div class="pline">CM &bull; Spain &bull; → Barcelona, 18 Aug 2026 &bull; 298 apps, 28 goals, 14 major trophies</div>
+      <ul>
+        <li>2024 Ballon d'Or winner; scored the 2023 Champions League final winner against Internazionale.</li>
+        <li>Captained Spain to the 2026 World Cup and won the tournament's Golden Ball.</li>
+      </ul>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Tijjani Reijnders<span class="opt-tag">DEPARTED</span></div>
+      <div class="pline">CM &bull; Netherlands &bull; → Al Qadsiah (Saudi Pro League), Aug 2026</div>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Bernardo Silva<span class="opt-tag">DEPARTED</span></div>
+      <div class="pline">AM &bull; Portugal &bull; → Real Madrid, free, 17 June 2026 &bull; 460 apps, 20 major trophies</div>
+    </div>
+
+    <div class="player-entry">
+      <div class="pname">Mathys Detourbet <span class="tag-new">NEW</span><span class="opt-tag">LOAN</span></div>
+      <div class="pline">AM &bull; France &bull; Signed from Troyes, reported £21.5m &bull; loaned back to Ligue 1</div>
+    </div>
+
+    <div class="source-note">
+      Section sources: mancity.com Community Shield match report and teamsheet (16 Aug 2026);
+      mancity.com Rodri, Bernardo Silva, Reijnders and Mukasa announcements; premierleague.com
+      2025&ndash;26 Golden Boot release; NBC Sports Haaland career records; TeamTalk / Sports Mole /
+      Wikipedia summer 2026 transfer ledgers. Reported fees are media figures. No 2026&ndash;27 league
+      appearances exist, so per-90 rates, xG and xAG are deliberately absent from this build and
+      return after matchweek 1.
+    </div>
+
+    <div class="page-foot"><span>MAN CITY NOTES &bull; Page 3 of 5</span><span>Built 20 Aug 2026</span></div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 4 — SQUAD & CLUB NOTES ==================== -->
+<div class="page">
+  <div class="masthead">
+    <h1>MAN CITY <span>NOTES</span></h1>
+    <div class="tagline"><strong>Page 4</strong><br>Squad &amp; Club Notes</div>
+  </div>
+  <div class="inner">
+
+    <h3 class="section">SQUAD — VERIFIED THIS RUN</h3>
+    <div class="source-note" style="margin-bottom:8px;">
+      Only players confirmed in a City matchday squad or a club announcement this month are listed.
+      Shirt numbers for 2026&ndash;27 were not retrievable from a primary source at build time and are
+      therefore omitted rather than carried over from last season.
+    </div>
+    <table class="data">
+      <tr><th>Player</th><th>Pos</th><th>Nation</th><th>Status</th></tr>
+      <tr><td>Gianluigi Donnarumma</td><td>GK</td><td>Italy</td><td>Started Community Shield</td></tr>
+      <tr><td>Gerónimo Rulli</td><td>GK</td><td>Argentina</td><td>Unused sub &bull; summer signing</td></tr>
+      <tr><td>Rúben Dias</td><td>CB</td><td>Portugal</td><td>Started &bull; captain</td></tr>
+      <tr><td>Joško Gvardiol</td><td>CB/LB</td><td>Croatia</td><td>Started &bull; extended</td></tr>
+      <tr><td>Abdukodir Khusanov</td><td>CB/RB</td><td>Uzbekistan</td><td>Started at RB &bull; extended</td></tr>
+      <tr><td>Marc Guéhi</td><td>CB</td><td>England</td><td>Sub 54' &bull; Jan 2026 signing</td></tr>
+      <tr><td>Nico O'Reilly</td><td>LB</td><td>England</td><td>Started, off 54'</td></tr>
+      <tr><td>Rico Lewis</td><td>RB/CM</td><td>England</td><td>Sub 60'</td></tr>
+      <tr><td>Rayan Aït-Nouri</td><td>LB</td><td>Algeria</td><td>Unused sub</td></tr>
+      <tr><td>Matheus Nunes</td><td>RB/CM</td><td>Portugal</td><td>Injured in warm-up<span class="il-tag">INJ</span></td></tr>
+      <tr><td>Mateo Kovačić</td><td>CM</td><td>Croatia</td><td>Started, off 79'</td></tr>
+      <tr><td>Elliot Anderson</td><td>CM</td><td>England</td><td>Started, off 60' &bull; club record signing</td></tr>
+      <tr><td>Nico González</td><td>CM</td><td>Spain</td><td>Sub 79'</td></tr>
+      <tr><td>Phil Foden</td><td>AM</td><td>England</td><td>Started, off 60' &bull; extended</td></tr>
+      <tr><td>Rayan Cherki</td><td>AM/LW</td><td>France</td><td>Sub 60'</td></tr>
+      <tr><td>Jack Grealish</td><td>LW</td><td>England</td><td>Sub 46'</td></tr>
+      <tr><td>Antoine Semenyo</td><td>RW/ST</td><td>Ghana</td><td>Started &bull; Jan 2026 signing</td></tr>
+      <tr><td>Jérémy Doku</td><td>LW</td><td>Belgium</td><td>Started, off 46' &mdash; calf<span class="il-tag">INJ</span></td></tr>
+      <tr><td>Omar Marmoush</td><td>ST/AM</td><td>Egypt</td><td>Sub 53' &mdash; knock<span class="il-tag">DOUBT</span></td></tr>
+      <tr><td>Erling Haaland</td><td>ST</td><td>Norway</td><td>Started, off 53'</td></tr>
+      <tr><td>Reis</td><td>&mdash;</td><td>&mdash;</td><td>Unused sub, Community Shield</td></tr>
+      <tr><td>Jeremy Monga</td><td>W</td><td>England</td><td>Summer signing (Leicester)</td></tr>
+      <tr><td>Divine Mukasa</td><td>AM</td><td>England</td><td>Contract extended 9 June 2026</td></tr>
+      <tr><td>Ryan McAidoo</td><td>&mdash;</td><td>&mdash;</td><td>Shoulder &mdash; doubt<span class="il-tag">DOUBT</span></td></tr>
+    </table>
+    <div class="source-note">
+      Sources: mancity.com Community Shield teamsheet, 16 Aug 2026 (starters, substitutions and
+      unused substitutes verbatim); mancity.com signing and extension announcements; Sports Mole
+      injury list, 19 Aug 2026. "Reis" appears on the official teamsheet by surname only and is
+      recorded that way here rather than expanded by inference. Positions for Reis and McAidoo are
+      left blank for the same reason.
+    </div>
+
+    <h3 class="section red">OUT ON LOAN</h3>
+    <table class="data">
+      <tr><th>Player</th><th>Pos</th><th>Loaned to</th><th>Note</th></tr>
+      <tr><td>Mathys Detourbet</td><td>AM</td><td>Ligue 1 club</td><td>Signed from Troyes (reported £21.5m) then loaned back for the campaign</td></tr>
+    </table>
+    <div class="source-note">Sources: TeamTalk summer 2026 City transfer tracker; Tribal Football, 27 June 2026 via Wikipedia season page. The destination club for the loan was not confirmed by a primary source this run and is not named.</div>
+
+    <h3 class="section">ORGANISATIONAL / CLUB NOTES</h3>
+    <div class="note-block">
+      <div class="headline">Transactions since the end of 2025&ndash;26</div>
+      <ul>
+        <li><strong>22 May 2026</strong> — Pep Guardiola announces he will step down after ten years as manager.</li>
+        <li><strong>9 June 2026</strong> — Divine Mukasa extends his City contract.</li>
+        <li><strong>9&ndash;12 June 2026</strong> — Jahmai Simpson-Pusey's move to 1. FC Köln is agreed and confirmed as permanent.</li>
+        <li><strong>10 June 2026</strong> — Premier League released lists published; John Stones and Bernardo Silva leave at the expiry of their contracts.</li>
+        <li><strong>17 June 2026</strong> — Bernardo Silva joins Real Madrid on a two-year deal after 460 appearances and 20 major trophies.</li>
+        <li><strong>19 June 2026</strong> — 2026&ndash;27 Premier League fixtures released; City drawn at home to Bournemouth on the opening weekend.</li>
+        <li><strong>27 June 2026</strong> — Mathys Detourbet signs from Troyes for a reported £21.5m and is loaned back to Ligue 1.</li>
+        <li><strong>29 June 2026</strong> — Enzo Maresca appointed manager on a three-year contract to 2029.</li>
+        <li><strong>July 2026</strong> — Maresca's backroom staff confirmed; John Stones signs a two-year deal at Inter as a free agent.</li>
+        <li><strong>23 July 2026</strong> — Elliot Anderson's £116m club-record move from Nottingham Forest is formally completed.</li>
+        <li><strong>Summer 2026</strong> — James Trafford joins Leeds United for an initial £40m plus £5m in add-ons, City retaining a 20% sell-on clause; Gerónimo Rulli re-signed as backup goalkeeper; Jeremy Monga signs from Leicester City for a reported £12m.</li>
+        <li><strong>Summer 2026</strong> — Contract extensions confirmed for Jérémy Doku (to 2031), Phil Foden, Joško Gvardiol and Abdukodir Khusanov.</li>
+        <li><strong>1, 5, 9 August 2026</strong> — Pre-season tour of Asia: Inter Milan in Hong Kong, then the K League All Stars and Atlético Madrid in South Korea.</li>
+        <li><strong>16 August 2026</strong> — Community Shield: Arsenal 3-0 City, Principality Stadium.</li>
+        <li><strong>18 August 2026</strong> — Rodri joins Barcelona, subject to international clearance.</li>
+        <li><strong>19 August 2026</strong> — Tijjani Reijnders joins Al Qadsiah.</li>
+      </ul>
+      <div class="source-note">
+        Sources: mancity.com club announcements for each dated item where one exists; Wikipedia
+        2026&ndash;27 Manchester City F.C. season for the released-list and Köln entries (sourced there to
+        premierleague.com and a 1. FC Köln club statement); TeamTalk and Sports Mole summer 2026
+        transfer ledgers for the Trafford, Rulli, Monga and extension items, which City have not
+        individually press-released in a form retrieved this run. All reported fees are media figures.
+      </div>
+    </div>
+
+    <div class="page-foot"><span>MAN CITY NOTES &bull; Page 4 of 5</span><span>Built 20 Aug 2026</span></div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 5 — SEASON RESULTS & SOURCES ==================== -->
+<div class="page">
+  <div class="masthead">
+    <h1>MAN CITY <span>NOTES</span></h1>
+    <div class="tagline"><strong>Page 5</strong><br>Season Results &amp; Sources</div>
+  </div>
+  <div class="inner">
+
+    <h3 class="section">2026&ndash;27 MATCH LOG</h3>
+    <div class="dbd-wrap">
+      <table class="dbd">
+        <tr><th>Rd</th><th>Date</th><th>Comp</th><th>Opponent</th><th>Venue</th><th>Res</th><th>Score</th><th>Scorers</th></tr>
+        <tr class="l"><td>&mdash;</td><td>16 Aug</td><td>Shield</td><td>Arsenal</td><td>N &mdash; Cardiff</td><td>L</td><td>0-3</td><td>&mdash;</td></tr>
+      </table>
+      <table class="dbd">
+        <tr><th colspan="8" style="background:#666;">Pre-season friendlies (non-competitive)</th></tr>
+        <tr><th>Rd</th><th>Date</th><th>Comp</th><th>Opponent</th><th>Venue</th><th>Res</th><th>Score</th><th>Scorers</th></tr>
+        <tr><td>&mdash;</td><td>1 Aug</td><td>Friendly</td><td>Inter Milan</td><td>Hong Kong</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>&mdash;</td><td>5 Aug</td><td>Friendly</td><td>K League All Stars</td><td>South Korea</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+        <tr><td>&mdash;</td><td>9 Aug</td><td>Friendly</td><td>Atlético Madrid</td><td>South Korea</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+      </table>
+    </div>
+    <div class="source-note">
+      League position and points on this page reflect Premier League fixtures only; the Community
+      Shield is tagged separately and does not count toward either. Friendly scorelines were not
+      retrievable from a primary source this run and are shown as em-dashes rather than filled in.
+      Source: mancity.com match report (16 Aug 2026); Wikipedia 2026&ndash;27 season page for tour dates.
+    </div>
+
+    <h3 class="section red">NEXT FIXTURES</h3>
+    <table class="data">
+      <tr><th>MW</th><th>Date</th><th>Comp</th><th>Opponent</th><th>Venue</th><th>Kick-off (UK)</th></tr>
+      <tr class="hi"><td>1</td><td>Sun 23 Aug 2026</td><td>Premier League</td><td>AFC Bournemouth</td><td>H — Etihad</td><td>14:00</td></tr>
+      <tr><td>2</td><td>Fri 28 or Sat 29 Aug 2026*</td><td>Premier League</td><td>Crystal Palace</td><td>A — Selhurst Park</td><td>20:00*</td></tr>
+      <tr><td>3</td><td>Sat 5 Sep 2026</td><td>Premier League</td><td>TBD</td><td>H</td><td>TBD</td></tr>
+      <tr><td>&mdash;</td><td>22&ndash;24 Sep 2026</td><td>EFL Cup R3</td><td>TBD</td><td>TBD</td><td>TBD</td></tr>
+      <tr><td>&mdash;</td><td>Sep 2026</td><td>Champions League</td><td>League phase begins</td><td>&mdash;</td><td>TBD</td></tr>
+      <tr><td>&mdash;</td><td>7&ndash;11 Jan 2027</td><td>FA Cup R3</td><td>TBD</td><td>TBD</td><td>TBD</td></tr>
+    </table>
+    <div class="source-note">
+      <strong>* Conflict flagged.</strong> The Wikipedia 2026&ndash;27 Manchester City season page lists
+      matchweek 2 at Crystal Palace on <em>29 August 2026</em>. Premier League fixture coverage
+      retrieved this run lists <em>Friday 28 August, 20:00, live on Sky Sports</em>. The two sources
+      disagree on the day; the venue (away) is consistent in both. Both are shown rather than one
+      being silently chosen. Matchweek 3 onward: the fixture table was retrieved with dates and
+      home/away pattern intact but opponent names stripped by the fetch, so opponents from
+      matchweek 3 are marked TBD rather than inferred. Competition entry rounds per the same page.
+    </div>
+
+    <h3 class="section">2025&ndash;26 IN ONE LINE</h3>
+    <table class="data">
+      <tr><th>Competition</th><th>Outcome</th></tr>
+      <tr><td>Premier League</td><td>2nd &mdash; 23-9-6, +42 GD, 78 pts (Arsenal 85)</td></tr>
+      <tr><td>FA Cup</td><td>Winners</td></tr>
+      <tr><td>EFL / Carabao Cup</td><td>Winners</td></tr>
+      <tr><td>Golden Boot</td><td>Erling Haaland, 27 goals in 35 matches</td></tr>
+    </table>
+    <div class="source-note">Sources: NBC Sports / Yahoo Sports 2025&ndash;26 final table; premierleague.com Golden Boot release; mancity.com (references City entering 2026&ndash;27 as FA Cup holders and its 2026 Carabao Cup final win). Champions League outcome for 2025&ndash;26 not verified this run and is therefore omitted.</div>
+
+    <h3 class="section">SOURCES &amp; METHODOLOGY</h3>
+    <div class="note-block">
+      <div class="headline">Primary sources checked this run — 20 August 2026</div>
+      <ul>
+        <li><strong>mancity.com</strong> — Community Shield match report and full teamsheet (Paul Brown, 16 Aug 2026, 16:55 BST); "Rodri joins Barcelona" (Neil Leigh, 18 Aug 2026, 17:40 BST); club news index as of 20 Aug 2026. This is the spine of the build: every lineup, substitution, goal time and quote on these pages comes from it.</li>
+        <li><strong>en.wikipedia.org</strong> — 2026&ndash;27 Manchester City F.C. season, for kit/sponsor, pre-season tour dates, competition entry rounds and the fixture skeleton. Its own citations to mancity.com and premierleague.com were followed where a figure mattered.</li>
+        <li><strong>premierleague.com</strong> — 2025&ndash;26 Golden Boot award release; 2026&ndash;27 fixture release coverage.</li>
+        <li><strong>NBC Sports / Yahoo Sports</strong> — 2025&ndash;26 final Premier League table and top-scorer standings.</li>
+        <li><strong>Sports Mole / Yahoo Sports</strong> — City injury and suspension list for the Bournemouth fixture (18&ndash;19 Aug 2026).</li>
+        <li><strong>TeamTalk / Sports Mole / ESPN / Al Jazeera</strong> — summer 2026 and January 2026 transfer ledgers, for items City have not individually press-released in a form retrieved this run.</li>
+        <li><strong>Racing Post / covers.com</strong> — 2026&ndash;27 outright title market, 17&ndash;19 Aug 2026.</li>
+        <li><strong>FourFourTwo / VAVEL</strong> — AFC Bournemouth 2026&ndash;27 season previews, 17 Aug 2026.</li>
+      </ul>
+    </div>
+
+    <div class="note-block">
+      <div class="headline">Assumptions, gaps and conflicts</div>
+      <ul>
+        <li><strong>fbref not used this run.</strong> The spec names fbref as the primary for EPL squad and season tables. With zero 2026&ndash;27 competitive league minutes played, there is nothing on those tables to retrieve; club and league primaries were used instead. fbref returns as the stat spine from matchweek 1 onward.</li>
+        <li><strong>Shirt numbers omitted.</strong> The 2026&ndash;27 numbers were not confirmed by a primary source. Carrying over last season's would be a guess after this volume of squad turnover.</li>
+        <li><strong>Matchweek 2 date conflict</strong> between Wikipedia (29 Aug) and Premier League fixture coverage (Fri 28 Aug, 20:00). Both published; neither silently preferred.</li>
+        <li><strong>Predicted XIs in circulation are stale.</strong> Several third-party lineups for this fixture still name Rodri and Bernardo Silva, both of whom have left. They were rejected; the projection on page 3 is built from the Community Shield teamsheet minus confirmed absentees.</li>
+        <li><strong>Referee is TBD</strong>, not guessed. PGMOL matchweek 1 appointments were not published at build time.</li>
+        <li><strong>Reported fees are media figures.</strong> Manchester City do not disclose transfer fees. Every £ figure on these pages is attributed to the outlet that reported it.</li>
+        <li><strong>Injury return dates are media estimates.</strong> The club has published no return timeline for Doku, Nunes, Marmoush or McAidoo.</li>
+        <li><strong>Honours bar</strong> lists ten English league titles through 2024. Liverpool won 2024&ndash;25 and Arsenal 2025&ndash;26, so the count is unchanged from last season.</li>
+        <li><strong>Odds are a snapshot</strong> from named books on 17&ndash;19 Aug 2026 and are included as market context, not as a recommendation.</li>
+      </ul>
+    </div>
+
+    <div class="note-block">
+      <div class="headline">Build rules applied</div>
+      <ul>
+        <li>Unknowns are written TBD; nothing is interpolated without an explicit flag.</li>
+        <li>Derived figures (record, goal difference, splits) are computed from the match log, not scraped, so the page is internally consistent.</li>
+        <li>Departed players are excluded from active squad lists and carried only in tagged historical rows.</li>
+        <li>Every stat block on every page carries its own source note.</li>
+        <li>This build ran unattended. No questions were asked mid-run; assumptions are stated above.</li>
+      </ul>
+    </div>
+
+    <div class="page-foot"><span>MAN CITY NOTES &bull; Page 5 of 5</span><span>Built 20 Aug 2026 &bull; Independent, fan-made, not affiliated with Manchester City F.C.</span></div>
+  </div>
+</div>
+
+<script>
+/* Mobile enhancement — progressive, non-destructive.
+   1) wraps wide tables in horizontal scrollers
+   2) turns each section heading (and each rail stat box) into a tap-to-expand block on phones
+   Desktop rendering is unchanged. */
+(function(){
+  var MOBILE = 820;
+
+  document.querySelectorAll('table.data, table.dbd').forEach(function(t){
+    if (t.parentNode && t.parentNode.classList.contains('tscroll')) return;
+    var w = document.createElement('div');
+    w.className = 'tscroll';
+    t.parentNode.insertBefore(w, t);
+    w.appendChild(t);
+  });
+
+  function collapseHeadings(){
+    document.querySelectorAll('h3.section').forEach(function(h){
+      if (h.dataset.mDone) return;
+      h.dataset.mDone = '1';
+      var d = document.createElement('details');
+      d.className = 'm-sec' + (h.classList.contains('red') ? ' red' : '');
+      var s = document.createElement('summary');
+      s.innerHTML = h.innerHTML;
+      if (h.getAttribute('style')) s.setAttribute('style', h.getAttribute('style'));
+      var body = document.createElement('div');
+      body.className = 'm-body';
+      h.parentNode.insertBefore(d, h);
+      d.appendChild(s); d.appendChild(body);
+      var n = h.nextSibling;
+      while (n){
+        var next = n.nextSibling;
+        if (n.nodeType === 1){
+          var el = n;
+          if (el.tagName === 'H3' && el.classList.contains('section')) break;
+          if (el.classList && el.classList.contains('page-foot')) break;
+        }
+        body.appendChild(n);
+        n = next;
+      }
+      h.parentNode.removeChild(h);
+    });
+    document.querySelectorAll('.col.rail .stat-box').forEach(function(b){
+      if (b.dataset.mDone) return;
+      b.dataset.mDone = '1';
+      var title = b.querySelector('.box-title');
+      if (!title) return;
+      var d = document.createElement('details');
+      d.className = 'm-sec';
+      var s = document.createElement('summary');
+      s.innerHTML = title.innerHTML;
+      var body = document.createElement('div');
+      body.className = 'm-body';
+      b.parentNode.insertBefore(d, b);
+      d.appendChild(s); d.appendChild(body);
+      body.appendChild(b);
+      title.classList.add('m-dup');
+    });
+  }
+
+  function sync(){
+    var small = window.matchMedia('(max-width: ' + MOBILE + 'px)').matches;
+    document.querySelectorAll('details.m-sec').forEach(function(d){
+      d.open = small ? !!d.dataset.mFirst : true;
+    });
+  }
+
+  collapseHeadings();
+  document.querySelectorAll('.page').forEach(function(p){
+    var first = p.querySelector('details.m-sec');
+    if (first) first.dataset.mFirst = '1';
+  });
+  sync();
+  window.matchMedia('(max-width: ' + MOBILE + 'px)').addEventListener('change', sync);
+})();
+</script>
+</body>
+</html>
