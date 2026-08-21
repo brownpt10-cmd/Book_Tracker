@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7-Day Meal Plan</title>
+<style>
+  :root{
+    --paper:#faf7f2;
+    --ink:#2b2620;
+    --sub:#6b6156;
+    --line:#e4dccf;
+    --accent:#a8562f;
+    --accent2:#4f6d4f;
+    --card:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Georgia",serif;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:60px;
+  }
+  header{
+    padding:32px 20px 24px;
+    border-bottom:2px solid var(--ink);
+  }
+  .eyebrow{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  h1{
+    font-size:28px;
+    margin:0 0 10px;
+    line-height:1.15;
+  }
+  .macros{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+  .macro-pill{
+    background:var(--ink);
+    color:var(--paper);
+    font-size:12px;
+    font-weight:700;
+    padding:6px 12px;
+    border-radius:100px;
+    letter-spacing:.02em;
+  }
+  main{
+    max-width:720px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .baseline{
+    margin-top:24px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 20px;
+  }
+  .baseline h2{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--sub);
+    margin:0 0 12px;
+  }
+  .baseline-item{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:8px 0;
+    border-top:1px dashed var(--line);
+    font-size:15px;
+  }
+  .baseline-item:first-of-type{border-top:none;}
+  .baseline-item b{font-weight:600;}
+  .baseline-item .kcal{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    color:var(--sub);
+    white-space:nowrap;
+    padding-top:2px;
+  }
+  .section-label{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--sub);
+    margin:36px 4px 12px;
+  }
+  .day-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    margin-bottom:16px;
+    overflow:hidden;
+  }
+  .day-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    padding:14px 20px;
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .day-head .num{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    opacity:.7;
+  }
+  .day-head h3{
+    margin:2px 0 0;
+    font-size:19px;
+    font-weight:600;
+  }
+  .day-head .totals{
+    text-align:right;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+  }
+  .day-head .totals .kcal{font-size:16px;font-weight:700;}
+  .day-head .totals .prot{opacity:.75;}
+  .meal-row{
+    padding:14px 20px;
+    border-top:1px solid var(--line);
+    display:grid;
+    grid-template-columns:80px 1fr;
+    gap:14px;
+    align-items:start;
+  }
+  .meal-row .label{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--accent2);
+    padding-top:2px;
+  }
+  .meal-row.lunch .label{color:var(--accent);}
+  .meal-row.dinner .label{color:#5a4a8f;}
+  .meal-row p{
+    margin:0;
+    font-size:15.5px;
+    line-height:1.45;
+  }
+  .meal-row .macro{
+    display:block;
+    margin-top:4px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    color:var(--sub);
+  }
+  .addons{
+    margin-top:8px;
+    background:#f1ece1;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:18px 20px 20px;
+  }
+  .addons h2{
+    font-size:17px;
+    margin:0 0 4px;
+  }
+  .addons .note{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    color:var(--sub);
+    margin:0 0 14px;
+  }
+  .addon-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+  }
+  .addon{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:10px 12px;
+  }
+  .addon .name{
+    font-weight:600;
+    font-size:14px;
+    display:block;
+  }
+  .addon .kcal{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    color:var(--accent);
+    font-weight:700;
+  }
+  footer{
+    text-align:center;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    color:var(--sub);
+    margin-top:40px;
+    padding:0 20px;
+  }
+
+  @media (max-width:480px){
+    h1{font-size:23px;}
+    header{padding:24px 16px 20px;}
+    main{padding:0 14px;}
+    .meal-row{grid-template-columns:64px 1fr; padding:12px 14px; gap:10px;}
+    .day-head{padding:12px 14px;}
+    .day-head h3{font-size:17px;}
+    .addon-grid{grid-template-columns:1fr;}
+    .baseline{padding:14px 16px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Weekly Nutrition Plan</div>
+  <h1>7-Day High-Protein Menu</h1>
+  <div class="macros">
+    <span class="macro-pill">~1,500–1,550 kcal</span>
+    <span class="macro-pill">160g+ Protein</span>
+  </div>
+</header>
+
+<main>
+
+  <div class="baseline">
+    <h2>Daily Baseline &mdash; Same Every Day</h2>
+    <div class="baseline-item">
+      <div><b>Breakfast</b><br>3 large eggs + 1/2 cup egg whites, scrambled with cooking spray (no toast)</div>
+      <div class="kcal">~270 kcal<br>26g P</div>
+    </div>
+    <div class="baseline-item">
+      <div><b>Morning Snack</b><br>1 cup non-fat plain Greek yogurt + 1 scoop protein powder</div>
+      <div class="kcal">~230 kcal<br>40g P</div>
+    </div>
+  </div>
+
+  <div class="section-label">Lunch, Snack &amp; Dinner Rotation</div>
+
+  <!-- Day 1 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 1</div><h3>Fajita Chicken</h3></div>
+      <div class="totals"><div class="kcal">~1,500 kcal</div><div class="prot">166g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>6 oz grilled chicken breast, 1/2 cup cooked jasmine rice, steamed broccoli<span class="macro">~420 kcal | 44g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese + 1/2 cup berries<span class="macro">~130 kcal | 14g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz lean ground chicken (93/7) sautéed with fajita seasonings, 1/2 cup black beans, bell peppers<span class="macro">~450 kcal | 42g P</span></p></div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 2</div><h3>Beef Taco Bowl</h3></div>
+      <div class="totals"><div class="kcal">~1,470 kcal</div><div class="prot">157g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>6 oz ground chicken turkey-style bowl with 1/2 cup brown rice and zucchini<span class="macro">~410 kcal | 40g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese + sliced cucumber<span class="macro">~100 kcal | 13g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>5 oz lean ground beef (90/10) taco bowl over lettuce, 1/2 cup black beans, salsa<span class="macro">~460 kcal | 38g P</span></p></div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 3</div><h3>Tuna &amp; Salmon</h3></div>
+      <div class="totals"><div class="kcal">~1,520 kcal</div><div class="prot">158g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>5 oz canned tuna (in water) with 1 tbsp light mayo over 1/2 cup white rice, diced celery<span class="macro">~380 kcal | 36g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese + 1/2 cup berries<span class="macro">~130 kcal | 14g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz baked salmon filet, asparagus, 1/2 cup wild rice<span class="macro">~510 kcal | 42g P</span></p></div>
+  </div>
+
+  <!-- Day 4 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 4</div><h3>Stir-Fry &amp; Pork</h3></div>
+      <div class="totals"><div class="kcal">~1,480 kcal</div><div class="prot">167g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>6 oz sliced chicken breast stir-fry with snap peas, soy sauce, 1/2 cup jasmine rice<span class="macro">~430 kcal | 45g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese<span class="macro">~110 kcal | 14g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz grilled pork tenderloin, roasted green beans, 1/2 cup roasted sweet potato cubes<span class="macro">~440 kcal | 42g P</span></p></div>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 5</div><h3>Chicken Patties</h3></div>
+      <div class="totals"><div class="kcal">~1,490 kcal</div><div class="prot">161g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>6 oz ground chicken patties (2), roasted cauliflower, 1/2 cup brown rice<span class="macro">~420 kcal | 42g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese + 1/2 cup berries<span class="macro">~130 kcal | 14g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz baked chicken breast with herbs, 1/2 cup white rice, steamed zucchini<span class="macro">~440 kcal | 45g P</span></p></div>
+  </div>
+
+  <!-- Day 6 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 6</div><h3>Burger &amp; Chicken</h3></div>
+      <div class="totals"><div class="kcal">~1,500 kcal</div><div class="prot">163g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>5 oz lean ground beef burger patty (no bun), 1/2 cup white rice, side salad with light dressing<span class="macro">~460 kcal | 36g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese<span class="macro">~110 kcal | 14g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz grilled chicken breast, 1/2 cup black beans, roasted bell peppers<span class="macro">~430 kcal | 47g P</span></p></div>
+  </div>
+
+  <!-- Day 7 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 7</div><h3>Chili &amp; White Fish</h3></div>
+      <div class="totals"><div class="kcal">~1,480 kcal</div><div class="prot">156g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>6 oz lean ground chicken chili with crushed tomatoes, kidney beans, spices<span class="macro">~440 kcal | 42g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese + 1/2 cup berries<span class="macro">~130 kcal | 14g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz pan-seared white fish (cod or tilapia), 1/2 cup jasmine rice, steamed broccoli<span class="macro">~410 kcal | 40g P</span></p></div>
+  </div>
+
+  <div class="addons">
+    <h2>Easy 250-Calorie Add-Ons</h2>
+    <p class="note">To close the gap toward an 1,800-calorie target, pick one:</p>
+    <div class="addon-grid">
+      <div class="addon"><span class="name">Almonds or Walnuts</span><span class="kcal">1.5 oz &middot; ~240 kcal</span></div>
+      <div class="addon"><span class="name">Avocado</span><span class="kcal">1 medium &middot; ~240 kcal</span></div>
+      <div class="addon"><span class="name">Peanut Butter &amp; Apple</span><span class="kcal">2 tbsp + 1 small apple &middot; ~260 kcal</span></div>
+      <div class="addon"><span class="name">Protein Bar</span><span class="kcal">Whey or plant &middot; ~200&ndash;250 kcal</span></div>
+    </div>
+  </div>
+
+</main>
+
+<footer>Rotates chicken breast, ground chicken, pork, salmon, tuna &amp; lean ground beef so lunch and dinner stay varied.</footer>
+
+</body>
+</html>
