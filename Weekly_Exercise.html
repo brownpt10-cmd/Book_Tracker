@@ -48,6 +48,24 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
 .ref-table td{padding:.35rem .3rem;border-bottom:1px solid #f1f5f9;vertical-align:top}
 .ref-table tr:last-child td{border-bottom:none}
 .ref-fill{background:#fffbeb}
+.log-card{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;padding:.7rem .8rem;margin-top:.65rem}
+.log-title{font-size:.7rem;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.3px;margin-bottom:.45rem}
+.ex-row{display:flex;align-items:center;gap:.4rem;padding:.32rem 0;border-bottom:1px solid #e2e8f0;font-size:.78rem}
+.ex-row:last-of-type{border-bottom:none}
+.ex-label{flex:1;display:flex;align-items:center;gap:.45rem;color:#334155}
+.ex-label input[type=checkbox]{width:18px;height:18px;flex-shrink:0;accent-color:#2563eb}
+.ex-weight,.ex-setsreps{padding:.3rem;border:1px solid #cbd5e1;border-radius:6px;font-size:.72rem;text-align:center;flex-shrink:0}
+.ex-setsreps{width:64px;color:#2563eb;font-weight:700}
+.ex-weight{width:58px}
+.save-btn{width:100%;margin-top:.65rem;padding:.6rem;background:#2563eb;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:.8rem}
+.save-btn:active{background:#1e40af}
+.save-status{font-size:.68rem;color:#64748b;margin-top:.35rem;text-align:center;min-height:1.1em}
+.checkin-card{background:#fff;border-radius:12px;padding:.9rem 1rem;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.checkin-card label{display:block;font-size:.72rem;font-weight:700;color:#475569;margin-top:.6rem;margin-bottom:.22rem}
+.checkin-card label:first-child{margin-top:0}
+.checkin-card input,.checkin-card textarea{width:100%;padding:.5rem .6rem;border:1px solid #cbd5e1;border-radius:8px;font-size:.85rem;font-family:inherit;color:#1e293b}
+.checkin-card textarea{resize:vertical}
+.cals-hint{font-size:.66rem;color:#94a3b8;font-weight:400;text-transform:none;letter-spacing:0;margin-top:.15rem}
 </style>
 </head>
 <body>
@@ -67,15 +85,16 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
   </div>
 </div>
 
-<div class="tabata-note">
-  🔥 <strong>TABATA FORMAT:</strong> alternate Exercise A / Exercise B in pairs. Pick a format below — Standard is the default baseline.
-  <table class="format-table">
-    <tr><th>Format</th><th>Work/Rest</th><th>Best For</th></tr>
-    <tr><td><strong>Standard</strong></td><td>20s/10s</td><td>Baseline · 16–32 rounds</td></tr>
-    <tr><td><strong>Endurance</strong></td><td>25s/10s</td><td>Weight loss · more calorie burn/song</td></tr>
-    <tr><td><strong>Intensity</strong></td><td>20s/5s</td><td>Efficiency · shorter workout, same effort</td></tr>
-    <tr><td><strong>Stability</strong></td><td>40s/20s</td><td>Recovery · form &amp; tendon health (Achilles/shoulders)</td></tr>
-  </table>
+<div class="section">
+  <div class="section-title">📝 Daily Check-In</div>
+  <div class="checkin-card">
+    <label>Date<input type="date" id="ci-date"></label>
+    <label>Body Weight (lb)<input type="number" id="ci-weight" inputmode="decimal" step="0.1" placeholder="e.g. 202.4"></label>
+    <label>Calories<span class="cals-hint"> — read the two meal photos to Claude chat first, paste the total here</span><input type="number" id="ci-cals" inputmode="numeric" placeholder="e.g. 1650"></label>
+    <label>Notes<textarea id="ci-notes" rows="3" placeholder="How today went — energy, ankle, food, anything worth remembering."></textarea></label>
+    <button class="save-btn" onclick="saveCheckin()">Save Check-In</button>
+    <div class="save-status" id="status-checkin"></div>
+  </div>
 </div>
 
 <!-- MONDAY -->
@@ -106,6 +125,7 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
     <br><strong>🦺 Ankle/Core protocol (full):</strong> Band work (Push/Pull/Eversion/Inversion) 20 reps each · Towel Crunches 2 min · Doming 10 reps (5s hold) · Standing Calf Stretch 2×1 min hold · Side-Lying Hip Abduction 3×10–30 · Donkey Kicks 3×10–30
   </div>
   <div class="day-ankle">🦺 Upper-body day = zero ankle load from lifting; today carries the full Ankle/Core protocol.</div>
+  <div class="log-card" id="log-Monday"></div>
 </div>
 
 <!-- TUESDAY -->
@@ -136,6 +156,7 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
     <br><span class="abs-line">🎯 <strong>Abs Finisher:</strong> Dead Bugs 2×10 · Plank Hold 2×20s</span> <span class="suggested">(suggested — not in your notes)</span>
   </div>
   <div class="day-ankle">🦺 All pulling — zero ankle load. Ankle circles morning/evening only, no dedicated PT block today.</div>
+  <div class="log-card" id="log-Tuesday"></div>
 </div>
 
 <!-- WEDNESDAY -->
@@ -151,6 +172,7 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
     <br><strong>🦺 Ankle/Core protocol (full):</strong> Band work (Push/Pull/Eversion/Inversion) 20 reps each · Towel Crunches 2 min · Doming 10 reps (5s hold) · Standing Calf Stretch 2×1 min hold · Side-Lying Hip Abduction 3×10–30 · Donkey Kicks 3×10–30
   </div>
   <div class="day-ankle">⚠️ Highest ankle-risk day — no reps/weights given for Legs in your notes, so keep it light and stop on sharp pain. Ice 15 min after if swollen.</div>
+  <div class="log-card" id="log-Wednesday"></div>
 </div>
 
 <!-- THURSDAY -->
@@ -195,6 +217,7 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
     </div>
   </div>
   <div class="day-ankle">🦺 All upper body — zero ankle load. Ankle circles only, no dedicated PT block today.</div>
+  <div class="log-card" id="log-Friday"></div>
 </div>
 
 <!-- SATURDAY -->
@@ -208,6 +231,7 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
     <br>🌅 Afternoon: Activity with spouse + gentle walk.
   </div>
   <div class="day-ankle">💚 Recovery-focused. Core work is low-impact and ankle-safe.</div>
+  <div class="log-card" id="log-Saturday"></div>
 </div>
 
 <!-- SUNDAY -->
@@ -256,6 +280,20 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
   </div>
 </div>
 
+<div class="section">
+  <div class="section-title">🔥 Tabata Format Reference</div>
+  <div class="tabata-note">
+    Alternate Exercise A / Exercise B in pairs. Pick a format below — Standard is the default baseline.
+    <table class="format-table">
+      <tr><th>Format</th><th>Work/Rest</th><th>Best For</th></tr>
+      <tr><td><strong>Standard</strong></td><td>20s/10s</td><td>Baseline · 16–32 rounds</td></tr>
+      <tr><td><strong>Endurance</strong></td><td>25s/10s</td><td>Weight loss · more calorie burn/song</td></tr>
+      <tr><td><strong>Intensity</strong></td><td>20s/5s</td><td>Efficiency · shorter workout, same effort</td></tr>
+      <tr><td><strong>Stability</strong></td><td>40s/20s</td><td>Recovery · form &amp; tendon health (Achilles/shoulders)</td></tr>
+    </table>
+  </div>
+</div>
+
 <div class="footer">
   Starting weight: 204 lbs · Goal: 179 lbs (-25 lbs) · Timeline: 16 weeks<br>
   Rate: ~1.5 lbs/week at 1,500–1,750 cal/day · Completely achievable.<br><br>
@@ -296,6 +334,151 @@ function showFriday(mode){
   document.getElementById('fri-btn-tabata').classList.toggle('active', mode==='tabata');
   document.getElementById('fri-btn-sets').classList.toggle('active', mode==='sets');
 }
+
+/* ===================== WORKOUT LOGGING ===================== */
+// PASTE your deployed Apps Script Web App URL below (ends in /exec)
+const CONFIG = { webAppUrl: "https://script.google.com/macros/s/AKfycbypVqYSD9bUEnqGoOxEooNwKUmpDJhGUX5sUobIRJmbPTUtf51hsR1p8FOYGPn3nEiH/exec" };
+
+const PT_ITEMS = [
+  {n:'Band work (push/pull/eversion/inversion)', s:3, r:'20 ea'},
+  {n:'Ankle circles', s:3, r:'20 ea way'},
+  {n:'Towel crunches', s:1, r:'2 min'},
+  {n:'Doming (arch raises)', s:1, r:'10'},
+  {n:'Standing calf stretch', s:2, r:'1 min hold'},
+  {n:'Dead bugs', s:1, r:'10 ea side'},
+  {n:'Heel slides', s:1, r:'12 ea side'},
+  {n:'Russian twists', s:1, r:'20 total'}
+];
+
+const WORKOUTS = {
+  Monday: { title: 'Push', items: [
+    {n:'Pec bench machine', s:3, r:'10-12'},
+    {n:'Seated DB shoulder press', s:3, r:'10'},
+    {n:'Tricep pushdowns', s:3, r:'12-15'},
+    {n:'Seated lateral raises', s:3, r:'12'},
+    {n:'Seated front raises', s:3, r:'10'},
+    {n:'Seated tricep overhead extension', s:3, r:'12'},
+    {n:'DB chest flys (bonus)', s:2, r:'12-15'},
+    {n:'Seated Arnold press (bonus)', s:2, r:'10'}
+  ].concat(PT_ITEMS) },
+  Tuesday: { title: 'Pull', items: [
+    {n:'Lat pulldowns', s:3, r:'10-12'},
+    {n:'Seated machine rows', s:3, r:'10-12'},
+    {n:'Seated DB curls', s:3, r:'10-12'},
+    {n:'Face pulls (cable)', s:3, r:'15'},
+    {n:'Seated hammer curls', s:3, r:'10-12'},
+    {n:'Seated reverse flyes', s:3, r:'12'},
+    {n:'Seated shrugs', s:3, r:'15'},
+    {n:'Concentration curls (bonus)', s:2, r:'10 ea'}
+  ] },
+  Wednesday: { title: 'Legs', items: [
+    {n:'Half squats, dumbbells', s:3, r:'10-12'},
+    {n:'Leg press', s:3, r:'10-12'},
+    {n:'Leg extension / long arc quads', s:3, r:'12-15'},
+    {n:'Calf raise, kettlebell', s:3, r:'12-15'},
+    {n:'Side-lying hip abduction', s:3, r:'10-30'},
+    {n:'Donkey kicks', s:3, r:'10-30'}
+  ].concat(PT_ITEMS) },
+  Friday: { title: 'Push-Pull / Tabata', items: [
+    {n:'Pec bench machine', s:3, r:'12-15'},
+    {n:'Single-arm machine row', s:3, r:'10 ea'},
+    {n:'Overhead DB extension', s:3, r:'12'},
+    {n:'Hammer curls', s:3, r:'10'},
+    {n:'Tabata block', s:1, r:'16-32 rd'}
+  ] },
+  Saturday: { title: 'Core / Recovery', items: [
+    {n:'Dead Bugs', s:3, r:'10/side'},
+    {n:'Bicycle Crunches', s:3, r:'15'},
+    {n:'Plank Hold', s:3, r:'30s'},
+    {n:'Bird Dogs', s:2, r:'10/side'},
+    {n:'Side Plank', s:2, r:'20s/side'}
+  ] }
+};
+
+function renderLogCard(day, cfg){
+  const el = document.getElementById('log-'+day);
+  if(!el) return;
+  let html = '<div class="log-title">📝 Log This Workout — '+cfg.title+'</div>';
+  cfg.items.forEach(function(item){
+    const planStr = item.s+'×'+item.r;
+    html += '<div class="ex-row">'
+      + '<label class="ex-label"><input type="checkbox" class="ex-check" data-ex="'+item.n+'" onchange="onExCheck(this)"> '+item.n+'</label>'
+      + '<input type="text" class="ex-setsreps" value="'+planStr+'" data-plan="'+planStr+'">'
+      + '<input type="number" class="ex-weight" placeholder="lb, optional">'
+      + '</div>';
+  });
+  html += '<button class="save-btn" onclick="saveWorkout(\''+day+'\')">Save Workout</button>'
+    + '<div class="save-status" id="status-'+day+'"></div>';
+  el.innerHTML = html;
+}
+
+function onExCheck(cb){
+  // Checking the box just confirms the planned sets/reps are already filled in;
+  // nothing to auto-populate since the field is pre-loaded from the plan.
+  // Kept as a hook in case per-exercise behavior is wanted later.
+}
+
+
+function todayISO(){ const d = new Date(); return d.toISOString().slice(0,10); }
+
+function postToSheet(payload, statusId){
+  const el = document.getElementById(statusId);
+  if(el) el.textContent = 'Saving…';
+  if(!CONFIG.webAppUrl || CONFIG.webAppUrl.indexOf('PASTE_') === 0){
+    if(el) el.textContent = '⚠️ Set CONFIG.webAppUrl first';
+    return;
+  }
+  fetch(CONFIG.webAppUrl, {
+    method: 'POST',
+    mode: 'no-cors', // Apps Script doesn't return CORS headers; we can't read the response, but the write still lands
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(payload)
+  }).then(function(){
+    if(el) el.textContent = '✅ Saved ' + new Date().toLocaleTimeString();
+  }).catch(function(){
+    if(el) el.textContent = '⚠️ Failed — check connection';
+  });
+}
+
+function saveWorkout(day){
+  const card = document.getElementById('log-'+day);
+  const rows = card.querySelectorAll('.ex-row');
+  const items = [];
+  rows.forEach(function(r){
+    const cb = r.querySelector('.ex-check');
+    if(cb.checked){
+      const w = r.querySelector('.ex-weight');
+      const sr = r.querySelector('.ex-setsreps');
+      items.push({ exercise: cb.dataset.ex, weight: w ? w.value : '', reps: sr ? sr.value : '' });
+    }
+  });
+  if(items.length === 0){ alert('Check off at least one exercise before saving.'); return; }
+  const dateEl = document.getElementById('ci-date');
+  const payload = {
+    entryType: 'Exercise',
+    date: (dateEl && dateEl.value) ? dateEl.value : todayISO(),
+    day: day,
+    items: items
+  };
+  postToSheet(payload, 'status-'+day);
+}
+
+function saveCheckin(){
+  const payload = {
+    entryType: 'Narrative',
+    date: document.getElementById('ci-date').value || todayISO(),
+    bodyWeight: document.getElementById('ci-weight').value,
+    calories: document.getElementById('ci-cals').value,
+    notes: document.getElementById('ci-notes').value
+  };
+  postToSheet(payload, 'status-checkin');
+}
+
+(function initLogging(){
+  Object.keys(WORKOUTS).forEach(function(day){ renderLogCard(day, WORKOUTS[day]); });
+  const dEl = document.getElementById('ci-date');
+  if (dEl) dEl.value = todayISO();
+})();
 </script>
 </body>
 </html>
