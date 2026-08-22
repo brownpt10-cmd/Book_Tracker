@@ -48,7 +48,7 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
 .ref-table td{padding:.35rem .3rem;border-bottom:1px solid #f1f5f9;vertical-align:top}
 .ref-table tr:last-child td{border-bottom:none}
 .ref-fill{background:#fffbeb}
-.log-card{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;padding:.7rem .8rem;margin-top:.65rem}
+.log-card{background:transparent;border:none;padding:.45rem 0 0;margin-top:.2rem}
 .log-title{font-size:.7rem;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.3px;margin-bottom:.45rem}
 .ex-row{display:flex;align-items:center;gap:.4rem;padding:.32rem 0;border-bottom:1px solid #e2e8f0;font-size:.78rem}
 .ex-row:last-of-type{border-bottom:none}
@@ -56,6 +56,9 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
 .ex-label input[type=checkbox]{width:18px;height:18px;flex-shrink:0;accent-color:#2563eb}
 .ex-weight,.ex-setsreps{padding:.3rem;border:1px solid #cbd5e1;border-radius:6px;font-size:.72rem;text-align:center;flex-shrink:0}
 .ex-setsreps{width:64px;color:#2563eb;font-weight:700}
+.ex-rounds{width:78px;padding:.3rem;border:1px solid #cbd5e1;border-radius:6px;font-size:.72rem;text-align:center;flex-shrink:0}
+.ex-row.special .ex-label{font-weight:700;color:#1e293b}
+.ex-row.special{background:#f8fafc;margin:0 -.35rem;padding-left:.35rem;padding-right:.35rem;border-radius:6px}
 .ex-weight{width:58px}
 .save-btn{width:100%;margin-top:.65rem;padding:.6rem;background:#2563eb;color:#fff;border:none;border-radius:8px;font-weight:700;font-size:.8rem}
 .save-btn:active{background:#1e40af}
@@ -101,29 +104,6 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
 <div class="day gym" id="day-1">
   <div class="day-name">Monday <span class="today-badge" id="badge-1" style="display:none">TODAY</span></div>
   <div class="day-type">🏋️ PUSH / CORE / ANKLE · 8:30 AM</div>
-  <div class="day-detail">
-    <div class="day-toggle">
-      <button class="toggle-btn active" id="mon-btn-sets" onclick="showMon('sets')">Straight Sets</button>
-      <button class="toggle-btn" id="mon-btn-tabata" onclick="showMon('tabata')">🔥 Tabata</button>
-    </div>
-    <div id="mon-sets">
-      Seated Dumbbell Shoulder Press — 3×12 (start 8–12 lbs)<br>
-      Seated Chest Press (dumbbells) — 3×12 (10–15 lbs)<br>
-      Seated Lateral Raises — 3×12 (5–8 lbs)<br>
-      Seated Front Raises — 3×10 (5–8 lbs)<br>
-      Seated Tricep Overhead Extension — 3×12 (8–12 lbs)<br>
-      Seated Tricep Kickbacks — 3×12 each arm (5–8 lbs)<br>
-      Seated Chest Flyes — 2×12 (5–10 lbs)
-    </div>
-    <div id="mon-tabata" class="alt-block">
-      <strong>Song 1 MANDATORY:</strong> Pec Bench Machine ↔ Seated DB Shoulder Press — <em>75% effort; keep back flat.</em><br>
-      <strong>Song 2 MANDATORY:</strong> Tricep Pushdowns ↔ Lateral/Front Raises — <em>aim for 50 lbs on pushdowns; light DBs for raises.</em><br>
-      <strong>Song 3 OPTIONAL (24-round mark):</strong> DB Chest Flys ↔ Seated Arnold Press — <em>focus on chest stretch and shoulder rotation.</em><br>
-      <strong>Song 4 BONUS (32-round mark):</strong> Russian Twists ↔ Quad Flex (3–5s hold) — <em>core and PT-leg stability.</em>
-    </div>
-    <br><span class="abs-line">🎯 <strong>Core:</strong> Dead Bugs 3×10/side · Bicycle Crunches 2×15 · Plank Hold 3×20–30s</span> <span class="suggested">(suggested — not in your notes)</span>
-    <br><strong>🦺 Ankle/Core protocol (full):</strong> Band work (Push/Pull/Eversion/Inversion) 20 reps each · Towel Crunches 2 min · Doming 10 reps (5s hold) · Standing Calf Stretch 2×1 min hold · Side-Lying Hip Abduction 3×10–30 · Donkey Kicks 3×10–30
-  </div>
   <div class="day-ankle">🦺 Upper-body day = zero ankle load from lifting; today carries the full Ankle/Core protocol.</div>
   <div class="log-card" id="log-Monday"></div>
 </div>
@@ -132,29 +112,6 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
 <div class="day gym" id="day-2">
   <div class="day-name">Tuesday <span class="today-badge" id="badge-2" style="display:none">TODAY</span></div>
   <div class="day-type">🔄 PULL · 8:30 AM</div>
-  <div class="day-detail">
-    <div class="day-toggle">
-      <button class="toggle-btn active" id="tue-btn-sets" onclick="showTue('sets')">Straight Sets</button>
-      <button class="toggle-btn" id="tue-btn-tabata" onclick="showTue('tabata')">🔥 Tabata</button>
-    </div>
-    <div id="tue-sets">
-      Seated Dumbbell Rows — 3×12 each arm (10–15 lbs)<br>
-      Seated Wide Rows — 3×12 (10–12 lbs)<br>
-      Seated Bicep Curls — 3×12 (10–15 lbs)<br>
-      Seated Hammer Curls — 3×12 (10–15 lbs)<br>
-      Seated Concentration Curls — 2×10 each arm (8–12 lbs)<br>
-      Seated Reverse Flyes — 3×12 (5–8 lbs)<br>
-      Seated Face Pulls (band) — 3×15<br>
-      Seated Shrugs — 3×15 (15–20 lbs)
-    </div>
-    <div id="tue-tabata" class="alt-block">
-      <strong>Song 1 MANDATORY:</strong> Lat Pull Downs ↔ Seated Machine Rows — <em>focus on pulling with elbows, not hands.</em><br>
-      <strong>Song 2 MANDATORY:</strong> Seated DB Curls (20 lbs) ↔ Face Pulls (cable) — <em>focus on rear delts and posture.</em><br>
-      <strong>Song 3 OPTIONAL (24-round mark):</strong> Hammer Curls ↔ DB Rear Delt Flys — <em>neutral grip curls; focus on back of shoulders.</em><br>
-      <strong>Song 4 BONUS (32-round mark):</strong> Dead Bugs ↔ Long Arc Quad Extension — <em>core control and knee/quad strength.</em>
-    </div>
-    <br><span class="abs-line">🎯 <strong>Abs Finisher:</strong> Dead Bugs 2×10 · Plank Hold 2×20s</span> <span class="suggested">(suggested — not in your notes)</span>
-  </div>
   <div class="day-ankle">🦺 All pulling — zero ankle load. Ankle circles morning/evening only, no dedicated PT block today.</div>
   <div class="log-card" id="log-Tuesday"></div>
 </div>
@@ -163,15 +120,7 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
 <div class="day gym" id="day-3">
   <div class="day-name">Wednesday <span class="today-badge" id="badge-3" style="display:none">TODAY</span></div>
   <div class="day-type">🦵 LEGS / CORE / ANKLE · 8:30 AM</div>
-  <div class="day-detail">
-    Half Squats (dumbbells) — <span class="suggested">3×10–12, light weight, controlled tempo (sets/reps not specified in your notes)</span><br>
-    Leg Press — <span class="suggested">3×12, weight to comfort</span><br>
-    Leg Extension — <span class="suggested">3×12, light</span><br>
-    Calf Raise (kettlebell) — <span class="suggested">3×15</span>
-    <br><span class="abs-line">🎯 <strong>Core:</strong> Bird Dogs 3×10/side · Bicycle Crunches 2×15 · Side Plank 2×15–20s/side</span> <span class="suggested">(suggested)</span>
-    <br><strong>🦺 Ankle/Core protocol (full):</strong> Band work (Push/Pull/Eversion/Inversion) 20 reps each · Towel Crunches 2 min · Doming 10 reps (5s hold) · Standing Calf Stretch 2×1 min hold · Side-Lying Hip Abduction 3×10–30 · Donkey Kicks 3×10–30
-  </div>
-  <div class="day-ankle">⚠️ Highest ankle-risk day — no reps/weights given for Legs in your notes, so keep it light and stop on sharp pain. Ice 15 min after if swollen.</div>
+  <div class="day-ankle">⚠️ Highest ankle-risk day — keep it light and stop on sharp pain. Ice 15 min after if swollen.</div>
   <div class="log-card" id="log-Wednesday"></div>
 </div>
 
@@ -190,32 +139,6 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
 <div class="day gym" id="day-5">
   <div class="day-name">Friday <span class="today-badge" id="badge-5" style="display:none">TODAY</span></div>
   <div class="day-type">🔥 PUSH-PULL / TABATA · 8:30 AM</div>
-  <div class="day-detail">
-    <div class="day-toggle">
-      <button class="toggle-btn active" id="fri-btn-tabata" onclick="showFriday('tabata')">🔥 Tabata</button>
-      <button class="toggle-btn" id="fri-btn-sets" onclick="showFriday('sets')">Straight Sets</button>
-    </div>
-
-    <div id="fri-tabata">
-      <strong>Push — Song 1 MANDATORY:</strong> Pec Bench Machine ↔ Seated DB Shoulder Press — <em>75% effort; keep back flat.</em><br>
-      <strong>Push — Song 2 MANDATORY:</strong> Tricep Pushdowns ↔ Lateral/Front Raises<br>
-      <strong>Pull — Song 1 MANDATORY:</strong> Lat Pull Downs ↔ Seated Machine Rows — <em>elbows, not hands.</em><br>
-      <strong>Pull — Song 2 MANDATORY:</strong> Seated DB Curls (20 lbs) ↔ Face Pulls (cable)<br>
-      <span class="suggested">If energy allows: add Push Song 3/4 or Pull Song 3/4 as bonus rounds.</span>
-    </div>
-
-    <div id="fri-sets" class="alt-block">
-      <em>Straight sets, no timer — use when you're not feeling Tabata.</em><br>
-      Seated DB Shoulder Press — 3×12 (8–12 lbs)<br>
-      Seated Chest Press — 3×12 (10–15 lbs)<br>
-      Seated Lateral Raises — 3×12 (5–8 lbs)<br>
-      Seated Tricep Overhead Extension — 3×12 (8–12 lbs)<br>
-      Seated Dumbbell Rows — 3×12 each arm (10–15 lbs)<br>
-      Seated Wide Rows — 3×12 (10–12 lbs)<br>
-      Seated Bicep Curls — 3×12 (10–15 lbs)<br>
-      Seated Face Pulls (band) — 3×15
-    </div>
-  </div>
   <div class="day-ankle">🦺 All upper body — zero ankle load. Ankle circles only, no dedicated PT block today.</div>
   <div class="log-card" id="log-Friday"></div>
 </div>
@@ -312,116 +235,89 @@ body{font-family:-apple-system,sans-serif;background:#f1f5f9;color:#1e293b;paddi
   if (dayEl) { dayEl.style.boxShadow = '0 0 0 2.5px #2563eb, 0 2px 8px rgba(37,99,235,.2)'; }
 })();
 
-function toggle(prefix, mode, defaultMode){
-  document.getElementById(prefix+'-'+defaultMode).style.display = (mode===defaultMode)?'block':'none';
-  document.getElementById(prefix+'-btn-'+defaultMode).classList.toggle('active', mode===defaultMode);
-}
-function showMon(mode){
-  document.getElementById('mon-sets').style.display = mode==='sets' ? 'block':'none';
-  document.getElementById('mon-tabata').style.display = mode==='tabata' ? 'block':'none';
-  document.getElementById('mon-btn-sets').classList.toggle('active', mode==='sets');
-  document.getElementById('mon-btn-tabata').classList.toggle('active', mode==='tabata');
-}
-function showTue(mode){
-  document.getElementById('tue-sets').style.display = mode==='sets' ? 'block':'none';
-  document.getElementById('tue-tabata').style.display = mode==='tabata' ? 'block':'none';
-  document.getElementById('tue-btn-sets').classList.toggle('active', mode==='sets');
-  document.getElementById('tue-btn-tabata').classList.toggle('active', mode==='tabata');
-}
-function showFriday(mode){
-  document.getElementById('fri-tabata').style.display = mode==='tabata' ? 'block':'none';
-  document.getElementById('fri-sets').style.display = mode==='sets' ? 'block':'none';
-  document.getElementById('fri-btn-tabata').classList.toggle('active', mode==='tabata');
-  document.getElementById('fri-btn-sets').classList.toggle('active', mode==='sets');
-}
 
 /* ===================== WORKOUT LOGGING ===================== */
 // PASTE your deployed Apps Script Web App URL below (ends in /exec)
 const CONFIG = { webAppUrl: "https://script.google.com/macros/s/AKfycbypVqYSD9bUEnqGoOxEooNwKUmpDJhGUX5sUobIRJmbPTUtf51hsR1p8FOYGPn3nEiH/exec" };
 
-const PT_ITEMS = [
-  {n:'Band work (push/pull/eversion/inversion)', s:3, r:'20 ea'},
-  {n:'Ankle circles', s:3, r:'20 ea way'},
-  {n:'Towel crunches', s:1, r:'2 min'},
-  {n:'Doming (arch raises)', s:1, r:'10'},
-  {n:'Standing calf stretch', s:2, r:'1 min hold'},
-  {n:'Dead bugs', s:1, r:'10 ea side'},
-  {n:'Heel slides', s:1, r:'12 ea side'},
-  {n:'Russian twists', s:1, r:'20 total'}
-];
+const TABATA = {n:'Tabata', t:'tabata'};
+const CORE   = {n:'Core', t:'simple'};
+const ANKLE  = {n:'Ankle', t:'simple'};
 
 const WORKOUTS = {
-  Monday: { title: 'Push', items: [
-    {n:'Pec bench machine', s:3, r:'10-12'},
-    {n:'Seated DB shoulder press', s:3, r:'10'},
-    {n:'Tricep pushdowns', s:3, r:'12-15'},
-    {n:'Seated lateral raises', s:3, r:'12'},
-    {n:'Seated front raises', s:3, r:'10'},
-    {n:'Seated tricep overhead extension', s:3, r:'12'},
-    {n:'DB chest flys (bonus)', s:2, r:'12-15'},
-    {n:'Seated Arnold press (bonus)', s:2, r:'10'}
-  ].concat(PT_ITEMS) },
-  Tuesday: { title: 'Pull', items: [
-    {n:'Lat pulldowns', s:3, r:'10-12'},
-    {n:'Seated machine rows', s:3, r:'10-12'},
-    {n:'Seated DB curls', s:3, r:'10-12'},
-    {n:'Face pulls (cable)', s:3, r:'15'},
-    {n:'Seated hammer curls', s:3, r:'10-12'},
-    {n:'Seated reverse flyes', s:3, r:'12'},
-    {n:'Seated shrugs', s:3, r:'15'},
-    {n:'Concentration curls (bonus)', s:2, r:'10 ea'}
+  Monday: { items: [
+    {n:'Seated Dumbbell Shoulder Press', sr:'3\u00d712'},
+    {n:'Seated Chest Press (dumbbells)', sr:'3\u00d712'},
+    {n:'Seated Lateral Raises', sr:'3\u00d712'},
+    {n:'Seated Front Raises', sr:'3\u00d710'},
+    {n:'Seated Tricep Overhead Extension', sr:'3\u00d712'},
+    {n:'Seated Tricep Kickbacks', sr:'3\u00d712'},
+    {n:'Seated Chest Flyes', sr:'2\u00d712'},
+    TABATA, CORE, ANKLE
   ] },
-  Wednesday: { title: 'Legs', items: [
-    {n:'Half squats, dumbbells', s:3, r:'10-12'},
-    {n:'Leg press', s:3, r:'10-12'},
-    {n:'Leg extension / long arc quads', s:3, r:'12-15'},
-    {n:'Calf raise, kettlebell', s:3, r:'12-15'},
-    {n:'Side-lying hip abduction', s:3, r:'10-30'},
-    {n:'Donkey kicks', s:3, r:'10-30'}
-  ].concat(PT_ITEMS) },
-  Friday: { title: 'Push-Pull / Tabata', items: [
-    {n:'Pec bench machine', s:3, r:'12-15'},
-    {n:'Single-arm machine row', s:3, r:'10 ea'},
-    {n:'Overhead DB extension', s:3, r:'12'},
-    {n:'Hammer curls', s:3, r:'10'},
-    {n:'Tabata block', s:1, r:'16-32 rd'}
+  Tuesday: { items: [
+    {n:'Seated Dumbbell Rows', sr:'3\u00d712 ea'},
+    {n:'Seated Wide Rows', sr:'3\u00d712'},
+    {n:'Seated Bicep Curls', sr:'3\u00d712'},
+    {n:'Seated Hammer Curls', sr:'3\u00d712'},
+    {n:'Seated Concentration Curls', sr:'2\u00d710'},
+    {n:'Seated Reverse Flyes', sr:'3\u00d712'},
+    {n:'Seated Face Pulls (band)', sr:'3\u00d715'},
+    {n:'Seated Shrugs', sr:'3\u00d715'},
+    TABATA, CORE
   ] },
-  Saturday: { title: 'Core / Recovery', items: [
-    {n:'Dead Bugs', s:3, r:'10/side'},
-    {n:'Bicycle Crunches', s:3, r:'15'},
-    {n:'Plank Hold', s:3, r:'30s'},
-    {n:'Bird Dogs', s:2, r:'10/side'},
-    {n:'Side Plank', s:2, r:'20s/side'}
+  Wednesday: { items: [
+    {n:'Half Squats (dumbbells)', sr:'3\u00d710\u201312'},
+    {n:'Leg Press', sr:'3\u00d712'},
+    {n:'Leg Extension', sr:'3\u00d712'},
+    {n:'Calf Raise (kettlebell)', sr:'3\u00d715'},
+    TABATA, CORE, ANKLE
+  ] },
+  Friday: { items: [
+    TABATA,
+    {n:'Seated DB Shoulder Press', sr:'3\u00d712'},
+    {n:'Seated Chest Press', sr:'3\u00d712'},
+    {n:'Seated Lateral Raises', sr:'3\u00d712'},
+    {n:'Seated Tricep Overhead Extension', sr:'3\u00d712'},
+    {n:'Seated Dumbbell Rows', sr:'3\u00d712'},
+    {n:'Seated Wide Rows', sr:'3\u00d712'},
+    {n:'Seated Bicep Curls', sr:'3\u00d712'},
+    {n:'Seated Face Pulls (band)', sr:'3\u00d715'}
+  ] },
+  Saturday: { items: [
+    {n:'Dead Bugs', sr:'3\u00d710/side'},
+    {n:'Bicycle Crunches', sr:'3\u00d715'},
+    {n:'Plank Hold', sr:'3\u00d730s'},
+    {n:'Bird Dogs', sr:'2\u00d710/side'},
+    {n:'Side Plank', sr:'2\u00d720s/side'}
   ] }
 };
 
 function renderLogCard(day, cfg){
   const el = document.getElementById('log-'+day);
   if(!el) return;
-  let html = '<div class="log-title">📝 Log This Workout — '+cfg.title+'</div>';
+  let html = '';
   cfg.items.forEach(function(item){
-    const planStr = item.s+'×'+item.r;
-    html += '<div class="ex-row">'
-      + '<label class="ex-label"><input type="checkbox" class="ex-check" data-ex="'+item.n+'" onchange="onExCheck(this)"> '+item.n+'</label>'
-      + '<input type="text" class="ex-setsreps" value="'+planStr+'" data-plan="'+planStr+'">'
-      + '<input type="number" class="ex-weight" placeholder="lb, optional">'
-      + '</div>';
+    const type = item.t || 'ex';
+    html += '<div class="ex-row'+(type==='ex'?'':' special')+'">'
+      + '<label class="ex-label"><input type="checkbox" class="ex-check" data-ex="'+item.n+'" data-type="'+type+'"> '+item.n+'</label>';
+    if(type === 'ex'){
+      html += '<input type="text" class="ex-setsreps" value="'+item.sr+'">'
+        + '<input type="number" class="ex-weight" inputmode="decimal" placeholder="lb">';
+    } else if(type === 'tabata'){
+      html += '<input type="number" class="ex-rounds" inputmode="numeric" placeholder="rounds">';
+    }
+    html += '</div>';
   });
   html += '<button class="save-btn" onclick="saveWorkout(\''+day+'\')">Save Workout</button>'
     + '<div class="save-status" id="status-'+day+'"></div>';
   el.innerHTML = html;
 }
 
-function onExCheck(cb){
-  // Checking the box just confirms the planned sets/reps are already filled in;
-  // nothing to auto-populate since the field is pre-loaded from the plan.
-  // Kept as a hook in case per-exercise behavior is wanted later.
-}
-
 
 function todayISO(){ const d = new Date(); return d.toISOString().slice(0,10); }
 
-function postToSheet(payload, statusId){
+function postToSheet(payload, statusId, onSent){
   const el = document.getElementById(statusId);
   if(el) el.textContent = 'Saving…';
   if(!CONFIG.webAppUrl || CONFIG.webAppUrl.indexOf('PASTE_') === 0){
@@ -435,8 +331,12 @@ function postToSheet(payload, statusId){
     body: JSON.stringify(payload)
   }).then(function(){
     if(el) el.textContent = '✅ Saved ' + new Date().toLocaleTimeString();
+    // Only clears once the request actually left the device. no-cors hides the
+    // server's reply, so this means "sent", not "confirmed written".
+    if(typeof onSent === 'function') onSent();
   }).catch(function(){
-    if(el) el.textContent = '⚠️ Failed — check connection';
+    // Left the fields populated on purpose — nothing was sent, so don't lose the input.
+    if(el) el.textContent = '⚠️ Failed — check connection, nothing was cleared';
   });
 }
 
@@ -446,13 +346,21 @@ function saveWorkout(day){
   const items = [];
   rows.forEach(function(r){
     const cb = r.querySelector('.ex-check');
-    if(cb.checked){
+    if(!cb.checked) return;
+    const type = cb.dataset.type;
+    if(type === 'ex'){
       const w = r.querySelector('.ex-weight');
       const sr = r.querySelector('.ex-setsreps');
       items.push({ exercise: cb.dataset.ex, weight: w ? w.value : '', reps: sr ? sr.value : '' });
+    } else if(type === 'tabata'){
+      const rd = r.querySelector('.ex-rounds');
+      const n = rd && rd.value ? rd.value : '';
+      items.push({ exercise: 'Tabata', weight: '', reps: n ? n + ' rounds' : '' });
+    } else {
+      items.push({ exercise: cb.dataset.ex, weight: '', reps: '' });
     }
   });
-  if(items.length === 0){ alert('Check off at least one exercise before saving.'); return; }
+  if(items.length === 0){ alert('Check off at least one item before saving.'); return; }
   const dateEl = document.getElementById('ci-date');
   const payload = {
     entryType: 'Exercise',
@@ -464,14 +372,26 @@ function saveWorkout(day){
 }
 
 function saveCheckin(){
+  const w = document.getElementById('ci-weight');
+  const c = document.getElementById('ci-cals');
+  const n = document.getElementById('ci-notes');
+  if(!w.value && !c.value && !n.value.trim()){
+    alert('Fill in at least one field before saving.');
+    return;
+  }
   const payload = {
     entryType: 'Narrative',
     date: document.getElementById('ci-date').value || todayISO(),
-    bodyWeight: document.getElementById('ci-weight').value,
-    calories: document.getElementById('ci-cals').value,
-    notes: document.getElementById('ci-notes').value
+    bodyWeight: w.value,
+    calories: c.value,
+    notes: n.value
   };
-  postToSheet(payload, 'status-checkin');
+  postToSheet(payload, 'status-checkin', function(){
+    w.value = '';
+    c.value = '';
+    n.value = '';
+    // Date deliberately left as-is so back-to-back entries keep the same day.
+  });
 }
 
 (function initLogging(){
