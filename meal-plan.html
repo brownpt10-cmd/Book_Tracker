@@ -37,13 +37,13 @@
     margin-bottom:6px;
   }
   h1{
-    font-size:28px;
+    font-size:26px;
     margin:0 0 10px;
     line-height:1.15;
   }
   .macros{
     display:flex;
-    gap:10px;
+    gap:8px;
     flex-wrap:wrap;
     font-family:"Helvetica Neue",Arial,sans-serif;
   }
@@ -55,7 +55,9 @@
     padding:6px 12px;
     border-radius:100px;
     letter-spacing:.02em;
+    white-space:nowrap;
   }
+  .macro-pill.alt{background:var(--accent);}
   main{
     max-width:720px;
     margin:0 auto;
@@ -73,6 +75,12 @@
     font-size:13px;
     letter-spacing:.1em;
     text-transform:uppercase;
+    color:var(--sub);
+    margin:0 0 4px;
+  }
+  .baseline .sub-note{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12.5px;
     color:var(--sub);
     margin:0 0 12px;
   }
@@ -92,6 +100,48 @@
     color:var(--sub);
     white-space:nowrap;
     padding-top:2px;
+    text-align:right;
+  }
+  .baseline-total{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0 0;
+    margin-top:4px;
+    border-top:1px solid var(--line);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12.5px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .tabs{
+    display:flex;
+    gap:8px;
+    margin:28px 4px 0;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+  }
+  .tab-btn{
+    flex:1;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--sub);
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:.03em;
+    padding:12px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    text-align:center;
+  }
+  .tab-btn.active{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+  .plan-intro{
+    margin:16px 4px 0;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12.5px;
+    color:var(--sub);
   }
   .section-label{
     font-family:"Helvetica Neue",Arial,sans-serif;
@@ -99,7 +149,7 @@
     letter-spacing:.1em;
     text-transform:uppercase;
     color:var(--sub);
-    margin:36px 4px 12px;
+    margin:24px 4px 12px;
   }
   .day-card{
     background:var(--card);
@@ -205,6 +255,8 @@
     color:var(--accent);
     font-weight:700;
   }
+  .plan-panel{display:none;}
+  .plan-panel.active{display:block;}
   footer{
     text-align:center;
     font-family:"Helvetica Neue",Arial,sans-serif;
@@ -215,7 +267,7 @@
   }
 
   @media (max-width:480px){
-    h1{font-size:23px;}
+    h1{font-size:22px;}
     header{padding:24px 16px 20px;}
     main{padding:0 14px;}
     .meal-row{grid-template-columns:64px 1fr; padding:12px 14px; gap:10px;}
@@ -232,118 +284,245 @@
   <div class="eyebrow">Weekly Nutrition Plan</div>
   <h1>7-Day High-Protein Menu</h1>
   <div class="macros">
-    <span class="macro-pill">~1,500–1,550 kcal</span>
-    <span class="macro-pill">160g+ Protein</span>
+    <span class="macro-pill">1,800 kcal</span>
+    <span class="macro-pill">158g Carb &middot; 35%</span>
+    <span class="macro-pill">60g Fat &middot; 30%</span>
+    <span class="macro-pill">158g Protein &middot; 35%</span>
   </div>
 </header>
 
 <main>
 
   <div class="baseline">
-    <h2>Daily Baseline &mdash; Same Every Day</h2>
+    <h2>Daily Baseline &mdash; Same Every Day, Both Plans</h2>
+    <p class="sub-note">Fixed morning routine &mdash; carbs early for the workout, protein right behind it.</p>
     <div class="baseline-item">
-      <div><b>Breakfast</b><br>3 large eggs + 1/2 cup egg whites, scrambled with cooking spray (no toast)</div>
-      <div class="kcal">~270 kcal<br>26g P</div>
+      <div><b>Wake / Pre-Workout</b><br>McCann's Quick Cooking Oatmeal, 1/2 cup dry, with a drizzle of honey</div>
+      <div class="kcal">171 kcal<br>33g C &middot; 3g F &middot; 4g P</div>
     </div>
     <div class="baseline-item">
-      <div><b>Morning Snack</b><br>1 cup non-fat plain Greek yogurt + 1 scoop protein powder</div>
-      <div class="kcal">~230 kcal<br>40g P</div>
+      <div><b>Mid-Morning</b><br>3 whole eggs, scrambled + 1/2 cup egg whites</div>
+      <div class="kcal">263 kcal<br>0g C &middot; 15g F &middot; 31g P</div>
+    </div>
+    <div class="baseline-total">
+      <span>Baseline Total</span>
+      <span>434 kcal &middot; 33g C &middot; 18g F &middot; 35g P</span>
     </div>
   </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" id="tabA" onclick="showPlan('A')">1,800 Cal Plan</button>
+    <button class="tab-btn" id="tabB" onclick="showPlan('B')">1,300 Cal Plan</button>
+  </div>
+
+  <!-- ============ PLAN A — 1,800 CAL ============ -->
+  <div class="plan-panel active" id="planA">
+
+  <p class="plan-intro">Baseline (434 kcal) + lunch, snack &amp; dinner below &mdash; targets ~1,800 kcal &middot; 158g C &middot; 60g F &middot; 158g P per day. Totals below include the baseline.</p>
 
   <div class="section-label">Lunch, Snack &amp; Dinner Rotation</div>
 
   <!-- Day 1 -->
   <div class="day-card">
     <div class="day-head">
-      <div><div class="num">Day 1</div><h3>Fajita Chicken</h3></div>
-      <div class="totals"><div class="kcal">~1,500 kcal</div><div class="prot">166g Protein</div></div>
+      <div><div class="num">Day 1</div><h3>Jasmine-Quinoa Chicken Bowl</h3></div>
+      <div class="totals"><div class="kcal">~1,744 kcal</div><div class="prot">157g Protein</div></div>
     </div>
-    <div class="meal-row lunch"><div class="label">Lunch</div><p>6 oz grilled chicken breast, 1/2 cup cooked jasmine rice, steamed broccoli<span class="macro">~420 kcal | 44g P</span></p></div>
-    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese + 1/2 cup berries<span class="macro">~130 kcal | 14g P</span></p></div>
-    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz lean ground chicken (93/7) sautéed with fajita seasonings, 1/2 cup black beans, bell peppers<span class="macro">~450 kcal | 42g P</span></p></div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>6 oz grilled chicken breast, 1/2 cup jasmine rice with quinoa, roasted broccoli<span class="macro">~460 kcal | 38g C | 12g F | 50g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>3/4 cup Chobani vanilla Greek yogurt + 1/2 cup raspberries<span class="macro">~190 kcal | 24g C | 0g F | 18g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>Ground chicken &amp; black bean chili, diced onion &amp; bell pepper, 2 corn tortillas, sprinkle of Colby cheese<span class="macro">~660 kcal | 56g C | 24g F | 54g P</span></p></div>
   </div>
 
   <!-- Day 2 -->
   <div class="day-card">
     <div class="day-head">
-      <div><div class="num">Day 2</div><h3>Beef Taco Bowl</h3></div>
-      <div class="totals"><div class="kcal">~1,470 kcal</div><div class="prot">157g Protein</div></div>
+      <div><div class="num">Day 2</div><h3>Blackened Tilapia &amp; Chicken Fajitas</h3></div>
+      <div class="totals"><div class="kcal">~1,734 kcal</div><div class="prot">155g Protein</div></div>
     </div>
-    <div class="meal-row lunch"><div class="label">Lunch</div><p>6 oz ground chicken turkey-style bowl with 1/2 cup brown rice and zucchini<span class="macro">~410 kcal | 40g P</span></p></div>
-    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese + sliced cucumber<span class="macro">~100 kcal | 13g P</span></p></div>
-    <div class="meal-row dinner"><div class="label">Dinner</div><p>5 oz lean ground beef (90/10) taco bowl over lettuce, 1/2 cup black beans, salsa<span class="macro">~460 kcal | 38g P</span></p></div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>6 oz blackened tilapia, black bean &amp; corn salad, lime<span class="macro">~440 kcal | 36g C | 13g F | 44g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>Vanilla whey protein shake (1 scoop) blended with 1/2 cup frozen blueberries &amp; water<span class="macro">~230 kcal | 27g C | 2g F | 28g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz chicken breast fajita strips, sautéed peppers &amp; onion, 2 corn tortillas, 2 tbsp guacamole<span class="macro">~630 kcal | 52g C | 22g F | 48g P</span></p></div>
   </div>
 
   <!-- Day 3 -->
   <div class="day-card">
     <div class="day-head">
-      <div><div class="num">Day 3</div><h3>Tuna &amp; Salmon</h3></div>
-      <div class="totals"><div class="kcal">~1,520 kcal</div><div class="prot">158g Protein</div></div>
+      <div><div class="num">Day 3</div><h3>Turkey Wrap &amp; Baked Salmon</h3></div>
+      <div class="totals"><div class="kcal">~1,684 kcal</div><div class="prot">145g Protein</div></div>
     </div>
-    <div class="meal-row lunch"><div class="label">Lunch</div><p>5 oz canned tuna (in water) with 1 tbsp light mayo over 1/2 cup white rice, diced celery<span class="macro">~380 kcal | 36g P</span></p></div>
-    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese + 1/2 cup berries<span class="macro">~130 kcal | 14g P</span></p></div>
-    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz baked salmon filet, asparagus, 1/2 cup wild rice<span class="macro">~510 kcal | 42g P</span></p></div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>Sliced turkey breast (5 oz) &amp; hummus wrap, whole wheat tortilla, spinach, tomato<span class="macro">~430 kcal | 38g C | 13g F | 38g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese + 1/2 MET-Rx Crispy Apple Pie bar<span class="macro">~210 kcal | 19g C | 6g F | 22g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz baked salmon, roasted asparagus, 3/4 cup wild rice<span class="macro">~610 kcal | 46g C | 26g F | 50g P</span></p></div>
   </div>
 
   <!-- Day 4 -->
   <div class="day-card">
     <div class="day-head">
-      <div><div class="num">Day 4</div><h3>Stir-Fry &amp; Pork</h3></div>
-      <div class="totals"><div class="kcal">~1,480 kcal</div><div class="prot">167g Protein</div></div>
+      <div><div class="num">Day 4</div><h3>Stuffed Pepper &amp; Pork Tenderloin</h3></div>
+      <div class="totals"><div class="kcal">~1,704 kcal</div><div class="prot">149g Protein</div></div>
     </div>
-    <div class="meal-row lunch"><div class="label">Lunch</div><p>6 oz sliced chicken breast stir-fry with snap peas, soy sauce, 1/2 cup jasmine rice<span class="macro">~430 kcal | 45g P</span></p></div>
-    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese<span class="macro">~110 kcal | 14g P</span></p></div>
-    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz grilled pork tenderloin, roasted green beans, 1/2 cup roasted sweet potato cubes<span class="macro">~440 kcal | 42g P</span></p></div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>Ground chicken &amp; quinoa stuffed bell pepper, side salad<span class="macro">~450 kcal | 34g C | 14g F | 46g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>3/4 cup plain Greek yogurt + 1 tsp honey + 1 tbsp sliced almonds<span class="macro">~200 kcal | 20g C | 6g F | 18g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz grilled pork tenderloin, roasted sweet potato, sautéed green beans<span class="macro">~620 kcal | 48g C | 22g F | 50g P</span></p></div>
   </div>
 
   <!-- Day 5 -->
   <div class="day-card">
     <div class="day-head">
-      <div><div class="num">Day 5</div><h3>Chicken Patties</h3></div>
-      <div class="totals"><div class="kcal">~1,490 kcal</div><div class="prot">161g Protein</div></div>
+      <div><div class="num">Day 5</div><h3>Shrimp Stir-Fry &amp; Buffalo Chicken Wraps</h3></div>
+      <div class="totals"><div class="kcal">~1,714 kcal</div><div class="prot">149g Protein</div></div>
     </div>
-    <div class="meal-row lunch"><div class="label">Lunch</div><p>6 oz ground chicken patties (2), roasted cauliflower, 1/2 cup brown rice<span class="macro">~420 kcal | 42g P</span></p></div>
-    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese + 1/2 cup berries<span class="macro">~130 kcal | 14g P</span></p></div>
-    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz baked chicken breast with herbs, 1/2 cup white rice, steamed zucchini<span class="macro">~440 kcal | 45g P</span></p></div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>6 oz shrimp stir-fry with jasmine rice, snap peas, soy-ginger sauce<span class="macro">~470 kcal | 44g C | 10g F | 42g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese + pineapple chunks<span class="macro">~170 kcal | 20g C | 2g F | 16g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>Buffalo chicken lettuce wraps (6 oz shredded chicken), 1/2 cup white rice, 1/2 cup black beans<span class="macro">~640 kcal | 58g C | 20g F | 56g P</span></p></div>
   </div>
 
   <!-- Day 6 -->
   <div class="day-card">
     <div class="day-head">
-      <div><div class="num">Day 6</div><h3>Burger &amp; Chicken</h3></div>
-      <div class="totals"><div class="kcal">~1,500 kcal</div><div class="prot">163g Protein</div></div>
+      <div><div class="num">Day 6</div><h3>Greek Salad &amp; Turkey Taco Bowl</h3></div>
+      <div class="totals"><div class="kcal">~1,814 kcal</div><div class="prot">159g Protein</div></div>
     </div>
-    <div class="meal-row lunch"><div class="label">Lunch</div><p>5 oz lean ground beef burger patty (no bun), 1/2 cup white rice, side salad with light dressing<span class="macro">~460 kcal | 36g P</span></p></div>
-    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese<span class="macro">~110 kcal | 14g P</span></p></div>
-    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz grilled chicken breast, 1/2 cup black beans, roasted bell peppers<span class="macro">~430 kcal | 47g P</span></p></div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>Grilled chicken Greek salad &mdash; 6 oz chicken, cucumber, tomato, feta, olives, red wine vinaigrette, side pita<span class="macro">~480 kcal | 30g C | 20g F | 48g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>Vanilla whey protein shake (1 scoop) + 1 small banana<span class="macro">~240 kcal | 32g C | 2g F | 26g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>Ground turkey taco bowl &mdash; white rice, black beans, salsa, light sour cream, handful tortilla chips<span class="macro">~660 kcal | 62g C | 22g F | 50g P</span></p></div>
   </div>
 
   <!-- Day 7 -->
   <div class="day-card">
     <div class="day-head">
-      <div><div class="num">Day 7</div><h3>Chili &amp; White Fish</h3></div>
-      <div class="totals"><div class="kcal">~1,480 kcal</div><div class="prot">156g Protein</div></div>
+      <div><div class="num">Day 7</div><h3>Chicken Fajita Bowl &amp; Pan-Seared Cod</h3></div>
+      <div class="totals"><div class="kcal">~1,714 kcal</div><div class="prot">149g Protein</div></div>
     </div>
-    <div class="meal-row lunch"><div class="label">Lunch</div><p>6 oz lean ground chicken chili with crushed tomatoes, kidney beans, spices<span class="macro">~440 kcal | 42g P</span></p></div>
-    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese + 1/2 cup berries<span class="macro">~130 kcal | 14g P</span></p></div>
-    <div class="meal-row dinner"><div class="label">Dinner</div><p>6 oz pan-seared white fish (cod or tilapia), 1/2 cup jasmine rice, steamed broccoli<span class="macro">~410 kcal | 40g P</span></p></div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>Chicken fajita bowl &mdash; 6 oz chicken, peppers, onion, cauliflower rice, salsa, dollop guacamole<span class="macro">~460 kcal | 26g C | 18g F | 48g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>3/4 cup Greek yogurt + granola sprinkle + blueberries<span class="macro">~220 kcal | 28g C | 4g F | 18g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>Pan-seared cod, cannellini bean &amp; cherry tomato salad, crusty whole-grain bread<span class="macro">~600 kcal | 54g C | 18g F | 48g P</span></p></div>
   </div>
 
   <div class="addons">
-    <h2>Easy 250-Calorie Add-Ons</h2>
-    <p class="note">To close the gap toward an 1,800-calorie target, pick one:</p>
+    <h2>If You're Still Hungry</h2>
+    <p class="note">Weekly average lands a touch under 1,800 by design &mdash; real days vary. Close the gap on lower days with one:</p>
     <div class="addon-grid">
-      <div class="addon"><span class="name">Almonds or Walnuts</span><span class="kcal">1.5 oz &middot; ~240 kcal</span></div>
-      <div class="addon"><span class="name">Avocado</span><span class="kcal">1 medium &middot; ~240 kcal</span></div>
-      <div class="addon"><span class="name">Peanut Butter &amp; Apple</span><span class="kcal">2 tbsp + 1 small apple &middot; ~260 kcal</span></div>
+      <div class="addon"><span class="name">Almonds or Walnuts</span><span class="kcal">1 oz &middot; ~165 kcal</span></div>
+      <div class="addon"><span class="name">Avocado</span><span class="kcal">1/2 medium &middot; ~120 kcal</span></div>
+      <div class="addon"><span class="name">Peanut Butter &amp; Apple</span><span class="kcal">1 tbsp + 1 small apple &middot; ~170 kcal</span></div>
       <div class="addon"><span class="name">Protein Bar</span><span class="kcal">Whey or plant &middot; ~200&ndash;250 kcal</span></div>
     </div>
   </div>
 
+  </div>
+  <!-- ============ END PLAN A ============ -->
+
+  <!-- ============ PLAN B — 1,300 CAL ============ -->
+  <div class="plan-panel" id="planB">
+
+  <p class="plan-intro">Baseline (434 kcal) + lunch, snack &amp; dinner below &mdash; targets ~1,300 kcal &middot; 114g C &middot; 43g F &middot; 114g P per day, same 35/30/35 split, scaled-down portions of the same weekly rotation. Totals below include the baseline.</p>
+
+  <div class="section-label">Lunch, Snack &amp; Dinner Rotation</div>
+
+  <!-- Day 1 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 1</div><h3>Jasmine-Quinoa Chicken Bowl</h3></div>
+      <div class="totals"><div class="kcal">~1,284 kcal</div><div class="prot">123g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>4 oz grilled chicken breast, 1/3 cup jasmine rice with quinoa, roasted broccoli<span class="macro">~300 kcal | 24g C | 6g F | 34g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>3/4 cup plain Greek yogurt + a few raspberries<span class="macro">~130 kcal | 13g C | 0g F | 16g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>Ground chicken &amp; black bean chili, diced onion &amp; pepper, 1 tbsp shredded cheese, no tortilla<span class="macro">~420 kcal | 28g C | 16g F | 38g P</span></p></div>
+  </div>
+
+  <!-- Day 2 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 2</div><h3>Blackened Tilapia &amp; Chicken Fajitas</h3></div>
+      <div class="totals"><div class="kcal">~1,304 kcal</div><div class="prot">119g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>5 oz blackened tilapia, small black bean &amp; corn salad, lime<span class="macro">~320 kcal | 22g C | 9g F | 34g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>Half scoop vanilla whey protein + water, a few frozen blueberries<span class="macro">~130 kcal | 14g C | 1g F | 16g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>4 oz chicken breast fajita strips, peppers &amp; onion, 1 corn tortilla, 1 tbsp guacamole<span class="macro">~420 kcal | 32g C | 15g F | 34g P</span></p></div>
+  </div>
+
+  <!-- Day 3 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 3</div><h3>Turkey Wrap &amp; Baked Salmon</h3></div>
+      <div class="totals"><div class="kcal">~1,264 kcal</div><div class="prot">121g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>Sliced turkey breast (4 oz) &amp; hummus lettuce wrap, tomato &mdash; no tortilla<span class="macro">~260 kcal | 14g C | 10g F | 30g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese<span class="macro">~90 kcal | 4g C | 3g F | 14g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>5 oz baked salmon, roasted asparagus, 1/3 cup wild rice<span class="macro">~480 kcal | 28g C | 22g F | 42g P</span></p></div>
+  </div>
+
+  <!-- Day 4 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 4</div><h3>Stuffed Pepper &amp; Pork Tenderloin</h3></div>
+      <div class="totals"><div class="kcal">~1,304 kcal</div><div class="prot">116g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>Ground chicken &amp; quinoa stuffed bell pepper (half portion), side salad<span class="macro">~300 kcal | 22g C | 9g F | 30g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>3/4 cup plain Greek yogurt + 1 tsp honey<span class="macro">~150 kcal | 17g C | 0g F | 15g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>4 oz grilled pork tenderloin, small roasted sweet potato, green beans<span class="macro">~420 kcal | 30g C | 14g F | 36g P</span></p></div>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 5</div><h3>Shrimp Stir-Fry &amp; Buffalo Chicken Wraps</h3></div>
+      <div class="totals"><div class="kcal">~1,284 kcal</div><div class="prot">124g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>5 oz shrimp stir-fry with cauliflower rice, snap peas, soy-ginger sauce<span class="macro">~280 kcal | 18g C | 8g F | 32g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>1/2 cup low-fat cottage cheese + a few pineapple chunks<span class="macro">~120 kcal | 12g C | 2g F | 15g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>Buffalo chicken lettuce wraps (5 oz shredded chicken), 1/3 cup white rice, 1/3 cup black beans<span class="macro">~450 kcal | 38g C | 14g F | 42g P</span></p></div>
+  </div>
+
+  <!-- Day 6 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 6</div><h3>Greek Salad &amp; Turkey Taco Bowl</h3></div>
+      <div class="totals"><div class="kcal">~1,324 kcal</div><div class="prot">124g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>Grilled chicken Greek salad &mdash; 5 oz chicken, cucumber, tomato, light feta, red wine vinaigrette, no pita<span class="macro">~340 kcal | 12g C | 16g F | 38g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>Half scoop vanilla whey protein + water<span class="macro">~90 kcal | 8g C | 1g F | 15g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>Ground turkey taco bowl &mdash; 1/3 cup white rice, 1/3 cup black beans, salsa, light sour cream, a few tortilla chips<span class="macro">~460 kcal | 42g C | 16g F | 36g P</span></p></div>
+  </div>
+
+  <!-- Day 7 -->
+  <div class="day-card">
+    <div class="day-head">
+      <div><div class="num">Day 7</div><h3>Chicken Fajita Bowl &amp; Pan-Seared Cod</h3></div>
+      <div class="totals"><div class="kcal">~1,254 kcal</div><div class="prot">121g Protein</div></div>
+    </div>
+    <div class="meal-row lunch"><div class="label">Lunch</div><p>Chicken fajita bowl &mdash; 4 oz chicken, peppers, onion, cauliflower rice, salsa<span class="macro">~280 kcal | 16g C | 10g F | 32g P</span></p></div>
+    <div class="meal-row"><div class="label">Snack</div><p>3/4 cup Greek yogurt + a few blueberries<span class="macro">~140 kcal | 18g C | 0g F | 16g P</span></p></div>
+    <div class="meal-row dinner"><div class="label">Dinner</div><p>Pan-seared cod, small cannellini bean &amp; tomato salad, no bread<span class="macro">~400 kcal | 30g C | 14g F | 38g P</span></p></div>
+  </div>
+
+  <div class="addons">
+    <h2>If You're Still Hungry</h2>
+    <p class="note">There isn't much slack in 1,300 &mdash; use these sparingly, and only on hard training days:</p>
+    <div class="addon-grid">
+      <div class="addon"><span class="name">Almonds</span><span class="kcal">0.5 oz &middot; ~80 kcal</span></div>
+      <div class="addon"><span class="name">Apple</span><span class="kcal">1 small &middot; ~80 kcal</span></div>
+      <div class="addon"><span class="name">Rice Cake + PB</span><span class="kcal">1 tbsp &middot; ~110 kcal</span></div>
+      <div class="addon"><span class="name">Hard-Boiled Egg</span><span class="kcal">1 large &middot; ~70 kcal</span></div>
+    </div>
+  </div>
+
+  </div>
+  <!-- ============ END PLAN B ============ -->
+
 </main>
 
-<footer>Rotates chicken breast, ground chicken, pork, salmon, tuna &amp; lean ground beef so lunch and dinner stay varied.</footer>
+<footer>Rotates chicken breast, ground chicken, tilapia, salmon, cod, shrimp, pork &amp; turkey against jasmine-quinoa rice, black beans, corn tortillas, cottage cheese, Greek yogurt &amp; whey shakes &mdash; drawn from what you're actually eating, varied on purpose rather than repeated week to week.</footer>
+
+<script>
+  function showPlan(which){
+    document.getElementById('planA').classList.toggle('active', which === 'A');
+    document.getElementById('planB').classList.toggle('active', which === 'B');
+    document.getElementById('tabA').classList.toggle('active', which === 'A');
+    document.getElementById('tabB').classList.toggle('active', which === 'B');
+  }
+</script>
 
 </body>
 </html>
