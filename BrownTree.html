@@ -82,7 +82,7 @@ h2{font-family:var(--display);font-weight:700;font-size:26px;margin:30px 0 10px}
    docs:   links to the standalone pages
    ================================================== */
 const P = {
- "stephen-hopkins":{name:"Stephen Hopkins",born:"c. 1581, England",died:"1644, Plymouth",notes:["Passenger on the Mayflower, which reached Plymouth in December 1620.","Generation 1 of the Mayflower line on Ruby (Brown) White's application."],src:"Mayflower Society application no. 8224 (1985). Years are the standard published dates."},
+ "stephen-hopkins":{name:"Stephen Hopkins",born:"c. 1581, England",died:"1644, Plymouth",notes:["Passenger on the Mayflower, which reached Plymouth in December 1620.","Before Plymouth he sailed for Jamestown in 1609 on the Sea Venture, which wrecked on Bermuda. He was sentenced to death there for mutiny and talked his way into a pardon. The wreck is thought to have inspired Shakespeare's The Tempest.","In Plymouth he served as a go-between with the Wampanoag and died a prosperous shopkeeper in 1644.","Generation 1 of the Mayflower line on Ruby (Brown) White's application."],src:"Mayflower Society application no. 8224 (1985). Years are the standard published dates."},
  "constance-hopkins":{name:"Constance Hopkins",parents:["stephen-hopkins"],spouse:["nicholas-snow"],notes:["Generation 2."],src:"Application no. 8224."},
  "nicholas-snow":{name:"Nicholas Snow",src:"Application no. 8224."},
  "stephen-snow":{name:"Stephen Snow",born:"1636, Plymouth",died:"17 Dec 1705, Eastham",parents:["nicholas-snow","constance-hopkins"],spouse:["susanna-deane"],married:"28 Oct 1663, Eastham",notes:["Generation 3."],src:"FOP [Hopkins]. MD 3:168; 8:15; 15:51; 31:37. NEHGR 47:341, 342."},
@@ -210,6 +210,28 @@ const DOCS = [
  {title:"Hopkins to Brown Lineage",sub:"Full transcription of the 1985 application, with every source.",url:"https://claude.ai/artifact/NzjUAQn5Go9fvw8bHj9v1u"},
  {title:"Brown Family Chart",sub:"All three lines on one visual chart.",url:"https://claude.ai/artifact/RqcQu3jFu8dnco4FYDJmiN"}
 ];
+/* Famous cousins: well-known people who share a Mayflower ancestor with this family (distant cousins, not direct ancestors) */
+const FAMOUS = {
+ "howland":{tree:"howland",title:"Howland & Tilley Cousins",via:"John Howland and Elizabeth Tilley, daughter of John Tilley and Joan Hurst",people:[
+  {n:"Franklin D. Roosevelt",d:"32nd U.S. President"},{n:"George H. W. Bush",d:"41st U.S. President"},{n:"George W. Bush",d:"43rd U.S. President"},
+  {n:"Barbara Bush",d:"First Lady"},{n:"Edith Roosevelt",d:"First Lady"},{n:"Alice Hathaway Lee Roosevelt",d:"Theodore Roosevelt's first wife"},
+  {n:"Nathaniel Gorham",d:"President of the Continental Congress; signer of the Constitution",tag:"A Gorham, like your line"},
+  {n:"Jeb Bush",d:"Governor of Florida"},{n:"Sarah Palin",d:"Governor of Alaska",tag:"Also a Hopkins cousin"},{n:"Sanford B. Dole",d:"Governor of Hawaii"},
+  {n:"Ralph Waldo Emerson",d:"Essayist and poet"},{n:"Henry Wadsworth Longfellow",d:"Poet"},
+  {n:"Humphrey Bogart",d:"Actor"},{n:"Christopher Lloyd",d:"Actor"},{n:"Chevy Chase",d:"Actor"},{n:"Anthony Perkins",d:"Actor"},
+  {n:"Alec, Daniel, William & Stephen Baldwin",d:"Actors"},{n:"Jordana Brewster",d:"Actor"},
+  {n:"Joseph Smith",d:"Founder of the Latter Day Saint movement"},{n:"Brigham Young",d:"Latter-day Saint leader"}]},
+ "hopkins":{tree:"hopkins",title:"Hopkins Cousins",via:"Stephen Hopkins of the Mayflower",people:[
+  {n:"Allison Janney",d:"Actor",tag:"Through Constance Hopkins and the Snows, like yours"},
+  {n:"Patricia Clapp",d:"Author of Constance (1968), a novel about Constance Hopkins"},
+  {n:"Richard Gere",d:"Actor"},{n:"Ethan Hawke",d:"Actor, director and novelist"},{n:"Maya Hawke",d:"Actor"},
+  {n:"Avril Lavigne",d:"Singer-songwriter"},{n:"Sarah Palin",d:"Governor of Alaska",tag:"Also a Howland–Tilley cousin"},
+  {n:"Norman Rockwell",d:"Painter"},{n:"Dan Quayle",d:"44th U.S. Vice President"},{n:"Tennessee Williams",d:"Playwright"}]}
+};
+const FAMOUS_BY_PERSON = {"john-tilley":"howland","joan-hurst":"howland","elizabeth-tilley":"howland","john-howland":"howland","stephen-hopkins":"hopkins","constance-hopkins":"hopkins"};
+function famousHTML(key){ const f=FAMOUS[key]; if(!f) return "";
+  return `<h2>${esc(f.title)}</h2><p class="lede" style="margin-bottom:12px">Well-known people who also descend from ${esc(f.via)}. They are distant cousins, usually 8th to 12th, not direct ancestors.</p>`+
+  `<div class="rel">${f.people.map(x=>`<div class="tile">${x.tag?`<div class="k">${esc(x.tag)}</div>`:""}<div class="t">${esc(x.n)}</div><div class="s">${esc(x.d)}</div></div>`).join("")}</div>`; }
 const DIRECT = new Set(["stephen-hopkins","constance-hopkins","stephen-snow","micajah-snow","john-snow","hanna-snow","thomas-howes","daniel-howes","reed-howes-1819","violetta-howes","charles-henry-brown","marvin-charles-brown","reed-howes-brown","patrick-brown","nicole-brown","ryan-brown","sherri-brown","jeffrey-brown","peter-brownsword","thomas-martin-brownsword","sarah-ellen-brownsword","vera-sewell","emil-nelson","esther-nelson","roy-carlson","judy-carlson","harry-brown","moody-howes","thomas-howes-1700","ebenezer-howes","sarah-gorham","joseph-gorham","john-gorham","desire-howland","john-howland","elizabeth-tilley","john-tilley","jeremiah-howes","thomas-howes-immigrant"]);
 
 /* =====================  APP  ===================== */
@@ -260,6 +282,8 @@ function viewHome(){
   <div class="grid">${TREES.map(t=>`<a class="tile" href="#tree-${t.id}"><div class="k">${t.mode==="ancestors"?"Ancestors":"Descendants"} of ${esc(rootName(t))}</div><div class="t">${esc(t.title)}</div><div class="s">${esc(t.sub)}</div></a>`).join("")}</div>
   <h2>Stories</h2>
   <div class="grid">${STORIES.map(s=>`<a class="tile" href="#story-${s.id}"><div class="k">${esc(P[s.person].name)}</div><div class="t">${esc(s.title)}</div><div class="s">${esc(s.sub)}</div></a>`).join("")}</div>
+  <h2>Famous cousins</h2>
+  <div class="grid">${Object.values(FAMOUS).map(f=>`<a class="tile" href="#tree-${f.tree}"><div class="k">${f.people.length} well-known cousins</div><div class="t">${esc(f.title)}</div><div class="s">Also descended from ${esc(f.via)}</div></a>`).join("")}</div>
   <h2>People</h2>
   <input class="search" id="q" type="search" placeholder="Find a person" aria-label="Find a person">
   <ul class="plist" id="plist">${people.map(id=>`<li data-n="${esc(P[id].name.toLowerCase())}">${link(id)}<span class="y">${yrs(id)}</span></li>`).join("")}</ul>
@@ -274,7 +298,7 @@ function viewTree(id){
   $("#app").innerHTML = `<div class="eyebrow">${t.mode==="ancestors"?"Ancestors":"Descendants"} of ${esc(rootName(t))}</div>
   <h1>${esc(t.title)}</h1><p class="lede">${esc(t.sub)} Tap + to open a generation; tap a name for that person's page. Blue names are direct ancestors.</p>
   <div class="tools"><button class="btn" id="ex">Expand all</button><button class="btn" id="co">Collapse all</button><a class="btn" href="#home" style="text-decoration:none">Home</a></div>
-  <ul class="tree" id="tree">${rowHTML(t,t.root,0,"0")}</ul>`;
+  <ul class="tree" id="tree">${rowHTML(t,t.root,0,"0")}</ul>${famousHTML(t.id)}`;
   $("#tree").addEventListener("click",e=>{const b=e.target.closest(".tog"); if(!b||b.classList.contains("none")) return; open[b.dataset.key]=b.getAttribute("aria-expanded")!=="true"; const y=scrollY; viewTree(id); scrollTo(0,y);});
   $("#ex").onclick=()=>{setAll(t,true);viewTree(id);}; $("#co").onclick=()=>{setAll(t,false);viewTree(id);};
 }
@@ -296,6 +320,7 @@ function viewPerson(id){
   ${st.length?`<h2>Stories</h2><div class="grid">${st.map(s=>`<a class="tile" href="#story-${s.id}"><div class="t">${esc(s.title)}</div><div class="s">${esc(s.sub)}</div></a>`).join("")}</div>`:""}
   <h2>Children</h2>${tiles(kids(id))}
   ${siblings(id).length?`<h2>Brothers &amp; sisters</h2>${tiles(siblings(id))}`:""}
+  ${FAMOUS_BY_PERSON[id]?famousHTML(FAMOUS_BY_PERSON[id]):""}
   ${p.src?`<h2>Sources</h2><div class="src">${esc(p.src)}</div>`:""}
   <h2>In these trees</h2><div class="tools">${inTrees.map(t=>`<a class="btn" style="text-decoration:none" href="#tree-${t.id}">${esc(t.title)}</a>`).join("")||'<span class="lede">Not in a tree yet.</span>'}<a class="btn" style="text-decoration:none" href="#home">Home</a></div>`;
 }
